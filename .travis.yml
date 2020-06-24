@@ -4,6 +4,8 @@ language: python
 env:
   global:
     - TEST_TYPE="stable"
+    # Doctr deploy key for corriporai/runpandas
+    - secure: "vIdjCKhc4eTkD10dW+DOaGsYcKB9nVG56VsiS2yMGekv7XQxblIDiAyDFTzDiY8ObDQOMg2d+nVmKIVnVtXrvydhFz9Uok2Dxq563mhioSaJYGsFqsorM5+uYoHolmrk+PcewP3EL6MY2kOtH95s3sSQ617qBJUP5VSYidXwAeYvxen1Kmup6mJ8qCb1OvFxxt/YZAdJRL10iymfH1r8wFK396Irk1DDIt0xB0W4C3zEGkxVKg+EzI8E5eVNC/XGPt9PhqxPXUr0XbaskjMufVqChHn3mNcNjluBoXd8r5twDkuaqXPZc0xq1ktwj8EMlZ/yOYxAA1nKG6BsR5dDIbUcuMM2RG3MlPErY1yMg0bKgnWVuSKcJ/bQo0wYRrEW5/SaO/cfNfEmGv/DCb3oucmycSOkQTUd+/edJfAe6MXUkltdaJ72jWBw2EC5DcDYC2AWNxGKLHpCWd3ewaTPw5tTa3PZlozMAeq5JbhQPNbFfz85rrgVAreM3egL3dwUHbfK1yvdMHCt7E1hzvyg3En+Xgo+DXvZNOpvrvZqRDBS982k08hhEIImFhFrJB1+lnejy1ctqUWyTMOLFlDIXtrsVe1nVOqgo/Gkb0ouuon7I5oSjG1aFQpvqo6InuQi+SUUHyJjDHvnnYsj1j/uxLwQfs68MVTmw6674qlVu0I="
 
 matrix:
   fast_finish: true
