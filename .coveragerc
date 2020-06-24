@@ -1,0 +1,24 @@
+# .coveragerc to control coverage.py
+[run]
+source = runpandas
+branch = True
+include = */runpandas/*
+omit =
+    */_version.py
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+    # Don't complain if tests don't hit defensive assertion code:
+    raise NotImplementedError
+    def __repr__
+    raise ImmediateDeprecationError
+    if __name__ == .__main__.:
+    # Ignore pass
+    pass
+include = */runpandas/*
+omit =
+    */_version.py
+ignore_errors = True
