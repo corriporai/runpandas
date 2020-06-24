@@ -6,17 +6,17 @@ Python Package for handing running data from GPS-enabled tracking devices and ap
 .. image:: https://img.shields.io/pypi/v/runpandas.svg
     :target: https://pypi.python.org/pypi/runpandas/
 
-.. image:: https://travis-ci.org/corriporai/runpandas.png?branch=master
-    :target: https://travis-ci.org/corriporai/runpandas
+.. image:: https://travis-ci.com/corriporai/runpandas.svg?branch=master
+    :target: https://travis-ci.com/github/corriporai/runpandas
 
-.. image:: https://coveralls.io/repos/corriporai/runpandas/badge.svg?branch=master
-    :target: https://coveralls.io/r/corriporai/runpandas
+.. image:: https://coveralls.io/repos/github/corriporai/runpandas/badge.svg?branch=master
+    :target: https://coveralls.io/github/corriporai/runpandas
 
 .. image:: https://codecov.io/gh/corriporai/runpandas/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/corriporai/runpandas
 
 .. image:: https://readthedocs.org/projects/runpandas/badge/?version=latest
-    :target: https://runpandas.readthedocs.io/en/latest/
+    :target: https://runpandas.readthedocs.io/en/latest/?badge=latest
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/psf/black
