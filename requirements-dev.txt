@@ -1,0 +1,23 @@
+# required
+pandas>=0.23.4
+wrapt
+
+# tracking files parsers
+
+
+# plotting
+
+
+# testing
+mock>=1.0.1  # technically not need for python >= 3.3
+coverage
+codecov
+coveralls
+pytest
+pytest-cov
+
+# styling
+black; python_version > '3.5'
+pre-commit
+flake8-bugbear; python_version > '3.5'
+flake8

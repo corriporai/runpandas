@@ -1,0 +1,64 @@
+dist: bionic
+language: python
+
+env:
+  global:
+    - TEST_TYPE="stable"
+    # Doctr deploy key for corriporai/runpandas
+    - secure: "vIdjCKhc4eTkD10dW+DOaGsYcKB9nVG56VsiS2yMGekv7XQxblIDiAyDFTzDiY8ObDQOMg2d+nVmKIVnVtXrvydhFz9Uok2Dxq563mhioSaJYGsFqsorM5+uYoHolmrk+PcewP3EL6MY2kOtH95s3sSQ617qBJUP5VSYidXwAeYvxen1Kmup6mJ8qCb1OvFxxt/YZAdJRL10iymfH1r8wFK396Irk1DDIt0xB0W4C3zEGkxVKg+EzI8E5eVNC/XGPt9PhqxPXUr0XbaskjMufVqChHn3mNcNjluBoXd8r5twDkuaqXPZc0xq1ktwj8EMlZ/yOYxAA1nKG6BsR5dDIbUcuMM2RG3MlPErY1yMg0bKgnWVuSKcJ/bQo0wYRrEW5/SaO/cfNfEmGv/DCb3oucmycSOkQTUd+/edJfAe6MXUkltdaJ72jWBw2EC5DcDYC2AWNxGKLHpCWd3ewaTPw5tTa3PZlozMAeq5JbhQPNbFfz85rrgVAreM3egL3dwUHbfK1yvdMHCt7E1hzvyg3En+Xgo+DXvZNOpvrvZqRDBS982k08hhEIImFhFrJB1+lnejy1ctqUWyTMOLFlDIXtrsVe1nVOqgo/Gkb0ouuon7I5oSjG1aFQpvqo6InuQi+SUUHyJjDHvnnYsj1j/uxLwQfs68MVTmw6674qlVu0I="
+
+matrix:
+  fast_finish: true
+  include:
+  - python: 3.5
+    env: PANDAS=0.21 NUMPY=1.13
+  - python: 3.5
+    env: PANDAS=0.22 NUMPY=1.13
+  - python: 3.6
+    env: PANDAS=0.23 NUMPY=1.14
+  - python: 3.7
+    env: PANDAS=0.25 NUMPY=1.17 DOCBUILD=true
+  - python: 3.7
+    env: PANDAS=0.25 NUMPY=1.17
+  - python: 3.8
+    env: PANDAS=0.25 NUMPY=1.18
+    # In allow failures
+  - python: 3.7
+    env: PANDAS="MASTER" NUMPY=1.17
+  allow_failures:
+    - python: 3.7
+      env: PANDAS="MASTER" NUMPY=1.17
+
+install:
+  - source ci/pypi-installer.sh;
+  - pip install -e .
+  - pip install -r requirements-dev.txt
+  - pip list
+  - python -c "import runpandas; runpandas.__version__;"
+
+script:
+  - if [[ -n "${TEST_TYPE+x}" ]]; then export MARKERS="-m ${TEST_TYPE}"; fi
+  - pytest -v -s -r xX "${MARKERS}" --cov-config .coveragerc --cov=runpandas --cov-report xml:/tmp/cov-runpandas.xml --junitxml=/tmp/runpandas.xml
+  - |
+    if (( $(echo "$TRAVIS_PYTHON_VERSION > 3.5" | bc -l) )); then
+      black --check runpandas
+    fi
+  - flake8 --version
+  - flake8 runpandas
+  - |
+    if [[ "$DOCBUILD" ]]; then
+      set -e
+      cd docs
+      make html
+      cd ..
+      if [[ -z "$TRAVIS_TAG" ]]; then
+        doctr deploy devel --build-tags
+      else
+        doctr deploy . --build-tags
+      fi
+      set +e
+    fi
+
+after_script:
+  - coveralls
+  - codecov
