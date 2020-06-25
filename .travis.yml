@@ -31,8 +31,9 @@ matrix:
 
 install:
   - source ci/pypi-installer.sh;
+  - pip install -e .
   - pip list
-  - python setup.py install
+  - python -c "import runpandas; runpandas.__version__;"
 
 script:
   - if [[ -n "${TEST_TYPE+x}" ]]; then export MARKERS="-m ${TEST_TYPE}"; fi
