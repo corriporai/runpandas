@@ -10,14 +10,14 @@ wrapt
 
 # testing
 mock>=1.0.1  # technically not need for python >= 3.3
-pytest
-pytest-cov
 coverage
 codecov
 coveralls
+pytest
+pytest-cov
 
 # styling
-black
+black; python_version > '3.5'
 pre-commit
 flake8-bugbear; python_version > '3.5'
 flake8
