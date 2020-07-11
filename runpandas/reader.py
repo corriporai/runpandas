@@ -4,6 +4,7 @@ Module contains reading logic for several formats of training sources
 
 from pandas import DataFrame
 from runpandas import _utils as utils
+from runpandas import exceptions
 
 MODULE_CACHE = {}
 
@@ -27,9 +28,10 @@ def _read_file(filename, to_df=False, **kwargs):
 
     """
 
-    if not utils.file_exists(filename) or not utils.is_valid(filename):
-        raise IOError("%s does not exist or it is not a valid file for activities files."
-                    "It only supports tcx files." % filename)
+    if not utils.file_exists(filename):
+        raise IOError("%s does not exist" % filename)
+    if not utils.is_valid(filename):
+        raise exceptions.InvalidFileError('tcx')
     _, ext = utils.splitext_plus(filename)
     module  = _import_module(ext[1:])
     if not to_df:
