@@ -35,6 +35,11 @@ def test_read_file_not_exists(valid_tcx_filename):
         with pytest.raises(IOError):
             reader._read_file(valid_tcx_filename)
 
+def test_read_file_malformed_tcx(dirpath):
+        tcx_file = os.path.join(dirpath, "tcx", "malformed.tcx")
+        with pytest.raises(exceptions.InvalidFileError):
+            reader._read_file(tcx_file)
+
 def test_read_file_tcx_basic_dataframe(dirpath):
         tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
         reader._read_file(tcx_file)

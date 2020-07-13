@@ -66,7 +66,7 @@ def get_nodes(file_path, node_names, *, with_root=False):
     event, root = next(context)
 
     if with_root:
-        yield with_root
+        yield root
 
     for event, element in context:
         if event == 'end' and sans_ns(element.tag) in node_names:
