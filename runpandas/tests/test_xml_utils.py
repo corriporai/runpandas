@@ -34,6 +34,9 @@ data = '''<?xml version="1.0" encoding="UTF-8" ?>
 </Position>
 <AltitudeMeters>679.053528</AltitudeMeters>
 <DistanceMeters>5320.761719</DistanceMeters>
+<HeartRateBpm>
+<Value>62</Value>
+</HeartRateBpm>
 <Extensions>
 <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
 <Speed>0.000000</Speed>
@@ -48,6 +51,9 @@ data = '''<?xml version="1.0" encoding="UTF-8" ?>
 </Position>
 <AltitudeMeters>668.866272</AltitudeMeters>
 <DistanceMeters>12.899824</DistanceMeters>
+<HeartRateBpm>
+<Value>60</Value>
+</HeartRateBpm>
 <Extensions>
 <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
 <Speed>0.000000</Speed>
@@ -69,7 +75,8 @@ def test_gen_nodes():
 
     assert len(trackpoints) == 2
     t1, t2 = trackpoints
-    assert len(t1) == 6 and len(t2) == 6
+    assert len(t1) == 7 and len(t2) == 7
     assert t1['Speed'] == '0.000000' and t2['Speed'] == '0.000000'
     assert t1['Time'] == '2020-06-28T09:39:24Z'
     assert t2['Time'] == '2020-06-28T09:39:33Z'
+    assert t1['HeartRateBpm'] == '62' and t2['HeartRateBpm'] == '60'

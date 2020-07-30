@@ -39,3 +39,7 @@ def is_valid(valid_tcx_filename):
 
 def is_valid_nok(invalid_tcx_filename):
     assert not utils.is_valid(invalid_tcx_filename)
+
+def test_camecase_to_snakecase():
+    assert utils.camelcase_to_snakecase('LatitudeDegrees') == 'latitude_degrees'
+    assert utils.camelcase_to_snakecase('Time') == 'time'
