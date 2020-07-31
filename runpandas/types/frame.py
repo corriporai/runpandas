@@ -7,17 +7,23 @@ import warnings
 import pandas as pd
 from pandas.core.frame import DataFrame
 
-
 class Activity(pd.DataFrame):
     # properties to propagate
     _metadata = ['start']
 
     def __init__(self, *args, **kwargs):
         cspecs = kwargs.pop("cspecs", None)
+        start = kwargs.pop("start", None)
+
         super(Activity, self).__init__(*args, **kwargs)
 
         if cspecs is not None:
             self.set_specs(cspecs)
+        if start is not  None:
+            self.start = start
+        # No point hanging on to completely empty columns!
+        #self.dropna(axis=1, how='all', inplace=True)
+
 
     def set_specs(self, cspecs=None, inplace=False):
         """

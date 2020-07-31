@@ -52,4 +52,4 @@ def test_read_file_tcx_basic_activity(dirpath):
         tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
         activity = reader._read_file(tcx_file, to_df=False)
         assert type(activity) is types.Activity
-        assert activity.size == 2304
+        assert activity.size == 1920

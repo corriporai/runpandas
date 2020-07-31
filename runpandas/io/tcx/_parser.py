@@ -2,6 +2,7 @@
 Tools for parsing Garmin TCX files.
 '''
 import pandas as pd
+from pandas import TimedeltaIndex
 from runpandas import _utils as utils
 from runpandas import exceptions
 from runpandas.types import Activity
@@ -33,7 +34,6 @@ def gen_records(file_path):
 
 def read(file_path):
     data = pd.DataFrame.from_records(gen_records(file_path))
-
     times = data.pop('Time')                    # should always be there
     data = data.astype('float64', copy=False)   # try and make numeric
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
@@ -43,5 +43,6 @@ def read(file_path):
         timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC, utc=True)
 
     timeoffsets = timestamps - timestamps[0]
+    timestamp_index = TimedeltaIndex(timeoffsets, unit='s', name='time')
 
-    return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0], timeoffsets=timeoffsets)
+    return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0], index=[timestamp_index])

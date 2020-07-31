@@ -1,6 +1,6 @@
 from pandas import Series
 
-class Field(Series):
+class MeasureSeries(Series):
     _metadata = ['colname', 'base_unit']
 
     @property
@@ -17,23 +17,23 @@ class Field(Series):
             object.__setattr__(self, name, getattr(other, name, None))
         return self
 
-class Altitude(Field):
+class Altitude(MeasureSeries):
     colname = 'alt'
     base_unit = 'm'
 
-class Cadence(Field):
+class Cadence(MeasureSeries):
     colname = 'cad'
     base_unit = 'rpm'
 
-class Distance(Field):
+class Distance(MeasureSeries):
     colname = 'dist'
     base_unit = 'm'
 
-class HeartRate(Field):
+class HeartRate(MeasureSeries):
     colname = 'hr'
     base_unit = 'bpm'
 
-class LonLat(Field):
+class LonLat(MeasureSeries):
     colname = 'lonlat'
     base_unit = 'degrees'
 
@@ -43,14 +43,14 @@ class Longitude(LonLat):
 class Latitude(LonLat):
     colname = 'lat'
 
-class Pace(Field):
+class Pace(MeasureSeries):
     colname = 'pace'
     base_unit = 'sec/m'
 
-class Power(Field):
+class Power(MeasureSeries):
     colname = 'pwr'
     base_unit = 'watts'
 
-class Speed(Field):
+class Speed(MeasureSeries):
     colname = 'speed'
     base_unit = 'm/s'
