@@ -9,11 +9,12 @@ from runpandas.types import Activity
 from runpandas.types import columns
 
 COLUMNS_SCHEMA = {
-    'altitude_meters': columns.Altitude,
-    'distance_meters': columns.Distance,
-    'longitude_degrees': columns.Longitude,
-    'latitude_degrees': columns.Latitude,
-    'heart_rate_bpm': columns.HeartRate,
+    'atemp': columns.Temperature,
+    'cad': columns.Cadence,
+    'ele': columns.Cadence,
+    'lon': columns.Longitude,
+    'lat': columns.Latitude,
+    'hr': columns.HeartRate,
 }
 
 # According to Garmin, all times are stored in UTC.
