@@ -34,10 +34,7 @@ def _read_file(filename, to_df=False, **kwargs):
         raise exceptions.InvalidFileError('tcx')
     _, ext = utils.splitext_plus(filename)
     module  = _import_module(ext[1:])
-    if not to_df:
-        return module.read(filename, **kwargs)
-    else:
-        return DataFrame.from_records(module.gen_records(filename))
+    return module.read(filename, to_df, **kwargs)
 
 def _import_module(mod_name):
     """ Find custom reading module to execute

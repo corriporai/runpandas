@@ -18,12 +18,9 @@ class Activity(pd.DataFrame):
         super(Activity, self).__init__(*args, **kwargs)
 
         if cspecs is not None:
-            self.set_specs(cspecs)
+            self.set_specs(cspecs, inplace=True)
         if start is not  None:
             self.start = start
-        # No point hanging on to completely empty columns!
-        #self.dropna(axis=1, how='all', inplace=True)
-
 
     def set_specs(self, cspecs=None, inplace=False):
         """
@@ -37,20 +34,23 @@ class Activity(pd.DataFrame):
             (while still returning the result) instead of making a copy of
             the Activity.
         """
+        print('---->' ,self.head())
+
         if not inplace:
             df = self.copy()
         else:
             df = self
-
         for old_key, column_cls in cspecs.items():
             try:
                 old_column = df.pop(old_key)  # no default
             except KeyError:
                 warnings.warn('The specified key %s not found.' % old_key, UserWarning)
+                continue
 
             new = column_cls(old_column)
             df[new.colname] = new
-        return df
+        if not  inplace:
+            return df
 
     @property
     def _constructor(self):

@@ -9,12 +9,14 @@ from runpandas.types import Activity
 from runpandas.types import columns
 
 COLUMNS_SCHEMA = {
-    'atemp': columns.Temperature,
-    'cad': columns.Cadence,
-    'ele': columns.Cadence,
-    'lon': columns.Longitude,
-    'lat': columns.Latitude,
-    'hr': columns.HeartRate,
+    'altitude_meters': columns.Altitude,
+    'cadence': columns.Cadence,
+    'distance_meters': columns.Distance,
+    'heart_rate_bpm': columns.HeartRate,
+    'longitude_degrees': columns.Longitude,
+    'latitude_degrees': columns.Latitude,
+    'speed': columns.Speed,
+    'watts': columns.Power,
 }
 
 # According to Garmin, all times are stored in UTC.
@@ -33,11 +35,32 @@ def gen_records(file_path):
     for trkpt in trackpoints:
         yield utils.recursive_text_extract(trkpt)
 
-def read(file_path):
+def read(file_path, to_df=False, **kwargs):
+    """
+    This method loads a TCX file into a Pandas DataFrame or runpandas Activity.
+    Column names are translated to runpandas terminology (e.g. "HeartRate" > "heart_rate").
+    Datetimes indexes are replaced by time offsets.
+    All NaN rows are removed.
+
+    Parameters
+    ----------
+        filename : str, The path to a training file.
+        to_df : bool, optional
+             Return a obj:`runpandas.Activity` if `to_df=True`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs :
+        Keyword args to be passed to the `read` method accordingly to the
+        file format.
+    Returns
+    -------
+    Return a obj:`runpandas.Activity` if `to_df=True`, otherwise
+             a :obj:`pandas.DataFrame` will be returned.
+    """
     data = pd.DataFrame.from_records(gen_records(file_path))
     times = data.pop('Time')                    # should always be there
     data = data.astype('float64', copy=False)   # try and make numeric
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
+
     try:
         timestamps = pd.to_datetime(times, format=DATETIME_FMT, utc=True)
     except ValueError:  # bad format, try with fractional seconds
@@ -46,4 +69,9 @@ def read(file_path):
     timeoffsets = timestamps - timestamps[0]
     timestamp_index = TimedeltaIndex(timeoffsets, unit='s', name='time')
 
-    return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0], index=[timestamp_index])
+    if to_df:
+        data.index = timestamp_index
+        data.dropna(axis=1, how='all', inplace=True)
+        return data
+    else:
+        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0], index=[timestamp_index])

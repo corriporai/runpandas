@@ -4,6 +4,7 @@ Test module for reader base module
 
 import os
 import pytest
+import runpandas
 from pandas import DataFrame
 from runpandas import reader
 from runpandas import exceptions
@@ -23,6 +24,9 @@ def dirpath(datapath):
 
 def test_import_module_exists():
     assert reader._import_module('tcx')
+
+def test_top_level_import():
+    assert runpandas.read_file == reader._read_file
 
 def test_imort_module_not_exists():
     with pytest.raises(ImportError):
@@ -46,10 +50,14 @@ def test_read_file_tcx_basic_dataframe(dirpath):
         tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
         activity = reader._read_file(tcx_file, to_df=True)
         assert isinstance(activity, DataFrame)
-        assert activity.size == 2304
+        included_data = set(['latitude_degrees', 'longitude_degrees', 'altitude_meters', 'distance_meters', 'heart_rate_bpm'])
+        assert included_data <= set(activity.columns.to_list())
+        assert  activity.size == 1920
 
+'''
 def test_read_file_tcx_basic_activity(dirpath):
         tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
         activity = reader._read_file(tcx_file, to_df=False)
         assert type(activity) is types.Activity
         assert activity.size == 1920
+'''

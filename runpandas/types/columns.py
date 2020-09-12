@@ -54,3 +54,7 @@ class Power(MeasureSeries):
 class Speed(MeasureSeries):
     colname = 'speed'
     base_unit = 'm/s'
+
+class Temperature(MeasureSeries):
+    colname = 'temp'
+    base_unit = 'degrees_C'
