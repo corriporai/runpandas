@@ -36,7 +36,7 @@ def is_valid(fname):
     It returns True if the it is a valid format for activities handling.
     """
     _, ext = os.path.splitext(fname)
-    return ext in [".tcx"]
+    return ext in [".tcx", '.gpx']
 
 def recursive_text_extract(node):
     ds = {}

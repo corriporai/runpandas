@@ -68,10 +68,10 @@ def read(file_path, to_df=False, **kwargs):
 
     timeoffsets = timestamps - timestamps[0]
     timestamp_index = TimedeltaIndex(timeoffsets, unit='s', name='time')
+    data.index = timestamp_index
+    data.dropna(axis=1, how='all', inplace=True)
 
     if to_df:
-        data.index = timestamp_index
-        data.dropna(axis=1, how='all', inplace=True)
         return data
     else:
-        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0], index=[timestamp_index])
+        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])

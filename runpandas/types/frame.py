@@ -34,8 +34,6 @@ class Activity(pd.DataFrame):
             (while still returning the result) instead of making a copy of
             the Activity.
         """
-        print('---->' ,self.head())
-
         if not inplace:
             df = self.copy()
         else:
@@ -81,7 +79,3 @@ class Activity(pd.DataFrame):
         kwargs : key-word arguments
         """
         return runpandas.reader._read_file(file_path)
-
-
-class ActivityHistory(pd.DataFrame):
-    pass

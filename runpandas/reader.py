@@ -31,7 +31,7 @@ def _read_file(filename, to_df=False, **kwargs):
     if not utils.file_exists(filename):
         raise IOError("%s does not exist" % filename)
     if not utils.is_valid(filename):
-        raise exceptions.InvalidFileError('tcx')
+        raise exceptions.InvalidFileError("File {filename} with invalid filetype.".format(**locals()))
     _, ext = utils.splitext_plus(filename)
     module  = _import_module(ext[1:])
     return module.read(filename, to_df, **kwargs)
