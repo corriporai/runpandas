@@ -11,6 +11,14 @@ from runpandas.types import columns
 
 DATETIME_FMT = '%Y-%m-%dT%H:%M:%S.%fZ'    # UTC, with fractional seconds
 
+COLUMNS_SCHEMA = {
+    'atemp': columns.Temperature,
+    'cad': columns.Cadence,
+    'ele': columns.Altitude,
+    'hr': columns.HeartRate,
+    'lon': columns.Longitude,
+    'lat': columns.Latitude,
+}
 
 def gen_records(file_path):
     nodes = utils.get_nodes(file_path, ('trkpt',), with_root=True)
@@ -20,7 +28,9 @@ def gen_records(file_path):
 
     trackpoints = nodes
     for trkpt in trackpoints:
-        yield utils.recursive_text_extract(trkpt)
+        trkpt_dict = utils.recursive_text_extract(trkpt)
+        trkpt_dict.update(dict(trkpt.items()))  # lat, lon
+        yield trkpt_dict
 
 def read(file_path, to_df=False, **kwargs):
     """
@@ -56,4 +66,4 @@ def read(file_path, to_df=False, **kwargs):
     if to_df:
         return data
     else:
-        return data
+        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])

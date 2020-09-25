@@ -4,7 +4,7 @@ Test module for TCX reader base module
 
 import os
 import pytest
-from pandas import DataFrame
+from pandas import DataFrame, TimedeltaIndex
 from runpandas import reader
 from runpandas import exceptions
 from runpandas import types
@@ -17,9 +17,17 @@ def test_read_file_gpx_basic_dataframe(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "garmin_connect.gpx")
     activity = reader._read_file(gpx_file, to_df=True)
     assert isinstance(activity, DataFrame)
-    print(activity.head())
-    assert  activity.size == 9
+    assert isinstance(activity.index, TimedeltaIndex)
 
-    #included_data = set(['latitude_degrees', 'longitude_degrees', 'altitude_meters', 'distance_meters', 'heart_rate_bpm'])
-    #assert included_data <= set(activity.columns.to_list())
-    #assert  activity.size == 1920
+    assert  activity.size == 15
+    included_data = set(['lat', 'lon', 'ele', 'cad', 'hr'])
+    assert included_data <= set(activity.columns.to_list())
+
+def test_read_file_gpx_basic_activity(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "garmin_connect.gpx")
+    activity = reader._read_file(gpx_file, to_df=False)
+    assert type(activity) is types.Activity
+    assert isinstance(activity.index, TimedeltaIndex)
+    assert  activity.size == 15
+    included_data = set(['lat', 'lon', 'alt', 'cad', 'hr'])
+    assert included_data <= set(activity.columns.to_list())
