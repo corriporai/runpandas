@@ -15,14 +15,14 @@ COLUMNS_SCHEMA = {
     'altitude': columns.Altitude,
     'heart_rate': columns.HeartRate,
     'position_long': columns.Longitude,
-    'position_latitude': columns.Latitude,
+    'position_lat': columns.Latitude,
     'power': columns.Power,
     'speed': columns.Speed,
     'temperature': columns.Temperature,
 }
 
 def message_filter(message, keep=('record', 'lap', 'event')):
-    return message.mesg_type.name in keep
+    return message.mesg_type is not None and message.mesg_type.name in keep
 
 def gen_records(file_path):
     """Generator function for iterating over *.fit file messages.
@@ -37,8 +37,7 @@ def gen_records(file_path):
     """
     fit_file = FitFile(file_path)
 
-    messages = filter(message_filter, fit_file.get_messages(file_path))
-
+    messages = filter(message_filter, fit_file.get_messages())
     lap = 0
     session = -1
 
@@ -82,6 +81,7 @@ def read(file_path, to_df=False, **kwargs):
     timeoffsets = None
 
     data = pd.DataFrame.from_records(gen_records(file_path))
+
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
 
     if 'timestamp' in data:
@@ -94,8 +94,6 @@ def read(file_path, to_df=False, **kwargs):
         start = timestamps[0]
 
     data.dropna(axis=1, how='all', inplace=True)
-
-    print(data.head())
 
     if to_df:
         return data
