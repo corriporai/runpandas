@@ -15,6 +15,7 @@ codecov
 coveralls
 pytest
 pytest-cov
+pytest-lazy-fixture
 
 # styling
 black; python_version > '3.5'

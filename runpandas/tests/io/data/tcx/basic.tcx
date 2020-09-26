@@ -4646,9 +4646,6 @@
               <Value>180</Value>
             </HeartRateBpm>
           </Trackpoint>
-          <Trackpoint>
-            <Time>2012-12-26T22:03:05Z</Time>
-          </Trackpoint>
         </Track>
       </Lap>
       <Creator xsi:type="Device_t">

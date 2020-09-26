@@ -52,7 +52,7 @@ def test_read_file_tcx_basic_dataframe(dirpath):
         assert isinstance(activity, DataFrame)
         included_data = set(['latitude_degrees', 'longitude_degrees', 'altitude_meters', 'distance_meters', 'heart_rate_bpm'])
         assert included_data <= set(activity.columns.to_list())
-        assert  activity.size == 1920
+        assert  activity.size == 1915
 
 
 def test_read_file_tcx_basic_activity(dirpath):
@@ -61,4 +61,4 @@ def test_read_file_tcx_basic_activity(dirpath):
         assert type(activity) is types.Activity
         included_data = set(['lat', 'lon', 'alt', 'dist', 'hr'])
         assert included_data <= set(activity.columns.to_list())
-        assert activity.size == 1920
+        assert activity.size == 1915
