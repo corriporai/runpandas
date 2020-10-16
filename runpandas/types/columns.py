@@ -7,6 +7,11 @@ class MeasureSeries(Series):
     def _constructor(self):
         return self.__class__
 
+    @property
+    def _constructor_expanddim(self):
+        from runpandas.types import Activity
+        return Activity
+
     def __init__(self, data, *args, **kwargs):
         super().__init__(data, *args, **kwargs)
         self._name = self.__class__.colname     # use *class* attribute
@@ -36,6 +41,12 @@ class HeartRate(MeasureSeries):
 class LonLat(MeasureSeries):
     colname = 'lonlat'
     base_unit = 'degrees'
+
+    @classmethod
+    def _from_semicircles_to_degrees(cls, data, *args, **kwargs):
+        # https://github.com/kuperov/fit/blob/master/R/fit.R
+        deg = (data * 180 / 2**31 + 180) % 360 - 180
+        return cls(deg, *args, **kwargs)
 
 class Longitude(LonLat):
     colname = 'lon'
