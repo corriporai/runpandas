@@ -64,10 +64,10 @@ test_data = [(pytest.lazy_fixture('pandas_activity'), 'heart_rate', 0, 61),
 @pytest.mark.parametrize('activity,column,index,expected', test_data)
 def test_fit_values(activity, column, index, expected):
     assert activity[column].iloc[index] == expected
-    #assert activity.index[-1]== Timedelta('0 days 00:33:11')
+    assert activity.index[-1]== Timedelta('0 days 00:00:57')
 
-    #if isinstance(activity, types.Activity):
-    #    assert activity.start == Timestamp('2012-12-26 21:29:53+00:00')
+    if isinstance(activity, types.Activity):
+        assert activity.start == Timestamp('2017-06-11 14:34:09+00:00')
 
 def test_read_file_fit_basic_dataframe(dirpath):
     fit_file = os.path.join(dirpath, "fit", "garmin-fenix-5-basic.fit")
