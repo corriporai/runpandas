@@ -53,6 +53,41 @@ Get in touch
 - Report bugs, suggest features or view the source code [on GitHub](https://github.com/corriporai/runpandas).
 
 
+Contributing
+------------
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/0
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/0
+   :alt: Top contributor 1
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/1
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/1
+   :alt: Top contributor 2
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/2
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/2
+   :alt: Top contributor 3
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/3
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/3
+   :alt: Top contributor 4
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/4
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/4
+   :alt: Top contributor 5
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/5
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/5
+   :alt: Top contributor 6
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/6
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/6
+   :alt: Top contributor 7
+
+.. image:: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/images/7
+   :target: https://sourcerer.io/fame/marcelcaraciolo/corriporai/runpandas/links/7
+   :alt: Legend
+
 Install latest release version via pip
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
