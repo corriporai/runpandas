@@ -3,12 +3,10 @@ Tests for XML tools in utils module
 """
 
 import io
-import pytest
 from runpandas import _utils as utils
 
 
-
-data = '''<?xml version="1.0" encoding="UTF-8" ?>
+data = """<?xml version="1.0" encoding="UTF-8" ?>
 <TrainingCenterDatabase>
 <Activities>
 <Activity Sport="Running">
@@ -64,19 +62,21 @@ data = '''<?xml version="1.0" encoding="UTF-8" ?>
 </Lap>
 </Activity>
 </Activities>
-</TrainingCenterDatabase>'''
+</TrainingCenterDatabase>"""
 
 
 def test_gen_nodes():
     faketcx = io.StringIO(data)
 
-    trackpoints = [utils.recursive_text_extract(trkpt)
-              for trkpt in utils.get_nodes(faketcx, ('Trackpoint',))]
+    trackpoints = [
+        utils.recursive_text_extract(trkpt)
+        for trkpt in utils.get_nodes(faketcx, ("Trackpoint",))
+    ]
 
     assert len(trackpoints) == 2
     t1, t2 = trackpoints
     assert len(t1) == 7 and len(t2) == 7
-    assert t1['Speed'] == '0.000000' and t2['Speed'] == '0.000000'
-    assert t1['Time'] == '2020-06-28T09:39:24Z'
-    assert t2['Time'] == '2020-06-28T09:39:33Z'
-    assert t1['HeartRateBpm'] == '62' and t2['HeartRateBpm'] == '60'
+    assert t1["Speed"] == "0.000000" and t2["Speed"] == "0.000000"
+    assert t1["Time"] == "2020-06-28T09:39:24Z"
+    assert t2["Time"] == "2020-06-28T09:39:33Z"
+    assert t1["HeartRateBpm"] == "62" and t2["HeartRateBpm"] == "60"

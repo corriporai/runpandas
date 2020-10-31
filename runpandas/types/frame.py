@@ -6,10 +6,12 @@ import warnings
 
 import pandas as pd
 from pandas.core.frame import DataFrame
+import runpandas.reader
+
 
 class Activity(pd.DataFrame):
     # properties to propagate
-    _metadata = ['start']
+    _metadata = ["start"]
 
     def __init__(self, *args, **kwargs):
         cspecs = kwargs.pop("cspecs", None)
@@ -19,7 +21,7 @@ class Activity(pd.DataFrame):
 
         if cspecs is not None:
             self.set_specs(cspecs, inplace=True)
-        if start is not  None:
+        if start is not None:
             self.start = start
 
     def set_specs(self, cspecs=None, inplace=False):
@@ -42,12 +44,13 @@ class Activity(pd.DataFrame):
             try:
                 old_column = df.pop(old_key)  # no default
             except KeyError:
-                warnings.warn('The specified key %s not found.' % old_key, UserWarning)
+                warnings.warn("The specified key %s not found." %
+                              old_key, UserWarning)
                 continue
 
             new = column_cls(old_column)
             df[new.colname] = new
-        if not  inplace:
+        if not inplace:
             return df
 
     @property

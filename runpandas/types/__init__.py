@@ -1,1 +1,1 @@
-from runpandas.types.frame import Activity
+from runpandas.types.frame import Activity  # noqa

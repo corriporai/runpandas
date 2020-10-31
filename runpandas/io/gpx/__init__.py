@@ -1,2 +1,2 @@
-from runpandas.io.gpx._parser import read
-from runpandas.io.gpx._parser import gen_records
+from runpandas.io.gpx._parser import read  # noqa
+from runpandas.io.gpx._parser import gen_records  # noqa

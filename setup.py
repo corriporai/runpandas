@@ -3,8 +3,6 @@
 
 """
 
-import os
-
 try:
     from setuptools import setup
 except ImportError:
@@ -14,11 +12,13 @@ from setuptools import setup, find_packages
 
 import versioneer
 
-LONG_DESCRIPTION = """RunPandas is a project to add support for data collected by GPS-enabled tracking devices, heart rate monitors data to
-`pandas`_ objects.
+LONG_DESCRIPTION = """RunPandas is a project to add support for data collected
+by GPS-enabled tracking devices, heart rate monitors data to `pandas`_ objects.
 
-RunPandas is a Python package that provides infrastructure for importing tracking data from such devices, enabling statistical and visual analysis
-for running enthusiasts and lovers. Its goal is to fill the gap between the routine collection of data and their manual analyses in Pandas and Python.
+RunPandas is a Python package that provides infrastructure for importing
+tracking data from such devices, enabling statistical and visual analysis
+for running enthusiasts and lovers. Its goal is to fill the gap between
+the routine collection of data and their manual analyses in Pandas and Python.
 
 .. _pandas: http://pandas.pydata.org
 """
@@ -34,7 +34,7 @@ with open("./requirements-dev.txt") as f:
 # get all data dirs in the datasets module
 data_files = []
 
-'''
+"""
 for item in os.listdir("geopandas/datasets"):
     if not item.startswith("__"):
         if os.path.isdir(os.path.join("geopandas/datasets/", item)):
@@ -44,7 +44,7 @@ for item in os.listdir("geopandas/datasets"):
 
 data_files.append("tests/data/*")
 
-'''
+"""
 
 setup(
     name="runpandas",
@@ -63,5 +63,4 @@ setup(
     test_suite="tests",
     tests_require=TEST_REQUIRES,
     zip_safe=False,
-
 )
