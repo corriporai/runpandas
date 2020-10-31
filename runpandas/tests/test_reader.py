@@ -10,6 +10,8 @@ from runpandas import reader
 from runpandas import exceptions
 from runpandas import types
 
+pytestmark = pytest.mark.stable
+
 
 @pytest.fixture(scope="session")
 def invalid_tcx_filename(tmpdir_factory):

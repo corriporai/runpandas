@@ -5,6 +5,8 @@ import os
 import pytest
 from runpandas import _utils as utils
 
+pytestmark = pytest.mark.stable
+
 
 @pytest.fixture(scope="session")
 def valid_tcx_filename(tmpdir_factory):

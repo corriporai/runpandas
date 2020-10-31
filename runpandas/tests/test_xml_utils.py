@@ -2,8 +2,11 @@
 Tests for XML tools in utils module
 """
 
+import pytest
 import io
 from runpandas import _utils as utils
+
+pytestmark = pytest.mark.stable
 
 
 data = """<?xml version="1.0" encoding="UTF-8" ?>

@@ -8,6 +8,8 @@ from pandas import DataFrame, Timedelta, Timestamp
 from runpandas import reader
 from runpandas import types
 
+pytestmark = pytest.mark.stable
+
 
 @pytest.fixture
 def dirpath(datapath):

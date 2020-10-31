@@ -10,6 +10,8 @@ from runpandas import types
 import runpandas.io.fit._parser as fit_parser
 from fitparse.utils import FitParseError
 
+pytestmark = pytest.mark.stable
+
 
 @pytest.fixture
 def dirpath(datapath):
@@ -113,7 +115,6 @@ def test_read_file_fit_basic_activity(dirpath):
     assert activity.size == 462
 
     included_data = set(["lat", "lon", "alt", "cad", "hr", "speed", "temp"])
-    print(activity.columns.to_list())
     assert included_data <= set(activity.columns.to_list())
 
     assert "lap" in activity.columns
