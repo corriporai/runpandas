@@ -29,23 +29,78 @@ def runpandas_activity(dirpath):
 
 
 test_data = [
-    (pytest.lazy_fixture("pandas_activity"), "hr", 0, 120,),
-    (pytest.lazy_fixture("pandas_activity"), "hr", -1, 130,),
-    (pytest.lazy_fixture("pandas_activity"), "ele", 0, 23.6000003814697265625,),
-    (pytest.lazy_fixture("pandas_activity"), "ele", -1, 23.799999237060546875,),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "hr",
+        0,
+        120,
+    ),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "hr",
+        -1,
+        130,
+    ),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "ele",
+        0,
+        23.6000003814697265625,
+    ),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "ele",
+        -1,
+        23.799999237060546875,
+    ),
     (
         pytest.lazy_fixture("pandas_activity"),
         "lat",
         0,
         51.43788929097354412078857421875,
     ),
-    (pytest.lazy_fixture("pandas_activity"), "lon", 0, 6.617012657225131988525390625,),
-    (pytest.lazy_fixture("pandas_activity"), "cad", -1, 80,),
-    (pytest.lazy_fixture("pandas_activity"), "cad", 0, 70,),
-    (pytest.lazy_fixture("runpandas_activity"), "hr", 0, 120,),
-    (pytest.lazy_fixture("runpandas_activity"), "hr", -1, 130,),
-    (pytest.lazy_fixture("runpandas_activity"), "alt", 0, 23.6000003814697265625,),
-    (pytest.lazy_fixture("runpandas_activity"), "alt", -1, 23.799999237060546875,),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "lon",
+        0,
+        6.617012657225131988525390625,
+    ),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "cad",
+        -1,
+        80,
+    ),
+    (
+        pytest.lazy_fixture("pandas_activity"),
+        "cad",
+        0,
+        70,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "hr",
+        0,
+        120,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "hr",
+        -1,
+        130,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "alt",
+        0,
+        23.6000003814697265625,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "alt",
+        -1,
+        23.799999237060546875,
+    ),
     (
         pytest.lazy_fixture("runpandas_activity"),
         "lat",
@@ -58,8 +113,18 @@ test_data = [
         0,
         6.617012657225131988525390625,
     ),
-    (pytest.lazy_fixture("runpandas_activity"), "cad", -1, 80,),
-    (pytest.lazy_fixture("runpandas_activity"), "cad", 0, 70,),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "cad",
+        -1,
+        80,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_activity"),
+        "cad",
+        0,
+        70,
+    ),
 ]
 
 

@@ -6,8 +6,7 @@ from xml.etree.cElementTree import iterparse
 
 
 def file_exists(fname):
-    """Check if a file exists and is non-empty.
-    """
+    """Check if a file exists and is non-empty."""
     try:
         return fname and os.path.exists(fname) and os.path.getsize(fname) > 0
     except OSError:
@@ -15,8 +14,7 @@ def file_exists(fname):
 
 
 def splitext_plus(fname):
-    """Split on file extensions, allowing for zipped extensions.
-    """
+    """Split on file extensions, allowing for zipped extensions."""
     base, ext = os.path.splitext(fname)
     if ext in [".gz", ".bz2", ".zip"]:
         base, ext2 = os.path.splitext(base)
@@ -62,7 +60,7 @@ def sans_ns(tag):
 
 
 def get_nodes(file_path, node_names, *, with_root=False):
-    """ Parse XML document and iterate over specific nodes
+    """Parse XML document and iterate over specific nodes
 
     Parameters
     ----------
@@ -90,7 +88,7 @@ def get_nodes(file_path, node_names, *, with_root=False):
 
 
 def camelcase_to_snakecase(string):
-    """ Converts the Camelcase string to snakecase string
+    """Converts the Camelcase string to snakecase string
     Example: ColumnName --> column_name
     Parameters
     ----------
