@@ -5,6 +5,10 @@ branch = True
 include = */runpandas/*
 omit =
     */_version.py
+    runpandas/io/tests/*
+    runpandas/tests/*
+    runpandas/conftest.py
+    runpandas/_testing.py
 
 [report]
 # Regexes for lines to exclude from consideration
@@ -21,4 +25,9 @@ exclude_lines =
 include = */runpandas/*
 omit =
     */_version.py
+    runpandas/io/tests/*
+    runpandas/tests/*
+    runpandas/conftest.py
+    runpandas/_testing.py
+
 ignore_errors = True

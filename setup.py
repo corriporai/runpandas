@@ -34,18 +34,6 @@ with open("./requirements-dev.txt") as f:
 # get all data dirs in the datasets module
 data_files = []
 
-"""
-for item in os.listdir("geopandas/datasets"):
-    if not item.startswith("__"):
-        if os.path.isdir(os.path.join("geopandas/datasets/", item)):
-            data_files.append(os.path.join("datasets", item, "*"))
-        elif item.endswith(".zip"):
-            data_files.append(os.path.join("datasets", item))
-
-data_files.append("tests/data/*")
-
-"""
-
 setup(
     name="runpandas",
     version=versioneer.get_version(),
@@ -56,11 +44,13 @@ setup(
     author_email="marcel@caraciolo.com.br",
     url="https://github.com/corriporai/runpandas",
     long_description=LONG_DESCRIPTION,
-    package_data={"runpandas": data_files},
-    python_requires=">=3.5",
+    python_requires=">=3.6",
+    include_package_data=True,
     install_requires=INSTALL_REQUIRES,
-    packages=find_packages(exclude=["contrib", "docs", "tests*"]),
-    test_suite="tests",
-    tests_require=TEST_REQUIRES,
+    packages=[
+        "runpandas",
+        "runpandas.io",
+        "runpandas.types"
+    ],
     zip_safe=False,
 )
