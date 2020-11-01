@@ -13,8 +13,7 @@ g = Github(os.environ.get("GITHUB_API_KEY"))
 repo = g.get_repo("corriporai/runpandas")
 
 start = dt.datetime(2018, 9, 12, 0, 0, 0)
-pulls = repo.get_pulls(state="closed", sort="updated",
-                       base="master", direction="desc")
+pulls = repo.get_pulls(state="closed", sort="updated", base="master", direction="desc")
 
 users = set()
 for i, p in enumerate(pulls):

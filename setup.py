@@ -47,10 +47,6 @@ setup(
     python_requires=">=3.6",
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
-    packages=[
-        "runpandas",
-        "runpandas.io",
-        "runpandas.types"
-    ],
+    packages=["runpandas", "runpandas.io", "runpandas.types"],
     zip_safe=False,
 )
