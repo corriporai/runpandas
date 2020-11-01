@@ -68,8 +68,7 @@ def read(file_path, to_df=False, **kwargs):
         timestamps = pd.to_datetime(times, format=DATETIME_FMT, utc=True)
     except ValueError:
         # bad format, try with fractional seconds
-        timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC,
-                                    utc=True)
+        timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC, utc=True)
 
     timeoffsets = timestamps - timestamps[0]
     timestamp_index = TimedeltaIndex(timeoffsets, unit="s", name="time")

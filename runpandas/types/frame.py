@@ -44,8 +44,7 @@ class Activity(pd.DataFrame):
             try:
                 old_column = df.pop(old_key)  # no default
             except KeyError:
-                warnings.warn("The specified key %s not found." %
-                              old_key, UserWarning)
+                warnings.warn("The specified key %s not found." % old_key, UserWarning)
                 continue
 
             new = column_cls(old_column)
