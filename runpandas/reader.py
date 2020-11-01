@@ -40,8 +40,7 @@ def _read_file(filename, to_df=False, **kwargs):
 
 
 def _import_module(mod_name):
-    """ Find custom reading module to execute
-    """
+    """Find custom reading module to execute"""
     mod = MODULE_CACHE.get(mod_name, None)
     if mod is None:
         try:
