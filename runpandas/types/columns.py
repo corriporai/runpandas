@@ -8,11 +8,11 @@ class ColumnsRegistrator(type):
 
     REGISTRY = {}
 
-    def __new__(cls, name, bases, namespace):
-        new_cls = super().__new__(cls, name, bases, namespace)
+    def __new__(metacls, name, bases, namespace):
+        new_cls = super().__new__(metacls, name, bases, namespace)
         # We register each concrete class
         if name != "MeasureSeries":
-            cls.REGISTRY[new_cls.colname] = new_cls
+            metacls.REGISTRY[new_cls.colname] = new_cls
 
         return new_cls
 
