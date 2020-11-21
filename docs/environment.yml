@@ -1,0 +1,18 @@
+name: runpandas_docs
+dependencies:
+- python=3.8
+- sphinx_rtd_theme
+- jinja2
+- tornado
+- nbformat
+- jupyter_client
+- ipykernel
+- sphinx
+- terminado
+- pip:
+  - nbsphinx
+  - pydata_sphinx_theme
+  - requests_cache
+  - Send2Trash
+  - prometheus_client
+  - sphinxcontrib_github_alt
