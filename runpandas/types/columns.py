@@ -1,8 +1,28 @@
 from pandas import Series
 
 
-class MeasureSeries(Series):
+class ColumnsRegistrator(type):
+    """
+    We keep a mapping of column used names to classes.
+    """
+
+    REGISTRY = {}
+
+    def __new__(cls, name, bases, namespace):
+        new_cls = super().__new__(cls, name, bases, namespace)
+        # We register each concrete class
+        if name != "MeasureSeries":
+            cls.REGISTRY[new_cls.colname] = new_cls
+
+        return new_cls
+
+
+class MeasureSeries(Series, metaclass=ColumnsRegistrator):
     _metadata = ["colname", "base_unit"]
+
+    #
+    # Implement pandas methods
+    #
 
     @property
     def _constructor(self):

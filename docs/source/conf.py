@@ -14,7 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import runpandas as rp
-import sphinx_rtd_theme
+import datetime as dt
 
 # -- Project information -----------------------------------------------------
 
@@ -32,17 +32,22 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
     "sphinx.ext.napoleon",
+    "sphinx.ext.autosummary",
     "sphinx.ext.todo",
     "IPython.sphinxext.ipython_directive",
     "IPython.sphinxext.ipython_console_highlighting",
+    "nbsphinx",
+    "sphinxcontrib_github_alt",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
 
-source_suffix = ".rst"
+source_suffix = [".rst", ".ipynb"]
 master_doc = "index"
+
+github_project_url = "https://github.com/corriporai/runpandas"
 
 
 # The version info for the project you're documenting, acts as replacement for
@@ -59,6 +64,12 @@ if "+" in rp.__version__:
     version += commit
 # The full version, including alpha/beta/rc tags.
 release = rp.__version__
+
+# Write version and build date
+with open("_version.txt", "w") as version_file:
+    doc_date = dt.datetime.now().strftime("%B %-d, %Y")
+    version_file.write(f"Version: **{version}** Date: **{doc_date}**\n")
+
 
 language = None
 
@@ -78,13 +89,17 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
+html_theme = "pydata_sphinx_theme"
+html_theme_options = {
+    "external_links": [],
+    "github_url": "https://github.com/corriporai/runpandas",
+}
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+html_logo = "./_static/images/runpandas_banner.png"
 
 html_sidebars = {
     "**": [
@@ -101,7 +116,13 @@ htmlhelp_basename = "runpandasdoc"
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "runpandas.tex", "runpandas Documentation", "corriporai", "manual",)
+    (
+        master_doc,
+        "runpandas.tex",
+        "runpandas Documentation",
+        "corriporai",
+        "manual",
+    )
 ]
 
 
@@ -131,8 +152,13 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {"http://docs.python.org/": None}
-
+intersphinx_mapping = {
+    "http://docs.python.org/": None,
+    "ipython": ("https://ipython.readthedocs.io/en/stable/", None),
+    "nbconvert": ("https://nbconvert.readthedocs.io/en/latest/", None),
+    "nbformat": ("https://nbformat.readthedocs.io/en/latest/", None),
+    "jupyter": ("https://jupyter.readthedocs.io/en/latest/", None),
+}
 
 extlinks = {
     "issue": ("https://github.com/corriporai/runpandas/issues/%s", "GH"),

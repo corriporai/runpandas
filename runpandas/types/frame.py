@@ -7,6 +7,7 @@ import warnings
 import pandas as pd
 from pandas.core.frame import DataFrame
 import runpandas.reader
+from runpandas.types import columns
 
 
 class Activity(pd.DataFrame):
@@ -17,7 +18,7 @@ class Activity(pd.DataFrame):
         cspecs = kwargs.pop("cspecs", None)
         start = kwargs.pop("start", None)
 
-        super(Activity, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if cspecs is not None:
             self.set_specs(cspecs, inplace=True)
@@ -54,7 +55,7 @@ class Activity(pd.DataFrame):
 
     @property
     def _constructor(self):
-        return self.__class__
+        return Activity
 
     def to_pandas(self):
         """
@@ -68,6 +69,21 @@ class Activity(pd.DataFrame):
         for name in self._metadata:
             object.__setattr__(self, name, getattr(other, name, None))
         return self
+
+    def __getitem__(self, key):
+        """
+        If the result is a column containing only activity measures, return a
+        MeasuredSeries. If it's a DataFrame with a 'Measures' column, return a
+        Activity.
+        """
+        result = super(Activity, self).__getitem__(key)
+
+        if isinstance(key, str) and key in columns.ColumnsRegistrator.REGISTRY:
+            result.__class__ = columns.ColumnsRegistrator.REGISTRY[key]
+        elif isinstance(result, pd.DataFrame):
+            result.__class__ = Activity
+
+        return result
 
     @classmethod
     def from_file(cls, file_path, **kwargs):
