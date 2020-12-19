@@ -85,7 +85,7 @@ def read_strava(activity_id, access_token, refresh_token=None, client_id=None,
     activity = client.get_activity(activity_id)
 
     start_datetime = activity.start_date_local
-
+    print(start_datetime)
     streams = client.get_activity_streams(
         activity_id=activity_id, types=STREAM_TYPES, series_type="time")
 
