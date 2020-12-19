@@ -21,6 +21,9 @@ Python Package for handing running data from GPS-enabled tracking devices and ap
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/psf/black
 
+.. image:: https://static.pepy.tech/personalized-badge/runpandas?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads
+   :target: https://pepy.tech/project/runpandas
+
 =========
 
 Introduction
