@@ -6,7 +6,6 @@ from datetime import timedelta
 import pandas as pd
 from pandas import TimedeltaIndex
 from runpandas import _utils as utils
-from runpandas import exceptions
 from runpandas.types import Activity
 from runpandas.types import columns
 from stravalib.client import Client
@@ -36,6 +35,7 @@ STREAM_TYPES = [
     "grade_smooth",
 ]
 
+
 def gen_records(streams):
     raw_data = dict()
     for key, value in streams.items():
@@ -47,8 +47,16 @@ def gen_records(streams):
             raw_data[key] = value.data
     return raw_data
 
-def read_strava(activity_id, access_token, refresh_token=None, client_id=None,
-                client_secret=None, to_df=False, **kwargs):
+
+def read_strava(
+    activity_id,
+    access_token,
+    refresh_token=None,
+    client_id=None,
+    client_secret=None,
+    to_df=False,
+    **kwargs
+):
     """
     This method loads the activity data from Strava into a Pandas DataFrame or
     runpandas Activity.
@@ -87,11 +95,12 @@ def read_strava(activity_id, access_token, refresh_token=None, client_id=None,
     start_datetime = activity.start_date_local
     print(start_datetime)
     streams = client.get_activity_streams(
-        activity_id=activity_id, types=STREAM_TYPES, series_type="time")
+        activity_id=activity_id, types=STREAM_TYPES, series_type="time"
+    )
 
     data = pd.DataFrame(gen_records(streams))
 
-    times = data.pop('time')
+    times = data.pop("time")
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
 
     def time_to_datetime(time):

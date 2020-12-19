@@ -5,7 +5,6 @@ Test module for Strava API reader base module
 import os
 import json
 import pytest
-import mock
 from pandas import DataFrame, Timedelta, Timestamp
 from runpandas import read_strava
 from runpandas import types
@@ -15,6 +14,7 @@ from stravalib.model import Stream
 
 pytestmark = pytest.mark.stable
 
+
 class MockResponse:
     def __init__(self, json_file):
         with open(json_file) as json_handler:
@@ -23,56 +23,68 @@ class MockResponse:
     def json(self):
         return self.json_data
 
+
 def mock_get_activity_streams(streams_file):
-    '''
+    """
     @TODO: I needed to mock the behavior the `stravalib.client.get_activity_streams`,
     it isn't the best alternative for mock the request from strava by passing a json file.
-    '''
+    """
 
-    stream_mock  = MockResponse(streams_file).json()
+    stream_mock = MockResponse(streams_file).json()
     entities = {}
     for key, value in stream_mock.items():
-        value['type'] =  key
+        value["type"] = key
         stream = Stream.deserialize(value)
         entities[stream.type] = stream
     return entities
 
+
 @pytest.fixture
 def dirpath(datapath):
     return datapath("io", "data")
+
 
 @pytest.fixture
 def strava_activity(dirpath, mocker):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
-    mocker.patch.object(ApiV3, 'get',
-    return_value=MockResponse(activity_json).json())
+    mocker.patch.object(ApiV3, "get", return_value=MockResponse(activity_json).json())
 
-    mocker.patch.object(Client, 'get_activity_streams',
-        return_value=mock_get_activity_streams(streams_json))
-    #we don't use access token here, since we will mock the stravalib json response
-    activity = read_strava(activity_id=4437021783,
-                    access_token='youraccesstoken',
-                    refresh_token='yourrefreshtoken',
-                    to_df=False)
+    mocker.patch.object(
+        Client,
+        "get_activity_streams",
+        return_value=mock_get_activity_streams(streams_json),
+    )
+    # we don't use access token here, since we will mock the stravalib json response
+    activity = read_strava(
+        activity_id=4437021783,
+        access_token="youraccesstoken",
+        refresh_token="yourrefreshtoken",
+        to_df=False,
+    )
     return activity
+
 
 @pytest.fixture
 def strava_dataframe(dirpath, mocker):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
-    mocker.patch.object(ApiV3, 'get',
-    return_value=MockResponse(activity_json).json())
+    mocker.patch.object(ApiV3, "get", return_value=MockResponse(activity_json).json())
 
-    mocker.patch.object(Client, 'get_activity_streams',
-        return_value=mock_get_activity_streams(streams_json))
-    #we don't use access token here, since we will mock the stravalib json response
-    activity = read_strava(activity_id=4437021783,
-                    access_token='youraccesstoken',
-                    refresh_token='yourrefreshtoken',
-                    to_df=True)
+    mocker.patch.object(
+        Client,
+        "get_activity_streams",
+        return_value=mock_get_activity_streams(streams_json),
+    )
+    # we don't use access token here, since we will mock the stravalib json response
+    activity = read_strava(
+        activity_id=4437021783,
+        access_token="youraccesstoken",
+        refresh_token="yourrefreshtoken",
+        to_df=True,
+    )
     return activity
 
 
@@ -80,16 +92,20 @@ def test_read_strava_basic_dataframe(dirpath, mocker):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
-    mocker.patch.object(ApiV3, 'get',
-    return_value=MockResponse(activity_json).json())
+    mocker.patch.object(ApiV3, "get", return_value=MockResponse(activity_json).json())
 
-    mocker.patch.object(Client, 'get_activity_streams',
-        return_value=mock_get_activity_streams(streams_json))
-    #we don't use access token here, since we will mock the stravalib json response
-    activity = read_strava(activity_id=4437021783,
-                    access_token='youraccesstoken',
-                    refresh_token='yourrefreshtoken',
-                    to_df=True)
+    mocker.patch.object(
+        Client,
+        "get_activity_streams",
+        return_value=mock_get_activity_streams(streams_json),
+    )
+    # we don't use access token here, since we will mock the stravalib json response
+    activity = read_strava(
+        activity_id=4437021783,
+        access_token="youraccesstoken",
+        refresh_token="yourrefreshtoken",
+        to_df=True,
+    )
     assert isinstance(activity, DataFrame)
     included_data = set(
         [
@@ -97,11 +113,11 @@ def test_read_strava_basic_dataframe(dirpath, mocker):
             "longitude",
             "altitude",
             "distance",
-           "velocity_smooth",
-           "heartrate",
-           "cadence",
+            "velocity_smooth",
+            "heartrate",
+            "cadence",
             "moving",
-            "grade_smooth"
+            "grade_smooth",
         ]
     )
     assert included_data <= set(activity.columns.to_list())
@@ -112,21 +128,38 @@ def test_read_strava_activity(dirpath, mocker):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
-    mocker.patch.object(ApiV3, 'get',
-    return_value=MockResponse(activity_json).json())
+    mocker.patch.object(ApiV3, "get", return_value=MockResponse(activity_json).json())
 
-    mocker.patch.object(Client, 'get_activity_streams',
-        return_value=mock_get_activity_streams(streams_json))
+    mocker.patch.object(
+        Client,
+        "get_activity_streams",
+        return_value=mock_get_activity_streams(streams_json),
+    )
 
-    #we don't use access token here, since we will mock the stravalib json response
-    activity = read_strava(activity_id=4437021783,
-                    access_token='youraccesstoken',
-                    refresh_token='yourrefreshtoken',
-                    to_df=False)
+    # we don't use access token here, since we will mock the stravalib json response
+    activity = read_strava(
+        activity_id=4437021783,
+        access_token="youraccesstoken",
+        refresh_token="yourrefreshtoken",
+        to_df=False,
+    )
     assert type(activity) is types.Activity
-    included_data = set(["alt", "cad", "dist", "hr", "lon", 'lat', 'moving', 'velocity_smooth', 'grade_smooth'])
+    included_data = set(
+        [
+            "alt",
+            "cad",
+            "dist",
+            "hr",
+            "lon",
+            "lat",
+            "moving",
+            "velocity_smooth",
+            "grade_smooth",
+        ]
+    )
     assert included_data <= set(activity.columns.to_list())
     assert activity.size == 15723
+
 
 test_data = [
     (pytest.lazy_fixture("strava_activity"), "alt", 0, 6.4),
@@ -166,6 +199,7 @@ test_data = [
     (pytest.lazy_fixture("strava_dataframe"), "grade_smooth", 0, 1.1),
     (pytest.lazy_fixture("strava_dataframe"), "grade_smooth", -1, -0.6),
 ]
+
 
 @pytest.mark.parametrize("activity,column,index,expected", test_data)
 def test_strava_values(activity, column, index, expected):
