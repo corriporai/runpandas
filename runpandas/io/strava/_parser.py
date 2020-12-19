@@ -65,8 +65,8 @@ def read_strava(
     Datetimes indexes are replaced by time offsets.
     All NaN rows are removed.
 
-    Attention: Two API requests are made to the Strava webservice: 1 to retrieve activity metadata,
-               1 to retrieve the raw data ("streams").
+    Attention: Two API requests are made to the Strava webservice: 1 to
+               retrieve activity metadata, 1 to retrieve the raw data ("streams").
 
     Parameters
     ----------
