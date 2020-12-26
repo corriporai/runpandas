@@ -19,6 +19,11 @@ def invalid_tcx_filename(tmpdir_factory):
 
 
 @pytest.fixture(scope="session")
+def temp_dir(tmpdir_factory):
+    return tmpdir_factory.mktemp("data")
+
+
+@pytest.fixture(scope="session")
 def valid_tcx_filename(tmpdir_factory):
     return tmpdir_factory.getbasetemp().join("activity.tcx")
 
@@ -91,3 +96,24 @@ def test_measured_series_activity(dirpath):
     assert type(activity.hr) == types.columns.HeartRate
     assert activity.hr.base_unit == "bpm"
     assert activity.hr.colname == "hr"
+
+
+def test_read_full_dir(dirpath):
+    activities_directory = os.path.join(dirpath, "samples")
+    ac_iterator = reader._read_dir(activities_directory, False)
+    activities = [ac for ac in ac_iterator]
+    assert len(activities) == 8
+    assert type(activities[0]) is types.Activity
+    size_data = set([16289, 12229, 6286, 5656, 6489, 5635, 9485, 9471])
+    assert size_data == set([ac.size for ac in activities])
+
+
+def test_empty_read_dir(temp_dir):
+    activities = reader._read_dir(temp_dir)
+    assert len([ac for ac in activities]) == 0
+
+
+def test_invalid_dir(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
+    with pytest.raises(AssertionError):
+        next(reader._read_dir(tcx_file))

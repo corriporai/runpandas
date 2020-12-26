@@ -2,6 +2,7 @@
 Module contains reading logic for several formats of training sources
 """
 
+from pathlib import Path
 from runpandas import _utils as utils
 from runpandas import exceptions
 
@@ -52,3 +53,31 @@ def _import_module(mod_name):
         else:
             mod = MODULE_CACHE.get(mod_name)
     return mod
+
+
+def _read_dir(dirname, to_df=False, **kwargs):
+    """
+
+    Parameters
+    ----------
+        dirname : str, The path to a directory with training files.
+        to_df : bool, optional
+             Return a obj:`runpandas.Activity` if `to_df=True`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs : Keyword args to be passed to the `read_dir` method
+
+    Returns
+    -------
+    Return a list of obj:`runpandas.Activity` if `to_df=True`, otherwise
+             a :obj:`pandas.DataFrame` will be returned.
+
+    """
+    path_dir = Path(dirname)
+
+    assert path_dir.is_dir()
+
+    for path_file in path_dir.iterdir():
+        if path_file.is_dir():
+            continue
+
+        yield _read_file(filename=path_file, to_df=to_df, kwargs=kwargs)
