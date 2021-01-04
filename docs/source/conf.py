@@ -44,7 +44,11 @@ extensions = [
 templates_path = ["_templates"]
 
 
-source_suffix = [".rst", ".ipynb"]
+source_parsers = {
+    '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
+source_suffix = [".rst", ".md", ".ipynb"]
 master_doc = "index"
 
 github_project_url = "https://github.com/corriporai/runpandas"
@@ -100,6 +104,11 @@ html_theme_options = {
 html_static_path = ["_static"]
 
 html_logo = "./_static/images/runpandas_banner.png"
+html_favicon = "./_static/images/favicon.ico"
+
+def setup(app):
+    app.add_stylesheet("custom.css")  # may also be an URL
+
 
 html_sidebars = {
     "**": [
