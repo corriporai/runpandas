@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to runpandas's documentation!
+Welcome to runpandas documentation!
 =====================================
 .. include:: _version.txt
 
@@ -26,6 +26,7 @@ Its goal is to fill the gap between the tracking data collection and their manua
    Getting started <getting_started>
    User Guide <user_guide/user_guide>
    Reference <reference/reference>
+   Changelog <whatsnew>
 
 Quick Start
 -----------
