@@ -27,6 +27,9 @@ matrix:
     - python: 3.7
       env: PANDAS="MASTER" NUMPY=1.17
 
+before_install:
+  - sudo apt-get -y install pandoc
+
 install:
   - source ci/pypi-installer.sh;
   - pip install -e .
