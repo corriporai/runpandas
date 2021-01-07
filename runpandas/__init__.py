@@ -1,6 +1,6 @@
 from runpandas.reader import _read_file as read_file  # noqa
 from runpandas.reader import _read_dir as read_dir  # noqa
-from runpandas.io.strava import read_strava  # noqa
+from runpandas.io.strava._parser import read_strava  # noqa
 
 from ._version import get_versions
 
