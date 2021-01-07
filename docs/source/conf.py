@@ -44,7 +44,11 @@ extensions = [
 templates_path = ["_templates"]
 
 
-source_suffix = [".rst", ".ipynb"]
+source_parsers = {
+    '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
+source_suffix = [".rst", ".md", ".ipynb"]
 master_doc = "index"
 
 github_project_url = "https://github.com/corriporai/runpandas"
@@ -70,10 +74,12 @@ with open("_version.txt", "w") as version_file:
     doc_date = dt.datetime.now().strftime("%B %-d, %Y")
     version_file.write(f"Version: **{version}** Date: **{doc_date}**\n")
 
+# Default language for syntax highlighting in reST and Markdown cells:
+highlight_language = 'none'
 
 language = None
 
-
+autosummary_generate = True
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -83,6 +89,8 @@ pygments_style = "default"
 
 todo_include_todos = True
 
+# Don't add .txt suffix to source files:
+html_sourcelink_suffix = ''
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -94,12 +102,24 @@ html_theme_options = {
     "external_links": [],
     "github_url": "https://github.com/corriporai/runpandas",
 }
+
+# List of arguments to be passed to the kernel that executes the notebooks:
+nbsphinx_execute_arguments = [
+    "--InlineBackend.figure_formats={'svg', 'pdf'}",
+    "--InlineBackend.rc={'figure.dpi': 96}",
+]
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
 html_logo = "./_static/images/runpandas_banner.png"
+html_favicon = "./_static/images/favicon.ico"
+
+def setup(app):
+    app.add_stylesheet("custom.css")  # may also be an URL
+
 
 html_sidebars = {
     "**": [
@@ -110,6 +130,33 @@ html_sidebars = {
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "runpandasdoc"
+
+# This is processed by Jinja2 and inserted before each notebook
+nbsphinx_prolog = r"""
+{% set docname = 'docs/' + env.doc2path(env.docname, base=None) %}
+.. raw:: html
+
+    <div></div>
+    <div class="admonition note">
+      This page was generated from
+      <a class="reference external" href="https://github.com/corriporai/runpandas/blob/HEAD/{{ docname|e }}">{{ docname|e }}</a>.
+      Interactive online version:
+      <span style="white-space: nowrap;"><a href="https://mybinder.org/v2/gh/corriporai/runpandas/HEAD?filepath={{ docname|e }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>.</span>
+      <script>
+        if (document.location.host) {
+          $(document.currentScript).replaceWith(
+            '<a class="reference external" ' +
+            'href="https://nbviewer.jupyter.org/url' +
+            (window.location.protocol == 'https:' ? 's/' : '/') +
+            window.location.host +
+            window.location.pathname.slice(0, -4) +
+            'ipynb">View in <em>nbviewer</em></a>.'
+          );
+        }
+      </script>
+    </div>
+"""
+
 
 
 # Grouping the document tree into LaTeX files. List of tuples

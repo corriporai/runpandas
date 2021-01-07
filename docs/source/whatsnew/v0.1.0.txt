@@ -1,0 +1,24 @@
+.. _whatsnew_010:
+
+v0.1.0 (November 21, 2020)
+----------------------------
+
+This is the first beta release and includes the core features for reading tracking files and
+loading into ``runpandas.types.frame.Activity`` dataframes.
+
+
+Highlights include:
+
+
+.. contents:: What's new in v0.1.0
+    :local:
+    :backlinks: none
+
+.. _whatsnew_010.enhancements:
+
+New features
+~~~~~~~~~~~~
+- The base structure for the code project including builds, tests and setup (:issue:`1` and :issue:`3`).
+- ``Activity`` that extends ``pandas.Dataframe`` which supports special columns related to activities. (:issue:`2`).
+- ``MeasureSeries`` that extends ``pandas.Series`` which supports special numerical series according to the measure evaluated. (:issue:`2`).
+-  Added support to read tracking files in tcx, gpx and fit formats (:issue:`4`).
