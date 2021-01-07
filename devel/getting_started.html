@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to runpandas documentation! &#8212; runpandas 0.1+20.g9316f1e documentation</title>
+    <title>Getting started &#8212; runpandas 0.1+20.g9316f1e documentation</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -39,7 +39,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting started" href="getting_started.html" />
+    <link rel="next" title="Installation" href="getting_started/install.html" />
+    <link rel="prev" title="Welcome to runpandas documentation!" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -48,7 +49,7 @@
     <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
 <div class="container-xl">
 
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.html">
     
       <img src="_static/runpandas_banner.png" class="logo" alt="logo" />
     
@@ -61,12 +62,12 @@
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
         
         
-        <li class="nav-item active">
-            <a class="nav-link" href="">Home</a>
+        <li class="nav-item ">
+            <a class="nav-link" href="index.html">Home</a>
         </li>
         
-        <li class="nav-item ">
-            <a class="nav-link" href="getting_started.html">Getting started</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="">Getting started</a>
         </li>
         
         <li class="nav-item ">
@@ -106,9 +107,12 @@
       <div class="row">
           
           <div class="col-12 col-md-3 bd-sidebar">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to runpandas documentation!</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="getting_started.html"
-                        title="next chapter">Getting started</a></p>
+  <p class="topless"><a href="getting_started/install.html"
+                        title="next chapter">Installation</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -133,17 +137,21 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#" class="nav-link">Welcome to runpandas documentation!</a><ul class="nav section-nav flex-column">
+            <a href="#installation" class="nav-link">Installation</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
-            <a href="#quick-start" class="nav-link">Quick Start</a>
+            <a href="#easy-way" class="nav-link">Easy way</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#detailed-instructions" class="nav-link">Detailed instructions</a>
         </li>
     
             </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#indices-and-tables" class="nav-link">Indices and tables</a>
+            <a href="#what-now" class="nav-link">What now</a>
         </li>
     
     </ul>
@@ -159,48 +167,45 @@
               
               <div>
                 
-  <div class="section" id="welcome-to-runpandas-documentation">
-<h1>Welcome to runpandas documentation!<a class="headerlink" href="#welcome-to-runpandas-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Version: <strong>0.1 (+20, 9316f1e)</strong> Date: <strong>January 7, 2021</strong></p>
-<p>Runpandas is a python package focused on adding support for data collected by GPS-enabled tracking
-devices, heart rate monitors data to [pandas](<a class="reference external" href="http://pandas.pydata.org">http://pandas.pydata.org</a>) objects.
-Its goal is to fill the gap between the tracking data collection and their manual analyses.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The current state of the project is “early beta”: features might be
-added, removed or changed in backwards incompatible ways.
-Report bugs, suggest features or view the source code <a class="reference external" href="https://github.com/corriporai/runpandas">on GitHub</a>.</p>
-</div>
+  <div class="section" id="getting-started">
+<span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Install using <code class="docutils literal notranslate"><span class="pre">pip</span></code></p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install runpandas
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="easy-way">
+<h3>Easy way<a class="headerlink" href="#easy-way" title="Permalink to this headline">¶</a></h3>
+<p>Install <code class="docutils literal notranslate"><span class="pre">runpandas</span></code> with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install runpandas
 </pre></div>
 </div>
-<p>and then import and use one of the tracking readers. This example
-loads a local file.tcx.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">runpandas</span> <span class="k">as</span> <span class="nn">rpd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">activity</span> <span class="o">=</span> <span class="n">rpd</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/path/to/file.tcx&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">activity</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="go">alt     dist    hr      lon     lat   time</span>
-<span class="go">00:00:00        178.942627      0.000000        62.0    -79.093187      35.951880</span>
-<span class="go">00:00:01        178.942627      0.000000        62.0    -79.093184      35.951880</span>
-<span class="go">00:00:06        178.942627      1.106947        62.0    -79.093172      35.951868</span>
-<span class="go">00:00:12        177.500610      13.003035       62.0    -79.093228      35.951774</span>
-<span class="go">00:00:16        177.500610      22.405027       60.0    -79.093141      35.951732</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<p>RunPandas depends on the following packages:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fitparse</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stravalib</span></code></p></li>
 </ul>
+</div>
+<div class="section" id="detailed-instructions">
+<h3>Detailed instructions<a class="headerlink" href="#detailed-instructions" title="Permalink to this headline">¶</a></h3>
+<p>Do you prefer installation from source or specific version? See
+<a class="reference internal" href="getting_started/install.html"><span class="doc">detailed instructions</span></a>.</p>
+</div>
+</div>
+<div class="section" id="what-now">
+<h2>What now<a class="headerlink" href="#what-now" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you don’t have Runpandas yet, check <a class="reference internal" href="getting_started/install.html"><span class="doc">Installation</span></a>.</p></li>
+<li><p>If you have never used RunPandas and want to get familiar with it and its core functionality quickly, see our Runpandas book.</p></li>
+<li><p>Detailed instructions about how to work with Runpandas, how to read files or perform activity analysis are part of our <a class="reference internal" href="user_guide/user_guide.html"><span class="doc">User Guide</span></a>.</p></li>
+<li><p>And if you are interested in the complete documentation of all classes, functions, method and attributes Runpandas offers, <a class="reference internal" href="reference/reference.html"><span class="doc">API Reference</span></a> is here for you.</p></li>
+</ul>
+<div class="button docutils container">
+<p><a class="reference internal" href="getting_started/install.html"><span class="doc">Installation</span></a>
+<a class="reference internal" href="user_guide/user_guide.html"><span class="doc">User Guide</span></a>
+<a class="reference internal" href="reference/reference.html"><span class="doc">API Reference</span></a></p>
+</div>
+</div>
 </div>
 
 
@@ -209,7 +214,8 @@ loads a local file.tcx.</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='right-next' id="next-link" href="getting_started.html" title="next page">Getting started</a>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Welcome to runpandas documentation!</a>
+    <a class='right-next' id="next-link" href="getting_started/install.html" title="next page">Installation</a>
 
               </div>
               
