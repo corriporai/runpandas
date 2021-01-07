@@ -1,0 +1,49 @@
+/* colors */
+
+h1 {
+    color: #134c9c;
+}
+
+h2 {
+    color: #333333;
+}
+
+.nav li.active>a, .navbar-nav>.active>.nav-link {
+    color: #134c9c!important;
+}
+
+.toc-entry>.nav-link.active {
+    border-left-color: #134c9c;
+    color: #134c9c!important;
+}
+
+.nav li>a:hover {
+    color: #333333!important;
+}
+
+/* buttons */
+
+.button>p>a {
+    box-shadow: 0px 4px 14px -7px #999999;
+    background-color: white;
+    border: 1px solid #bbbbbb;
+    display: inline-block;
+    cursor: pointer;
+    color: #134c9c;
+    padding: 1em 1em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 140%;
+    margin: 2%;
+    width: 40%;
+}
+
+.button>p>a:hover {
+    border-color: #139C5A;
+    color: #e32e00;
+}
+
+.button>p>a:active {
+    position: relative;
+    top: 1px;
+}
