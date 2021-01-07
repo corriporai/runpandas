@@ -11,7 +11,6 @@ MODULE_CACHE = {}
 
 def _read_file(filename, to_df=False, **kwargs):
     """
-
     Parameters
     ----------
         filename : str, The path to a training file.

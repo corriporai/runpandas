@@ -29,6 +29,9 @@ RunPandas - Python Package for handing running data from GPS-enabled tracking de
 .. image:: https://static.pepy.tech/personalized-badge/runpandas?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads
    :target: https://pepy.tech/project/runpandas
 
+.. image:: https://mybinder.org/badge_logo.svg
+ :target: https://mybinder.org/v2/gh/corriporai/runpandas/HEAD
+
 =========
 
 Introduction

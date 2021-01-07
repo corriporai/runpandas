@@ -11,6 +11,20 @@ from runpandas.types import columns
 
 
 class Activity(pd.DataFrame):
+    '''
+    An Activity object is a pandas.DataFrame that provides useful
+    methods and has specific columns with special functionalities.
+    In addition to the standard DataFrame constructor arguments,
+    GeoDataFrame also accepts the following optional arguments:
+
+    Parameters
+    ----------
+    cspecs : dict of series (optional)
+        Column Specifications (cspecs) of the ``Activity``
+    start : str, datetime (optional)
+        Start timestamp of the ``Activity``
+    '''
+
     # properties to propagate
     _metadata = ["start"]
 
@@ -29,6 +43,7 @@ class Activity(pd.DataFrame):
         """
         Set the Column Specifications (cspecs) of the ``Activity``.
         Set the specifed column on Activity.
+
         Parameters
         ----------
         cspecs : dict of series
@@ -89,6 +104,7 @@ class Activity(pd.DataFrame):
     def from_file(cls, file_path, **kwargs):
         """
         Alternate constructor to create a ``Activity`` from a file.
+
         Parameters
         ----------
         file : str
