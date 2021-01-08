@@ -1,6 +1,10 @@
 from runpandas.reader import _read_file as read_file  # noqa
 from runpandas.reader import _read_dir as read_dir  # noqa
-from runpandas.io.strava._parser import read_strava  # noqa
+
+try:
+    from runpandas.io.strava._parser import read_strava  # noqa
+except Exception:
+    pass  # it is a bypass for readthedocs build. to solve!
 
 from ._version import get_versions
 
