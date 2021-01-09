@@ -1,1 +1,3 @@
-from runpandas.io.strava._parser import read_strava  # noqa
+from ._parser import read_strava  # noqa
+
+__all__ = ["read_strava"]
