@@ -42,6 +42,7 @@ script:
   - pytest -v -s -r xX "${MARKERS}" --cov-config .coveragerc --cov=runpandas --cov-report xml:/tmp/cov-runpandas.xml --junitxml=/tmp/runpandas.xml
   - |
     if (( $(echo "$TRAVIS_PYTHON_VERSION > 3.5" | bc -l) )); then
+      black --version
       black --check runpandas
     fi
   - flake8 --version
