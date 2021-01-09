@@ -118,7 +118,7 @@ html_logo = "./_static/images/runpandas_banner.png"
 html_favicon = "./_static/images/favicon.ico"
 
 def setup(app):
-    app.add_stylesheet("custom.css")  # may also be an URL
+    app.add_css_file("custom.css")  # may also be an URL
 
 
 html_sidebars = {
