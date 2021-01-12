@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What’s New &#8212; runpandas 0.2.0 documentation</title>
+    <title>What’s New &#8212; runpandas 0.2.0+1.g7073376 documentation</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -142,6 +142,20 @@
             </ul>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#v0-2-0-january-12-2021" class="nav-link">v0.2.0 (January 12, 2021)</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#whatsnew-020-enhancements" class="nav-link">New features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#bug-fixes" class="nav-link">Bug Fixes</a>
+        </li>
+    
+            </ul>
+        </li>
+    
     </ul>
 </nav>
 
@@ -167,7 +181,7 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
 <div class="contents local topic" id="what-s-new-in-v0-1-0">
 <p class="topic-title">What’s new in v0.1.0</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#new-features" id="id1">New features</a></p></li>
+<li><p><a class="reference internal" href="#new-features" id="id4">New features</a></p></li>
 </ul>
 </div>
 <div class="section" id="new-features">
@@ -177,6 +191,37 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
 <li><p><code class="docutils literal notranslate"><span class="pre">Activity</span></code> that extends <code class="docutils literal notranslate"><span class="pre">pandas.Dataframe</span></code> which supports special columns related to activities. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/2">GH2</a>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MeasureSeries</span></code> that extends <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> which supports special numerical series according to the measure evaluated. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/2">GH2</a>).</p></li>
 <li><p>Added support to read tracking files in tcx, gpx and fit formats (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/4">GH4</a>).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-2-0-january-12-2021">
+<span id="whatsnew-020"></span><h2>v0.2.0 (January 12, 2021)<a class="headerlink" href="#v0-2-0-january-12-2021" title="Permalink to this headline">¶</a></h2>
+<p>This is a major release from 0.1 and includes new features and a number of bug fixes.</p>
+<p>Highlights include:</p>
+<div class="contents local topic" id="what-s-new-in-v0-2-0">
+<p class="topic-title">What’s new in v0.2.0</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#whatsnew-020-enhancements" id="id5">New features</a></p></li>
+<li><p><a class="reference internal" href="#bug-fixes" id="id6">Bug Fixes</a></p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-020-enhancements">
+<span id="id1"></span><h3>New features<a class="headerlink" href="#whatsnew-020-enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added support to fetch a single activity from an registered athlete from social network Strava. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/9">GH9</a>)</p></li>
+<li><p>Added standalone script for getting the access token for the user strava</p></li>
+</ul>
+<p>activities. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/9">GH9</a>)
+- Added badge for Pepy metrics (pepy.tech)
+- Added <cite>runpandas.read_dir</cite> method for iterate and read multiple tracking files located in a directory. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/10">GH10</a>)
+- Improvements on Docs (added new sections UserGuide, API Reference, Install Guide, Changelog) (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/22">GH22</a>)
+- Added examples section to README (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/22">GH22</a>)
+- Added badge CodeFactor.io and MyBinder.org. to README</p>
+</div>
+<div class="section" id="bug-fixes">
+<span id="whatsnew-020-bug-fixes"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed setup.py <a href="#id2"><span class="problematic" id="id3">``</span></a>find_packages``method that broke the readthedocs build procedure (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/30">GH30</a>)</p></li>
 </ul>
 </div>
 </div>
