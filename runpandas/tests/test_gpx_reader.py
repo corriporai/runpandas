@@ -156,3 +156,9 @@ def test_read_file_gpx_basic_activity(dirpath):
     assert activity.size == 15
     included_data = set(["lat", "lon", "alt", "cad", "hr"])
     assert included_data <= set(activity.columns.to_list())
+
+
+def test_read_file_gpx_with_timestamp_nofrac(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "strava_export.gpx")
+    activity = reader._read_file(gpx_file)
+    assert activity.start == Timestamp("2021-01-10 08:54:28Z")

@@ -8,8 +8,12 @@ from runpandas import exceptions
 from runpandas.types import Activity
 from runpandas.types import columns
 
+# According to Garmin, all times are stored in UTC.
+DATETIME_FMT = "%Y-%m-%dT%H:%M:%SZ"
 
-DATETIME_FMT = "%Y-%m-%dT%H:%M:%S.%fZ"  # UTC, with fractional seconds
+# UTC, with fractional seconds
+DATETIME_FMT_WITH_FRAC = "%Y-%m-%dT%H:%M:%S.%fZ"
+
 
 COLUMNS_SCHEMA = {
     "atemp": columns.Temperature,
@@ -62,7 +66,11 @@ def read(file_path, to_df=False, **kwargs):
     times = data.pop("time")  # should always be there
     data = data.astype("float64", copy=False)  # try and make numeric
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
-    timestamps = pd.to_datetime(times, format=DATETIME_FMT, utc=True)
+    try:
+        timestamps = pd.to_datetime(times, format=DATETIME_FMT, utc=True)
+    except ValueError:
+        # bad format, try with fractional seconds
+        timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC, utc=True)
     timeoffsets = timestamps - timestamps[0]
     timestamp_index = TimedeltaIndex(timeoffsets, unit="s", name="time")
     data.index = timestamp_index
