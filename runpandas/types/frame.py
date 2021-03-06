@@ -68,6 +68,7 @@ class Activity(pd.DataFrame):
         if not inplace:
             return df
 
+
     @property
     def _constructor(self):
         return Activity
@@ -113,3 +114,23 @@ class Activity(pd.DataFrame):
         kwargs : key-word arguments
         """
         return runpandas.reader._read_file(file_path)
+
+    @property
+    def ellapsed_time(self):
+        """
+        Returns:
+            The duration of activity in `pandas.TimedeltaIndex` object.
+
+        Raises:
+            AttributeError if dataframe index is not an instance of
+            TimedeltaIndex
+
+        """
+        if isinstance(self.index, pd.TimedeltaIndex):
+                return self.index[-1]
+        else:
+            raise AttributeError('index is not TimedeltaIndex')
+
+    @property
+    def moving_time(self):
+        pass

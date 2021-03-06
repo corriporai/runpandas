@@ -131,3 +131,11 @@ def special_column(required_columns, name=None):
             return Series(out, index=self._activity.index, name=name)
         return wrapper
     return real_decorator
+
+class series_property:
+    """A simple descriptor that emulates property, but returns a Series."""
+    def __init__(self, fget):
+        self.fget = fget
+
+    def __get__(self, obj, objtype=None):
+        return Series(self.fget(obj))

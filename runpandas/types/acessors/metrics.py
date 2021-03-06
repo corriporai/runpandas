@@ -9,7 +9,7 @@ from haversine import Unit
 from runpandas import exceptions
 from runpandas._utils import special_column
 from runpandas.types import Activity
-
+from runpandas.types import columns
 
 @pd.api.extensions.register_dataframe_accessor("compute")
 class MetricsAcessor(object):
@@ -46,19 +46,23 @@ class MetricsAcessor(object):
         return distance_corrected
 
 
-    @special_column(required_columns=('lat','lon'), name='dist')
-    def distance(self, correct_distance=False, **kwargs):
+    @special_column(required_columns=('lat','lon'), name='distpos')
+    def distance(self, correct_distance=False, to_special_column=True, **kwargs):
         '''
         Calculates the distance in meters using haversine distance formula on an Activity frame.
         -----------------------------------
         correct_distance: bool, optional
             It computes the distance corrected by the altitude. default is False.
 
+        to_special_column: convert the distance calculated (`pandas.Series`)
+            to special runpandas distance cummulative column (`runpandas.types.columns.DistancePerPosition`).
+            Default is True.
+
         **kwargs : Keyword args to be passed to the `haversine` method
 
         Returns
         -------
-        haversine_dist : pandas.Series
+        haversine_dist : pandas.Series or runpandas.types.columns.DistancePerPosition
             A Series of floats representing the distance in meters
             with the same index of the accessed activity object.
         '''
@@ -71,4 +75,45 @@ class MetricsAcessor(object):
 
         if correct_distance:
             haversine_dist =  self.__correct_distance(haversine_dist)
+
+        if to_special_column:
+            haversine_dist = columns.DistancePerPosition(haversine_dist)
+
         return haversine_dist
+
+    @special_column(required_columns=(), name='speed')
+    def speed(self,from_distances=False, to_special_column=True, **kwargs):
+        '''
+        Calculates the speed in meters using an Activity frame.
+        -----------------------------------
+        from_distances: bool, optional
+        Should the speeds be calculated from the distance recordings
+        instead of taken from the speed recordings directly? Default is False.
+
+        to_special_column: convert the distance calculated (`pandas.Series`)
+            to special runpandas distance cummulative column (`runpandas.types.columns.Speed`).
+            Default is True.
+
+        **kwargs : Keyword args to be passed to the `haversine` method
+
+        Returns
+        -------
+        speed : pandas.Series or runpandas.types.columns.Speed
+            A Series of floats representing the speed in meters
+            with the same index of the accessed activity object.
+        '''
+        if from_distances:
+            if 'distpos' not in self._activity.columns:
+                raise exceptions.RequiredColumnError('distpos')
+
+            time_diff = (self._activity.index.to_series().diff().fillna(self._activity.index[0]))/np.timedelta64(1,'s')
+            speed  = self._activity['distpos'] / time_diff
+        else:
+            if 'speed' not in self._activity.columns:
+                raise exceptions.RequiredColumnError('speed')
+            speed = self._activity['speed']
+
+        if to_special_column:
+            speed = columns.Speed(speed)
+
+        return speed
