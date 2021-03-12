@@ -3,10 +3,17 @@ Test module for runpandas acessors
 """
 
 import os
+import json
 import pytest
 import numpy as np
 from pandas import Timedelta
+from stravalib.protocol import ApiV3
+from stravalib.client import Client
+from stravalib.model import Stream
 from runpandas import reader
+from runpandas import read_strava
+from runpandas import types
+
 
 
 pytestmark = pytest.mark.stable
@@ -15,6 +22,31 @@ pytestmark = pytest.mark.stable
 @pytest.fixture
 def dirpath(datapath):
     return datapath("io", "data")
+
+
+
+class MockResponse:
+    def __init__(self, json_file):
+        with open(json_file) as json_handler:
+            self.json_data = json.load(json_handler)
+
+    def json(self):
+        return self.json_data
+
+
+def mock_get_activity_streams(streams_file):
+    """
+    @TODO: I needed to mock the behavior the `stravalib.client.get_activity_streams`,
+    it isn't the best alternative for mock the request from strava by passing a json file.
+    """
+
+    stream_mock = MockResponse(streams_file).json()
+    entities = {}
+    for key, value in stream_mock.items():
+        value["type"] = key
+        stream = Stream.deserialize(value)
+        entities[stream.type] = stream
+    return entities
 
 
 def test_metrics_validate(dirpath):
@@ -40,7 +72,7 @@ def test_metrics_validate(dirpath):
     with pytest.raises(AttributeError):
         frame_without_index.only_moving()
 
-def test_only_moving_acessor(dirpath):
+def test_only_moving_acessor(dirpath, mocker):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
     frame_gpx = reader._read_file(gpx_file, to_df=False)
     frame_gpx['distpos'] = frame_gpx.compute.distance(correct_distance=False)
@@ -72,3 +104,24 @@ def test_only_moving_acessor(dirpath):
     assert  frame_tcx2_only_moving.ellapsed_time == Timedelta("0 days 00:33:11")
     assert  frame_tcx2_only_moving.moving_time == Timedelta("0 days 00:33:05")
 
+    activity_json = os.path.join(dirpath, "strava", "activity.json")
+    streams_json = os.path.join(dirpath, "strava", "streams.json")
+
+    mocker.patch.object(ApiV3, "get", return_value=MockResponse(activity_json).json())
+
+    mocker.patch.object(
+        Client,
+        "get_activity_streams",
+        return_value=mock_get_activity_streams(streams_json),
+    )
+
+    # we don't use access token here, since we will mock the stravalib json response
+    activity_strava = read_strava(
+        activity_id=4437021783,
+        access_token="youraccesstoken",
+        refresh_token="yourrefreshtoken",
+        to_df=False,
+    )
+
+    assert  activity_strava.ellapsed_time == Timedelta('0 days 01:25:45')
+    assert  activity_strava.moving_time == Timedelta('0 days 01:19:41')
