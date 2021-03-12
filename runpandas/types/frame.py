@@ -4,6 +4,7 @@ Root pandas accessors for DataFrames. It exposes the ActiviyData as DataFrames
 """
 import warnings
 
+import numpy as np
 import pandas as pd
 from pandas.core.frame import DataFrame
 import runpandas.reader
@@ -133,4 +134,7 @@ class Activity(pd.DataFrame):
 
     @property
     def moving_time(self):
-        pass
+        total_time = ((self.index.to_series().diff().fillna(self.index[0]))/np.timedelta64(1,'s'))
+        merged_df = (total_time.to_frame().join(self['moving'].to_frame()))
+        return pd.Timedelta(seconds=total_time.sum() - \
+                            merged_df[merged_df['moving'] == False]['time'].sum())

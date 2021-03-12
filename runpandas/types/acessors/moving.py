@@ -28,7 +28,7 @@ class _InactivityAssessor(object):
 
     '''
     # Speeds less than or equal to this value (in m/s) are considered to be stopped
-    STOPPED_THRESHOLD = 0.3
+    STOPPED_THRESHOLD = 0.8
 
     required_columns = ['speed']
 
@@ -43,7 +43,7 @@ class _InactivityAssessor(object):
         threshold speed a 'true' event is set to the 'moving' column.
         '''
         #get the time difference between tracking positions and resample it to 1s
-        time_diff = (self.activity.index.to_series().diff().fillna(self.activity.index[0]))/np.timedelta64(1,'s')
+        #time_diff = (self.activity.index.to_series().diff().fillna(self.activity.index[0]))/np.timedelta64(1,'s')
         #remove all instantaneous with speed below threashold
         self.activity['moving'] = (self.activity['speed'] >= threshold)
         return self.activity

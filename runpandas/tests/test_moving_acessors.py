@@ -4,6 +4,8 @@ Test module for runpandas acessors
 
 import os
 import pytest
+import numpy as np
+from pandas import Timedelta
 from runpandas import reader
 
 
@@ -41,11 +43,32 @@ def test_metrics_validate(dirpath):
 def test_only_moving_acessor(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
     frame_gpx = reader._read_file(gpx_file, to_df=False)
-    frame_gpx['dist'] = frame_gpx.compute.distance()
-    #frame_gpx['speed'] = frame_gpx.compute.speed()
-    #frame_gpx.only_moving()
+    frame_gpx['distpos'] = frame_gpx.compute.distance(correct_distance=False)
+    frame_gpx['speed'] = frame_gpx.compute.speed(from_distances=True)
+    frame_gpx_only_moving = frame_gpx.only_moving()
+    assert frame_gpx_only_moving[frame_gpx_only_moving['moving']==False].shape[0] == 74
+    assert  frame_gpx_only_moving.ellapsed_time == Timedelta("0 days 01:25:27")
+    assert  frame_gpx_only_moving.moving_time == Timedelta("0 days 01:14:46")
 
     tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
-    activity_tcx = reader._read_file(tcx_file, to_df=True)
-    #activity_marked_stopped= activity_tcx.only_moving()
-    #frame_tcx = reader._read_file(tcx_file, to_df=False)
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    frame_tcx_only_moving = activity_tcx.only_moving()
+    assert frame_tcx_only_moving[frame_gpx_only_moving.moving  == False].shape[0] == 74
+    assert  frame_tcx_only_moving.ellapsed_time == Timedelta("0 days 01:25:27")
+    assert  frame_tcx_only_moving.moving_time == Timedelta("0 days 01:23:57")
+
+
+    fit_file = os.path.join(dirpath, "fit", "garmin-fenix-5-basic.fit")
+    fit_file = reader._read_file(fit_file, to_df=False)
+    frame_fit_only_moving = fit_file.only_moving()
+    assert  frame_fit_only_moving.ellapsed_time == Timedelta("0 days 00:00:57")
+    assert  frame_fit_only_moving.moving_time == Timedelta("0 days 00:00:55")
+
+    tcx_file2 = os.path.join(dirpath, "tcx", "basic.tcx")
+    frame_tcx_basic = reader._read_file(tcx_file2, to_df=False)
+    frame_tcx_basic['distpos'] = frame_tcx_basic.compute.distance(correct_distance=False)
+    frame_tcx_basic['speed'] = frame_tcx_basic.compute.speed(from_distances=True)
+    frame_tcx2_only_moving = frame_tcx_basic.only_moving()
+    assert  frame_tcx2_only_moving.ellapsed_time == Timedelta("0 days 00:33:11")
+    assert  frame_tcx2_only_moving.moving_time == Timedelta("0 days 00:33:05")
+
