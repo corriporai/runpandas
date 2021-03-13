@@ -7,6 +7,7 @@ from functools import wraps
 from runpandas import exceptions
 from pandas import Series
 
+
 def file_exists(fname):
     """Check if a file exists and is non-empty."""
     try:
@@ -104,8 +105,9 @@ def camelcase_to_snakecase(string):
     string = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", string)
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", string).lower()
 
+
 def special_column(required_columns, name=None):
-    '''
+    """
     Decorator for certain methods of acessors that create special columns
     using the ``runpandas.types.MeasureSeries`` subtypes.
 
@@ -117,7 +119,7 @@ def special_column(required_columns, name=None):
 
     name: str, optional.
         The name for the returned Series object.
-    '''
+    """
 
     def real_decorator(func):
         @wraps(func)
@@ -129,11 +131,15 @@ def special_column(required_columns, name=None):
             # If it's ok so construct the new Series.
             out = func(self, *args, **kwargs)
             return Series(out, index=self._activity.index, name=name)
+
         return wrapper
+
     return real_decorator
+
 
 class series_property:
     """A simple descriptor that emulates property, but returns a Series."""
+
     def __init__(self, fget):
         self.fget = fget
 

@@ -69,7 +69,6 @@ class Activity(pd.DataFrame):
         if not inplace:
             return df
 
-
     @property
     def _constructor(self):
         return Activity
@@ -128,9 +127,9 @@ class Activity(pd.DataFrame):
 
         """
         if isinstance(self.index, pd.TimedeltaIndex):
-                return self.index[-1]
+            return self.index[-1]
         else:
-            raise AttributeError('index is not TimedeltaIndex')
+            raise AttributeError("index is not TimedeltaIndex")
 
     @property
     def moving_time(self):
@@ -147,18 +146,21 @@ class Activity(pd.DataFrame):
 
         """
         if not isinstance(self.index, pd.TimedeltaIndex):
-            raise AttributeError('index is not TimedeltaIndex')
-        if 'moving' not in self.columns:
-            raise AttributeError('moving column not found in activity.')
+            raise AttributeError("index is not TimedeltaIndex")
+        if "moving" not in self.columns:
+            raise AttributeError("moving column not found in activity.")
 
-        total_time = ((self.index.to_series().diff().fillna(self.index[0]))/np.timedelta64(1,'s'))
-        merged_df = (total_time.to_frame().join(self['moving'].to_frame()))
-        return pd.Timedelta(seconds=total_time.sum() - \
-                            merged_df[merged_df['moving'] == False]['time'].sum())
+        total_time = (
+            self.index.to_series().diff().fillna(self.index[0])
+        ) / np.timedelta64(1, "s")
+        merged_df = total_time.to_frame().join(self["moving"].to_frame())
+        return pd.Timedelta(
+            seconds=total_time.sum() - merged_df[~merged_df["moving"]]["time"].sum()
+        )
 
     @property
     def distance(self):
         try:
-            return self['dist'].max()
+            return self["dist"].max()
         except KeyError:
-            return self['distpos'].sum()
+            return self["distpos"].sum()
