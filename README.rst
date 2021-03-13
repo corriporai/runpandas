@@ -247,9 +247,122 @@ data or the distance ``dist`` data:
     4686.31103516
 
 
-Let’s play with the data. Let’s show distance vs as an example of what
-and how we can create visualizations. In this example, we will use the
-built in, matplotlib based plot function.
+The ``Activity`` dataframe also contains special properties that
+presents some statistics from the workout such as elapsed time, the
+moving time and the distance of workout in meters.
+
+.. code:: ipython3
+
+    #total time elapsed for the activity
+    print(activity.ellapsed_time)
+    #distance of workout in meters
+    print(activity.distance)
+
+
+.. parsed-literal::
+
+    0 days 00:33:11
+    4686.31103516
+
+
+Occasionally, some observations such as speed, distance and others must
+be calculated based on available data in the given activity. In
+runpandas there are special accessors (``runpandas.acessors``) that
+computes some of these metrics. We will compute the ``speed`` and the
+``distance per position`` observations using the latitude and longitude
+for each record and calculate the haversine distance in meters and the
+speed in meters per second.
+
+.. code:: ipython3
+
+    #compute the distance using haversine formula between two consecutive latitude, longitudes observations.
+    activity['distpos']  = activity.compute.distance()
+    activity['distpos'].head()
+
+
+
+
+.. parsed-literal::
+
+    time
+    00:00:00          NaN
+    00:00:01     0.333146
+    00:00:06     1.678792
+    00:00:12    11.639901
+    00:00:16     9.183847
+    Name: distpos, dtype: float64
+
+
+
+.. code:: ipython3
+
+    #compute the distance using haversine formula between two consecutive latitude, longitudes observations.
+    activity['speed']  = activity.compute.speed(from_distances=True)
+    activity['speed'].head()
+
+
+
+
+.. parsed-literal::
+
+    time
+    00:00:00         NaN
+    00:00:01    0.333146
+    00:00:06    0.335758
+    00:00:12    1.939984
+    00:00:16    2.295962
+    Name: speed, dtype: float64
+
+
+
+Sporadically, there will be a large time difference between consecutive
+observations in the same workout. This can happen when device is paused
+by the athlete or therere proprietary algorithms controlling the
+operating sampling rate of the device which can auto-pause when the
+device detects no significant change in position. In runpandas there is
+an algorithm that will attempt to calculate the moving time based on the
+GPS locations, distances, and speed of the activity.
+
+To compute the moving time, there is a special acessor that detects the
+periods of inactivity and returns the ``moving`` series containing all
+the observations considered to be stopped.
+
+.. code:: ipython3
+
+    activity_only_moving = activity.only_moving()
+    print(activity_only_moving['moving'].head())
+
+
+.. parsed-literal::
+
+    time
+    00:00:00    False
+    00:00:01    False
+    00:00:06    False
+    00:00:12     True
+    00:00:16     True
+    Name: moving, dtype: bool
+
+
+Now we can compute the moving time, the time of how long the user were
+active.
+
+.. code:: ipython3
+
+    activity_only_moving.moving_time
+
+
+
+
+.. parsed-literal::
+
+    Timedelta('0 days 00:33:05')
+
+
+
+Now, let’s play with the data. Let’s show distance vs as an example of
+what and how we can create visualizations. In this example, we will use
+the built in, matplotlib based plot function.
 
 .. code:: ipython3
 
