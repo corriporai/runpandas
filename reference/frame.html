@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frame &#8212; runpandas 0.2.0 documentation</title>
+    <title>Frame &#8212; runpandas 0.3.0 documentation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,17 +20,13 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d8bbf5861d671d414e1a.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,64 +36,71 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Columns" href="columns.html" />
+    <link rel="next" title="runpandas.types.Activity" href="api/runpandas.types.Activity.html" />
     <link rel="prev" title="Reference" href="reference.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
-    <a class="navbar-brand" href="../index.html">
+
     
-      <img src="../_static/runpandas_banner.png" class="logo" alt="logo" />
+      
+      <a class="navbar-brand" href="../index.html">
+        <img src="../_static/runpandas_banner.png" class="logo" alt="logo">
+      </a>
+      
     
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    
     <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../index.html">Home</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../getting_started.html">Getting started</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../user_guide/user_guide.html">User Guide</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="reference.html">Reference</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../whatsnew.html">Changelog</a>
-        </li>
-        
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Home
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="reference.html">
+  Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../whatsnew.html">
+  Changelog
+ </a>
+</li>
+
         
       </ul>
 
-
-      
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/corriporai/runpandas" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
+      <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/corriporai/runpandas" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
       </ul>
     </div>
 </div>
@@ -106,13 +110,15 @@
     <div class="container-xl">
       <div class="row">
           
-          <div class="col-12 col-md-3 bd-sidebar">
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
   <h4>Previous topic</h4>
   <p class="topless"><a href="reference.html"
                         title="previous chapter">Reference</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="columns.html"
-                        title="next chapter">Columns</a></p>
+  <p class="topless"><a href="api/runpandas.types.Activity.html"
+                        title="next chapter">runpandas.types.Activity</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -123,17 +129,41 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-          </div>
+            </div>
+            
           
 
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-    </ul>
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constructor">
+   Constructor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-and-writing-files">
+   Reading and writing files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-handling">
+   Activity handling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-metrics">
+   Special Metrics
+  </a>
+ </li>
+</ul>
+
 </nav>
 
 
@@ -142,73 +172,97 @@
           
 
           
+          
+            
+          
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
                 
-  <div class="section" id="module-runpandas.types.frame">
-<span id="frame"></span><h1>Frame<a class="headerlink" href="#module-runpandas.types.frame" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="frame">
+<h1>Frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h1>
 <p>A <code class="docutils literal notranslate"><span class="pre">Activity</span></code> is a tabular data structure that contains a column
 which contains a <code class="docutils literal notranslate"><span class="pre">MeasureSeries</span></code> storing special measures.</p>
-<dl class="py class">
-<dt id="runpandas.types.frame.Activity">
-<em class="property">class </em><code class="sig-prename descclassname">runpandas.types.frame.</code><code class="sig-name descname">Activity</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#runpandas.types.frame.Activity" title="Permalink to this definition">¶</a></dt>
-<dd><p>An Activity object is a pandas.DataFrame that provides useful
-methods and has specific columns with special functionalities.
-In addition to the standard DataFrame constructor arguments,
-GeoDataFrame also accepts the following optional arguments:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cspecs</strong> (<em>dict of series</em><em> (</em><em>optional</em><em>)</em>) – Column Specifications (cspecs) of the <code class="docutils literal notranslate"><span class="pre">Activity</span></code></p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>datetime</em><em> (</em><em>optional</em><em>)</em>) – Start timestamp of the <code class="docutils literal notranslate"><span class="pre">Activity</span></code></p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="runpandas.types.frame.Activity.from_file">
-<em class="property">classmethod </em><code class="sig-name descname">from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#runpandas.types.frame.Activity.from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alternate constructor to create a <code class="docutils literal notranslate"><span class="pre">Activity</span></code> from a file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – File path or file handle to read from. Depending on which kwargs
-are included, the content of filename may vary.</p></li>
-<li><p><strong>kwargs</strong> (<em>key-word arguments</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="runpandas.types.frame.Activity.set_specs">
-<code class="sig-name descname">set_specs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cspecs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#runpandas.types.frame.Activity.set_specs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the Column Specifications (cspecs) of the <code class="docutils literal notranslate"><span class="pre">Activity</span></code>.
-Set the specifed column on Activity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cspecs</strong> (<em>dict of series</em>) – </p></li>
-<li><p><strong>inplace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>, </em><em>default False</em>) – If True, the cspecs of the Activity will be changed in place
-(while still returning the result) instead of making a copy of
-the Activity.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="runpandas.types.frame.Activity.to_pandas">
-<code class="sig-name descname">to_pandas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runpandas.types.frame.Activity.to_pandas" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<div class="section" id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.Activity.html#runpandas.types.Activity" title="runpandas.types.Activity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity</span></code></a>(*args, **kwargs)</p></td>
+<td><p>An Activity object is a pandas.DataFrame that provides useful methods and has specific columns with special functionalities.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reading-and-writing-files">
+<h2>Reading and writing files<a class="headerlink" href="#reading-and-writing-files" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.Activity.from_file.html#runpandas.types.Activity.from_file" title="runpandas.types.Activity.from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.from_file</span></code></a>(file_path, **kwargs)</p></td>
+<td><p>Alternate constructor to create a <code class="docutils literal notranslate"><span class="pre">Activity</span></code> from a file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="activity-handling">
+<h2>Activity handling<a class="headerlink" href="#activity-handling" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.Activity.set_specs.html#runpandas.types.Activity.set_specs" title="runpandas.types.Activity.set_specs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.set_specs</span></code></a>([cspecs, inplace])</p></td>
+<td><p>Set the Column Specifications (cspecs) of the <code class="docutils literal notranslate"><span class="pre">Activity</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas.types.Activity.to_pandas.html#runpandas.types.Activity.to_pandas" title="runpandas.types.Activity.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.to_pandas</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">returns</dt>
 <dd class="field-odd"><p>Casted Pandas Dataframe from Activity</p>
 </dd>
 </dl>
-</dd></dl>
-
-</dd></dl>
-
+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="special-metrics">
+<h2>Special Metrics<a class="headerlink" href="#special-metrics" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.Activity.ellapsed_time.html#runpandas.types.Activity.ellapsed_time" title="runpandas.types.Activity.ellapsed_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.ellapsed_time</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>The duration of activity in <cite>pandas.TimedeltaIndex</cite> object.</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas.types.Activity.moving_time.html#runpandas.types.Activity.moving_time" title="runpandas.types.Activity.moving_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.moving_time</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>The moving time of activity in <cite>pandas.TimedeltaIndex</cite> object.</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.Activity.distance.html#runpandas.types.Activity.distance" title="runpandas.types.Activity.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activity.distance</span></code></a></p></td>
+<td><p>Returns: The total distance of the activity in meters as a float number.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -218,7 +272,7 @@ the Activity.</p></li>
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="reference.html" title="previous page">Reference</a>
-    <a class='right-next' id="next-link" href="columns.html" title="next page">Columns</a>
+    <a class='right-next' id="next-link" href="api/runpandas.types.Activity.html" title="next page">runpandas.types.Activity</a>
 
               </div>
               
@@ -229,14 +283,14 @@ the Activity.</p></li>
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d8bbf5861d671d414e1a.js"></script>
 
 
     <footer class="footer mt-5 mt-md-0">
   <div class="container">
     <p>
           &copy; Copyright 2020, Corri por ai Development Team.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What’s New &#8212; runpandas 0.2.0 documentation</title>
+    <title>What’s New &#8212; runpandas 0.3.0 documentation</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,17 +20,13 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.d8bbf5861d671d414e1a.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -45,57 +42,64 @@
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
-    <a class="navbar-brand" href="index.html">
+
     
-      <img src="_static/runpandas_banner.png" class="logo" alt="logo" />
+      
+      <a class="navbar-brand" href="index.html">
+        <img src="_static/runpandas_banner.png" class="logo" alt="logo">
+      </a>
+      
     
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    
     <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="index.html">Home</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="getting_started.html">Getting started</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="user_guide/user_guide.html">User Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="reference/reference.html">Reference</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="">Changelog</a>
-        </li>
-        
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Home
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="getting_started.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="user_guide/user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="reference/reference.html">
+  Reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Changelog
+ </a>
+</li>
+
         
       </ul>
 
-
-      
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/corriporai/runpandas" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
+      <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/corriporai/runpandas" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
       </ul>
     </div>
 </div>
@@ -105,7 +109,9 @@
     <div class="container-xl">
       <div class="row">
           
-          <div class="col-12 col-md-3 bd-sidebar">
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
   <h4>Previous topic</h4>
   <p class="topless"><a href="reference/api/runpandas.exceptions.InvalidFileError.html"
                         title="previous chapter">runpandas.exceptions.InvalidFileError</a></p>
@@ -119,7 +125,8 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-          </div>
+            </div>
+            
           
 
           
@@ -130,19 +137,55 @@
 </div>
 
 <nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#v0-1-0-november-21-2020" class="nav-link">v0.1.0 (November 21, 2020)</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#new-features" class="nav-link">New features</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-    </ul>
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v0-1-0-november-21-2020">
+   v0.1.0 (November 21, 2020)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v0-2-0-january-12-2021">
+   v0.2.0 (January 12, 2021)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whatsnew-020-enhancements">
+     New features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v0-3-0-march-13-2021">
+   v0.3.0 (March 13, 2021)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whatsnew-030-enhancements">
+     New features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whatsnew-030-bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
 
 
@@ -150,6 +193,9 @@
           </div>
           
 
+          
+          
+            
           
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
@@ -167,7 +213,7 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
 <div class="contents local topic" id="what-s-new-in-v0-1-0">
 <p class="topic-title">What’s new in v0.1.0</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#new-features" id="id1">New features</a></p></li>
+<li><p><a class="reference internal" href="#new-features" id="id4">New features</a></p></li>
 </ul>
 </div>
 <div class="section" id="new-features">
@@ -177,6 +223,65 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
 <li><p><code class="docutils literal notranslate"><span class="pre">Activity</span></code> that extends <code class="docutils literal notranslate"><span class="pre">pandas.Dataframe</span></code> which supports special columns related to activities. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/2">GH2</a>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MeasureSeries</span></code> that extends <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> which supports special numerical series according to the measure evaluated. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/2">GH2</a>).</p></li>
 <li><p>Added support to read tracking files in tcx, gpx and fit formats (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/4">GH4</a>).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-2-0-january-12-2021">
+<span id="whatsnew-020"></span><h2>v0.2.0 (January 12, 2021)<a class="headerlink" href="#v0-2-0-january-12-2021" title="Permalink to this headline">¶</a></h2>
+<p>This is a major release from 0.1 and includes new features and a number of bug fixes.</p>
+<p>Highlights include:</p>
+<div class="contents local topic" id="what-s-new-in-v0-2-0">
+<p class="topic-title">What’s new in v0.2.0</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#whatsnew-020-enhancements" id="id5">New features</a></p></li>
+<li><p><a class="reference internal" href="#bug-fixes" id="id6">Bug Fixes</a></p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-020-enhancements">
+<span id="id1"></span><h3>New features<a class="headerlink" href="#whatsnew-020-enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added support to fetch a single activity from an registered athlete from social network Strava. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/9">GH9</a>)</p></li>
+<li><p>Added standalone script for getting the access token for the user strava activities. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/9">GH9</a>)</p></li>
+<li><p>Added badge for Pepy metrics (pepy.tech)</p></li>
+<li><p>Added <cite>runpandas.read_dir</cite> method for iterate and read multiple tracking files located in a directory. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/10">GH10</a>)</p></li>
+<li><p>Improvements on Docs (added new sections UserGuide, API Reference, Install Guide, Changelog) (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/22">GH22</a>)</p></li>
+<li><p>Added examples section to README (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/22">GH22</a>)</p></li>
+<li><p>Added badge CodeFactor.io and MyBinder.org. to README</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<span id="whatsnew-020-bug-fixes"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed setup.py <code class="docutils literal notranslate"><span class="pre">find_packages</span></code> method that broke the readthedocs build procedure (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/30">GH30</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-3-0-march-13-2021">
+<span id="whatsnew-030"></span><h2>v0.3.0 (March 13, 2021)<a class="headerlink" href="#v0-3-0-march-13-2021" title="Permalink to this headline">¶</a></h2>
+<p>This is a major release from 0.2 and includes new features and a number of bug fixes.</p>
+<p>Highlights include:</p>
+<div class="contents local topic" id="what-s-new-in-v0-3-0">
+<p class="topic-title">What’s new in v0.3.0</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#whatsnew-030-enhancements" id="id7">New features</a></p></li>
+<li><p><a class="reference internal" href="#whatsnew-030-bug-fixes" id="id8">Bug Fixes</a></p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-030-enhancements">
+<span id="id2"></span><h3>New features<a class="headerlink" href="#whatsnew-030-enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added support to detect periods of inactivity in order to calculate the moving time (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a>)</p></li>
+<li><p>Added testes for inactivity estimator for the activity. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a>)</p></li>
+<li><p>Added distance, elapsed_time and moving time properties for an activity and respective tests. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/12">GH12</a>)</p></li>
+<li><p>Improvements on Docs (new reference APIs and examples) (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a> and <a class="reference external" href="https://github.com/corriporai/runpandas/issues/12">GH12</a>)</p></li>
+<li><p>Updated examples on README</p></li>
+<li><p>Added badge Zenodo.org DOI to README</p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-030-bug-fixes">
+<span id="id3"></span><h3>Bug Fixes<a class="headerlink" href="#whatsnew-030-bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed the timestamp parse format with fraction when reading GPX files (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/34">GH34</a>)</p></li>
 </ul>
 </div>
 </div>
@@ -199,14 +304,14 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
     </div>
 
     
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="_static/js/index.d8bbf5861d671d414e1a.js"></script>
 
 
     <footer class="footer mt-5 mt-md-0">
   <div class="container">
     <p>
           &copy; Copyright 2020, Corri por ai Development Team.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

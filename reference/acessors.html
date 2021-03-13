@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acessors &#8212; runpandas 0.3.0 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d8bbf5861d671d414e1a.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="runpandas.types.acessors.moving._InactivityAssessor" href="api/runpandas.types.acessors.moving._InactivityAssessor.html" />
+    <link rel="prev" title="Columns" href="columns.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+
+    
+      
+      <a class="navbar-brand" href="../index.html">
+        <img src="../_static/runpandas_banner.png" class="logo" alt="logo">
+      </a>
+      
+    
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Home
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="reference.html">
+  Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../whatsnew.html">
+  Changelog
+ </a>
+</li>
+
+        
+      </ul>
+
+      <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/corriporai/runpandas" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="columns.html"
+                        title="previous chapter">Columns</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api/runpandas.types.acessors.moving._InactivityAssessor.html"
+                        title="next chapter">runpandas.types.acessors.moving._InactivityAssessor</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving">
+   Moving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics">
+   Metrics
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="acessors">
+<h1>Acessors<a class="headerlink" href="#acessors" title="Permalink to this headline">¶</a></h1>
+<p>Special acessors to perform activity transformations or derived observations based on activity data.</p>
+<div class="section" id="moving">
+<h2>Moving<a class="headerlink" href="#moving" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.moving._InactivityAssessor.html#runpandas.types.acessors.moving._InactivityAssessor" title="runpandas.types.acessors.moving._InactivityAssessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moving._InactivityAssessor</span></code></a>(activity)</p></td>
+<td><p>Dataframe Accessor to impute the periods of inactivity, as such periods must be detected and ignored from the analysis for moving time, heart rate, speed, and power-based calculations.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.html#runpandas.types.acessors.metrics.MetricsAcessor" title="runpandas.types.acessors.metrics.MetricsAcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor</span></code></a>(activity)</p></td>
+<td><p>Dataframe Accessor to compute all available metrics from an activity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.speed.html#runpandas.types.acessors.metrics.MetricsAcessor.speed" title="runpandas.types.acessors.metrics.MetricsAcessor.speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor.speed</span></code></a>([…])</p></td>
+<td><p>Calculates the speed in meters using an Activity frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.distance.html#runpandas.types.acessors.metrics.MetricsAcessor.distance" title="runpandas.types.acessors.metrics.MetricsAcessor.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor.distance</span></code></a>([…])</p></td>
+<td><p>Calculates the distance in meters using haversine distance formula on an Activity frame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="columns.html" title="previous page">Columns</a>
+    <a class='right-next' id="next-link" href="api/runpandas.types.acessors.moving._InactivityAssessor.html" title="next page">runpandas.types.acessors.moving._InactivityAssessor</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d8bbf5861d671d414e1a.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Corri por ai Development Team.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
