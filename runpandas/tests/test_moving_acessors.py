@@ -115,8 +115,8 @@ def test_only_moving_acessor(dirpath, mocker):
     # we don't use access token here, since we will mock the stravalib json response
     activity_strava = read_strava(
         activity_id=4437021783,
-        access_token="youraccesstoken",
-        refresh_token="yourrefreshtoken",
+        access_token=None,
+        refresh_token=None,
         to_df=False,
     )
 

@@ -111,7 +111,7 @@ test_full_distpos_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_full_distpos_data)
 def test_metrics_distance_per_position(activity, column, index, expected):
     activity["distpos"] = activity.compute.distance(to_special_column=True)
-    assert type(activity["distpos"]) is columns.DistancePerPosition
+    assert isinstance(activity["distpos"], columns.DistancePerPosition)
     assert activity[column].iloc[index] == expected
 
 

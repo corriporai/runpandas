@@ -128,8 +128,7 @@ class Activity(pd.DataFrame):
         """
         if isinstance(self.index, pd.TimedeltaIndex):
             return self.index[-1]
-        else:
-            raise AttributeError("index is not TimedeltaIndex")
+        raise AttributeError("index is not TimedeltaIndex")
 
     @property
     def moving_time(self):

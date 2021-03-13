@@ -40,7 +40,7 @@ class MetricsAcessor(object):
     def __correct_distance(self, distance_series, col_alt="alt"):
         if col_alt not in self._activity.columns:
             raise exceptions.RequiredColumnError(col_alt)
-        # TODO: MUST OPTIMIZE THE CORRECTION DISTANCE FORMULA
+
         self._activity["shift_alt"] = self._activity[col_alt].shift(1)
         self._activity["alt_dif"] = self._activity.apply(
             lambda x: x["shift_alt"] - x[col_alt], axis=1
