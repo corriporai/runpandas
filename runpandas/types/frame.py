@@ -134,7 +134,31 @@ class Activity(pd.DataFrame):
 
     @property
     def moving_time(self):
+        """
+        Returns:
+            The moving time of activity in `pandas.TimedeltaIndex` object.
+            It measures only the periods that you were active based on
+            internal calculations.
+
+        Raises:
+            AttributeError if dataframe index is not an instance of
+            TimedeltaIndex or the `moving` column is not found computed
+            from `runpandas.acessors.moving.only_moving` acessor.
+
+        """
+        if not isinstance(self.index, pd.TimedeltaIndex):
+            raise AttributeError('index is not TimedeltaIndex')
+        if 'moving' not in self.columns:
+            raise AttributeError('moving column not found in activity.')
+
         total_time = ((self.index.to_series().diff().fillna(self.index[0]))/np.timedelta64(1,'s'))
         merged_df = (total_time.to_frame().join(self['moving'].to_frame()))
         return pd.Timedelta(seconds=total_time.sum() - \
                             merged_df[merged_df['moving'] == False]['time'].sum())
+
+    @property
+    def distance(self):
+        try:
+            return self['dist'].max()
+        except KeyError:
+            return self['distpos'].sum()
