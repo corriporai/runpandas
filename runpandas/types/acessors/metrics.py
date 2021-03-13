@@ -67,8 +67,8 @@ class MetricsAcessor(object):
             It computes the distance corrected by the altitude. default is False.
 
         to_special_column: bool, optional
-            It converts the distance calculated (`pandas.Series`) to special runpandas distance cummulative column
-            (`runpandas.types.columns.DistancePerPosition`).
+            It converts the distance calculated (`pandas.Series`) to special runpandas
+            distance cummulative column (`runpandas.types.columns.DistancePerPosition`).
             Default is True.
 
         **kwargs: Keyword args to be passed to the `haversine` method
@@ -121,7 +121,8 @@ class MetricsAcessor(object):
         Returns
         -------
         speed: `pandas.Series` or `runpandas.types.columns.Speed`
-            A Series of floats representing the speed in meters with the same index of the accessed activity object.
+            A Series of floats representing the speed in meters
+            with the same index of the accessed activity object.
 
         """
         if from_distances:

@@ -142,7 +142,8 @@ class Activity(pd.DataFrame):
 
         Raises:
             AttributeError if dataframe index is not an instance of TimedeltaIndex
-             or the `moving` column is not found computed from `runpandas.acessors.moving.only_moving` acessor.
+            or the `moving` column is not found computed from
+            `runpandas.acessors.moving.only_moving` acessor.
 
         """
         if not isinstance(self.index, pd.TimedeltaIndex):
