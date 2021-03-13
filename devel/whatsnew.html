@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What’s New &#8212; runpandas 0.2.0+18.g58e8055 documentation</title>
+    <title>What’s New &#8212; runpandas 0.2.0+22.ge7572ec documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
@@ -167,6 +167,23 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v0-3-0-march-13-2021">
+   v0.3.0 (March 13, 2021)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whatsnew-030-enhancements">
+     New features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whatsnew-030-bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
 </nav>
@@ -235,7 +252,36 @@ loading into <code class="docutils literal notranslate"><span class="pre">runpan
 <div class="section" id="bug-fixes">
 <span id="whatsnew-020-bug-fixes"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Fixed setup.py <a href="#id2"><span class="problematic" id="id3">``</span></a>find_packages``method that broke the readthedocs build procedure (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/30">GH30</a>)</p></li>
+<li><p>Fixed setup.py <code class="docutils literal notranslate"><span class="pre">find_packages</span></code> method that broke the readthedocs build procedure (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/30">GH30</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-3-0-march-13-2021">
+<span id="whatsnew-030"></span><h2>v0.3.0 (March 13, 2021)<a class="headerlink" href="#v0-3-0-march-13-2021" title="Permalink to this headline">¶</a></h2>
+<p>This is a major release from 0.2 and includes new features and a number of bug fixes.</p>
+<p>Highlights include:</p>
+<div class="contents local topic" id="what-s-new-in-v0-3-0">
+<p class="topic-title">What’s new in v0.3.0</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#whatsnew-030-enhancements" id="id7">New features</a></p></li>
+<li><p><a class="reference internal" href="#whatsnew-030-bug-fixes" id="id8">Bug Fixes</a></p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-030-enhancements">
+<span id="id2"></span><h3>New features<a class="headerlink" href="#whatsnew-030-enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added support to detect periods of inactivity in order to calculate the moving time (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a>)</p></li>
+<li><p>Added testes for inactivity estimator for the activity. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a>)</p></li>
+<li><p>Added distance, elapsed_time and moving time properties for an activity and respective tests. (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/12">GH12</a>)</p></li>
+<li><p>Improvements on Docs (new reference APIs and examples) (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/11">GH11</a> and <a class="reference external" href="https://github.com/corriporai/runpandas/issues/12">GH12</a>)</p></li>
+<li><p>Updated examples on README</p></li>
+<li><p>Added badge Zenodo.org DOI to README</p></li>
+</ul>
+</div>
+<div class="section" id="whatsnew-030-bug-fixes">
+<span id="id3"></span><h3>Bug Fixes<a class="headerlink" href="#whatsnew-030-bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed the timestamp parse format with fraction when reading GPX files (<a class="reference external" href="https://github.com/corriporai/runpandas/issues/34">GH34</a>)</p></li>
 </ul>
 </div>
 </div>

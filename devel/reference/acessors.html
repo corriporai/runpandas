@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tools &#8212; runpandas 0.2.0+22.ge7572ec documentation</title>
+    <title>Acessors &#8212; runpandas 0.2.0+22.ge7572ec documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
@@ -36,8 +36,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="runpandas._utils.file_exists" href="api/runpandas._utils.file_exists.html" />
-    <link rel="prev" title="runpandas.read_strava" href="api/runpandas.read_strava.html" />
+    <link rel="next" title="runpandas.types.acessors.moving._InactivityAssessor" href="api/runpandas.types.acessors.moving._InactivityAssessor.html" />
+    <link rel="prev" title="Columns" href="columns.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -114,11 +114,11 @@
             <!-- Only show if we have sidebars configured, else just a small margin  -->
             <div class="col-12 col-md-3 bd-sidebar">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="api/runpandas.read_strava.html"
-                        title="previous chapter">runpandas.read_strava</a></p>
+  <p class="topless"><a href="columns.html"
+                        title="previous chapter">Columns</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="api/runpandas._utils.file_exists.html"
-                        title="next chapter">runpandas._utils.file_exists</a></p>
+  <p class="topless"><a href="api/runpandas.types.acessors.moving._InactivityAssessor.html"
+                        title="next chapter">runpandas.types.acessors.moving._InactivityAssessor</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -136,9 +136,24 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving">
+   Moving
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics">
+   Metrics
+  </a>
+ </li>
+</ul>
+
 </nav>
 
 
@@ -154,37 +169,43 @@
               
               <div>
                 
-  <div class="section" id="tools">
-<span id="id1"></span><h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="acessors">
+<h1>Acessors<a class="headerlink" href="#acessors" title="Permalink to this headline">¶</a></h1>
+<p>Special acessors to perform activity transformations or derived observations based on activity data.</p>
+<div class="section" id="moving">
+<h2>Moving<a class="headerlink" href="#moving" title="Permalink to this headline">¶</a></h2>
 <table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas._utils.file_exists.html#runpandas._utils.file_exists" title="runpandas._utils.file_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.file_exists</span></code></a>(fname)</p></td>
-<td><p>Check if a file exists and is non-empty.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas._utils.splitext_plus.html#runpandas._utils.splitext_plus" title="runpandas._utils.splitext_plus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.splitext_plus</span></code></a>(fname)</p></td>
-<td><p>Split on file extensions, allowing for zipped extensions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas._utils.is_valid.html#runpandas._utils.is_valid" title="runpandas._utils.is_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.is_valid</span></code></a>(fname)</p></td>
-<td><p>Check if it is a valid format for activity files.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas._utils.recursive_text_extract.html#runpandas._utils.recursive_text_extract" title="runpandas._utils.recursive_text_extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.recursive_text_extract</span></code></a>(node)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas._utils.sans_ns.html#runpandas._utils.sans_ns" title="runpandas._utils.sans_ns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.sans_ns</span></code></a>(tag)</p></td>
-<td><p>Remove the namespace prefix from a tag.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas._utils.get_nodes.html#runpandas._utils.get_nodes" title="runpandas._utils.get_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.get_nodes</span></code></a>(file_path, node_names, *[, …])</p></td>
-<td><p>Parse XML document and iterate over specific nodes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas._utils.camelcase_to_snakecase.html#runpandas._utils.camelcase_to_snakecase" title="runpandas._utils.camelcase_to_snakecase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_utils.camelcase_to_snakecase</span></code></a>(string)</p></td>
-<td><p>Converts the Camelcase string to snakecase string Example: ColumnName –&gt; column_name :param string: String to be converted.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.moving._InactivityAssessor.html#runpandas.types.acessors.moving._InactivityAssessor" title="runpandas.types.acessors.moving._InactivityAssessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moving._InactivityAssessor</span></code></a>(activity)</p></td>
+<td><p>Dataframe Accessor to impute the periods of inactivity, as such periods must be detected and ignored from the analysis for moving time, heart rate, speed, and power-based calculations.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.html#runpandas.types.acessors.metrics.MetricsAcessor" title="runpandas.types.acessors.metrics.MetricsAcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor</span></code></a>(activity)</p></td>
+<td><p>Dataframe Accessor to compute all available metrics from an activity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.speed.html#runpandas.types.acessors.metrics.MetricsAcessor.speed" title="runpandas.types.acessors.metrics.MetricsAcessor.speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor.speed</span></code></a>([…])</p></td>
+<td><p>Calculates the speed in meters using an Activity frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/runpandas.types.acessors.metrics.MetricsAcessor.distance.html#runpandas.types.acessors.metrics.MetricsAcessor.distance" title="runpandas.types.acessors.metrics.MetricsAcessor.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.MetricsAcessor.distance</span></code></a>([…])</p></td>
+<td><p>Calculates the distance in meters using haversine distance formula on an Activity frame.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -193,8 +214,8 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="api/runpandas.read_strava.html" title="previous page">runpandas.read_strava</a>
-    <a class='right-next' id="next-link" href="api/runpandas._utils.file_exists.html" title="next page">runpandas._utils.file_exists</a>
+    <a class='left-prev' id="prev-link" href="columns.html" title="previous page">Columns</a>
+    <a class='right-next' id="next-link" href="api/runpandas.types.acessors.moving._InactivityAssessor.html" title="next page">runpandas.types.acessors.moving._InactivityAssessor</a>
 
               </div>
               

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>runpandas._utils.camelcase_to_snakecase &#8212; runpandas 0.2.0+22.ge7572ec documentation</title>
+    <title>runpandas.types.Activity.ellapsed_time &#8212; runpandas 0.2.0+22.ge7572ec documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
@@ -36,8 +36,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Testing and Exceptions" href="../testing.html" />
-    <link rel="prev" title="runpandas._utils.get_nodes" href="runpandas._utils.get_nodes.html" />
+    <link rel="next" title="runpandas.types.Activity.moving_time" href="runpandas.types.Activity.moving_time.html" />
+    <link rel="prev" title="runpandas.types.Activity.to_pandas" href="runpandas.types.Activity.to_pandas.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -114,11 +114,11 @@
             <!-- Only show if we have sidebars configured, else just a small margin  -->
             <div class="col-12 col-md-3 bd-sidebar">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="runpandas._utils.get_nodes.html"
-                        title="previous chapter">runpandas._utils.get_nodes</a></p>
+  <p class="topless"><a href="runpandas.types.Activity.to_pandas.html"
+                        title="previous chapter">runpandas.types.Activity.to_pandas</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../testing.html"
-                        title="next chapter">Testing and Exceptions</a></p>
+  <p class="topless"><a href="runpandas.types.Activity.moving_time.html"
+                        title="next chapter">runpandas.types.Activity.moving_time</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -154,21 +154,17 @@
               
               <div>
                 
-  <div class="section" id="runpandas-utils-camelcase-to-snakecase">
-<h1>runpandas._utils.camelcase_to_snakecase<a class="headerlink" href="#runpandas-utils-camelcase-to-snakecase" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="runpandas._utils.camelcase_to_snakecase">
-<code class="sig-prename descclassname"><span class="pre">runpandas._utils.</span></code><code class="sig-name descname"><span class="pre">camelcase_to_snakecase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#runpandas._utils.camelcase_to_snakecase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts the Camelcase string to snakecase string
-Example: ColumnName –&gt; column_name
-:param string: String to be converted.
-:type string: str</p>
-<dl class="field-list simple">
+  <div class="section" id="runpandas-types-activity-ellapsed-time">
+<h1>runpandas.types.Activity.ellapsed_time<a class="headerlink" href="#runpandas-types-activity-ellapsed-time" title="Permalink to this headline">¶</a></h1>
+<dl class="py method">
+<dt id="runpandas.types.Activity.ellapsed_time">
+<em class="property"><span class="pre">property</span> </em><code class="sig-prename descclassname"><span class="pre">Activity.</span></code><code class="sig-name descname"><span class="pre">ellapsed_time</span></code><a class="headerlink" href="#runpandas.types.Activity.ellapsed_time" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dd class="field-odd"><p>The duration of activity in <cite>pandas.TimedeltaIndex</cite> object.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>The string converted to lowercase.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AttributeError if dataframe index is not an instance of TimedeltaIndex</strong> – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,8 +177,8 @@ Example: ColumnName –&gt; column_name
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="runpandas._utils.get_nodes.html" title="previous page">runpandas._utils.get_nodes</a>
-    <a class='right-next' id="next-link" href="../testing.html" title="next page">Testing and Exceptions</a>
+    <a class='left-prev' id="prev-link" href="runpandas.types.Activity.to_pandas.html" title="previous page">runpandas.types.Activity.to_pandas</a>
+    <a class='right-next' id="next-link" href="runpandas.types.Activity.moving_time.html" title="next page">runpandas.types.Activity.moving_time</a>
 
               </div>
               
