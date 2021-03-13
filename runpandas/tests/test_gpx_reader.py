@@ -151,7 +151,7 @@ def test_read_file_gpx_basic_dataframe(dirpath):
 def test_read_file_gpx_basic_activity(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "garmin_connect.gpx")
     activity = reader._read_file(gpx_file, to_df=False)
-    assert type(activity) is types.Activity
+    assert isinstance(activity, types.Activity)
     assert isinstance(activity.index, TimedeltaIndex)
     assert activity.size == 15
     included_data = set(["lat", "lon", "alt", "cad", "hr"])

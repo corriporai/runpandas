@@ -77,7 +77,7 @@ def test_read_file_tcx_basic_dataframe(dirpath):
 def test_read_file_tcx_basic_activity(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     activity = reader._read_file(tcx_file, to_df=False)
-    assert type(activity) is types.Activity
+    assert isinstance(activity, types.Activity)
     included_data = set(["lat", "lon", "alt", "dist", "hr"])
     assert included_data <= set(activity.columns.to_list())
     assert activity.size == 1915

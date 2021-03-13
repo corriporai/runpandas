@@ -1,4 +1,5 @@
 from pandas import Series
+from runpandas._utils import series_property
 
 
 class ColumnsRegistrator(type):
@@ -55,9 +56,18 @@ class Cadence(MeasureSeries):
     base_unit = "rpm"
 
 
+class DistancePerPosition(MeasureSeries):
+    colname = "distpos"
+    base_unit = "m"
+
+
 class Distance(MeasureSeries):
     colname = "dist"
     base_unit = "m"
+
+    @classmethod
+    def _from_discrete(cls, data, *args, **kwargs):
+        return cls(data.cumsum(), *args, **kwargs)
 
 
 class HeartRate(MeasureSeries):
@@ -97,6 +107,13 @@ class Power(MeasureSeries):
 class Speed(MeasureSeries):
     colname = "speed"
     base_unit = "m/s"
+
+    @series_property
+    def kph(self):
+        """
+        Returns the speed converted from m/s to km/h
+        """
+        return self * 60 ** 2 / 1000
 
 
 class Temperature(MeasureSeries):

@@ -93,7 +93,6 @@ def read_strava(
     activity = client.get_activity(activity_id)
 
     start_datetime = activity.start_date_local
-    print(start_datetime)
     streams = client.get_activity_streams(
         activity_id=activity_id, types=STREAM_TYPES, series_type="time"
     )
@@ -114,5 +113,5 @@ def read_strava(
 
     if to_df:
         return data
-    else:
-        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])
+
+    return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])

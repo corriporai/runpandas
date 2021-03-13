@@ -3,6 +3,9 @@
 import os
 import re
 from xml.etree.cElementTree import iterparse
+from functools import wraps
+from runpandas import exceptions
+from pandas import Series
 
 
 def file_exists(fname):
@@ -101,3 +104,44 @@ def camelcase_to_snakecase(string):
     """
     string = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", string)
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", string).lower()
+
+
+def special_column(required_columns, name=None):
+    """
+    Decorator for certain methods of acessors that create special columns
+    using the ``runpandas.types.MeasureSeries`` subtypes.
+
+    Parameters
+    ----------
+
+    required_columns: tuple
+        A tuple of column names.
+
+    name: str, optional.
+        The name for the returned Series object.
+    """
+
+    def real_decorator(func):
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            for column in required_columns:
+                if column not in self._activity:
+                    raise exceptions.RequiredColumnError(column)
+
+            # If it's ok so construct the new Series.
+            out = func(self, *args, **kwargs)
+            return Series(out, index=self._activity.index, name=name)
+
+        return wrapper
+
+    return real_decorator
+
+
+class series_property:
+    """A simple descriptor that emulates property, but returns a Series."""
+
+    def __init__(self, fget):
+        self.fget = fget
+
+    def __get__(self, obj, objtype=None):
+        return Series(self.fget(obj))
