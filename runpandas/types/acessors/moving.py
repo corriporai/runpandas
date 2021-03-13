@@ -14,9 +14,10 @@ class _InactivityAssessor(object):
 
     Parameters
     ----------
-    remove_stopped_periods: bool default False
-        If True, regions of data with speed below a threshold
-         will be removed from the data. Default is False.
+    threshold: float, default 0.8
+        When the speed of a record drops below the threshold speed a 'false' event
+        is set to the 'moving'column, and when the speed rises above the
+        threshold speed a 'true' event is set to the 'moving' column.
 
     Raises
     ------

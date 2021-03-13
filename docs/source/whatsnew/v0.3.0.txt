@@ -1,0 +1,32 @@
+.. _whatsnew_030:
+
+v0.3.0 (March 13, 2021)
+----------------------------
+
+This is a major release from 0.2 and includes new features and a number of bug fixes.
+
+
+Highlights include:
+
+
+.. contents:: What's new in v0.3.0
+    :local:
+    :backlinks: none
+
+.. _whatsnew_030.enhancements:
+
+New features
+~~~~~~~~~~~~
+- Added support to detect periods of inactivity in order to calculate the moving time (:issue:`11`)
+- Added testes for inactivity estimator for the activity. (:issue:`11`)
+- Added distance, elapsed_time and moving time properties for an activity and respective tests. (:issue:`12`)
+- Improvements on Docs (new reference APIs and examples) (:issue:`11` and :issue:`12`)
+- Updated examples on README
+- Added badge Zenodo.org DOI to README
+
+.. _whatsnew_030.bug_fixes:
+
+Bug Fixes
+~~~~~~~~~
+
+- Fixed the timestamp parse format with fraction when reading GPX files (:issue:`34`)

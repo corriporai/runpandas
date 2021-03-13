@@ -31,6 +31,7 @@ RunPandas depends on the following packages:
 - ``pandas``
 - ``fitparse``
 - ``stravalib``
+- ``haversine``
 
 ^^^^^^^^^^^^^^^^^^^^^
 Detailed instructions
@@ -45,7 +46,7 @@ What now
 
 - If you don’t have Runpandas yet, check :doc:`Installation <getting_started/install>`.
 
-- If you have never used RunPandas and want to get familiar with it and its core functionality quickly, see our Runpandas book.
+- If you have never used RunPandas and want to get familiar with it and its core functionality quickly, see our `Runpandas book <https://corriporai.github.io/runpandasbook/intro.html>`_.
 
 - Detailed instructions about how to work with Runpandas, how to read files or perform activity analysis are part of our :doc:`User Guide <user_guide/user_guide>`.
 

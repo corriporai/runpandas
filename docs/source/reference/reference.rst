@@ -10,6 +10,7 @@ Reference
 
   Activity <frame>
   MeasureSeries <columns>
+  Acessors <acessors>
   Input/output <io>
   Tools <tools>
   Testing <testing>
