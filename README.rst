@@ -31,6 +31,9 @@ RunPandas - Python Package for handing running data from GPS-enabled tracking de
 
 .. image:: https://mybinder.org/badge_logo.svg
  :target: https://mybinder.org/v2/gh/corriporai/runpandas/HEAD
+ 
+.. image:: https://zenodo.org/badge/272209151.svg
+   :target: https://zenodo.org/badge/latestdoi/272209151
 
 =========
 

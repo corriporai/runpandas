@@ -18,8 +18,7 @@ Highlights include:
 New features
 ~~~~~~~~~~~~
 - Added support to fetch a single activity from an registered athlete from social network Strava. (:issue:`9`)
-- Added standalone script for getting the access token for the user strava
-activities. (:issue:`9`)
+- Added standalone script for getting the access token for the user strava activities. (:issue:`9`)
 - Added badge for Pepy metrics (pepy.tech)
 - Added `runpandas.read_dir` method for iterate and read multiple tracking files located in a directory. (:issue:`10`)
 - Improvements on Docs (added new sections UserGuide, API Reference, Install Guide, Changelog) (:issue:`22`)
