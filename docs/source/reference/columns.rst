@@ -17,6 +17,9 @@ provides additional methods related to the measure evaluated.
 .. autoclass:: Cadence
    :members:
 
+.. autoclass:: DistancePerPosition
+   :members:
+
 .. autoclass:: Distance
    :members:
 

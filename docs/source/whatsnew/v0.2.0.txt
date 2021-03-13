@@ -30,4 +30,4 @@ New features
 Bug Fixes
 ~~~~~~~~~
 
-- Fixed setup.py ``find_packages``method that broke the readthedocs build procedure (:issue:`30`)
+- Fixed setup.py ``find_packages`` method that broke the readthedocs build procedure (:issue:`30`)

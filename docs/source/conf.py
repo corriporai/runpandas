@@ -45,7 +45,7 @@ templates_path = ["_templates"]
 
 
 source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
+    ".md": "recommonmark.parser.CommonMarkParser",
 }
 
 source_suffix = [".rst", ".md", ".ipynb"]
@@ -75,7 +75,7 @@ with open("_version.txt", "w") as version_file:
     version_file.write(f"Version: **{version}** Date: **{doc_date}**\n")
 
 # Default language for syntax highlighting in reST and Markdown cells:
-highlight_language = 'none'
+highlight_language = "none"
 
 language = None
 
@@ -90,7 +90,7 @@ pygments_style = "default"
 todo_include_todos = True
 
 # Don't add .txt suffix to source files:
-html_sourcelink_suffix = ''
+html_sourcelink_suffix = ""
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -116,6 +116,7 @@ html_static_path = ["_static"]
 
 html_logo = "./_static/images/runpandas_banner.png"
 html_favicon = "./_static/images/favicon.ico"
+
 
 def setup(app):
     app.add_css_file("custom.css")  # may also be an URL
@@ -156,7 +157,6 @@ nbsphinx_prolog = r"""
       </script>
     </div>
 """
-
 
 
 # Grouping the document tree into LaTeX files. List of tuples

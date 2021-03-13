@@ -47,6 +47,6 @@ setup(
     python_requires=">=3.6",
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
-    packages=find_packages(exclude=['tests*']),
+    packages=find_packages(exclude=["tests*"]),
     zip_safe=False,
 )

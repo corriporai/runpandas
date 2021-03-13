@@ -16,7 +16,7 @@ class Activity(pd.DataFrame):
     An Activity object is a pandas.DataFrame that provides useful
     methods and has specific columns with special functionalities.
     In addition to the standard DataFrame constructor arguments,
-    GeoDataFrame also accepts the following optional arguments:
+    Activity also accepts the following optional arguments:
 
     Parameters
     ----------
@@ -106,12 +106,15 @@ class Activity(pd.DataFrame):
         """
         Alternate constructor to create a ``Activity`` from a file.
 
+        It is recommended to use :func:`runpandas.reader._read_file` instead.
+
         Parameters
         ----------
-        file : str
+        file_path : str
             File path or file handle to read from. Depending on which kwargs
             are included, the content of filename may vary.
         kwargs : key-word arguments
+            These arguments are passed to reader._read_file
         """
         return runpandas.reader._read_file(file_path)
 
@@ -122,8 +125,7 @@ class Activity(pd.DataFrame):
             The duration of activity in `pandas.TimedeltaIndex` object.
 
         Raises:
-            AttributeError if dataframe index is not an instance of
-            TimedeltaIndex
+            AttributeError if dataframe index is not an instance of TimedeltaIndex
 
         """
         if isinstance(self.index, pd.TimedeltaIndex):
@@ -139,9 +141,8 @@ class Activity(pd.DataFrame):
             internal calculations.
 
         Raises:
-            AttributeError if dataframe index is not an instance of
-            TimedeltaIndex or the `moving` column is not found computed
-            from `runpandas.acessors.moving.only_moving` acessor.
+            AttributeError if dataframe index is not an instance of TimedeltaIndex
+             or the `moving` column is not found computed from `runpandas.acessors.moving.only_moving` acessor.
 
         """
         if not isinstance(self.index, pd.TimedeltaIndex):
@@ -159,6 +160,10 @@ class Activity(pd.DataFrame):
 
     @property
     def distance(self):
+        """
+        Returns:
+            The total distance of the activity in meters as a float number.
+        """
         try:
             return self["dist"].max()
         except KeyError:
