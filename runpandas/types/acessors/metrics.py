@@ -77,7 +77,6 @@ class MetricsAcessor(object):
             A Series of floats representing the distance in meters
             with the same index of the accessed activity object.
         """
-        # TODO: MUST OPTIMIZE THIS SECTION FOR HAVERSINE CALCULATION!
         self._activity["point"] = self._activity.apply(
             lambda x: (x["lat"], x["lon"]), axis=1
         )

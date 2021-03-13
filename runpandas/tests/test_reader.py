@@ -83,7 +83,7 @@ def test_read_file_tcx_basic_dataframe(dirpath):
 def test_read_file_tcx_basic_activity(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     activity = reader._read_file(tcx_file, to_df=False)
-    assert type(activity) is types.Activity
+    assert isinstance(activity, types.Activity)
     included_data = set(["lat", "lon", "alt", "dist", "hr"])
     assert included_data <= set(activity.columns.to_list())
     assert activity.size == 1915
@@ -92,8 +92,8 @@ def test_read_file_tcx_basic_activity(dirpath):
 def test_measured_series_activity(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     activity = reader._read_file(tcx_file, to_df=False)
-    assert type(activity) is types.Activity
-    assert type(activity.hr) == types.columns.HeartRate
+    assert isinstance(activity, types.Activity)
+    assert isinstance(activity.hr, types.columns.HeartRate)
     assert activity.hr.base_unit == "bpm"
     assert activity.hr.colname == "hr"
 
@@ -103,7 +103,7 @@ def test_read_full_dir(dirpath):
     ac_iterator = reader._read_dir(activities_directory, False)
     activities = [ac for ac in ac_iterator]
     assert len(activities) == 8
-    assert type(activities[0]) is types.Activity
+    assert isinstance(activities[0], types.Activity)
     size_data = set([16289, 12229, 6286, 5656, 6489, 5635, 9485, 9471])
     assert size_data == set([ac.size for ac in activities])
 

@@ -105,5 +105,5 @@ def read(file_path, to_df=False, **kwargs):
 
     if to_df:
         return data
-    else:
-        return Activity(data, cspecs=COLUMNS_SCHEMA, start=start)
+
+    return Activity(data, cspecs=COLUMNS_SCHEMA, start=start)

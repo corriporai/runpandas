@@ -59,8 +59,8 @@ def strava_activity(dirpath, mocker):
     # we don't use access token here, since we will mock the stravalib json response
     activity = read_strava(
         activity_id=4437021783,
-        access_token="youraccesstoken",
-        refresh_token="yourrefreshtoken",
+        access_token=None,
+        refresh_token=None,
         to_df=False,
     )
     return activity
@@ -81,8 +81,8 @@ def strava_dataframe(dirpath, mocker):
     # we don't use access token here, since we will mock the stravalib json response
     activity = read_strava(
         activity_id=4437021783,
-        access_token="youraccesstoken",
-        refresh_token="yourrefreshtoken",
+        access_token=None,
+        refresh_token=None,
         to_df=True,
     )
     return activity
@@ -102,8 +102,8 @@ def test_read_strava_basic_dataframe(dirpath, mocker):
     # we don't use access token here, since we will mock the stravalib json response
     activity = read_strava(
         activity_id=4437021783,
-        access_token="youraccesstoken",
-        refresh_token="yourrefreshtoken",
+        access_token=None,
+        refresh_token=None,
         to_df=True,
     )
     assert isinstance(activity, DataFrame)
@@ -139,11 +139,11 @@ def test_read_strava_activity(dirpath, mocker):
     # we don't use access token here, since we will mock the stravalib json response
     activity = read_strava(
         activity_id=4437021783,
-        access_token="youraccesstoken",
-        refresh_token="yourrefreshtoken",
+        access_token=None,
+        refresh_token=None,
         to_df=False,
     )
-    assert type(activity) is types.Activity
+    assert isinstance(activity, types.Activity)
     included_data = set(
         [
             "alt",

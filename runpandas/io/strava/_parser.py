@@ -113,5 +113,5 @@ def read_strava(
 
     if to_df:
         return data
-    else:
-        return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])
+
+    return Activity(data, cspecs=COLUMNS_SCHEMA, start=timestamps[0])
