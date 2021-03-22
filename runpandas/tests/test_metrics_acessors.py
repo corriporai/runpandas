@@ -142,6 +142,15 @@ def test_speed_validate(dirpath):
         activity_gpx.compute.speed(from_distances=False)
 
 
+def test_vam_validate(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_without_required_column = activity_gpx.drop(["alt"], axis=1)
+    assert "alt" not in activity_without_required_column.columns
+    with pytest.raises(RequiredColumnError):
+        activity_without_required_column.compute.vertical_speed()
+
+
 test_speed_gpx_data = [
     (pytest.lazy_fixture("runpandas_gpx_activity"), "speed", -1, 2.5467187265504045),
     (pytest.lazy_fixture("runpandas_gpx_activity"), "speed", 2, 2.559080934884675),
@@ -164,4 +173,24 @@ test_speed_tcx_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_speed_tcx_data)
 def test_metrics_from_recording_speed(activity, column, index, expected):
     activity["speed"] = activity.compute.speed(from_distances=False)
+    assert activity[column].iloc[index] == expected
+
+test_vam_gpx_data = [
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "vam", -4, 0.02499999999999991),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "vam", -5, 0.0),
+]
+
+@pytest.mark.parametrize("activity,column,index,expected", test_vam_gpx_data)
+def test_metrics_gpx_vam(activity, column, index, expected):
+    activity["vam"] = activity.compute.vertical_speed()
+    assert activity[column].iloc[index] == expected
+
+
+test_vam_tcx_data = [
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "vam", -1, -0.004166500000000073),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "vam", 3, 0.018022000000000205),
+]
+@pytest.mark.parametrize("activity,column,index,expected", test_vam_tcx_data)
+def test_metrics_tcx_vam(activity, column, index, expected):
+    activity["vam"] = activity.compute.vertical_speed()
     assert activity[column].iloc[index] == expected

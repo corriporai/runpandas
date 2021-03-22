@@ -119,3 +119,7 @@ class Speed(MeasureSeries):
 class Temperature(MeasureSeries):
     colname = "temp"
     base_unit = "degrees_C"
+
+class VAM(MeasureSeries):
+    colname = 'vam'
+    base_unit = 'm/s'
