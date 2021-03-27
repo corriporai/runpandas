@@ -151,11 +151,26 @@ def test_vam_validate(dirpath):
         activity_without_required_column.compute.vertical_speed()
 
 
+def test_gradient_validate(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_without_required_column = activity_gpx.drop(["alt"], axis=1)
+    assert "alt" not in activity_without_required_column.columns
+    with pytest.raises(RequiredColumnError):
+        activity_without_required_column.compute.gradient()
+
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_gpx['distpos'] = activity_gpx.compute.distance()
+    assert "dist" not in activity_gpx.columns
+    with pytest.raises(RequiredColumnError):
+        activity_gpx.compute.gradient()
+
+
+
 test_speed_gpx_data = [
     (pytest.lazy_fixture("runpandas_gpx_activity"), "speed", -1, 2.5467187265504045),
     (pytest.lazy_fixture("runpandas_gpx_activity"), "speed", 2, 2.559080934884675),
 ]
-
 
 @pytest.mark.parametrize("activity,column,index,expected", test_speed_gpx_data)
 def test_metrics_from_distances_speed(activity, column, index, expected):
@@ -193,4 +208,25 @@ test_vam_tcx_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_vam_tcx_data)
 def test_metrics_tcx_vam(activity, column, index, expected):
     activity["vam"] = activity.compute.vertical_speed()
+    assert activity[column].iloc[index] == expected
+
+test_gradient_gpx_data = [
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "grad", -4, 0.006652869371284877),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "grad", -5, 0.0),
+]
+
+@pytest.mark.parametrize("activity,column,index,expected", test_gradient_gpx_data)
+def test_metrics_gpx_gradient(activity, column, index, expected):
+    activity["distpos"] = activity.compute.distance()
+    activity["dist"] = activity['distpos'].distance
+    activity['grad'] = activity.compute.gradient()
+    assert activity[column].iloc[index] == expected
+
+test_gradient_tcx_data = [
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "grad", -1, -0.0013069369604063105),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "grad", 3, 0.005967282919472209),
+]
+@pytest.mark.parametrize("activity,column,index,expected", test_gradient_tcx_data)
+def test_metrics_tcx_gradient(activity, column, index, expected):
+    activity['grad'] = activity.compute.gradient()
     assert activity[column].iloc[index] == expected

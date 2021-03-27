@@ -172,3 +172,32 @@ class MetricsAcessor(object):
             vam = columns.VAM(vam)
 
         return vam
+
+    @special_column(required_columns=('alt','dist'), name="grad")
+    def gradient(self, to_special_column=True, **kwargs):
+        """
+        Calculates the gradient ratio from an Activity frame.
+
+        Parameters
+        ----------
+        to_special_column: convert the distance calculated (`pandas.Series`)
+            to special runpandas Gradient column (`runpandas.types.columns.Gradient`).
+            Default is True.
+
+        **kwargs: Keyword args to be passed to the Gradient build method
+
+        Returns
+        -------
+        grad: `pandas.Series` or `runpandas.types.columns.Gradient`
+            A Series of floats representing the vertical altitude speed in meters
+            with the same index of the accessed activity object.
+
+        """
+        alt = self._activity['alt'].diff()
+        dist = self._activity['dist'].diff()
+
+        grad = alt / dist
+        if to_special_column:
+            grad = columns.Gradient(rise=alt, run=dist)
+
+        return grad

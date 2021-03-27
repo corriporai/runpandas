@@ -1,3 +1,4 @@
+import numpy as np
 from pandas import Series
 from runpandas._utils import series_property
 
@@ -60,6 +61,12 @@ class DistancePerPosition(MeasureSeries):
     colname = "distpos"
     base_unit = "m"
 
+    @series_property
+    def distance(self):
+        """
+        Returns the cummulative distance
+        """
+        return Distance._from_discrete(self)
 
 class Distance(MeasureSeries):
     colname = "dist"
@@ -123,3 +130,37 @@ class Temperature(MeasureSeries):
 class VAM(MeasureSeries):
     colname = 'vam'
     base_unit = 'm/s'
+
+class Gradient(MeasureSeries):
+    colname = 'grad'
+    base_unit = 'fraction'
+
+    _metadata = ['_rise', '_run'] + MeasureSeries._metadata
+
+    def __init__(self, *args, rise=None, run=None, **kwargs):
+        if rise is not None and run is not None:
+            super().__init__(rise / run, *args, **kwargs)
+            self._rise, self._run = rise.values, run.values
+        else:
+            super().__init__(*args, **kwargs)
+            self._rise, self._run = None, None
+
+    def set_attrs(self, **kwargs):
+        for attr in self._metadata:
+            if attr in kwargs:
+                self.__setattr__(attr, kwargs.get(attr))
+
+    @series_property
+    def pct(self):
+        """ It converts the fraction to percent (%) """
+        return self * 100
+
+    @series_property
+    def radians(self):
+        """ It converts fraction to radians """
+        return np.arctan2(self._rise, self._run)
+
+    @series_property
+    def degrees(self):
+        """ It converts fraction to degrees """
+        return np.rad2deg(np.arctan2(self._rise, self._run))

@@ -6,10 +6,9 @@ import warnings
 
 import numpy as np
 import pandas as pd
-from pandas.core.frame import DataFrame
 import runpandas.reader
+from pandas.core.frame import DataFrame, Series
 from runpandas.types import columns
-
 
 class Activity(pd.DataFrame):
     """
@@ -98,6 +97,9 @@ class Activity(pd.DataFrame):
             result.__class__ = columns.ColumnsRegistrator.REGISTRY[key]
         elif isinstance(result, pd.DataFrame):
             result.__class__ = Activity
+
+        if isinstance(result, columns.Gradient):
+            result.set_attrs(_rise=self['alt'].diff().values, _run=self['dist'].diff().values)
 
         return result
 
