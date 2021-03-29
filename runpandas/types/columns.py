@@ -145,7 +145,8 @@ class Gradient(MeasureSeries):
             super().__init__(*args, **kwargs)
             self._rise, self._run = None, None
 
-    def set_attrs(self, **kwargs):
+    #support method to metadata setup
+    def _set_attrs(self, **kwargs):
         for attr in self._metadata:
             if attr in kwargs:
                 self.__setattr__(attr, kwargs.get(attr))

@@ -99,7 +99,7 @@ class Activity(pd.DataFrame):
             result.__class__ = Activity
 
         if isinstance(result, columns.Gradient):
-            result.set_attrs(_rise=self['alt'].diff().values, _run=self['dist'].diff().values)
+            result._set_attrs(_rise=self['alt'].diff().values, _run=self['dist'].diff().values)
 
         return result
 
