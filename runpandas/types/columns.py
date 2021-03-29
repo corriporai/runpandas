@@ -53,11 +53,17 @@ class Altitude(MeasureSeries):
 
     @property
     def ascent(self):
+        """
+        Returns the ascent altitudes during the activity.
+        """
         deltas = self.diff()
         return Altitude(np.where(deltas > 0, deltas, 0), index=self.index)
 
     @property
     def descent(self):
+        """
+        Returns the descent altitudes during the activity.
+        """
         deltas = self.diff()
         return Altitude(np.where(deltas < 0, deltas, 0), index=self.index)
 
