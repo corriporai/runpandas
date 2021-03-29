@@ -130,6 +130,10 @@ class LonLat(MeasureSeries):
         deg = (data * 180 / 2 ** 31 + 180) % 360 - 180
         return cls(deg, *args, **kwargs)
 
+    @series_property
+    def radians(self):
+        """Returns the coordinates from degrees to radians """
+        return np.radians(self)
 
 class Longitude(LonLat):
     colname = "lon"
