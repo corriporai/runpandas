@@ -67,7 +67,10 @@ class Altitude(MeasureSeries):
         deltas = self.diff()
         return Altitude(np.where(deltas < 0, deltas, 0), index=self.index)
 
-
+    @series_property
+    def ft(self):
+        """ Returns the altitude from metres to feet """
+        return self * 3.28084
 
 class Cadence(MeasureSeries):
     colname = "cad"
@@ -77,12 +80,22 @@ class DistancePerPosition(MeasureSeries):
     colname = "distpos"
     base_unit = "m"
 
-    @series_property
+    @property
     def distance(self):
         """
         Returns the cummulative distance
         """
         return Distance._from_discrete(self)
+
+    @series_property
+    def km(self):
+        """ Returns the distance converted from metres to kilometres """
+        return self / 1000
+
+    @series_property
+    def miles(self):
+        """ Returns the distance converted from metres to miles """
+        return self / 1000 * 0.621371
 
 class Distance(MeasureSeries):
     colname = "dist"
@@ -92,6 +105,15 @@ class Distance(MeasureSeries):
     def _from_discrete(cls, data, *args, **kwargs):
         return cls(data.cumsum(), *args, **kwargs)
 
+    @series_property
+    def km(self):
+        """ Returns the distance converted from metres to kilometres """
+        return self / 1000
+
+    @series_property
+    def miles(self):
+        """ Returns the distance converted from metres to miles """
+        return self / 1000 * 0.621371
 
 class HeartRate(MeasureSeries):
     colname = "hr"

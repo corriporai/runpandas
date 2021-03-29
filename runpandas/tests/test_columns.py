@@ -22,6 +22,26 @@ def test_altitude_ascent_descent(dirpath):
     assert (activity_tcx["alt"].descent[-1]) == -1.4420166019999954
     assert (activity_tcx["alt"].descent[-5]) ==  0.0
 
+def test_distance_miles(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_gpx['distpos']  = activity_gpx.compute.distance()
+    # test distpos conversion (meters to miles)
+    assert (activity_gpx["distpos"].miles[-1]) == 0.0031649143236707027
+    # test distance conversion (meters to miles)
+    distance = activity_gpx["distpos"].distance
+    assert (distance.miles[-1]) == 7.825950111157077
+
+def test_distance_km(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_gpx['distpos']  = activity_gpx.compute.distance()
+    # test distpos conversion (meters to miles)
+    assert (activity_gpx["distpos"].km[-1]) == 0.005093437453100809
+    # test distance conversion (meters to miles)
+    distance = activity_gpx["distpos"].distance
+    assert (distance.km[-1]) == 12.594649752172337
+
 def test_speed_kmh(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
     activity_tcx = reader._read_file(tcx_file, to_df=False)
