@@ -13,6 +13,14 @@ pytestmark = pytest.mark.stable
 def dirpath(datapath):
     return datapath("io", "data")
 
+def test_altitude_ascent_descent(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    # test ascent and descent altitudes
+    assert (activity_tcx["alt"].ascent[-5]) == 0.4805908200000033
+    assert (activity_tcx["alt"].ascent[-1]) == 0.0
+    assert (activity_tcx["alt"].descent[-1]) == -1.4420166019999954
+    assert (activity_tcx["alt"].descent[-5]) ==  0.0
 
 def test_speed_kmh(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")

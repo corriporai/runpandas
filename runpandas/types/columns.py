@@ -51,11 +51,21 @@ class Altitude(MeasureSeries):
     colname = "alt"
     base_unit = "m"
 
+    @property
+    def ascent(self):
+        deltas = self.diff()
+        return Altitude(np.where(deltas > 0, deltas, 0), index=self.index)
+
+    @property
+    def descent(self):
+        deltas = self.diff()
+        return Altitude(np.where(deltas < 0, deltas, 0), index=self.index)
+
+
 
 class Cadence(MeasureSeries):
     colname = "cad"
     base_unit = "rpm"
-
 
 class DistancePerPosition(MeasureSeries):
     colname = "distpos"
