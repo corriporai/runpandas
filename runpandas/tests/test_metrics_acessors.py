@@ -230,3 +230,37 @@ test_gradient_tcx_data = [
 def test_metrics_tcx_gradient(activity, column, index, expected):
     activity['grad'] = activity.compute.gradient()
     assert activity[column].iloc[index] == expected
+
+
+def test_pace_validate(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+
+    with pytest.raises(RequiredColumnError):
+        activity_gpx = reader._read_file(gpx_file, to_df=False)
+        assert "speed" not in activity_gpx.columns
+        activity_gpx.compute.pace()
+
+test_pace_tcx_data = [
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", -1, 0.4235906081490361),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", 3, 0.44984801884683256),
+]
+@pytest.mark.parametrize("activity,column,index,expected", test_pace_tcx_data)
+def test_metrics_tcx_pace(activity, column, index, expected):
+    activity["speed"] = activity.compute.speed(from_distances=False)
+    activity['pace'] = activity.compute.pace()
+    assert activity[column].iloc[index] == expected
+
+
+
+test_pace_gpx_data = [
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", -1, 0.3926621301263707),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", 2, 0.3907652885722683),
+]
+
+@pytest.mark.parametrize("activity,column,index,expected", test_pace_gpx_data)
+def test_metrics_gpx_pace(activity, column, index, expected):
+    activity["distpos"] = activity.compute.distance(correct_distance=True)
+    activity["speed"] = activity.compute.speed(from_distances=True)
+    activity["pace"] = activity.compute.pace()
+
+    assert activity[column].iloc[index] == expected

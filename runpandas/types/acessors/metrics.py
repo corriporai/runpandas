@@ -201,3 +201,32 @@ class MetricsAcessor(object):
             grad = columns.Gradient(rise=alt, run=dist)
 
         return grad
+
+    @special_column(required_columns=('speed',), name="pace")
+    def pace(self, to_special_column=True, **kwargs):
+        """
+        Calculates the pace (the time that it takes to cover distances in your activities).
+
+        Parameters
+        ----------
+        to_special_column: convert the pace calculated (`pandas.Series`)
+            to special runpandas Pace column (`runpandas.types.columns.Pace`).
+            Default is True.
+
+        **kwargs: Keyword args to be passed to the Pace build method
+
+        Returns
+        -------
+        pace: `pandas.Series` or `runpandas.types.columns.Pace`
+            A Series of floats representing the pace in meters per second
+            with the same index of the accessed activity object.
+
+        """
+        speed = self._activity['speed']
+
+        pace = 1 / speed
+
+        if to_special_column:
+            pace = columns.Pace(pace)
+
+        return pace
