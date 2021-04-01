@@ -147,6 +147,15 @@ class Pace(MeasureSeries):
     colname = "pace"
     base_unit = "sec/m"
 
+    @series_property
+    def min_per_km(self):
+        return self * 1000
+
+    @series_property
+    def min_per_mile(self):
+        return self * 1000 / 1.61
+
+
 
 class Power(MeasureSeries):
     colname = "pwr"

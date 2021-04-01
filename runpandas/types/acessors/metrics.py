@@ -224,7 +224,8 @@ class MetricsAcessor(object):
         """
         speed = self._activity['speed']
 
-        pace = 1 / speed
+        pace = pd.to_timedelta(1/ speed, unit='s')
+        #pace = (1 / speed).apply(pd.Timedelta, args=('s',))
 
         if to_special_column:
             pace = columns.Pace(pace)

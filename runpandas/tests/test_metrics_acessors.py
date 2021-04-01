@@ -5,6 +5,7 @@ Test module for runpandas acessors
 import os
 
 import pytest
+import pandas as pd
 from runpandas import reader
 from runpandas.exceptions import RequiredColumnError
 from runpandas.types import columns
@@ -241,20 +242,20 @@ def test_pace_validate(dirpath):
         activity_gpx.compute.pace()
 
 test_pace_tcx_data = [
-    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", -1, 0.4235906081490361),
-    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", 3, 0.44984801884683256),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", -1, pd.Timedelta('0 days 00:00:00.423590', unit='s')),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "pace", 3, pd.Timedelta('0 days 00:00:00.449848', unit='s')),
 ]
 @pytest.mark.parametrize("activity,column,index,expected", test_pace_tcx_data)
 def test_metrics_tcx_pace(activity, column, index, expected):
     activity["speed"] = activity.compute.speed(from_distances=False)
     activity['pace'] = activity.compute.pace()
-    assert activity[column].iloc[index] == expected
+    assert activity[column].iloc[index].total_seconds() == pytest.approx(expected.total_seconds(), 0.1)
 
 
 
 test_pace_gpx_data = [
-    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", -1, 0.3926621301263707),
-    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", 2, 0.3907652885722683),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", -1, pd.Timedelta('0 days 00:00:00.392662', unit='s')),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "pace", 2, pd.Timedelta('0 days 00:00:00.390765', unit='s')),
 ]
 
 @pytest.mark.parametrize("activity,column,index,expected", test_pace_gpx_data)
@@ -262,5 +263,4 @@ def test_metrics_gpx_pace(activity, column, index, expected):
     activity["distpos"] = activity.compute.distance(correct_distance=True)
     activity["speed"] = activity.compute.speed(from_distances=True)
     activity["pace"] = activity.compute.pace()
-
-    assert activity[column].iloc[index] == expected
+    assert activity[column].iloc[index].total_seconds() == pytest.approx(expected.total_seconds())

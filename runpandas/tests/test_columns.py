@@ -4,6 +4,7 @@ Test module for runpandas column types (i.e. MeasureSeries)
 
 import os
 import pytest
+import pandas as pd
 from runpandas import reader
 
 pytestmark = pytest.mark.stable
@@ -78,3 +79,17 @@ def test_latlon_radians(dirpath):
     activity_tcx = reader._read_file(tcx_file, to_df=False)
     assert(activity_tcx['lat'].radians[-1]) == 0.6274799778819853
     assert(activity_tcx['lon'].radians[-1]) == -1.3804335163227985
+
+def test_pace_min_km(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    activity_tcx['speed'] = activity_tcx.compute.speed()
+    activity_tcx['pace'] = activity_tcx.compute.pace()
+    assert(activity_tcx['pace'].min_per_km[-1]) == pd.Timedelta('0 days 00:07:03.590608')
+
+def test_pace_min_mile(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    activity_tcx['speed'] = activity_tcx.compute.speed()
+    activity_tcx['pace'] = activity_tcx.compute.pace()
+    assert(activity_tcx['pace'].min_per_mile[-1].total_seconds()) == pytest.approx(pd.Timedelta('0 days 00:04:23.099756').total_seconds())
