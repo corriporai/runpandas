@@ -1,5 +1,5 @@
 import numpy as np
-from pandas import Series
+from pandas import Series, to_timedelta
 from runpandas._utils import series_property
 
 
@@ -80,8 +80,7 @@ class DistancePerPosition(MeasureSeries):
     colname = "distpos"
     base_unit = "m"
 
-    @property
-    def distance(self):
+    def to_distance(self):
         """
         Returns the cummulative distance
         """
@@ -149,10 +148,16 @@ class Pace(MeasureSeries):
 
     @series_property
     def min_per_km(self):
+        """
+        Returns the pace converted from sec/m to min/km
+        """
         return self * 1000
 
     @series_property
     def min_per_mile(self):
+        """
+        Returns the pace converted from sec/m to min/mile
+        """
         return self * 1000 / 1.61
 
 
@@ -166,6 +171,10 @@ class Speed(MeasureSeries):
     colname = "speed"
     base_unit = "m/s"
 
+    def to_pace(self):
+        pace = to_timedelta(1/ self, unit='s')
+        return Pace(pace)
+
     @series_property
     def kph(self):
         """
@@ -173,6 +182,13 @@ class Speed(MeasureSeries):
         """
         return self * 60 ** 2 / 1000
 
+    @property
+    def mph(self):
+        """
+        Returns the speed converted from m/s to miles/h
+        """
+        # self.kph is already a Series
+        return self.kph / 1.61
 
 class Temperature(MeasureSeries):
     colname = "temp"

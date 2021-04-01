@@ -219,7 +219,7 @@ test_gradient_gpx_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_gradient_gpx_data)
 def test_metrics_gpx_gradient(activity, column, index, expected):
     activity["distpos"] = activity.compute.distance()
-    activity["dist"] = activity['distpos'].distance
+    activity["dist"] = activity['distpos'].to_distance()
     activity['grad'] = activity.compute.gradient()
     assert activity[column].iloc[index] == expected
 

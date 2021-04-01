@@ -30,7 +30,7 @@ def test_distance_miles(dirpath):
     # test distpos conversion (meters to miles)
     assert (activity_gpx["distpos"].miles[-1]) == 0.0031649143236707027
     # test distance conversion (meters to miles)
-    distance = activity_gpx["distpos"].distance
+    distance = activity_gpx["distpos"].to_distance()
     assert (distance.miles[-1]) == 7.825950111157077
 
 def test_distance_km(dirpath):
@@ -40,7 +40,7 @@ def test_distance_km(dirpath):
     # test distpos conversion (meters to miles)
     assert (activity_gpx["distpos"].km[-1]) == 0.005093437453100809
     # test distance conversion (meters to miles)
-    distance = activity_gpx["distpos"].distance
+    distance = activity_gpx["distpos"].to_distance()
     assert (distance.km[-1]) == 12.594649752172337
 
 def test_speed_kmh(dirpath):
@@ -49,12 +49,26 @@ def test_speed_kmh(dirpath):
     # test conversion method m/s to km/h
     assert (activity_tcx["speed"].kph[-1]) == 8.498772
 
+def test_speed_mph(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    # test conversion method m/s to miles/h
+    assert (activity_tcx["speed"].mph[-1]) == 5.278740372670808
+
+def test_speed_topace(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    activity_gpx = reader._read_file(gpx_file, to_df=False)
+    activity_gpx["distpos"] = activity_gpx.compute.distance(correct_distance=True)
+    activity_gpx["speed"] = activity_gpx.compute.speed(from_distances=True)
+    expected = pd.Timedelta('0 days 00:00:00.392662', unit='s')
+    assert activity_gpx['speed'].to_pace()[-1].total_seconds() ==  pytest.approx(expected.total_seconds())
+
 def test_distpos_distance(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
     activity_gpx = reader._read_file(gpx_file, to_df=False)
     activity_gpx['distpos']  = activity_gpx.compute.distance()
     # test distpos to distance
-    assert (activity_gpx["distpos"].distance[-1]) == 12594.649752172338
+    assert (activity_gpx["distpos"].to_distance()[-1]) == 12594.649752172338
 
 def test_gradient_pct(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
