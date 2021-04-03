@@ -171,3 +171,37 @@ class Activity(pd.DataFrame):
             return self["dist"].max()
         except KeyError:
             return self["distpos"].sum()
+
+    def mean_speed(self, only_moving=False, smoothing=True):
+        """
+        It calculates the average speed based on the speed trace.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        smoothing: boolean, optional. If True, it calculates average speed based on total
+        distance divided by total time. Default is True.
+
+        Returns:
+        --------
+            The average speed in meters/second for the activity.
+        """
+        if "speed" not in self.columns:
+            raise AttributeError("speed column not found in activity.")
+
+        if only_moving:
+            total_time = self.moving_time
+            activity = self[self['moving']]
+        else:
+            total_time = self.ellapsed_time
+            activity = self
+
+        if smoothing:
+            time_diff = (self.index.to_series().diff().fillna(self.index[0])) / np.timedelta64(1, "s")
+            total_distance = (activity["speed"] * time_diff).sum()
+        else:
+            total_distance = self.distance
+
+        return (total_distance / total_time.total_seconds())

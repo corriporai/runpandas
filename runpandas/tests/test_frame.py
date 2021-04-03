@@ -91,3 +91,25 @@ def test_distance_frame(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
     activity_tcx = reader._read_file(tcx_file, to_df=False)
     assert round(activity_tcx.distance, 2) == 12007.99
+
+
+def test_mean_speed_frame(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    frame_no_speed = reader._read_file(gpx_file, to_df=False)
+    with pytest.raises(AttributeError):
+        _ = frame_no_speed.mean_speed()
+
+    frame_gpx = reader._read_file(gpx_file, to_df=False)
+    frame_gpx["distpos"] = frame_gpx.compute.distance(correct_distance=False)
+    frame_gpx["speed"] = frame_gpx.compute.speed(from_distances=True)
+    frame_gpx_only_moving = frame_gpx.only_moving()
+
+    #Calculate the mean speed with only moving  and smoothing using speed (m/s)
+    assert (frame_gpx_only_moving.mean_speed(only_moving=True, smoothing=True)) == 2.7966895287728653
+    #Calculate the mean speed with only moving  and no smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_speed(only_moving=True, smoothing=False)) == 2.807545642481572
+
+    #Calculate the mean speed with all data  and no smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_speed(only_moving=False, smoothing=False)) == 2.4565339871605874
+    #Calculate the mean speed with all data  and smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_speed(only_moving=False, smoothing=True)) == 2.4565339871605874
