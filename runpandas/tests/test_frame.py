@@ -107,9 +107,27 @@ def test_mean_speed_frame(dirpath):
     #Calculate the mean speed with only moving  and smoothing using speed (m/s)
     assert (frame_gpx_only_moving.mean_speed(only_moving=True, smoothing=True)) == 2.7966895287728653
     #Calculate the mean speed with only moving  and no smoothing (total distance)
-    assert (frame_gpx_only_moving.mean_speed(only_moving=True, smoothing=False)) == 2.807545642481572
+    assert (frame_gpx_only_moving.mean_speed(only_moving=True, smoothing=False)) == 2.7966895287728653
 
     #Calculate the mean speed with all data  and no smoothing (total distance)
     assert (frame_gpx_only_moving.mean_speed(only_moving=False, smoothing=False)) == 2.4565339871605874
     #Calculate the mean speed with all data  and smoothing (total distance)
     assert (frame_gpx_only_moving.mean_speed(only_moving=False, smoothing=True)) == 2.4565339871605874
+
+
+def test_mean_heartrate_frame(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    frame = reader._read_file(gpx_file, to_df=False)
+    frame_no_hr = frame.drop(['hr'], axis=1)
+    with pytest.raises(AttributeError):
+        _ = frame_no_hr.mean_heart_rate()
+
+
+    frame_gpx = reader._read_file(gpx_file, to_df=False)
+    frame_gpx["distpos"] = frame_gpx.compute.distance(correct_distance=False)
+    frame_gpx["speed"] = frame_gpx.compute.speed(from_distances=True)
+
+    frame_gpx_only_moving = frame_gpx.only_moving()
+
+    assert (frame_gpx_only_moving.mean_heart_rate(only_moving=False)) == 151.22097819681792
+    assert (frame_gpx_only_moving.mean_heart_rate(only_moving=True)) == 151.90203327171903

@@ -202,6 +202,31 @@ class Activity(pd.DataFrame):
             time_diff = (self.index.to_series().diff().fillna(self.index[0])) / np.timedelta64(1, "s")
             total_distance = (activity["speed"] * time_diff).sum()
         else:
-            total_distance = self.distance
+            total_distance = activity.distance
 
         return (total_distance / total_time.total_seconds())
+
+
+    def mean_heart_rate(self, only_moving=False):
+        """
+        It calculates the average heart rate based on the heart rate tracked
+        by HeartRate Series column.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        Returns:
+        --------
+            The average heart zone in bpm for the activity.
+        """
+        if "hr" not in self.columns:
+            raise AttributeError("heart rate column not found in activity.")
+
+        if only_moving:
+            activity = self[self['moving']]
+        else:
+            activity = self
+
+        return activity['hr'].mean()
