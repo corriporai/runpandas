@@ -131,3 +131,21 @@ def test_mean_heartrate_frame(dirpath):
 
     assert (frame_gpx_only_moving.mean_heart_rate(only_moving=False)) == 151.22097819681792
     assert (frame_gpx_only_moving.mean_heart_rate(only_moving=True)) == 151.90203327171903
+
+
+def test_mean_cadence_frame(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    frame = reader._read_file(gpx_file, to_df=False)
+    frame_no_cadence = frame.drop(['cad'], axis=1)
+    with pytest.raises(AttributeError):
+        _ = frame_no_cadence.mean_cadence()
+
+
+    frame_gpx = reader._read_file(gpx_file, to_df=False)
+    frame_gpx["distpos"] = frame_gpx.compute.distance(correct_distance=False)
+    frame_gpx["speed"] = frame_gpx.compute.speed(from_distances=True)
+
+    frame_gpx_only_moving = frame_gpx.only_moving()
+
+    assert (frame_gpx_only_moving.mean_cadence(only_moving=False)) == 84.99764289923394
+    assert (frame_gpx_only_moving.mean_cadence(only_moving=True)) == 85.96118299445472

@@ -230,3 +230,28 @@ class Activity(pd.DataFrame):
             activity = self
 
         return activity['hr'].mean()
+
+
+    def mean_cadence(self, only_moving=False):
+        """
+        It calculates the average cadence based on the cadence tracked
+        by Cadence Series column.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        Returns:
+        --------
+            The average cadence in rotation per minute (rpm) for the activity.
+        """
+        if "cad" not in self.columns:
+                raise AttributeError("Cadence column not found in activity.")
+
+        if only_moving:
+            activity = self[self['moving']]
+        else:
+            activity = self
+
+        return activity['cad'].mean()
