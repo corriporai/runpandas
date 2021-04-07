@@ -149,3 +149,27 @@ def test_mean_cadence_frame(dirpath):
 
     assert (frame_gpx_only_moving.mean_cadence(only_moving=False)) == 84.99764289923394
     assert (frame_gpx_only_moving.mean_cadence(only_moving=True)) == 85.96118299445472
+
+
+def test_mean_pace_frame(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
+    frame = reader._read_file(gpx_file, to_df=False)
+    with pytest.raises(AttributeError):
+        _ = frame.mean_pace()
+
+
+    frame_gpx = reader._read_file(gpx_file, to_df=False)
+    frame_gpx["distpos"] = frame_gpx.compute.distance(correct_distance=False)
+    frame_gpx["speed"] = frame_gpx.compute.speed(from_distances=True)
+
+    frame_gpx_only_moving = frame_gpx.only_moving()
+
+    #Calculate the mean pace with only moving  and smoothing using speed (m/s)
+    assert (frame_gpx_only_moving.mean_pace(only_moving=True, smoothing=True)) == Timedelta('0 days 00:00:00.357566')
+    #Calculate the mean pace with only moving  and no smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_pace(only_moving=True, smoothing=False)) == Timedelta('0 days 00:00:00.357566')
+
+    #Calculate the mean pace with all data  and no smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=False)) == Timedelta('0 days 00:00:00.407078')
+    #Calculate the mean pace with all data  and smoothing (total distance)
+    assert (frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=True)) == Timedelta('0 days 00:00:00.407078')

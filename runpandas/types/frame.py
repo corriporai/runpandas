@@ -7,6 +7,7 @@ import warnings
 import numpy as np
 import pandas as pd
 import runpandas.reader
+import math
 from pandas.core.frame import DataFrame, Series
 from runpandas.types import columns
 
@@ -206,6 +207,24 @@ class Activity(pd.DataFrame):
 
         return (total_distance / total_time.total_seconds())
 
+    def mean_pace(self, only_moving=False, smoothing=True):
+        """
+        It calculates the average pace based on the speed trace.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        smoothing: boolean, optional. If True, it calculates average pace based on total
+        distance divided by total time. Default is True.
+
+        Returns:
+        --------
+            The average pace in sec/m for the activity.
+        """
+        speed = self.mean_speed(only_moving, smoothing)
+        return pd.Timedelta(seconds= 1 / speed)
 
     def mean_heart_rate(self, only_moving=False):
         """
