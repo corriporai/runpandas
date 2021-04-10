@@ -5,7 +5,8 @@ Test module for runpandas frame types (i.e. Activity)
 
 import os
 import pytest
-from pandas import Timedelta
+import numpy as np
+from pandas import Timedelta, Timestamp
 from runpandas import reader
 
 pytestmark = pytest.mark.stable
@@ -173,3 +174,77 @@ def test_mean_pace_frame(dirpath):
     assert (frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=False)) == Timedelta('0 days 00:00:00.407078')
     #Calculate the mean pace with all data  and smoothing (total distance)
     assert (frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=True)) == Timedelta('0 days 00:00:00.407078')
+
+
+def convert_pace_secmeters2minkms(seconds):
+    pace_min = int((seconds * 1000)/60)
+    pace_sec = int(seconds * 1000 - (pace_min*60))
+    total_seconds = (pace_min * 60) + pace_sec
+    return Timedelta(seconds=total_seconds)
+
+def test_full_activity(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
+    frame_tcx = reader._read_file(tcx_file, to_df=False)
+
+    #test_hr_values_are_correct
+    assert frame_tcx['hr'].iloc[-1] == 180
+    assert frame_tcx['hr'].iloc[0] == 62
+
+    #test_altitude_points_are_correct
+    assert frame_tcx['alt'].iloc[-1] == 166.4453125
+    assert frame_tcx['alt'].iloc[0] == 178.942626953
+
+    #test_time_values_are_correct
+    assert frame_tcx.index[-1] ==  Timedelta('0 days 00:33:11')
+    assert frame_tcx.index[0] == Timedelta('0 days 00:00:00')
+
+    #test_time_values_are_correct
+    assert frame_tcx.start ==  Timestamp("2012-12-26 21:29:53+00:00")
+
+    #test_latitude_is_correct
+    assert frame_tcx['lat'].iloc[0] == 35.951880198
+    assert frame_tcx['lon'].iloc[0] == -79.0931872185
+
+    #test_distance_is_correct
+    assert frame_tcx.distance ==  4686.31103516
+
+    #test_duration_is_correct (we don't consider fraction time)
+    assert frame_tcx.ellapsed_time.total_seconds() ==  1991
+
+    #test_hr_max
+    assert frame_tcx['hr'].max() == 189
+
+    #test_hr_min
+    assert frame_tcx['hr'].min() == 60
+
+    #test_hr_avg
+    assert int(frame_tcx['hr'].mean()) == 156
+
+    #test_speed
+    frame_tcx['distpos'] = frame_tcx.compute.distance()
+    frame_tcx['speed'] = frame_tcx.compute.speed(from_distances=True)
+    assert frame_tcx.mean_speed() == 2.3545989706033197
+
+    #test_pace (converted to seconds) "07:04"
+    pace_min_km = convert_pace_secmeters2minkms(frame_tcx.mean_pace().total_seconds())
+    assert  pace_min_km  == Timedelta('0 days 00:07:04')
+
+    #test_altitude_avg_is_correct
+    assert frame_tcx['alt'].mean() == 172.02005618422717
+
+    #test_altitude_max_is_correct
+    assert frame_tcx['alt'].max() == 215.95324707
+
+    #test_altitude_min_is_correct
+    assert frame_tcx['alt'].min() == 157.793579102
+
+    #test_ascent_is_correct
+    assert frame_tcx['alt'].ascent.sum() == 153.80981445000003
+
+    #test_descent_is_correct
+    assert frame_tcx['alt'].descent.sum() == -166.30712890300003
+
+    #test_distance_values_are_correct
+    frame_tcx['dist'] = frame_tcx['distpos'].to_distance()
+    assert frame_tcx['dist'].fillna(0).iloc[0] == 0.0  #(NaN number for position 0)
+    assert frame_tcx['dist'].iloc[-1] == 4688.006550471207  #4686.31103516 (Precision?)
