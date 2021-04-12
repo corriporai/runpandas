@@ -344,3 +344,67 @@ def test_full_tcx_2_activity(dirpath):
 
     #test_descent_is_correct
     assert frame_tcx['alt'].descent.sum() == -50.20000000000001
+
+def test_full_tcx_garmin_activity(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "run_garmin.tcx")
+    frame_tcx = reader._read_file(tcx_file, to_df=False)
+
+    #testActivityStartTime
+    assert frame_tcx.start ==  Timestamp("2018-11-25 07:20:49+00:00")
+
+    #test_hr_values_are_correct
+    assert frame_tcx['hr'].iloc[-1] == 143
+    assert frame_tcx['hr'].iloc[0] == 112
+
+    #test_altitude_points_are_correct
+    assert frame_tcx['alt'].iloc[-1] == 5.199999809265137
+    assert frame_tcx['alt'].iloc[0] == 4.800000190734863
+
+    #test_time_values_are_correct
+    assert frame_tcx.index[-1] ==  Timedelta('0 days 00:13:43')
+    assert frame_tcx.index[0] == Timedelta('0 days 00:00:00')
+
+    #test_latitude_is_correct
+    assert frame_tcx['lat'].iloc[0] == 46.158643048256636
+    assert frame_tcx['lon'].iloc[0] == -1.1469579208642244
+
+    #test_distance_is_correct
+    assert frame_tcx.distance ==  2153.669921875
+
+    #test_duration_is_correct (we don't consider fraction time)
+    assert frame_tcx.ellapsed_time.total_seconds() ==  823
+
+    #test_hr_max
+    assert frame_tcx['hr'].max() == 153
+
+    #test_hr_min
+    assert frame_tcx['hr'].min() == 112
+
+    #test_hr_avg
+    assert int(frame_tcx['hr'].mean()) == 142
+
+    #test_speed USING GARMIN ESTIMATED SPEED
+    assert frame_tcx.mean_speed() ==  2.6589513960614672
+
+    #test_pace (converted to seconds) "06:16"
+    pace_min_km = convert_pace_secmeters2minkms(frame_tcx.mean_pace().total_seconds())
+    assert  pace_min_km  == Timedelta('0 days 00:06:16')
+
+    #test_altitude_avg_is_correct
+    assert frame_tcx['alt'].mean() == 5.210884340766336
+
+    #test_altitude_max_is_correct
+    assert frame_tcx['alt'].max() == 6.599999904632568
+
+    #test_altitude_min_is_correct
+    assert frame_tcx['alt'].min() == 4.400000095367432
+
+    #test_ascent_is_correct
+    assert frame_tcx['alt'].ascent.sum() == 20.59999990463257
+
+    #test_descent_is_correct
+    assert frame_tcx['alt'].descent.sum() == -20.200000286102295
+
+    #test_distance_values_are_correct
+    assert frame_tcx['dist'].fillna(0).iloc[0] == 2.5299999713897705
+    assert frame_tcx['dist'].iloc[-1] == 2153.669921875
