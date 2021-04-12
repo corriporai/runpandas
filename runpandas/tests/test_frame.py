@@ -182,7 +182,7 @@ def convert_pace_secmeters2minkms(seconds):
     total_seconds = (pace_min * 60) + pace_sec
     return Timedelta(seconds=total_seconds)
 
-def test_full_activity(dirpath):
+def test_full_tcx_activity(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     frame_tcx = reader._read_file(tcx_file, to_df=False)
 
@@ -248,3 +248,65 @@ def test_full_activity(dirpath):
     frame_tcx['dist'] = frame_tcx['distpos'].to_distance()
     assert frame_tcx['dist'].fillna(0).iloc[0] == 0.0  #(NaN number for position 0)
     assert frame_tcx['dist'].iloc[-1] == 4688.006550471207  #4686.31103516 (Precision?)
+
+def test_full_gpx_activity(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "run.gpx")
+    frame_gpx = reader._read_file(gpx_file, to_df=False)
+
+    #testActivityStartTime
+    assert frame_gpx.start ==  Timestamp("2017-05-27 08:13:01+00:00")
+
+    #testActivityTotalDistance
+    frame_gpx['distpos'] = frame_gpx.compute.distance()
+    frame_gpx['dist'] = frame_gpx['distpos'].to_distance()
+    assert frame_gpx['dist'].fillna(0).iloc[0] == 0.0  #(NaN number for position 0)
+    assert frame_gpx['dist'].iloc[-1] == 4806.843188885856
+
+
+    #test_duration_is_correct (we don't consider fraction time)
+    assert frame_gpx.ellapsed_time.total_seconds() ==  1423
+
+
+    #test_speed
+    frame_gpx['speed'] = frame_gpx.compute.speed(from_distances=True)
+    assert frame_gpx.mean_speed() == 3.3779642929626545
+
+    #test_pace (converted to seconds) "00:04:55"
+    pace_min_km = convert_pace_secmeters2minkms(frame_gpx.mean_pace().total_seconds())
+    assert  pace_min_km  == Timedelta('0 days 00:04:56')
+
+    #test_max_speed
+    assert frame_gpx['speed'].max() == 5.458744217718473
+
+    #test_ascent_is_correct
+    assert frame_gpx['alt'].ascent.sum() == 50.90000000000001
+
+    #test_descent_is_correct
+    assert frame_gpx['alt'].descent.sum() == -50.20000000000001
+
+
+def test_full_fit_activity(dirpath):
+    fit_file = os.path.join(dirpath, "fit", "run.fit")
+    frame_fit = reader._read_file(fit_file, to_df=False)
+
+
+    #testActivityStartTime
+    assert frame_fit.start ==  Timestamp("2019-09-14 15:22:05+0000")
+
+    #test_distance_is_correct
+    assert frame_fit.distance ==  5839.77
+
+    #test_duration_is_correct (we don't consider fraction time)
+    assert frame_fit.ellapsed_time.total_seconds() ==  3167.0
+
+    #test_hr_avg
+    assert int(frame_fit['hr'].mean()) == 129
+
+    #test_speed
+    assert frame_fit.mean_speed() == 1.8114262709188504
+
+    #test average cadence
+    assert int(frame_fit['cad'].mean()) == 63
+
+    #test average temperature
+    assert int(frame_fit['temp'].mean()) == 26
