@@ -310,3 +310,37 @@ def test_full_fit_activity(dirpath):
 
     #test average temperature
     assert int(frame_fit['temp'].mean()) == 26
+
+def test_full_tcx_2_activity(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "run.tcx")
+    frame_tcx = reader._read_file(tcx_file, to_df=False)
+
+    #testActivityStartTime
+    assert frame_tcx.start ==  Timestamp("2017-05-27 08:13:01+00:00")
+
+    #testActivityTotalDistance
+    frame_tcx['distpos'] = frame_tcx.compute.distance()
+    frame_tcx['dist'] = frame_tcx['distpos'].to_distance()
+    assert frame_tcx['dist'].fillna(0).iloc[0] == 0.0  #(NaN number for position 0)
+    assert frame_tcx['dist'].iloc[-1] == 4806.843188885856
+
+
+    #test_duration_is_correct (we don't consider fraction time)
+    assert frame_tcx.ellapsed_time.total_seconds() ==  1423
+
+    #test_speed
+    frame_tcx['speed'] = frame_tcx.compute.speed(from_distances=True)
+    assert frame_tcx.mean_speed() == 3.3779642929626545
+
+    #test_pace (converted to seconds) "00:04:55"
+    pace_min_km = convert_pace_secmeters2minkms(frame_tcx.mean_pace().total_seconds())
+    assert  pace_min_km  == Timedelta('0 days 00:04:56')
+
+    #test_max_speed
+    assert frame_tcx['speed'].max() == 5.458744217718473
+
+    #test_ascent_is_correct
+    assert frame_tcx['alt'].ascent.sum() == 50.90000000000001
+
+    #test_descent_is_correct
+    assert frame_tcx['alt'].descent.sum() == -50.20000000000001
