@@ -6,8 +6,8 @@ import warnings
 
 import numpy as np
 import pandas as pd
-from pandas.core.frame import DataFrame
 import runpandas.reader
+from pandas.core.frame import DataFrame
 from runpandas.types import columns
 
 
@@ -99,6 +99,11 @@ class Activity(pd.DataFrame):
         elif isinstance(result, pd.DataFrame):
             result.__class__ = Activity
 
+        if isinstance(result, columns.Gradient):
+            result._set_attrs(
+                _rise=self["alt"].diff().values, _run=self["dist"].diff().values
+            )
+
         return result
 
     @classmethod
@@ -169,3 +174,106 @@ class Activity(pd.DataFrame):
             return self["dist"].max()
         except KeyError:
             return self["distpos"].sum()
+
+    def mean_speed(self, only_moving=False, smoothing=True):
+        """
+        It calculates the average speed based on the speed trace.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        smoothing: boolean, optional. If True, it calculates average speed based on total
+        distance divided by total time. Default is True.
+
+        Returns:
+        --------
+            The average speed in meters/second for the activity.
+        """
+        if "speed" not in self.columns:
+            raise AttributeError("speed column not found in activity.")
+
+        if only_moving:
+            total_time = self.moving_time
+            activity = self[self["moving"]]
+        else:
+            total_time = self.ellapsed_time
+            activity = self
+
+        if smoothing:
+            time_diff = (
+                self.index.to_series().diff().fillna(self.index[0])
+            ) / np.timedelta64(1, "s")
+            total_distance = (activity["speed"] * time_diff).sum()
+        else:
+            total_distance = activity.distance
+
+        return total_distance / total_time.total_seconds()
+
+    def mean_pace(self, only_moving=False, smoothing=True):
+        """
+        It calculates the average pace based on the speed trace.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        smoothing: boolean, optional. If True, it calculates average pace based on total
+        distance divided by total time. Default is True.
+
+        Returns:
+        --------
+            The average pace in sec/m for the activity.
+        """
+        speed = self.mean_speed(only_moving, smoothing)
+        return pd.Timedelta(seconds=1 / speed)
+
+    def mean_heart_rate(self, only_moving=False):
+        """
+        It calculates the average heart rate based on the heart rate tracked
+        by HeartRate Series column.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        Returns:
+        --------
+            The average heart zone in bpm for the activity.
+        """
+        if "hr" not in self.columns:
+            raise AttributeError("heart rate column not found in activity.")
+
+        if only_moving:
+            activity = self[self["moving"]]
+        else:
+            activity = self
+
+        return activity["hr"].mean()
+
+    def mean_cadence(self, only_moving=False):
+        """
+        It calculates the average cadence based on the cadence tracked
+        by Cadence Series column.
+
+        Parameters
+        ----------
+        only_moving : boolean, optional. It considers only the active moviment of the activity.
+        Default is False.
+
+        Returns:
+        --------
+            The average cadence in rotation per minute (rpm) for the activity.
+        """
+        if "cad" not in self.columns:
+            raise AttributeError("Cadence column not found in activity.")
+
+        if only_moving:
+            activity = self[self["moving"]]
+        else:
+            activity = self
+
+        return activity["cad"].mean()
