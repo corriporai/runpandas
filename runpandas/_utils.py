@@ -130,9 +130,10 @@ def special_column(required_columns, name=None):
 
             # If it's ok so construct the new Series.
             out = func(self, *args, **kwargs)
-            if 'to_special_column' in kwargs and kwargs['to_special_column'] == False:
+            if "to_special_column" in kwargs and kwargs["to_special_column"] is False:
                 return Series(out, index=self._activity.index, name=name)
             return out
+
         return wrapper
 
     return real_decorator
@@ -145,4 +146,4 @@ class series_property:
         self.fget = fget
 
     def __get__(self, obj, objtype=None):
-        return Series(self.fget(obj), index =obj.index)
+        return Series(self.fget(obj), index=obj.index)

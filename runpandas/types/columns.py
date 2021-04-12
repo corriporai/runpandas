@@ -72,9 +72,11 @@ class Altitude(MeasureSeries):
         """ Returns the altitude from metres to feet """
         return self * 3.28084
 
+
 class Cadence(MeasureSeries):
     colname = "cad"
     base_unit = "rpm"
+
 
 class DistancePerPosition(MeasureSeries):
     colname = "distpos"
@@ -96,6 +98,7 @@ class DistancePerPosition(MeasureSeries):
         """ Returns the distance converted from metres to miles """
         return self / 1000 * 0.621371
 
+
 class Distance(MeasureSeries):
     colname = "dist"
     base_unit = "m"
@@ -113,6 +116,7 @@ class Distance(MeasureSeries):
     def miles(self):
         """ Returns the distance converted from metres to miles """
         return self / 1000 * 0.621371
+
 
 class HeartRate(MeasureSeries):
     colname = "hr"
@@ -133,6 +137,7 @@ class LonLat(MeasureSeries):
     def radians(self):
         """Returns the coordinates from degrees to radians """
         return np.radians(self)
+
 
 class Longitude(LonLat):
     colname = "lon"
@@ -161,7 +166,6 @@ class Pace(MeasureSeries):
         return self * 1000 / 1.61
 
 
-
 class Power(MeasureSeries):
     colname = "pwr"
     base_unit = "watts"
@@ -172,7 +176,7 @@ class Speed(MeasureSeries):
     base_unit = "m/s"
 
     def to_pace(self):
-        pace = to_timedelta(1/ self, unit='s')
+        pace = to_timedelta(1 / self, unit="s")
         return Pace(pace)
 
     @series_property
@@ -190,19 +194,22 @@ class Speed(MeasureSeries):
         # self.kph is already a Series
         return self.kph / 1.61
 
+
 class Temperature(MeasureSeries):
     colname = "temp"
     base_unit = "degrees_C"
 
+
 class VAM(MeasureSeries):
-    colname = 'vam'
-    base_unit = 'm/s'
+    colname = "vam"
+    base_unit = "m/s"
+
 
 class Gradient(MeasureSeries):
-    colname = 'grad'
-    base_unit = 'fraction'
+    colname = "grad"
+    base_unit = "fraction"
 
-    _metadata = ['_rise', '_run'] + MeasureSeries._metadata
+    _metadata = ["_rise", "_run"] + MeasureSeries._metadata
 
     def __init__(self, *args, rise=None, run=None, **kwargs):
         if rise is not None and run is not None:
@@ -212,7 +219,7 @@ class Gradient(MeasureSeries):
             super().__init__(*args, **kwargs)
             self._rise, self._run = None, None
 
-    #support method to metadata setup
+    # support method to metadata setup
     def _set_attrs(self, **kwargs):
         for attr in self._metadata:
             if attr in kwargs:

@@ -7,9 +7,9 @@ import warnings
 import numpy as np
 import pandas as pd
 import runpandas.reader
-import math
-from pandas.core.frame import DataFrame, Series
+from pandas.core.frame import DataFrame
 from runpandas.types import columns
+
 
 class Activity(pd.DataFrame):
     """
@@ -100,7 +100,9 @@ class Activity(pd.DataFrame):
             result.__class__ = Activity
 
         if isinstance(result, columns.Gradient):
-            result._set_attrs(_rise=self['alt'].diff().values, _run=self['dist'].diff().values)
+            result._set_attrs(
+                _rise=self["alt"].diff().values, _run=self["dist"].diff().values
+            )
 
         return result
 
@@ -194,18 +196,20 @@ class Activity(pd.DataFrame):
 
         if only_moving:
             total_time = self.moving_time
-            activity = self[self['moving']]
+            activity = self[self["moving"]]
         else:
             total_time = self.ellapsed_time
             activity = self
 
         if smoothing:
-            time_diff = (self.index.to_series().diff().fillna(self.index[0])) / np.timedelta64(1, "s")
+            time_diff = (
+                self.index.to_series().diff().fillna(self.index[0])
+            ) / np.timedelta64(1, "s")
             total_distance = (activity["speed"] * time_diff).sum()
         else:
             total_distance = activity.distance
 
-        return (total_distance / total_time.total_seconds())
+        return total_distance / total_time.total_seconds()
 
     def mean_pace(self, only_moving=False, smoothing=True):
         """
@@ -224,7 +228,7 @@ class Activity(pd.DataFrame):
             The average pace in sec/m for the activity.
         """
         speed = self.mean_speed(only_moving, smoothing)
-        return pd.Timedelta(seconds= 1 / speed)
+        return pd.Timedelta(seconds=1 / speed)
 
     def mean_heart_rate(self, only_moving=False):
         """
@@ -244,12 +248,11 @@ class Activity(pd.DataFrame):
             raise AttributeError("heart rate column not found in activity.")
 
         if only_moving:
-            activity = self[self['moving']]
+            activity = self[self["moving"]]
         else:
             activity = self
 
-        return activity['hr'].mean()
-
+        return activity["hr"].mean()
 
     def mean_cadence(self, only_moving=False):
         """
@@ -266,11 +269,11 @@ class Activity(pd.DataFrame):
             The average cadence in rotation per minute (rpm) for the activity.
         """
         if "cad" not in self.columns:
-                raise AttributeError("Cadence column not found in activity.")
+            raise AttributeError("Cadence column not found in activity.")
 
         if only_moving:
-            activity = self[self['moving']]
+            activity = self[self["moving"]]
         else:
             activity = self
 
-        return activity['cad'].mean()
+        return activity["cad"].mean()

@@ -143,7 +143,7 @@ class MetricsAcessor(object):
 
         return speed
 
-    @special_column(required_columns=('alt',), name="vam")
+    @special_column(required_columns=("alt",), name="vam")
     def vertical_speed(self, to_special_column=True, **kwargs):
         """
         Calculates the vertical climbing speed (VAM) in meters using an Activity frame.
@@ -163,9 +163,10 @@ class MetricsAcessor(object):
             with the same index of the accessed activity object.
 
         """
-        time_diff = (self._activity.index.to_series().diff().fillna(self._activity.index[0])
-                        ) / np.timedelta64(1, "s")
-        dvert = self._activity['alt'].diff()
+        time_diff = (
+            self._activity.index.to_series().diff().fillna(self._activity.index[0])
+        ) / np.timedelta64(1, "s")
+        dvert = self._activity["alt"].diff()
 
         vam = dvert / time_diff
         if to_special_column:
@@ -173,7 +174,7 @@ class MetricsAcessor(object):
 
         return vam
 
-    @special_column(required_columns=('alt','dist'), name="grad")
+    @special_column(required_columns=("alt", "dist"), name="grad")
     def gradient(self, to_special_column=True, **kwargs):
         """
         Calculates the gradient ratio from an Activity frame.
@@ -193,8 +194,8 @@ class MetricsAcessor(object):
             with the same index of the accessed activity object.
 
         """
-        alt = self._activity['alt'].diff()
-        dist = self._activity['dist'].diff()
+        alt = self._activity["alt"].diff()
+        dist = self._activity["dist"].diff()
 
         grad = alt / dist
         if to_special_column:
@@ -202,7 +203,7 @@ class MetricsAcessor(object):
 
         return grad
 
-    @special_column(required_columns=('speed',), name="pace")
+    @special_column(required_columns=("speed",), name="pace")
     def pace(self, to_special_column=True, **kwargs):
         """
         Calculates the pace (the time that it takes to cover distances in your activities).
@@ -222,10 +223,10 @@ class MetricsAcessor(object):
             with the same index of the accessed activity object.
 
         """
-        speed = self._activity['speed']
+        speed = self._activity["speed"]
 
-        pace = pd.to_timedelta(1/ speed, unit='s')
-        #pace = (1 / speed).apply(pd.Timedelta, args=('s',))
+        pace = pd.to_timedelta(1 / speed, unit="s")
+        # pace = (1 / speed).apply(pd.Timedelta, args=('s',))
 
         if to_special_column:
             pace = columns.Pace(pace)
