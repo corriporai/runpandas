@@ -354,7 +354,7 @@ def test_full_tcx_2_activity(dirpath):
     assert pace_min_km == Timedelta("0 days 00:04:56")
 
     # test_max_speed
-    assert frame_tcx["speed"].max() == 5.458744217718473
+    assert frame_tcx["speed"].max() == pytest.approx(5.458744217718473, 0.01)
 
     # test_ascent_is_correct
     assert frame_tcx["alt"].ascent.sum() == 50.90000000000001
