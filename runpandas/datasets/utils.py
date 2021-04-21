@@ -4,7 +4,7 @@ import os
 import yaml
 from typing import List
 
-from urllib.request import urlopen, urlretrieve
+from urllib.request import urlopen, urlretrieve, Request
 from pydantic import parse_obj_as
 from runpandas.datasets.schema import ActivityData
 
@@ -18,7 +18,8 @@ def _get_activity_index(index=ACTIVITIES_INDEX):
     """Report available example activities.
     Requires an internet connection.
     """
-    with urlopen(index) as resp:
+    req = Request(index)
+    with urlopen(req) as resp:
         content = resp.read()
         raw_index = yaml.safe_load(content)
 
@@ -86,7 +87,7 @@ def activity_examples(path=None, file_type=None, config=None, **kwargs):
                     _get_cache_path(config), os.path.basename(path)
                 )
                 if not os.path.exists(cache_path):
-                    urlretrieve(activity.path, cache_path)
+                    urlretrieve(activity.path, cache_path)  # nosec
                 activity.path = cache_path
                 return activity
         raise ValueError(f"'{path}' is not one of the example datasets.")
