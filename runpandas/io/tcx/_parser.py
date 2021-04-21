@@ -61,7 +61,8 @@ def read(file_path, to_df=False, **kwargs):
     """
     data = pd.DataFrame.from_records(gen_records(file_path))
     times = data.pop("Time")  # should always be there
-    data = data.astype("float64", copy=False)  # try and make numeric
+    data = data.apply(pd.to_numeric, errors="ignore") # try and make numeric
+
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
 
     try:

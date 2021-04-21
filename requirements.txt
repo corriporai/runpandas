@@ -2,3 +2,4 @@ pandas>=0.21
 fitparse
 stravalib
 haversine
+pydantic
