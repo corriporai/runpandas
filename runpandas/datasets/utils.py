@@ -19,7 +19,7 @@ def _get_activity_index(index=ACTIVITIES_INDEX):
     Requires an internet connection.
     """
     req = Request(index)
-    with urlopen(req) as resp:
+    with urlopen(req) as resp:  # nosec
         content = resp.read()
         raw_index = yaml.safe_load(content)
 
