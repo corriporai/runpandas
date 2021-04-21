@@ -20,7 +20,7 @@ def _get_activity_index(index=ACTIVITIES_INDEX):
     """
     with urlopen(index) as resp:
         content = resp.read()
-        raw_index = yaml.load(content, Loader=yaml.Loader)
+        raw_index = yaml.safe_load(content)
 
     loaded_data = parse_obj_as(List[ActivityData], raw_index)
 
@@ -33,7 +33,7 @@ def _get_config_data(config_path=None):
             os.path.dirname(os.path.realpath(__file__)), "config.yaml"
         )
     with open(config_path, "r") as f:
-        config = yaml.load(f.read())
+        config = yaml.safe_load(f.read())
     return config
 
 
