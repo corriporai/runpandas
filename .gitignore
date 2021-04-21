@@ -46,6 +46,7 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+test_runpandas_data/
 .tox/
 .nox/
 .coverage
@@ -119,6 +120,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+$HOME/
+$PWD/
 
 # Spyder project settings
 .spyderproject

@@ -8,3 +8,4 @@ include runpandas/tests/*.py
 include runpandas/tests/io/data/*
 include versioneer.py
 include runpandas/_version.py
+include runpandas/datasets/config.yaml

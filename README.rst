@@ -71,6 +71,9 @@ Install
 - ``pandas``
 - ``fitparse``
 - ``stravalib``
+- ``pydantic``
+- ``pyaml``
+- ``haversine``
 
 Runpandas was tested to work on \*nix-like systems, including macOS.
 
@@ -248,8 +251,8 @@ data or the distance ``dist`` data:
 
 
 The ``Activity`` dataframe also contains special properties that
-presents some statistics from the workout such as elapsed time, the
-moving time and the distance of workout in meters.
+presents some statistics from the workout such as elapsed time, mean
+heartrate, the moving time and the distance of workout in meters.
 
 .. code:: ipython3
 
@@ -257,12 +260,15 @@ moving time and the distance of workout in meters.
     print(activity.ellapsed_time)
     #distance of workout in meters
     print(activity.distance)
+    #mean heartrate
+    print(activity.mean_heart_rate())
 
 
 .. parsed-literal::
 
     0 days 00:33:11
     4686.31103516
+    156.65274151436032
 
 
 Occasionally, some observations such as speed, distance and others must
@@ -313,6 +319,27 @@ speed in meters per second.
     00:00:16    2.295962
     Name: speed, dtype: float64
 
+
+Popular running metrics are also available through the runpandas
+acessors such as gradient, pace, vertical speed , etc.
+
+.. code:: ipython3
+
+    activity['vam'] = activity.compute.vertical_speed()
+    activity['vam'].head()
+
+
+
+
+.. parsed-literal::
+
+    time
+    00:00:00         NaN
+    00:00:01    0.000000
+    00:00:06    0.000000
+    00:00:12   -0.240336
+    00:00:16    0.000000
+    Name: vam, dtype: float64
 
 
 Sporadically, there will be a large time difference between consecutive
@@ -443,6 +470,191 @@ using logintude vs latitude.
 
 
 .. image:: examples/overview_files/overview_16_1.svg
+
+
+The ``runpandas`` package also comes with extra batteries, such as our
+``runpandas.datasets`` package, which includes a range of example data
+for testing purposes. There is a dedicated
+`repository <https://github.com/corriporai/runpandas-data>`__ with all
+the data available. An index of the data is kept
+`here <https://github.com/corriporai/runpandas-data/blob/master/activities/index.yml>`__.
+
+You can use the example data available:
+
+.. code:: ipython3
+
+    example_fit = rpd.activity_examples(path='Garmin_Fenix_6S_Pro-Running.fit')
+    print(example_fit.summary)
+    print('Included metrics:', example_fit.included_data)
+
+
+.. parsed-literal::
+
+    Synced from watch Garmin Fenix 6S
+    
+    Included metrics: [<MetricsEnum.latitude: 'latitude'>, <MetricsEnum.longitude: 'longitude'>, <MetricsEnum.elevation: 'elevation'>, <MetricsEnum.heartrate: 'heartrate'>, <MetricsEnum.cadence: 'cadence'>, <MetricsEnum.distance: 'distance'>, <MetricsEnum.temperature: 'temperature'>]
+
+
+.. code:: ipython3
+
+    rpd.read_file(example_fit.path).head()
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>enhanced_speed</th>
+          <th>enhanced_altitude</th>
+          <th>unknown_87</th>
+          <th>fractional_cadence</th>
+          <th>lap</th>
+          <th>session</th>
+          <th>unknown_108</th>
+          <th>dist</th>
+          <th>cad</th>
+          <th>hr</th>
+          <th>lon</th>
+          <th>lat</th>
+          <th>temp</th>
+        </tr>
+        <tr>
+          <th>time</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>00:00:00</th>
+          <td>0.000</td>
+          <td>254.0</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>NaN</td>
+          <td>0.00</td>
+          <td>0</td>
+          <td>101</td>
+          <td>13.843376</td>
+          <td>51.066280</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <th>00:00:01</th>
+          <td>0.000</td>
+          <td>254.0</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>NaN</td>
+          <td>0.00</td>
+          <td>0</td>
+          <td>101</td>
+          <td>13.843374</td>
+          <td>51.066274</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <th>00:00:10</th>
+          <td>1.698</td>
+          <td>254.0</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2362.0</td>
+          <td>0.00</td>
+          <td>83</td>
+          <td>97</td>
+          <td>13.843176</td>
+          <td>51.066249</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <th>00:00:12</th>
+          <td>2.267</td>
+          <td>254.0</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2362.0</td>
+          <td>3.95</td>
+          <td>84</td>
+          <td>99</td>
+          <td>13.843118</td>
+          <td>51.066250</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <th>00:00:21</th>
+          <td>2.127</td>
+          <td>254.6</td>
+          <td>0</td>
+          <td>0.5</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2552.0</td>
+          <td>16.67</td>
+          <td>87</td>
+          <td>100</td>
+          <td>13.842940</td>
+          <td>51.066231</td>
+          <td>8</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+In case of you just only want to see all the activities in a specific
+file type , you can filter the ``runpandas.activities_examples``, which
+returns a filter iterable that you can iterate over:
+
+.. code:: ipython3
+
+    fit_examples = rpd.activity_examples(file_type=rpd.FileTypeEnum.FIT)
+    for example in fit_examples:
+        #Download and play with the filtered examples
+        print(example.path)
+
+
+.. parsed-literal::
+
+    https://raw.githubusercontent.com/corriporai/runpandas-data/master/activities/Garmin_Fenix_6S_Pro-Running.fit
+    https://raw.githubusercontent.com/corriporai/runpandas-data/master/activities/Garmin_Fenix2_running_with_hrm.fit
+    https://raw.githubusercontent.com/corriporai/runpandas-data/master/activities/Garmin_Forerunner_910XT-Running.fit
 
 
 

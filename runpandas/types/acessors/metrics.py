@@ -113,10 +113,10 @@ class MetricsAcessor(object):
             instead of taken from the speed recordings directly? Default is False.
 
         to_special_column: convert the distance calculated (`pandas.Series`)
-            to special runpandas distance cummulative column (`runpandas.types.columns.Speed`).
+            to special runpandas speed column (`runpandas.types.columns.Speed`).
             Default is True.
 
-        **kwargs: Keyword args to be passed to the `haversine` method
+        **kwargs: Keyword args to be passed to the speed building method
 
         Returns
         -------
@@ -142,3 +142,93 @@ class MetricsAcessor(object):
             speed = columns.Speed(speed)
 
         return speed
+
+    @special_column(required_columns=("alt",), name="vam")
+    def vertical_speed(self, to_special_column=True, **kwargs):
+        """
+        Calculates the vertical climbing speed (VAM) in meters using an Activity frame.
+
+        Parameters
+        ----------
+        to_special_column: convert the distance calculated (`pandas.Series`)
+            to special runpandas VAM column (`runpandas.types.columns.VAM`).
+            Default is True.
+
+        **kwargs: Keyword args to be passed to the VAM build method
+
+        Returns
+        -------
+        vam: `pandas.Series` or `runpandas.types.columns.VAM`
+            A Series of floats representing the vertical altitude speed in meters
+            with the same index of the accessed activity object.
+
+        """
+        time_diff = (
+            self._activity.index.to_series().diff().fillna(self._activity.index[0])
+        ) / np.timedelta64(1, "s")
+        dvert = self._activity["alt"].diff()
+
+        vam = dvert / time_diff
+        if to_special_column:
+            vam = columns.VAM(vam)
+
+        return vam
+
+    @special_column(required_columns=("alt", "dist"), name="grad")
+    def gradient(self, to_special_column=True, **kwargs):
+        """
+        Calculates the gradient ratio from an Activity frame.
+
+        Parameters
+        ----------
+        to_special_column: convert the distance calculated (`pandas.Series`)
+            to special runpandas Gradient column (`runpandas.types.columns.Gradient`).
+            Default is True.
+
+        **kwargs: Keyword args to be passed to the Gradient build method
+
+        Returns
+        -------
+        grad: `pandas.Series` or `runpandas.types.columns.Gradient`
+            A Series of floats representing the vertical altitude speed in meters
+            with the same index of the accessed activity object.
+
+        """
+        alt = self._activity["alt"].diff()
+        dist = self._activity["dist"].diff()
+
+        grad = alt / dist
+        if to_special_column:
+            grad = columns.Gradient(rise=alt, run=dist)
+
+        return grad
+
+    @special_column(required_columns=("speed",), name="pace")
+    def pace(self, to_special_column=True, **kwargs):
+        """
+        Calculates the pace (the time that it takes to cover distances in your activities).
+
+        Parameters
+        ----------
+        to_special_column: convert the pace calculated (`pandas.Series`)
+            to special runpandas Pace column (`runpandas.types.columns.Pace`).
+            Default is True.
+
+        **kwargs: Keyword args to be passed to the Pace build method
+
+        Returns
+        -------
+        pace: `pandas.Series` or `runpandas.types.columns.Pace`
+            A Series of floats representing the pace in meters per second
+            with the same index of the accessed activity object.
+
+        """
+        speed = self._activity["speed"]
+
+        pace = pd.to_timedelta(1 / speed, unit="s")
+        # pace = (1 / speed).apply(pd.Timedelta, args=('s',))
+
+        if to_special_column:
+            pace = columns.Pace(pace)
+
+        return pace
