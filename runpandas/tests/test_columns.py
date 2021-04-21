@@ -6,6 +6,7 @@ import os
 import pytest
 import pandas as pd
 from runpandas import reader
+from runpandas.types import Activity, columns
 
 pytestmark = pytest.mark.stable
 
@@ -13,6 +14,12 @@ pytestmark = pytest.mark.stable
 @pytest.fixture
 def dirpath(datapath):
     return datapath("io", "data")
+
+
+def test_altitude_feet(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    assert (activity_tcx["alt"].ft[-5]) == 558.6963742234277
 
 
 def test_altitude_ascent_descent(dirpath):
@@ -126,3 +133,14 @@ def test_pace_min_mile(dirpath):
     assert (activity_tcx["pace"].min_per_mile[-1].total_seconds()) == pytest.approx(
         pd.Timedelta("0 days 00:04:23.099756").total_seconds()
     )
+
+
+def test_constructor(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "stopped_example.tcx")
+    activity_tcx = reader._read_file(tcx_file, to_df=False)
+    activity_tcx["speed"] = activity_tcx.compute.speed()
+    # test custom constructor_expanddim series
+    speed_frame = activity_tcx["speed"].to_frame()
+    assert type(speed_frame) is Activity
+    assert isinstance(speed_frame.speed, columns.Speed)
+    assert list(speed_frame.columns) == ["speed"]
