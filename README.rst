@@ -71,6 +71,9 @@ Install
 - ``pandas``
 - ``fitparse``
 - ``stravalib``
+- ``pydantic```
+- ``pyaml```
+- ``haversine``
 
 Runpandas was tested to work on \*nix-like systems, including macOS.
 

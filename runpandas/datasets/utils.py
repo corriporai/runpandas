@@ -8,8 +8,10 @@ from urllib.request import urlopen, urlretrieve
 from pydantic import parse_obj_as
 from runpandas.datasets.schema import ActivityData
 
-ACTIVITIES_INDEX = ("https://raw.githubusercontent.com/"
-            "corriporai/runpandas-data/master/activities/index.yml")
+ACTIVITIES_INDEX = (
+    "https://raw.githubusercontent.com/"
+    "corriporai/runpandas-data/master/activities/index.yml"
+)
 
 
 def _get_activity_index(index=ACTIVITIES_INDEX):
@@ -24,13 +26,16 @@ def _get_activity_index(index=ACTIVITIES_INDEX):
 
     return loaded_data
 
+
 def _get_config_data(config_path=None):
     if config_path is None:
-        config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                                   'config.yaml')
-    with open(config_path, 'r') as f:
+        config_path = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), "config.yaml"
+        )
+    with open(config_path, "r") as f:
         config = yaml.load(f.read())
     return config
+
 
 def _get_cache_path(config=None):
     """Return a path to the cache directory for example datasets.
@@ -40,7 +45,7 @@ def _get_cache_path(config=None):
     """
     op = os.path
     config = _get_config_data(config)
-    data_home = op.abspath(op.expanduser(op.expandvars(config['path']['root'])))
+    data_home = op.abspath(op.expanduser(op.expandvars(config["path"]["root"])))
 
     if not os.path.exists(data_home):
         os.makedirs(data_home)
@@ -73,12 +78,13 @@ def activity_examples(path=None, file_type=None, config=None, **kwargs):
     loaded_data : a single or a list of :class:`schema.ActivityData` instances.
 
     """
-    activities =  _get_activity_index()
+    activities = _get_activity_index()
     if path is not None:
         for activity in activities:
             if os.path.basename(activity.path) == path:
-                cache_path = os.path.join(_get_cache_path(config),
-                                      os.path.basename(path))
+                cache_path = os.path.join(
+                    _get_cache_path(config), os.path.basename(path)
+                )
                 if not os.path.exists(cache_path):
                     urlretrieve(activity.path, cache_path)
                 activity.path = cache_path
@@ -86,6 +92,8 @@ def activity_examples(path=None, file_type=None, config=None, **kwargs):
         raise ValueError(f"'{path}' is not one of the example datasets.")
 
     if file_type is not None:
-        activities = filter(lambda file: file.file_type == file_type, activity_examples())
+        activities = filter(
+            lambda file: file.file_type == file_type, activity_examples()
+        )
 
     return activities

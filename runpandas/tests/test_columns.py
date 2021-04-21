@@ -104,7 +104,7 @@ def test_gradient_degrees(dirpath):
 def test_latlon_radians(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     activity_tcx = reader._read_file(tcx_file, to_df=False)
-    assert (activity_tcx["lat"].radians[-1]) == 0.6274799778819852
+    assert (activity_tcx["lat"].radians[-1]) == 0.6274799778819853
     assert (activity_tcx["lon"].radians[-1]) == -1.3804335163227985
 
 

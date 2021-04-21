@@ -3,3 +3,4 @@ fitparse
 stravalib
 haversine
 pydantic
+pyyaml

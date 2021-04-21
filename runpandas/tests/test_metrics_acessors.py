@@ -205,7 +205,7 @@ def test_metrics_gpx_vam(activity, column, index, expected):
 
 
 test_vam_tcx_data = [
-    (pytest.lazy_fixture("runpandas_tcx_activity"), "vam", -1, -0.004166499999999962),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "vam", -1, -0.004166500000000073),
     (pytest.lazy_fixture("runpandas_tcx_activity"), "vam", 3, 0.018022000000000205),
 ]
 
@@ -231,7 +231,7 @@ def test_metrics_gpx_gradient(activity, column, index, expected):
 
 
 test_gradient_tcx_data = [
-    (pytest.lazy_fixture("runpandas_tcx_activity"), "grad", -1, -0.0013069369604062756),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "grad", -1, -0.0013069369604063105),
     (pytest.lazy_fixture("runpandas_tcx_activity"), "grad", 3, 0.005967282919472209),
 ]
 

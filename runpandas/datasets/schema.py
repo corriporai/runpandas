@@ -5,6 +5,7 @@ from enum import Enum
 from pathlib import Path
 from pydantic import BaseModel, validator
 
+
 class MetricsEnum(Enum):
     latitude = "latitude"
     longitude = "longitude"
@@ -16,14 +17,17 @@ class MetricsEnum(Enum):
     temperature = "temperature"
     distance = "distance"
 
+
 class Sensor(BaseModel):
     name: str
     data_types: List[MetricsEnum]
+
 
 class FileTypeEnum(str, Enum):
     FIT = "FIT"
     TCX = "TCX"
     GPX = "GPX"
+
 
 class ActivityData(BaseModel):
 
@@ -38,6 +42,8 @@ class ActivityData(BaseModel):
 
     @validator("path")
     def make_cached_path(cls, v):
-        path = ("https://raw.githubusercontent.com/"
-            "corriporai/runpandas-data/master/activities/{}")
+        path = (
+            "https://raw.githubusercontent.com/"
+            "corriporai/runpandas-data/master/activities/{}"
+        )
         return path.format(v)
