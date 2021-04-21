@@ -294,7 +294,7 @@ def test_full_gpx_activity(dirpath):
     assert pace_min_km == Timedelta("0 days 00:04:56")
 
     # test_max_speed
-    assert frame_gpx["speed"].max() == 5.458744217718473
+    assert frame_gpx["speed"].max() == pytest.approx(5.458744217718473, 0.01)
 
     # test_ascent_is_correct
     assert frame_gpx["alt"].ascent.sum() == 50.90000000000001
