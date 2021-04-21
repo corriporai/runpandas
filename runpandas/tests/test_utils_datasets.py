@@ -3,6 +3,7 @@ Test module for utilities from the datasets package
 """
 
 import os
+import shutil
 import pytest
 from runpandas.datasets.utils import (
     _get_config_data,
@@ -43,6 +44,7 @@ def test_get_cache_path(dirpath):
     # test after created
     directory = _get_cache_path(test_config_file)
     assert os.path.exists(directory)
+    shutil.rmtree(directory)
 
 
 def test_get_activity_index():
@@ -66,13 +68,13 @@ def test_activity_examples(dirpath):
         _ = activity_examples(path="test.tcx")
 
     # test not cached file
-    example_activity = activity_examples(path="polarm400.tcx")
+    test_config_file = os.path.join(dirpath, "config.test.yaml")
+    example_activity = activity_examples(path="polarm400.tcx", config=test_config_file)
     assert "polarm400.tcx" in example_activity.path
     assert os.path.exists(example_activity.path)
     assert type(read_file(example_activity.path)) is Activity
 
     # test cached file
-    test_config_file = os.path.join(dirpath, "config.test.yaml")
     example_activity = activity_examples(path="polarm400.tcx", config=test_config_file)
     assert "polarm400.tcx" in os.path.basename(example_activity.path)
     assert os.path.exists(example_activity.path)
@@ -85,3 +87,6 @@ def test_activity_examples(dirpath):
     assert "Garmin_Fenix_6S_Pro-Running.fit" in os.path.basename(example_activity.path)
     assert os.path.exists(example_activity.path)
     assert type(read_file(example_activity.path)) is Activity
+
+    directory = _get_cache_path(test_config_file)
+    shutil.rmtree(directory)

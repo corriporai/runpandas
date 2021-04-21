@@ -41,6 +41,7 @@ class ActivityData(BaseModel):
     sessions: int = None
 
     @validator("path")
+    @classmethod
     def make_cached_path(cls, v):
         path = (
             "https://raw.githubusercontent.com/"
