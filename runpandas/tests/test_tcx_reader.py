@@ -50,7 +50,7 @@ test_data = [
 
 @pytest.mark.parametrize("activity,column,index,expected", test_data)
 def test_tcx_values(activity, column, index, expected):
-    assert activity[column].iloc[index] == expected
+    assert activity[column].iloc[index] == pytest.approx(expected, 0.01)
     assert activity.index[-1] == Timedelta("0 days 00:33:11")
 
     if isinstance(activity, types.Activity):

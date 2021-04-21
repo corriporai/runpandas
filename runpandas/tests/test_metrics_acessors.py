@@ -213,7 +213,7 @@ test_vam_tcx_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_vam_tcx_data)
 def test_metrics_tcx_vam(activity, column, index, expected):
     activity["vam"] = activity.compute.vertical_speed()
-    assert activity[column].iloc[index] == expected
+    assert activity[column].iloc[index] == pytest.approx(expected, 0.01)
 
 
 test_gradient_gpx_data = [
@@ -239,7 +239,7 @@ test_gradient_tcx_data = [
 @pytest.mark.parametrize("activity,column,index,expected", test_gradient_tcx_data)
 def test_metrics_tcx_gradient(activity, column, index, expected):
     activity["grad"] = activity.compute.gradient()
-    assert activity[column].iloc[index] == expected
+    assert activity[column].iloc[index] == pytest.approx(expected, 0.01)
 
 
 def test_pace_validate(dirpath):

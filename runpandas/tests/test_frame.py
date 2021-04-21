@@ -219,7 +219,7 @@ def test_full_tcx_activity(dirpath):
     assert frame_tcx.start == Timestamp("2012-12-26 21:29:53+00:00")
 
     # test_latitude_is_correct
-    assert frame_tcx["lat"].iloc[0] == 35.951880198
+    assert frame_tcx["lat"].iloc[0] == pytest.approx(35.951880198, 0.01)
     assert frame_tcx["lon"].iloc[0] == -79.0931872185
 
     # test_distance_is_correct
@@ -240,7 +240,7 @@ def test_full_tcx_activity(dirpath):
     # test_speed
     frame_tcx["distpos"] = frame_tcx.compute.distance()
     frame_tcx["speed"] = frame_tcx.compute.speed(from_distances=True)
-    assert frame_tcx.mean_speed() == 2.3545989706033197
+    assert frame_tcx.mean_speed() == pytest.approx(2.3545989706033197, 0.01)
 
     # test_pace (converted to seconds) "07:04"
     pace_min_km = convert_pace_secmeters2minkms(frame_tcx.mean_pace().total_seconds())
@@ -256,15 +256,17 @@ def test_full_tcx_activity(dirpath):
     assert frame_tcx["alt"].min() == 157.793579102
 
     # test_ascent_is_correct
-    assert frame_tcx["alt"].ascent.sum() == 153.80981445000003
+    assert frame_tcx["alt"].ascent.sum() == pytest.approx(153.80981445000003, 0.01)
 
     # test_descent_is_correct
-    assert frame_tcx["alt"].descent.sum() == -166.30712890300003
+    assert frame_tcx["alt"].descent.sum() == pytest.approx(-166.30712890300003, 0.01)
 
     # test_distance_values_are_correct
     frame_tcx["dist"] = frame_tcx["distpos"].to_distance()
     assert frame_tcx["dist"].fillna(0).iloc[0] == 0.0  # (NaN number for position 0)
-    assert frame_tcx["dist"].iloc[-1] == 4688.006550471207  # 4686.31103516 (Precision?)
+    assert frame_tcx["dist"].iloc[-1] == pytest.approx(
+        4688.006550471207, 0.01
+    )  # 4686.31103516 (Precision?)
 
 
 def test_full_gpx_activity(dirpath):
@@ -338,14 +340,14 @@ def test_full_tcx_2_activity(dirpath):
     frame_tcx["distpos"] = frame_tcx.compute.distance()
     frame_tcx["dist"] = frame_tcx["distpos"].to_distance()
     assert frame_tcx["dist"].fillna(0).iloc[0] == 0.0  # (NaN number for position 0)
-    assert frame_tcx["dist"].iloc[-1] == 4806.843188885856
+    assert frame_tcx["dist"].iloc[-1] == pytest.approx(4806.843188885856, 0.01)
 
     # test_duration_is_correct (we don't consider fraction time)
     assert frame_tcx.ellapsed_time.total_seconds() == 1423
 
     # test_speed
     frame_tcx["speed"] = frame_tcx.compute.speed(from_distances=True)
-    assert frame_tcx.mean_speed() == 3.3779642929626545
+    assert frame_tcx.mean_speed() == pytest.approx(3.3779642929626545, 0.01)
 
     # test_pace (converted to seconds) "00:04:55"
     pace_min_km = convert_pace_secmeters2minkms(frame_tcx.mean_pace().total_seconds())
@@ -410,16 +412,16 @@ def test_full_tcx_garmin_activity(dirpath):
     assert frame_tcx["alt"].mean() == 5.210884340766336
 
     # test_altitude_max_is_correct
-    assert frame_tcx["alt"].max() == 6.599999904632568
+    assert frame_tcx["alt"].max() == pytest.approx(6.599999904632568, 0.01)
 
     # test_altitude_min_is_correct
     assert frame_tcx["alt"].min() == 4.400000095367432
 
     # test_ascent_is_correct
-    assert frame_tcx["alt"].ascent.sum() == 20.59999990463257
+    assert frame_tcx["alt"].ascent.sum() == pytest.approx(20.59999990463257, 0.01)
 
     # test_descent_is_correct
-    assert frame_tcx["alt"].descent.sum() == -20.200000286102295
+    assert frame_tcx["alt"].descent.sum() == pytest.approx(-20.200000286102295, 0.01)
 
     # test_distance_values_are_correct
     assert frame_tcx["dist"].fillna(0).iloc[0] == 2.5299999713897705

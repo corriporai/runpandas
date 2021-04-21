@@ -1,2 +1,2 @@
 path:
-  root: $HOME/runpandas_data
+  root: $PWD/runpandas_data
