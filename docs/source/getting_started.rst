@@ -32,6 +32,8 @@ RunPandas depends on the following packages:
 - ``fitparse``
 - ``stravalib``
 - ``haversine``
+- ``pydantic``
+- ``pyaml``
 
 ^^^^^^^^^^^^^^^^^^^^^
 Detailed instructions
