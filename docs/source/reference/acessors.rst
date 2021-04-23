@@ -23,3 +23,6 @@ Metrics
    metrics.MetricsAcessor
    metrics.MetricsAcessor.speed
    metrics.MetricsAcessor.distance
+   metrics.MetricsAcessor.vertical_speed
+   metrics.MetricsAcessor.gradient
+   metrics.MetricsAcessor.pace

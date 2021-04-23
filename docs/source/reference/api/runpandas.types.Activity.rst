@@ -105,6 +105,10 @@ runpandas.types.Activity
       ~Activity.mask
       ~Activity.max
       ~Activity.mean
+      ~Activity.mean_cadence
+      ~Activity.mean_heart_rate
+      ~Activity.mean_pace
+      ~Activity.mean_speed
       ~Activity.median
       ~Activity.melt
       ~Activity.memory_usage

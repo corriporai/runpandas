@@ -69,7 +69,9 @@ class Altitude(MeasureSeries):
 
     @series_property
     def ft(self):
-        """ Returns the altitude from metres to feet """
+        """
+        Returns the altitude from metres to feet
+        """
         return self * 3.28084
 
 
