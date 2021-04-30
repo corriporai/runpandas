@@ -1,0 +1,48 @@
+{% set version = load_setup_py_data(setup_file='setup.py').version %}
+
+package:
+  name: "runpandas"
+  version: "{{ version }}"
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python >=3.6
+  run:
+    - pandas>=0.21
+    - haversine
+    - python-fitparse
+    - pydantic
+    - pyyaml
+    - stravalib
+test:
+  imports:
+    - runpandas
+    - runpandas.datasets
+    - runpandas.io
+    - runpandas.io.fit
+    - runpandas.io.gpx
+    - runpandas.io.strava
+    - runpandas.io.tcx
+    - runpandas.tests
+    - runpandas.types
+    - runpandas.types.acessors
+
+about:
+  home: "https://github.com/corriporai/runpandas"
+  license: "MIT"
+  summary: {{ load_setup_py_data().description }}
+  doc_url: "https://runpandas.readthedocs.io/en/latest/"
+  dev_url: "https://github.com/corriporai/runpandas"
+
+extra:
+  recipe-maintainers:
+    - marcelcaraciolo
