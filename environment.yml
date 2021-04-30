@@ -1,0 +1,11 @@
+name: runpandas
+channels:
+  - conda-forge
+dependencies:
+  - python >=3.6
+  - pandas>=0.21
+  - fitparse
+  - stravalib
+  - haversine
+  - pydantic
+  - pyyaml
