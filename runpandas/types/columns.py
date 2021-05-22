@@ -92,12 +92,12 @@ class DistancePerPosition(MeasureSeries):
 
     @series_property
     def km(self):
-        """ Returns the distance converted from metres to kilometres """
+        """Returns the distance converted from metres to kilometres"""
         return self / 1000
 
     @series_property
     def miles(self):
-        """ Returns the distance converted from metres to miles """
+        """Returns the distance converted from metres to miles"""
         return self / 1000 * 0.621371
 
 
@@ -111,12 +111,12 @@ class Distance(MeasureSeries):
 
     @series_property
     def km(self):
-        """ Returns the distance converted from metres to kilometres """
+        """Returns the distance converted from metres to kilometres"""
         return self / 1000
 
     @series_property
     def miles(self):
-        """ Returns the distance converted from metres to miles """
+        """Returns the distance converted from metres to miles"""
         return self / 1000 * 0.621371
 
 
@@ -137,7 +137,7 @@ class LonLat(MeasureSeries):
 
     @series_property
     def radians(self):
-        """Returns the coordinates from degrees to radians """
+        """Returns the coordinates from degrees to radians"""
         return np.radians(self)
 
 
@@ -229,15 +229,15 @@ class Gradient(MeasureSeries):
 
     @series_property
     def pct(self):
-        """ It converts the fraction to percent (%) """
+        """It converts the fraction to percent (%)"""
         return self * 100
 
     @series_property
     def radians(self):
-        """ It converts fraction to radians """
+        """It converts fraction to radians"""
         return np.arctan2(self._rise, self._run)
 
     @series_property
     def degrees(self):
-        """ It converts fraction to degrees """
+        """It converts fraction to degrees"""
         return np.rad2deg(np.arctan2(self._rise, self._run))
