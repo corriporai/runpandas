@@ -31,6 +31,9 @@ jobs:
              pip install requests
              pip list
              python -c "import runpandas; runpandas.__version__;"
+        env:
+          PANDAS: "0.25"
+          NUMPY: "1.17"
 
 
       - name: Trigger documentation build
