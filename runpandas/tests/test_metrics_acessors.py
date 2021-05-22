@@ -42,6 +42,12 @@ def runpandas_tcx_activity(dirpath):
     return reader._read_file(tcx_file, to_df=False)
 
 
+@pytest.fixture
+def runpandas_tcx_basic_activity(dirpath):
+    tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
+    return reader._read_file(tcx_file, to_df=False)
+
+
 def test_metrics_validate(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
 
@@ -300,3 +306,139 @@ def test_metrics_gpx_pace(activity, column, index, expected):
     assert activity[column].iloc[index].total_seconds() == pytest.approx(
         expected.total_seconds()
     )
+
+
+test_hr_zone_gpx_data = [
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "hr_zone", -1, "Z4"),
+    (pytest.lazy_fixture("runpandas_gpx_activity"), "hr_zone", 2, "Z5"),
+]
+
+
+@pytest.mark.parametrize("activity,column,index,expected", test_hr_zone_gpx_data)
+def test_metrics_gpx_hr_zone(activity, column, index, expected):
+    activity["hr_zone"] = activity.compute.heart_zone(
+        labels=["Rest", "Z1", "Z2", "Z3", "Z4", "Z5"],
+        bins=[0, 92, 110, 129, 147, 166, 184],
+    )
+    assert activity[column].iloc[index] == expected
+
+
+test_hr_zone_tcx_data = [
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "hr_zone", -1, "Z4"),
+    (pytest.lazy_fixture("runpandas_tcx_activity"), "hr_zone", 5, "Z5"),
+]
+
+
+@pytest.mark.parametrize("activity,column,index,expected", test_hr_zone_tcx_data)
+def test_metrics_tcx_hr_zone(activity, column, index, expected):
+    activity["hr_zone"] = activity.compute.heart_zone(
+        labels=["Rest", "Z1", "Z2", "Z3", "Z4", "Z5"],
+        bins=[0, 92, 110, 129, 147, 166, 184],
+    )
+    assert activity[column].iloc[index] == expected
+
+
+test_time_in_zone_tcx_data = [
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z0",
+        pd.Timedelta(seconds=216, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z1",
+        pd.Timedelta(seconds=4, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z2",
+        pd.Timedelta(seconds=4, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z3",
+        pd.Timedelta(seconds=964, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z4",
+        pd.Timedelta(seconds=682, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z5",
+        pd.Timedelta(seconds=121, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_tcx_basic_activity"),
+        "time_in_zone",
+        "Z6",
+        pd.Timedelta(seconds=0, microseconds=0),
+    ),
+]
+
+
+@pytest.mark.parametrize("activity,column,index,expected", test_time_in_zone_tcx_data)
+def test_metrics_tcx_time_in_zone(activity, column, index, expected):
+    time_in_zone = activity.compute.time_in_zone(
+        labels=["Z0", "Z1", "Z2", "Z3", "Z4", "Z5", "Z6"],
+        bins=[0, 99, 129, 149, 169, 184, 199, 220],
+    )
+    assert activity.ellapsed_time.total_seconds() == time_in_zone.sum().total_seconds()
+    assert time_in_zone[index].total_seconds() == expected.total_seconds()
+
+
+test_time_in_zone_gpx_data = [
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Rest",
+        pd.Timedelta(seconds=0, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Z1",
+        pd.Timedelta(seconds=112, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Z2",
+        pd.Timedelta(seconds=492, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Z3",
+        pd.Timedelta(seconds=795, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Z4",
+        pd.Timedelta(seconds=3691, microseconds=0),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_gpx_activity"),
+        "time_in_zone",
+        "Z5",
+        pd.Timedelta(seconds=37, microseconds=0),
+    ),
+]
+
+
+@pytest.mark.parametrize("activity,column,index,expected", test_time_in_zone_gpx_data)
+def test_metrics_gpx_time_in_zone(activity, column, index, expected):
+    time_in_zone = activity.compute.time_in_zone(
+        labels=["Rest", "Z1", "Z2", "Z3", "Z4", "Z5"],
+        bins=[0, 92, 110, 129, 147, 166, 184],
+    )
+    assert activity.ellapsed_time.total_seconds() == time_in_zone.sum().total_seconds()
+    assert time_in_zone[index].total_seconds() == expected.total_seconds()

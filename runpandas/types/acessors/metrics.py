@@ -232,3 +232,58 @@ class MetricsAcessor(object):
             pace = columns.Pace(pace)
 
         return pace
+
+    @special_column(required_columns=("hr",))
+    def heart_zone(self, bins, labels, **kwargs):
+        """
+        Returns a `pandas.Series` with the training zone labels for each heart rate record.
+        This method uses the pandas.cut() method.
+        Nan will be returned for values that are not in any of the bins.
+
+        Parameters
+        ----------
+
+        bins: Left and right bounds for each zone.
+                An example of valid bins are [0, 100, 140, 160, 999].
+
+        labels: Specifies the labels for the zones.
+                Must be the same length as the resulting zones.
+                Example of valid labels is ["Z1", "Z2", "Z3", "Z4", "Z5"].
+
+        **kwargs: Keyword args to be passed to the heart_zone build method
+
+        Returns:
+        --------
+            A `pandas.Series` with the zone label for each value.
+        """
+        bins_series = pd.cut(self._activity["hr"], bins=bins, labels=labels)
+        return pd.Series(bins_series, index=bins_series.index, name="hr_zone")
+
+    @special_column(required_columns=("hr",), name="time_in_zone")
+    def time_in_zone(self, bins, labels, **kwargs):
+        """
+        Returns a `pandas.Series` with the values counts in timedelta for each
+        heart training zone.
+        This method uses the pandas.Series.values_count() method.
+
+        Parameters
+        ----------
+
+        bins: Left and right bounds for each zone.
+                An example of valid bins are [0, 100, 140, 160, 999].
+
+        labels: Specifies the labels for the zones.
+                Must be the same length as the resulting zones.
+                Example of valid labels is ["Z1", "Z2", "Z3", "Z4", "Z5"].
+
+        **kwargs: Keyword args to be passed to the time_in_zone build method
+
+        Returns:
+        --------
+            A `pandas.Series` with the values count in `pandas.Timedelta` for each zones.
+        """
+        hr_zones = self.heart_zone(bins, labels).to_frame()
+        hr_zones["time_diff"] = (
+            hr_zones.index.to_series().diff().fillna(hr_zones.index[0])
+        ) / np.timedelta64(1, "s")
+        return pd.to_timedelta(hr_zones.groupby(["hr_zone"]).time_diff.sum(), unit="s")
