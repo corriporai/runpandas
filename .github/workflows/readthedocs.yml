@@ -1,0 +1,43 @@
+# Build documentation of ReadTheDocs
+
+name: Document on ReadTheDocs
+# TODO: Check running criteria for script
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  document:
+    name: Documentation build on ReadTheDocs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+
+      - name: Setup Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+          PANDAS: "0.25"
+          NUMPY: "1.17"
+
+      - name: Install required packages
+        run: |
+             source ci/pypi-installer.sh;
+             pip install -e .
+             pip install -r requirements-dev.txt
+             pip install requests
+             pip list
+             python -c "import runpandas; runpandas.__version__;"
+
+
+      - name: Trigger documentation build
+        run: |
+          set -e
+          cd docs
+          make html
+          python .github/workflows/readthedocs.py
+        env:
+          READTHEDOCS_TOKEN: ${{ secrets.readthedocs_token }}
