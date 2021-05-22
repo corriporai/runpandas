@@ -99,7 +99,7 @@ jobs:
         shell: bash
         run: |
           source ci/pypi-installer.sh;
-          pytest -v -s -r xX "stable" --cov-config .coveragerc --cov=runpandas --cov-report xml:/tmp/cov-runpandas.xml --junitxml=/tmp/runpandas.xml
+          pytest -v -s -r xX -m stable --cov-config .coveragerc --cov=runpandas --cov-report xml:/tmp/cov-runpandas.xml --junitxml=/tmp/runpandas.xml
         env:
           PANDAS: ${{ matrix.PANDAS }}
           NUMPY: ${{ matrix.NUMPY }}

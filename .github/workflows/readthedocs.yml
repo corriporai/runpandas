@@ -25,16 +25,17 @@ jobs:
 
       - name: Install required packages
         run: |
+             apt-get -y install pandoc
              source ci/pypi-installer.sh;
              pip install -e .
              pip install -r requirements-dev.txt
+             pip install -r docs/requirements.txt
              pip install requests
              pip list
              python -c "import runpandas; runpandas.__version__;"
         env:
           PANDAS: "0.25"
           NUMPY: "1.17"
-
 
       - name: Trigger documentation build
         run: |
