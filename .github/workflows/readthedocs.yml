@@ -36,6 +36,11 @@ jobs:
           PANDAS: "0.25"
           NUMPY: "1.17"
 
+      - name: setup pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.7.3' # The pandoc version to download (if necessary) and use.
+
       - name: Trigger documentation build
         run: |
           set -e
