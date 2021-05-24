@@ -63,10 +63,10 @@ def main():
         if status == 'finished':
             print('ReadTheDocs build successfully finished.')
             return 0
-        elif status == 'triggered':
+        if status == 'triggered':
             print('ReadTheDocs build still ongoing... Please check manually.')
             return 0
-        elif status == 'failed':
+        if status == 'failed':
             print('ReadTheDocs build failed.')
             return 1
     else:
