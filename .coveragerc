@@ -1,6 +1,7 @@
 # .coveragerc to control coverage.py
 [run]
 source = runpandas
+relative_files = True
 branch = True
 include = */runpandas/*
 omit =

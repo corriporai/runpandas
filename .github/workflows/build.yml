@@ -1,0 +1,124 @@
+name: Build
+
+on:
+  push:
+    branches:
+     - master
+     - develop
+  pull_request:
+    branches: [master]
+
+jobs:
+  Linting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.0
+
+  Test:
+    needs: Linting
+    name: ${{ matrix.os }}, ${{ matrix.env }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - env: "PANDAS=0.24 NUMPY=1.16 PYTHON=3.6"
+            os: ubuntu-latest
+            PANDAS: '0.24'
+            NUMPY: '1.16'
+            python-version: '3.6'
+          - env: "PANDAS=0.25 NUMPY=1.17 PYTHON=3.7 DOCBUILD=true"
+            os: ubuntu-latest
+            PANDAS: '0.25'
+            NUMPY: '1.17'
+            python-version: '3.7'
+          - env: "PANDAS=0.25 NUMPY=1.18 PYTHON=3.7"
+            os: ubuntu-latest
+            PANDAS: '0.25'
+            NUMPY: '1.18'
+            python-version: '3.7'
+          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
+            os: ubuntu-latest
+            PANDAS: '1'
+            NUMPY: '1.18'
+            python-version: '3.8'
+          - env: "PANDAS=1 NUMPY=1.19 PYTHON=3.8"
+            os: ubuntu-latest
+            PANDAS: '1'
+            NUMPY: '1.19'
+            python-version: '3.8'
+          - env: "PANDAS=MASTER NUMPY=1.18 PYTHON=3.7"
+            os: ubuntu-latest
+            PANDAS: 'MASTER'
+            NUMPY: '1.18'
+            python-version: '3.7'
+          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
+            os: macos-latest
+            PANDAS: '1'
+            NUMPY: '1.18'
+            python-version: '3.8'
+          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
+            os: windows-latest
+            PANDAS: '1'
+            NUMPY: '1.18'
+            python-version: '3.8'
+          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.7"
+            os: macos-latest
+            PANDAS: '1'
+            NUMPY: '1.18'
+            python-version: '3.7'
+          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.7"
+            os: windows-latest
+            PANDAS: '1'
+            NUMPY: '1.18'
+            python-version: '3.7'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup Environment
+        shell: bash
+        run: |
+          source ci/pypi-installer.sh;
+          pip install -e .
+          pip install -r requirements-dev.txt
+          python -V
+          pip list
+          python -c "import runpandas; runpandas.__version__;"
+        env:
+          PANDAS: ${{ matrix.PANDAS }}
+          NUMPY: ${{ matrix.NUMPY }}
+
+      - name: Test with Pytest
+        shell: bash
+        run: |
+          source ci/pypi-installer.sh;
+          pytest -v -s -r xX -m stable --cov-config .coveragerc --cov=runpandas --cov-report xml:/tmp/cov-runpandas.xml --junitxml=/tmp/runpandas.xml
+        env:
+          PANDAS: ${{ matrix.PANDAS }}
+          NUMPY: ${{ matrix.NUMPY }}
+
+      - uses: codecov/codecov-action@v1
+        if: startsWith(matrix.os, 'ubuntu')
+
+      - name: Coveralls
+        if: startsWith(matrix.os, 'ubuntu')
+        uses: AndreMiras/coveralls-python-action@develop
+        with:
+          parallel: true
+          flag-name: Unit Test
+
+  coveralls_finish:
+    needs: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: AndreMiras/coveralls-python-action@develop
+      with:
+        parallel-finished: true
