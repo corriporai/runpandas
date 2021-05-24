@@ -46,6 +46,7 @@ jobs:
           set -e
           cd docs
           make html
+          cd ..
           python .github/workflows/readthedocs.py
         env:
           READTHEDOCS_TOKEN: ${{ secrets.readthedocs_token }}
