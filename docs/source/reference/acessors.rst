@@ -26,3 +26,5 @@ Metrics
    metrics.MetricsAcessor.vertical_speed
    metrics.MetricsAcessor.gradient
    metrics.MetricsAcessor.pace
+   metrics.MetricsAcessor.heart_zone
+   metrics.MetricsAcessor.time_in_zone

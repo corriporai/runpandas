@@ -252,9 +252,9 @@ class MetricsAcessor(object):
 
         **kwargs: Keyword args to be passed to the heart_zone build method
 
-        Returns:
-        --------
-            A `pandas.Series` with the zone label for each value.
+        Returns
+        -------
+        series:  `pandas.Series` with the zone label for each value.
         """
         bins_series = pd.cut(self._activity["hr"], bins=bins, labels=labels)
         return pd.Series(bins_series, index=bins_series.index, name="hr_zone")
@@ -278,9 +278,9 @@ class MetricsAcessor(object):
 
         **kwargs: Keyword args to be passed to the time_in_zone build method
 
-        Returns:
-        --------
-            A `pandas.Series` with the values count in `pandas.Timedelta` for each zones.
+        Returns
+        -------
+        series: A `pandas.Series` with the values count in `pandas.Timedelta` for each zones.
         """
         hr_zones = self.heart_zone(bins, labels).to_frame()
         hr_zones["time_diff"] = (

@@ -13,3 +13,4 @@ Further information on any specific method can be obtained in the
    :maxdepth: 2
 
    1-overview
+   2-heartrate
