@@ -26,6 +26,12 @@ Install ``runpandas`` with:
 
   pip install runpandas
 
+or with:
+
+.. code-block:: bash
+
+  conda install -c marcelcaraciolo runpandas
+
 RunPandas depends on the following packages:
 
 - ``pandas``

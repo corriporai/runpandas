@@ -1,0 +1,23 @@
+.. _whatsnew_041:
+
+v0.4.1 (May 28, 2021)
+----------------------------
+
+This is a minor release from 0.4 and includes new features and improvements
+
+
+Highlights include:
+
+
+.. contents:: What's new in v0.4.1
+    :local:
+    :backlinks: none
+
+.. _whatsnew_041.enhancements:
+
+New features
+~~~~~~~~~~~~
+- Added support to compute HR training zones into activity (:issue:`12`)
+- Added support to computer time spent in each HR training zone from an activity (:issue:`12`)
+- Added new docummentations with a new heartrate jupyter notebook (:issue:`12`)
+- Changed from travis CI to Github actions to build testing (:issue:`38`)

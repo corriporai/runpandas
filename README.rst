@@ -15,8 +15,8 @@ RunPandas - Python Package for handing running data from GPS-enabled tracking de
    :target: https://www.codefactor.io/repository/github/corriporai/runpandas
    :alt: CodeFactor
 
-.. image:: https://travis-ci.com/corriporai/runpandas.svg?branch=master
-    :target: https://travis-ci.com/github/corriporai/runpandas
+.. image:: https://github.com/corriporai/runpandas/workflows/Build/badge.svg?branch=master
+    :target: https://github.com/corriporai/runpandas/actions/workflows/build.yml
 
 .. image:: https://coveralls.io/repos/github/corriporai/runpandas/badge.svg?branch=master
     :target: https://coveralls.io/github/corriporai/runpandas
@@ -89,6 +89,14 @@ Install latest release version via pip
 .. code-block:: shell
 
    $ pip install runpandas
+
+Install latest release version via conda
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+   $ conda install -c marcelcaraciolo runpandas
+
 
 Install latest development version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
