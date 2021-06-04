@@ -63,9 +63,8 @@ def test_activity_summary_missing_moving(dirpath):
     frame_tcx["distpos"] = frame_tcx.compute.distance(correct_distance=False)
     frame_tcx["speed"] = frame_tcx.compute.speed(from_distances=True)
 
-    #removing hr to simulate the missing values
-    frame_tcx.drop('hr', axis=1, inplace=True)
-
+    # removing hr to simulate the missing values
+    frame_tcx.drop("hr", axis=1, inplace=True)
 
     result = frame_tcx.summary()
 
