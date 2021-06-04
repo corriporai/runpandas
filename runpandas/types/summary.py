@@ -7,25 +7,6 @@ import numpy as np
 import pandas as pd
 from runpandas._utils import convert_pace_secmeters2minkms
 
-"""
-*** Session 1 : running ***
-Session times: 2013-06-01 18:32:15 - 2013-06-01 19:37:56
-Distance: 14130.7 m
-Duration: 65.68 mins
-Moving time: 64.17 mins
-Average speed: 3.59 m_per_s
-Average speed moving: 3.67 m_per_s
-Average pace (per 1 km): 4:38 min:sec
-Average pace moving (per 1 km): 4:32 min:sec
-Average cadence running: 88.66 steps_per_min
-Average cadence running moving: 88.87 steps_per_min
-Average heart rate: 141.11 bpm
-Average heart rate moving: 141.13 bpm
-Average heart rate resting: 136.76 bpm
-Average temperature: NA C
-Total elevation gain: 94.2 m
-"""
-
 
 def _build_summary_statistics(obj):
     """
