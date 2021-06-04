@@ -21,6 +21,7 @@ def test_activity_summary_with_missing_values(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     frame_tcx = reader._read_file(tcx_file, to_df=False)
     result = frame_tcx.summary()
+
     expected = Series(
         [
             "Running: 26-12-2012 21:29:53",
@@ -62,6 +63,10 @@ def test_activity_summary_missing_moving(dirpath):
     frame_tcx["distpos"] = frame_tcx.compute.distance(correct_distance=False)
     frame_tcx["speed"] = frame_tcx.compute.speed(from_distances=True)
 
+    #removing hr to simulate the missing values
+    frame_tcx.drop('hr', axis=1, inplace=True)
+
+
     result = frame_tcx.summary()
 
     expected = Series(
@@ -76,7 +81,7 @@ def test_activity_summary_missing_moving(dirpath):
             np.nan,
             np.nan,
             np.nan,
-            156.653,
+            np.nan,
             np.nan,
             np.nan,
         ],
