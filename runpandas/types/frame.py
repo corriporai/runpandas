@@ -277,3 +277,16 @@ class Activity(pd.DataFrame):
             activity = self
 
         return activity["cad"].mean()
+
+    def summary(self):
+        """
+        Display the common basic statistics for the activity.
+
+        Returns:
+        --------
+            pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
+            inclues estimates of the total distance covered, the total duration,
+            the time spent moving, and many others.
+
+        """
+        return runpandas.types.summary.activity_summary(self)

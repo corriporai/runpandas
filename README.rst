@@ -399,6 +399,36 @@ active.
 
 
 
+Runpandas also provides a method ``summary`` for summarising the
+activity through common statistics. Such a session summary includes
+estimates of several metrics computed above with a single call.
+
+.. code:: ipython3
+
+    activity_only_moving.summary()
+
+
+
+
+.. parsed-literal::
+
+    Session                           Running: 26-12-2012 21:29:53
+    Total distance (meters)                                4686.31
+    Total ellapsed time                            0 days 00:33:11
+    Total moving time                              0 days 00:33:05
+    Average speed (km/h)                                   8.47656
+    Average moving speed (km/h)                            8.49853
+    Average pace (per 1 km)                        0 days 00:07:04
+    Average pace moving (per 1 km)                 0 days 00:07:03
+    Average cadence                                            NaN
+    Average moving cadence                                     NaN
+    Average heart rate                                     156.653
+    Average moving heart rate                                157.4
+    Average temperature                                        NaN
+    dtype: object
+
+
+
 Now, let’s play with the data. Let’s show distance vs as an example of
 what and how we can create visualizations. In this example, we will use
 the built in, matplotlib based plot function.

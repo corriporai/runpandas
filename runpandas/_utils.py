@@ -5,7 +5,17 @@ import re
 from xml.etree.cElementTree import iterparse
 from functools import wraps
 from runpandas import exceptions
-from pandas import Series
+from pandas import Series, Timedelta
+
+
+def convert_pace_secmeters2minkms(seconds):
+    """
+    Convert pace from sec/meters to min/km.
+    """
+    pace_min = int((seconds * 1000) / 60)
+    pace_sec = int(seconds * 1000 - (pace_min * 60))
+    total_seconds = (pace_min * 60) + pace_sec
+    return Timedelta(seconds=total_seconds)
 
 
 def file_exists(fname):

@@ -3,6 +3,7 @@ Tests for utils module
 """
 import os
 import pytest
+from pandas import Timedelta
 from runpandas import _utils as utils
 
 pytestmark = pytest.mark.stable
@@ -53,3 +54,9 @@ def is_valid_nok(invalid_tcx_filename):
 def test_camecase_to_snakecase():
     assert utils.camelcase_to_snakecase("LatitudeDegrees") == "latitude_degrees"
     assert utils.camelcase_to_snakecase("Time") == "time"
+
+
+def test_convert_pace_secmeters2minkms():
+    assert utils.convert_pace_secmeters2minkms(
+        Timedelta("0 days 00:00:00.407078").total_seconds()
+    ) == Timedelta("0 days 00:06:47")
