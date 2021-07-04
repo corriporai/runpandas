@@ -161,7 +161,7 @@ class Activity(pd.DataFrame):
         ) / np.timedelta64(1, "s")
         merged_df = total_time.to_frame().join(self["moving"].to_frame())
         return pd.Timedelta(
-            seconds=total_time.sum() - merged_df[~merged_df["moving"]]["time"].sum()
+            seconds=total_time.sum() - merged_df[~merged_df["moving"].astype(bool)]["time"].sum()
         )
 
     @property
