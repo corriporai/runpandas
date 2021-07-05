@@ -212,28 +212,3 @@ def test_heart_zone_session(multi_frame):
     after_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
     assert before_shape[0] == after_shape[0] #same number of records
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1(hr_zone)
-
-
-@pytest.mark.test_session
-def test_summary_session(multi_frame, simple_activity):
-    multi_frame =  multi_frame.session.only_moving()
-    summary_frame = multi_frame.session.summarize()
-    assert multi_frame.session.count() == summary_frame.shape[0] #same number of records (activities)
-
-    #check the  first activity summary
-    simple_activity_moving = simple_activity.only_moving()
-    summary_single_activity = simple_activity_moving.summary()
-    #get the same summary from the summary frame
-    summary_session_activity = summary_frame.loc[simple_activity.start]
-    #compare the results
-    assert summary_single_activity.loc['Total distance (meters)'] == pytest.approx(summary_session_activity.loc['total_distance'])
-    assert summary_single_activity.loc['Total ellapsed time'] == (summary_session_activity.loc['ellapsed_time'])
-    assert summary_single_activity.loc['Total moving time'] == (summary_session_activity.loc['moving_time'])
-    assert summary_single_activity.loc['Average speed (km/h)'] == pytest.approx(summary_session_activity.loc['mean_speed'] * 3.6)
-    assert summary_single_activity.loc['Average moving speed (km/h)'] == pytest.approx(summary_session_activity.loc['mean_moving_speed']* 3.6)
-    assert summary_single_activity.loc['Average pace (per 1 km)'] == (summary_session_activity.loc['mean_pace'])
-    assert pd.isna(summary_single_activity.loc['Average cadence'])
-    assert pd.isna(summary_session_activity.loc['mean_cadence'])
-    assert summary_single_activity.loc['Average heart rate'] == pytest.approx(summary_session_activity.loc['mean_heart_rate'])
-    assert pd.isna(summary_single_activity.loc['Average temperature'])
-    assert pd.isna(summary_session_activity.loc['mean_temperature'])
