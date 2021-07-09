@@ -36,8 +36,6 @@ def simple_activity(dirpath):
     frame_tcx = reader._read_file(tcx_file, to_df=False)
     return frame_tcx
 
-
-@pytest.mark.test_session
 def test_validate_session(multi_frame, dirpath):
     sessions_dir = os.path.join(dirpath, "samples")
     activities = [ activity for activity in  read_dir(sessions_dir)]
@@ -57,7 +55,6 @@ def test_validate_session(multi_frame, dirpath):
         activity_gpx.session.count()
 
 
-@pytest.mark.test_session
 def test_count_session(multi_frame, dirpath):
     sessions_dir = os.path.join(dirpath, "samples")
     activities = [ activity for activity in  read_dir(sessions_dir)]
@@ -66,7 +63,6 @@ def test_count_session(multi_frame, dirpath):
     assert multi_frame.session.count()  == multi_frame.index.levshape[0]
 
 
-@pytest.mark.test_session
 def test_count_session(multi_frame, dirpath):
     sessions_dir = os.path.join(dirpath, "samples")
     activities = [ activity for activity in  read_dir(sessions_dir)]
@@ -75,7 +71,6 @@ def test_count_session(multi_frame, dirpath):
     assert multi_frame.session.count()  == multi_frame.index.levshape[0]
 
 
-@pytest.mark.test_session2
 def test_distance_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -90,7 +85,7 @@ def test_distance_session(multi_frame):
 
     assert isinstance(multi_frame['distpos'], columns.DistancePerPosition)
 
-@pytest.mark.test_session2
+
 def test_speed_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -116,7 +111,7 @@ def test_speed_session(multi_frame):
     assert before_shape[0] == after_shape[0] #same number of records
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1 (distpos)
 
-@pytest.mark.test_session2
+
 def test_vertical_speed_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -129,7 +124,7 @@ def test_vertical_speed_session(multi_frame):
     assert before_shape[0] == after_shape[0] #same number of records
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1(vam)
 
-@pytest.mark.test_session
+
 def test_gradient_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -142,7 +137,7 @@ def test_gradient_session(multi_frame):
     assert before_shape[0] == after_shape[0] #same number of records
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1(grad)
 
-@pytest.mark.test_session2
+
 def test_pace_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -171,7 +166,6 @@ def test_pace_session(multi_frame):
     assert isinstance(multi_frame['pace'], columns.Pace)
 
 
-@pytest.mark.test_session2
 def test_only_moving_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -185,7 +179,6 @@ def test_only_moving_session(multi_frame):
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1(moving)
 
 
-@pytest.mark.test_session2
 def test_gradient_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape
@@ -199,7 +192,6 @@ def test_gradient_session(multi_frame):
     assert before_shape[1] + 1 == after_shape[1] #number of columns + 1(grad)
 
 
-@pytest.mark.test_session2
 def test_heart_zone_session(multi_frame):
     before_count = multi_frame.session.count()
     before_shape = multi_frame.loc[Timestamp('2020-12-08 09:36:12+00:00')].shape

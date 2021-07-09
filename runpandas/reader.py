@@ -3,6 +3,7 @@ Module contains reading logic for several formats of training sources
 """
 
 from pathlib import Path
+import pandas as pd
 from runpandas import _utils as utils
 from runpandas import exceptions
 
@@ -80,3 +81,35 @@ def _read_dir(dirname, to_df=False, **kwargs):
             continue
 
         yield _read_file(filename=path_file, to_df=to_df, kwargs=kwargs)
+
+
+def _read_dir_aggregate(dirname, **kwargs):
+    '''
+    Read all supported container files from a supplied directory
+    as `runpandas.Activity` dataframes, and aggregate them
+    to the same session as a `pandas.MultiIndex` activity dataframe.
+
+    Parameters
+    ----------
+        dirname : str, The path to a directory with training files.
+             Return a obj:`runpandas.Activity` if `to_df=True`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs : Keyword args to be passed to the `read_dir` method
+
+    Returns
+    -------
+    Return a  :obj:`runpandas.Activity` split into sessions based
+    on the `pandas.MultiIndex` with the date/time of the activity
+    as first level and the second the timestamps for each record.
+    '''
+    activities = []
+    activity_keys = []
+    for activity in _read_dir(dirname=dirname, to_df=False, **kwargs):
+        activities.append(activity)
+        activity_keys.append(activity.start)
+    if len(activities) > 0:
+        multi_frame = pd.concat(activities, keys=activity_keys, \
+                                names=['start', 'time'], axis=0)
+        return multi_frame
+
+    return None

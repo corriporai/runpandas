@@ -67,7 +67,7 @@ def _build_summary_statistics(obj):
 
     try:
         mean_cadence = obj.mean_cadence()
-        max_cadence = obj['cadence'].max()
+        max_cadence = obj['cad'].max()
     except AttributeError:
         mean_cadence = np.nan
         max_cadence = np.nan

@@ -117,3 +117,15 @@ def test_invalid_dir(dirpath):
     tcx_file = os.path.join(dirpath, "tcx", "basic.tcx")
     with pytest.raises(AssertionError):
         next(reader._read_dir(tcx_file))
+
+def test_read_dir_empty_aggregate(temp_dir):
+    session_frame = reader._read_dir_aggregate(temp_dir)
+    assert session_frame is None
+
+def test_read_dir_aggregate(dirpath):
+    activities_directory = os.path.join(dirpath, "samples")
+    session = reader._read_dir_aggregate(activities_directory)
+    assert session.session.count() == 8
+    assert isinstance(session, types.Activity)
+    size_data = set([16289, 12229, 6286, 5656, 6489, 5635, 9485, 9471])
+    assert size_data == set([session.xs(index, level=0).size for index in session.index.unique(level='start')])

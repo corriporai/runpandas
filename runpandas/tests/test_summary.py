@@ -159,7 +159,7 @@ def test_activity_full_summary(dirpath):
     )
     assert_series_equal(result, expected)
 
-@pytest.mark.test_session
+
 def test_summary_session(multi_frame, simple_activity):
     multi_frame =  multi_frame.session.only_moving()
     summary_frame = multi_frame.session.summarize()
