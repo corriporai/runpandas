@@ -9,7 +9,7 @@ from runpandas._utils import convert_pace_secmeters2minkms
 
 
 def _build_summary_statistics(obj):
-    '''
+    """
     Generate session statistics from a given DataFrame.
 
     Parameters
@@ -37,7 +37,7 @@ def _build_summary_statistics(obj):
     - Min temperature
     - Total distance
     - Total ellapsed time
-    '''
+    """
 
     start = obj.start
 
@@ -48,9 +48,11 @@ def _build_summary_statistics(obj):
 
     try:
         mean_speed = obj.mean_speed()
-        max_speed =  obj['speed'].max()
+        max_speed = obj["speed"].max()
         mean_pace = convert_pace_secmeters2minkms(obj.mean_pace().total_seconds())
-        max_pace = convert_pace_secmeters2minkms(obj['speed'].to_pace().min().total_seconds())
+        max_pace = convert_pace_secmeters2minkms(
+            obj["speed"].to_pace().min().total_seconds()
+        )
     except AttributeError:
         mean_speed = np.nan
         max_speed = np.nan
@@ -67,7 +69,7 @@ def _build_summary_statistics(obj):
 
     try:
         mean_cadence = obj.mean_cadence()
-        max_cadence = obj['cad'].max()
+        max_cadence = obj["cad"].max()
     except AttributeError:
         mean_cadence = np.nan
         max_cadence = np.nan
@@ -79,7 +81,7 @@ def _build_summary_statistics(obj):
 
     try:
         mean_heart_rate = obj.mean_heart_rate()
-        max_heart_rate = obj['hr'].max()
+        max_heart_rate = obj["hr"].max()
     except AttributeError:
         mean_heart_rate = np.nan
         max_heart_rate = np.nan
@@ -91,8 +93,8 @@ def _build_summary_statistics(obj):
 
     try:
         mean_temperature = obj["temp"].mean()
-        min_temperature = obj['temp'].min()
-        max_temperature = obj['temp'].max()
+        min_temperature = obj["temp"].min()
+        max_temperature = obj["temp"].max()
     except KeyError:
         mean_temperature = np.nan
         min_temperature = np.nan
@@ -102,12 +104,13 @@ def _build_summary_statistics(obj):
 
     ellapsed_time = obj.ellapsed_time
 
-    row = {k:v for k, v in locals().items() if not k.startswith('__') and k != 'obj'}
+    row = {k: v for k, v in locals().items() if not k.startswith("__") and k != "obj"}
 
     return row
 
+
 def _build_session_statistics(obj):
-    '''
+    """
     Generate session statistics from a given DataFrame.
 
     Parameters
@@ -135,9 +138,10 @@ def _build_session_statistics(obj):
     - Min temperature
     - Total distance
     - Total ellapsed time
-    '''
-    stats = {key: [value] for key, value in _build_summary_statistics(obj).items() }
-    return pd.DataFrame(stats).set_index('start')
+    """
+    stats = {key: [value] for key, value in _build_summary_statistics(obj).items()}
+    return pd.DataFrame(stats).set_index("start")
+
 
 def _build_activity_statistics(obj):
     """
@@ -167,22 +171,22 @@ def _build_activity_statistics(obj):
     - Average temperature
     """
     # special conditions for methods that raise Exceptions
-    stats =  _build_summary_statistics(obj)
+    stats = _build_summary_statistics(obj)
 
     rows = {
-        "Session": "Running: %s" % stats['start'].strftime("%d-%m-%Y %H:%M:%S"),
-        "Total distance (meters)": stats['total_distance'],
-        "Total ellapsed time": stats['ellapsed_time'],
-        "Total moving time": stats['moving_time'],
-        "Average speed (km/h)": stats['mean_speed'] * 3.6,
-        "Average moving speed (km/h)": stats['mean_moving_speed'] * 3.6,
-        "Average pace (per 1 km)": stats['mean_pace'],
-        "Average pace moving (per 1 km)": stats['mean_moving_pace'],
-        "Average cadence": stats['mean_cadence'],
-        "Average moving cadence": stats['mean_moving_cadence'],
-        "Average heart rate": stats['mean_heart_rate'],
-        "Average moving heart rate": stats['mean_moving_heart_rate'],
-        "Average temperature": stats['mean_temperature'],
+        "Session": "Running: %s" % stats["start"].strftime("%d-%m-%Y %H:%M:%S"),
+        "Total distance (meters)": stats["total_distance"],
+        "Total ellapsed time": stats["ellapsed_time"],
+        "Total moving time": stats["moving_time"],
+        "Average speed (km/h)": stats["mean_speed"] * 3.6,
+        "Average moving speed (km/h)": stats["mean_moving_speed"] * 3.6,
+        "Average pace (per 1 km)": stats["mean_pace"],
+        "Average pace moving (per 1 km)": stats["mean_moving_pace"],
+        "Average cadence": stats["mean_cadence"],
+        "Average moving cadence": stats["mean_moving_cadence"],
+        "Average heart rate": stats["mean_heart_rate"],
+        "Average moving heart rate": stats["mean_moving_heart_rate"],
+        "Average temperature": stats["mean_temperature"],
     }
 
     series = pd.Series(
@@ -206,6 +210,7 @@ def _build_activity_statistics(obj):
 
     return series
 
+
 def activity_summary(activity):
     """
     Returns the a pandas Dataframe with the common basic statistics for the
@@ -226,6 +231,7 @@ def activity_summary(activity):
     summary_statistics = _build_activity_statistics(activity)
     return summary_statistics.T
 
+
 def session_summary(session):
     """
     Returns the a pandas Dataframe with the common basic statistics for the
@@ -244,10 +250,10 @@ def session_summary(session):
 
     """
     frames = []
-    for index in session.index.unique(level='start'):
-                df = session.xs(index, level=0)
-                df.start = index
-                frames.append(_build_session_statistics(df))
+    for index in session.index.unique(level="start"):
+        df = session.xs(index, level=0)
+        df.start = index
+        frames.append(_build_session_statistics(df))
 
     session_summary = pd.concat(frames, axis=0, verify_integrity=True)
     session_summary.sort_index(inplace=True)

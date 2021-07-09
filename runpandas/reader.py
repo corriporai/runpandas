@@ -84,7 +84,7 @@ def _read_dir(dirname, to_df=False, **kwargs):
 
 
 def _read_dir_aggregate(dirname, **kwargs):
-    '''
+    """
     Read all supported container files from a supplied directory
     as `runpandas.Activity` dataframes, and aggregate them
     to the same session as a `pandas.MultiIndex` activity dataframe.
@@ -101,15 +101,16 @@ def _read_dir_aggregate(dirname, **kwargs):
     Return a  :obj:`runpandas.Activity` split into sessions based
     on the `pandas.MultiIndex` with the date/time of the activity
     as first level and the second the timestamps for each record.
-    '''
+    """
     activities = []
     activity_keys = []
     for activity in _read_dir(dirname=dirname, to_df=False, **kwargs):
         activities.append(activity)
         activity_keys.append(activity.start)
     if len(activities) > 0:
-        multi_frame = pd.concat(activities, keys=activity_keys, \
-                                names=['start', 'time'], axis=0)
+        multi_frame = pd.concat(
+            activities, keys=activity_keys, names=["start", "time"], axis=0
+        )
         return multi_frame
 
     return None

@@ -6,12 +6,12 @@ import os
 import time
 import requests
 
-URL = 'https://readthedocs.org/api/v3/projects/runpandas'
-TOKEN = os.getenv('READTHEDOCS_TOKEN')
+URL = "https://readthedocs.org/api/v3/projects/runpandas"
+TOKEN = os.getenv("READTHEDOCS_TOKEN")
 HEADERS = {
-    'Authorization': f'Token {TOKEN}',
-    'Content-Length': '0',
-    }
+    "Authorization": f"Token {TOKEN}",
+    "Content-Length": "0",
+}
 
 
 def build_status(build_id: str) -> str:
@@ -24,55 +24,55 @@ def build_status(build_id: str) -> str:
     """
 
     max_min = 3
-    status = 'triggered'
+    status = "triggered"
 
     i = 0
     while True:
         i += 1
         time.sleep(30)
 
-        response = requests.get(f'{URL}/builds/{build_id}/', headers=HEADERS)
+        response = requests.get(f"{URL}/builds/{build_id}/", headers=HEADERS)
         response = response.json()
 
-        if response['success'] is True:
-            status = 'finished'
+        if response["success"] is True:
+            status = "finished"
             break
-        elif response['success'] is False:
-            status = 'failed'
+        elif response["success"] is False:
+            status = "failed"
             break
 
-        if i == 2*max_min:
+        if i == 2 * max_min:
             break
 
     return status
 
 
 def main():
-    response = requests.post(f'{URL}/versions/latest/builds/', headers=HEADERS)
+    response = requests.post(f"{URL}/versions/latest/builds/", headers=HEADERS)
     response = response.json()
 
-    if response['triggered']:
-        print('ReadTheDocs build successfully triggered.')
+    if response["triggered"]:
+        print("ReadTheDocs build successfully triggered.")
         print(f"Build id: {response['build']['id']}")
         print(f"Branch: {response['version']['identifier']}")
         print(f"Version: {response['build']['version']}")
 
-        build_id = response['build']['id']
+        build_id = response["build"]["id"]
         status = build_status(build_id)
 
-        if status == 'finished':
-            print('ReadTheDocs build successfully finished.')
+        if status == "finished":
+            print("ReadTheDocs build successfully finished.")
             return 0
-        if status == 'triggered':
-            print('ReadTheDocs build still ongoing... Please check manually.')
+        if status == "triggered":
+            print("ReadTheDocs build still ongoing... Please check manually.")
             return 0
-        if status == 'failed':
-            print('ReadTheDocs build failed.')
+        if status == "failed":
+            print("ReadTheDocs build failed.")
             return 1
     else:
-        print('ReadTheDocs build triggering failed.')
+        print("ReadTheDocs build triggering failed.")
         return 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
