@@ -70,7 +70,15 @@ def read(file_path, to_df=False, **kwargs):
         timestamps = pd.to_datetime(times, format=DATETIME_FMT, utc=True)
     except ValueError:
         # bad format, try with fractional seconds
-        timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC, utc=True)
+        try:
+            timestamps = pd.to_datetime(times, format=DATETIME_FMT_WITH_FRAC, utc=True)
+        except ValueError:
+            # bad format with both formats. Trying coercing one after another.
+            timestamps = pd.to_datetime(times, format=DATETIME_FMT, errors="coerce")
+            mask = timestamps.isnull()
+            timestamps.loc[mask] = pd.to_datetime(
+                times[mask], format=DATETIME_FMT_WITH_FRAC, errors="coerce"
+            )
     timeoffsets = timestamps - timestamps[0]
     timestamp_index = TimedeltaIndex(timeoffsets, unit="s", name="time")
     data.index = timestamp_index

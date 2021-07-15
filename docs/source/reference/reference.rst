@@ -12,6 +12,7 @@ Reference
   MeasureSeries <columns>
   Acessors <acessors>
   Input/output <io>
+  Summary <summary>
   Datasets <datasets>
   Tools <tools>
   Testing <testing>

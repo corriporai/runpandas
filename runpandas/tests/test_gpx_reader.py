@@ -162,3 +162,11 @@ def test_read_file_gpx_with_timestamp_nofrac(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "strava_export.gpx")
     activity = reader._read_file(gpx_file)
     assert activity.start == Timestamp("2021-01-10 08:54:28Z")
+
+
+def test_read_file_nikerun_gpx_export(dirpath):
+    gpx_file = os.path.join(dirpath, "gpx", "nike_run.gpx")
+    activity = reader._read_file(gpx_file)
+    assert activity.start.floor(freq="S") == Timestamp("2021-07-04 11:23:19").floor(
+        freq="S"
+    )
