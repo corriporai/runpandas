@@ -45,16 +45,17 @@ class _SessionAcessor(object):
 
         Returns
         -------
-        pandas.Dataframe: A Dataframe with the summarized statistics for
-        the all the session.
+        pandas.Dataframe: A Dataframe with the summarized statistics for the all the session.
         """
         return summary.session_summary(self._session)
 
     def count(self):
         """
+        Returns the total number of activities in the session.
+
         Returns
         -------
-        Returns the total number of activities in the session.
+        int: the total number of activities in the session.
 
         """
         return self._session.index.levshape[0]
@@ -78,7 +79,8 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new columns dist and distpos computed.
+            `runpandas.Activity`: The runpandas.Activity with the
+             new columns dist and distpos computed.
 
         See Also
         --------
@@ -118,7 +120,7 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new column speed computed.
+            `runpandas.Activity`: The runpandas.Activity with the new column speed computed.
 
         See Also
         --------
@@ -154,7 +156,8 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new column vertical altitude speed computed.
+            `runpandas.Activity`: The runpandas.Activity with the new
+             column vertical altitude speed computed.
 
         See Also
         --------
@@ -184,7 +187,7 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new column gradient computed.
+            `runpandas.Activity`: The runpandas.Activity with the new column gradient computed.
 
         See Also
         --------
@@ -215,7 +218,7 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new column pace computed.
+            `runpandas.Activity`: The runpandas.Activity with the new column pace computed.
 
         See Also
         --------
@@ -249,7 +252,8 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the new column heart zone labels computed.
+            `runpandas.Activity`: The runpandas.Activity with the
+                new column heart zone labels computed.
 
         See Also
         --------
@@ -280,7 +284,7 @@ class _SessionAcessor(object):
 
         Returns
         -------
-            The runpandas.Activity with the column moving computed.
+            `runpandas.Activity`: The runpandas.Activity with the column moving computed.
 
         See Also
         --------

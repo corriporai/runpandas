@@ -213,16 +213,15 @@ def _build_activity_statistics(obj):
 
 def activity_summary(activity):
     """
-    Returns the a pandas Dataframe with the common basic statistics for the
+    Returns the pandas Dataframe with the common basic statistics for the
     given activity.
 
     Parameters
     ----------
-    activity:  runpandas.types.Activity
-    Runpandas Activity to be computed the statistics
+    activity:  runpandas.types.Activity. Runpandas Activity to be computed the statistics
 
-    Returns:
-    --------
+    Returns
+    -------
         pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
         inclues estimates of the total distance covered, the total duration,
         the time spent moving, and many others.
@@ -239,14 +238,14 @@ def session_summary(session):
 
     Parameters
     ----------
-    activity:  runpandas.types.Activity
-    Runpandas Activity to be computed the statistics
+    session:  runpandas.types.Activity. Runpandas Activity with pandas.MultiIndex
+    to be computed the statistics
 
-    Returns:
-    --------
-        pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
-        inclues estimates of the total distance covered, the total duration,
-        the time spent moving, and many others.
+    Returns
+    -------
+    pandas.Dataframe:  A pandas DataFrame containing the summary statistics
+    across all th activities, which includes estimates of the total distance covered,
+    the total duration, the time spent moving, and many others.
 
     """
     frames = []

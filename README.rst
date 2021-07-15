@@ -700,6 +700,763 @@ returns a filter iterable that you can iterate over:
 
 
 
+Exploring sessions
+==================
+
+The package ``runpandas`` provides utilities to import a group of
+activities data, and after careful processing, organises them into a
+MultiIndex Dataframe.
+
+The ``pandas.MultiIndex`` allows you to have multiple columns acting as
+a row identifier and multiple rows acting as a header identifier. In our
+scenario we will have as first indentifier (index) the timestamp of the
+workout when it started, and as second indentifier the timedelta of the
+consecutive observations of the workout.
+
+.. figure:: examples/MultiIndexDataframe.png
+   :alt: Illustration of the MultiIndex Dataframe
+
+   The MultiIndex Runpandas Activity Dataframe
+
+The MultiIndex dataframe result from the function
+``runpandas.read_dir_aggregate``, which takes as input the directory of
+tracking data files, and constructs using the read*() functions to build
+``runpandas.Activity`` objects. Them, the result daframes are first
+sorted by the time stamps and are all combined into a single
+``runpandas.Activity`` indexed by the two-level ``pandas.MultiIndex``.
+
+Let’s illustrate these examples by loading a bunch of 68 running
+activities of a female runner over the years of 2020 until 2021.
+
+.. code:: ipython3
+
+    import warnings
+    warnings.filterwarnings('ignore')
+
+.. code:: ipython3
+
+    import runpandas
+    session = runpandas.read_dir_aggregate(dirname='session/')
+
+.. code:: ipython3
+
+    session
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>alt</th>
+          <th>hr</th>
+          <th>lon</th>
+          <th>lat</th>
+        </tr>
+        <tr>
+          <th>start</th>
+          <th>time</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="5" valign="top">2020-08-30 09:08:51.012</th>
+          <th>00:00:00</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893609</td>
+          <td>-8.045055</td>
+        </tr>
+        <tr>
+          <th>00:00:01.091000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893624</td>
+          <td>-8.045054</td>
+        </tr>
+        <tr>
+          <th>00:00:02.091000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893641</td>
+          <td>-8.045061</td>
+        </tr>
+        <tr>
+          <th>00:00:03.098000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893655</td>
+          <td>-8.045063</td>
+        </tr>
+        <tr>
+          <th>00:00:04.098000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893655</td>
+          <td>-8.045065</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th rowspan="5" valign="top">2021-07-04 11:23:19.418</th>
+          <th>00:52:39.582000</th>
+          <td>0.050001</td>
+          <td>189.0</td>
+          <td>-34.894534</td>
+          <td>-8.046602</td>
+        </tr>
+        <tr>
+          <th>00:52:43.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894465</td>
+          <td>-8.046533</td>
+        </tr>
+        <tr>
+          <th>00:52:44.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894443</td>
+          <td>-8.046515</td>
+        </tr>
+        <tr>
+          <th>00:52:45.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894429</td>
+          <td>-8.046494</td>
+        </tr>
+        <tr>
+          <th>00:52:49.582000</th>
+          <td>NaN</td>
+          <td>190.0</td>
+          <td>-34.894395</td>
+          <td>-8.046398</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>48794 rows × 4 columns</p>
+    </div>
+
+
+
+Now let’s see how many activities there are available for analysis. For
+this question, we also have an acessor
+``runpandas.types.acessors.session._SessionAcessor`` that holds several
+methods for computing the basic running metrics across all the
+activities from this kind of frame and some summary statistics.
+
+.. code:: ipython3
+
+    #count the number of activities in the session
+    print ('Total Activities:', session.session.count())
+
+
+.. parsed-literal::
+
+    Total Activities: 68
+
+
+We might compute the main running metrics (speed, pace, moving, etc)
+using the session acessors methods as like the ones available in the
+``runpandas.types.metrics.MetricsAcessor`` . By the way, those methods
+are called inside each metric method, but applying in each of activities
+separatedely.
+
+.. code:: ipython3
+
+    #In this example we compute the distance and the distance per position across all workouts
+    session = session.session.distance()
+    session
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th></th>
+          <th>alt</th>
+          <th>hr</th>
+          <th>lon</th>
+          <th>lat</th>
+          <th>distpos</th>
+          <th>dist</th>
+        </tr>
+        <tr>
+          <th>start</th>
+          <th>time</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="5" valign="top">2020-08-30 09:08:51.012</th>
+          <th>00:00:00</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893609</td>
+          <td>-8.045055</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>00:00:01.091000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893624</td>
+          <td>-8.045054</td>
+          <td>1.690587</td>
+          <td>1.690587</td>
+        </tr>
+        <tr>
+          <th>00:00:02.091000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893641</td>
+          <td>-8.045061</td>
+          <td>2.095596</td>
+          <td>3.786183</td>
+        </tr>
+        <tr>
+          <th>00:00:03.098000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893655</td>
+          <td>-8.045063</td>
+          <td>1.594298</td>
+          <td>5.380481</td>
+        </tr>
+        <tr>
+          <th>00:00:04.098000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.893655</td>
+          <td>-8.045065</td>
+          <td>0.163334</td>
+          <td>5.543815</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th rowspan="5" valign="top">2021-07-04 11:23:19.418</th>
+          <th>00:52:39.582000</th>
+          <td>0.050001</td>
+          <td>189.0</td>
+          <td>-34.894534</td>
+          <td>-8.046602</td>
+          <td>12.015437</td>
+          <td>8220.018885</td>
+        </tr>
+        <tr>
+          <th>00:52:43.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894465</td>
+          <td>-8.046533</td>
+          <td>10.749779</td>
+          <td>8230.768664</td>
+        </tr>
+        <tr>
+          <th>00:52:44.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894443</td>
+          <td>-8.046515</td>
+          <td>3.163638</td>
+          <td>8233.932302</td>
+        </tr>
+        <tr>
+          <th>00:52:45.582000</th>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>-34.894429</td>
+          <td>-8.046494</td>
+          <td>2.851535</td>
+          <td>8236.783837</td>
+        </tr>
+        <tr>
+          <th>00:52:49.582000</th>
+          <td>NaN</td>
+          <td>190.0</td>
+          <td>-34.894395</td>
+          <td>-8.046398</td>
+          <td>11.300740</td>
+          <td>8248.084577</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>48794 rows × 6 columns</p>
+    </div>
+
+
+
+.. code:: ipython3
+
+    #comput the speed for each activity
+    session = session.session.speed(from_distances=True)
+    #compute the pace for each activity
+    session = session.session.pace()
+    #compute the inactivity periods for each activity
+    session = session.session.only_moving()
+
+After all the computation done, let’s going to the next step: the
+exploration and get some descriptive statistics.
+
+After the loading and metrics computation for all the activities, now
+let’s look further the data and get the basic summaries about the
+session: time spent, total distance, mean speed and other insightful
+statistics in each running activity. For this task, we may accomplish it
+by calling the method
+``runpandas.types.session._SessionAcessor.summarize`` . It will return a
+basic Dataframe including all the aggregated statistics per activity
+from the season frame.
+
+.. code:: ipython3
+
+    summary = session.session.summarize()
+    summary
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>moving_time</th>
+          <th>mean_speed</th>
+          <th>max_speed</th>
+          <th>mean_pace</th>
+          <th>max_pace</th>
+          <th>mean_moving_speed</th>
+          <th>mean_moving_pace</th>
+          <th>mean_cadence</th>
+          <th>max_cadence</th>
+          <th>mean_moving_cadence</th>
+          <th>mean_heart_rate</th>
+          <th>max_heart_rate</th>
+          <th>mean_moving_heart_rate</th>
+          <th>mean_temperature</th>
+          <th>min_temperature</th>
+          <th>max_temperature</th>
+          <th>total_distance</th>
+          <th>ellapsed_time</th>
+        </tr>
+        <tr>
+          <th>start</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2020-07-03 09:50:53.162</th>
+          <td>00:25:29.838000</td>
+          <td>2.642051</td>
+          <td>4.879655</td>
+          <td>00:06:18</td>
+          <td>00:03:24</td>
+          <td>2.665008</td>
+          <td>00:06:15</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>178.819923</td>
+          <td>188.0</td>
+          <td>178.872587</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>4089.467333</td>
+          <td>00:25:47.838000</td>
+        </tr>
+        <tr>
+          <th>2020-07-05 09:33:20.999</th>
+          <td>00:05:04.999000</td>
+          <td>2.227637</td>
+          <td>6.998021</td>
+          <td>00:07:28</td>
+          <td>00:02:22</td>
+          <td>3.072098</td>
+          <td>00:05:25</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>168.345455</td>
+          <td>176.0</td>
+          <td>168.900000</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>980.162640</td>
+          <td>00:07:20.001000</td>
+        </tr>
+        <tr>
+          <th>2020-07-05 09:41:59.999</th>
+          <td>00:18:19</td>
+          <td>1.918949</td>
+          <td>6.563570</td>
+          <td>00:08:41</td>
+          <td>00:02:32</td>
+          <td>2.729788</td>
+          <td>00:06:06</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>173.894180</td>
+          <td>185.0</td>
+          <td>174.577143</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>3139.401118</td>
+          <td>00:27:16</td>
+        </tr>
+        <tr>
+          <th>2020-07-13 09:13:58.718</th>
+          <td>00:40:21.281000</td>
+          <td>2.509703</td>
+          <td>8.520387</td>
+          <td>00:06:38</td>
+          <td>00:01:57</td>
+          <td>2.573151</td>
+          <td>00:06:28</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>170.808176</td>
+          <td>185.0</td>
+          <td>170.795527</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>6282.491059</td>
+          <td>00:41:43.281000</td>
+        </tr>
+        <tr>
+          <th>2020-07-17 09:33:02.308</th>
+          <td>00:32:07.691000</td>
+          <td>2.643278</td>
+          <td>8.365431</td>
+          <td>00:06:18</td>
+          <td>00:01:59</td>
+          <td>2.643278</td>
+          <td>00:06:18</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>176.436242</td>
+          <td>186.0</td>
+          <td>176.436242</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>5095.423045</td>
+          <td>00:32:07.691000</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>2021-06-13 09:22:30.985</th>
+          <td>01:32:33.018000</td>
+          <td>2.612872</td>
+          <td>23.583956</td>
+          <td>00:06:22</td>
+          <td>00:00:42</td>
+          <td>2.810855</td>
+          <td>00:05:55</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>169.340812</td>
+          <td>183.0</td>
+          <td>169.655879</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>15706.017295</td>
+          <td>01:40:11.016000</td>
+        </tr>
+        <tr>
+          <th>2021-06-20 09:16:55.163</th>
+          <td>00:59:44.512000</td>
+          <td>2.492640</td>
+          <td>6.065895</td>
+          <td>00:06:41</td>
+          <td>00:02:44</td>
+          <td>2.749453</td>
+          <td>00:06:03</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>170.539809</td>
+          <td>190.0</td>
+          <td>171.231392</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>9965.168311</td>
+          <td>01:06:37.837000</td>
+        </tr>
+        <tr>
+          <th>2021-06-23 09:37:44.000</th>
+          <td>00:26:49.001000</td>
+          <td>2.501796</td>
+          <td>5.641343</td>
+          <td>00:06:39</td>
+          <td>00:02:57</td>
+          <td>2.568947</td>
+          <td>00:06:29</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>156.864865</td>
+          <td>171.0</td>
+          <td>156.957031</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>4165.492241</td>
+          <td>00:27:45.001000</td>
+        </tr>
+        <tr>
+          <th>2021-06-27 09:50:08.664</th>
+          <td>00:31:42.336000</td>
+          <td>2.646493</td>
+          <td>32.734124</td>
+          <td>00:06:17</td>
+          <td>00:00:30</td>
+          <td>2.661853</td>
+          <td>00:06:15</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>166.642857</td>
+          <td>176.0</td>
+          <td>166.721116</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>5074.217061</td>
+          <td>00:31:57.336000</td>
+        </tr>
+        <tr>
+          <th>2021-07-04 11:23:19.418</th>
+          <td>00:47:47.583000</td>
+          <td>2.602263</td>
+          <td>4.212320</td>
+          <td>00:06:24</td>
+          <td>00:03:57</td>
+          <td>2.856801</td>
+          <td>00:05:50</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>177.821862</td>
+          <td>192.0</td>
+          <td>177.956967</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>NaN</td>
+          <td>8248.084577</td>
+          <td>00:52:49.582000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>68 rows × 18 columns</p>
+    </div>
+
+
+
+.. code:: ipython3
+
+    print('Session Interval:', (summary.index.to_series().max() - summary.index.to_series().min()).days, 'days')
+    print('Total Workouts:', len(summary), 'runnings')
+    print('Tota KM Distance:', summary['total_distance'].sum() / 1000)
+    print('Average Pace (all runs):', summary.mean_pace.mean())
+    print('Average Moving Pace (all runs):', summary.mean_moving_pace.mean())
+    print('Average KM Distance (all runs):', round(summary.total_distance.mean()/ 1000,2))
+
+
+.. parsed-literal::
+
+    Session Interval: 366 days
+    Total Workouts: 68 runnings
+    Tota KM Distance: 491.77377537338896
+    Average Pace (all runs): 0 days 00:07:18.411764
+    Average Moving Pace (all runs): 0 days 00:06:02.147058
+    Average KM Distance (all runs): 7.23
+
+
+At this point, I have the summary data to start some powerful
+visualization and analysis. At the charts below we illustrate her pace
+and distance evolution over time.
+
+.. code:: ipython3
+
+    import matplotlib.pyplot as plt
+    import datetime
+    
+    #let's convert the pace to float number in minutes
+    summary['mean_moving_pace_float'] = summary['mean_moving_pace'] / datetime.timedelta(minutes=1)
+    summary['pace_moving_all_mean'] = summary.mean_moving_pace.mean()
+    summary['pace_moving_all_mean_float'] = summary['pace_moving_all_mean'] / datetime.timedelta(minutes=1)
+    
+    plt.subplots(figsize=(8, 5))
+    
+    plt.plot(summary.index, summary.mean_moving_pace_float, color='silver')
+    plt.plot(summary.pace_moving_all_mean_float, color='purple', linestyle='dashed', label='average')
+    plt.title("Pace Evolution")
+    plt.xlabel("Runnings")
+    plt.ylabel("Pace")
+    plt.legend()
+
+
+
+
+.. parsed-literal::
+
+    <matplotlib.legend.Legend at 0x7f82d8d83cd0>
+
+
+
+
+.. image:: examples/overview_files/overview_56_1.svg
+
+
+.. code:: ipython3
+
+    
+    plt.subplots(figsize=(8, 5))
+    
+    summary['distance_all_mean'] = round(summary.total_distance.mean()/1000,2)
+    
+    plt.plot(summary.index, summary.total_distance / 1000, color='silver')
+    plt.plot(summary.distance_all_mean, color='purple', linestyle='dashed', label='average')
+    plt.title("Distance Evolution")
+    plt.xlabel("Runs")
+    plt.ylabel("distance")
+    plt.legend()
+    
+    
+    plt.show()
+
+
+
+.. image:: examples/overview_files/overview_57_0.svg
+
+
+
 Get in touch
 ------------
 - Report bugs, suggest features or view the source code [on GitHub](https://github.com/corriporai/runpandas).

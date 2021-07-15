@@ -170,6 +170,7 @@ runpandas.types.Activity
       ~Activity.sub
       ~Activity.subtract
       ~Activity.sum
+      ~Activity.summary
       ~Activity.swapaxes
       ~Activity.swaplevel
       ~Activity.tail
