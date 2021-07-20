@@ -21,3 +21,5 @@ Social Apps
    :toctree: api/
 
    read_strava
+   read_nikerun
+   read_dir_nikerun
