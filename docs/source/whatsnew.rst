@@ -13,3 +13,4 @@ For full details, see the `commit logs <https://github.com/corriporai/runpandas/
 .. include:: whatsnew/v0.4.0.txt
 .. include:: whatsnew/v0.4.1.txt
 .. include:: whatsnew/v0.5.0.txt
+.. include:: whatsnew/v0.5.1.txt

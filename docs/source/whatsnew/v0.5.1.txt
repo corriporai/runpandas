@@ -1,0 +1,21 @@
+.. _whatsnew_051:
+
+v0.5.1 (July 20, 2021)
+----------------------------
+
+This is a minor release from 0.5.0 and includes new features and improvements
+
+
+Highlights include:
+
+
+.. contents:: What's new in v0.5.1
+    :local:
+    :backlinks: none
+
+.. _whatsnew_051.enhancements:
+
+New features
+~~~~~~~~~~~~
+- Added support to reading JSON files from Nike Run Club social tracking app (:issue:`20`)
+- Added new docummentation for Nike Run Club Tracking files (:issue:`20`)
