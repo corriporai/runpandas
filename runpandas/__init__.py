@@ -19,5 +19,6 @@ __all__ = [
     "read_dir_aggregate",
     "read_strava",
     "read_nikerun",
-    "read_dir_nikerun" "activity_examples",
+    "read_dir_nikerun",
+    "activity_examples",
 ]
