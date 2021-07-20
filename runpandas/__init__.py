@@ -2,6 +2,8 @@ from runpandas.reader import _read_file as read_file  # noqa
 from runpandas.reader import _read_dir as read_dir  # noqa
 from runpandas.reader import _read_dir_aggregate as read_dir_aggregate  # noqa
 from runpandas.io.strava._parser import read_strava  # noqa
+from runpandas.io.nikerun._parser import read_nikerun  # noqa
+from runpandas.io.nikerun._parser import read_dir_nikerun  # noqa
 from runpandas.datasets.utils import activity_examples  # noqa
 from runpandas.datasets.schema import FileTypeEnum  # noqa
 
@@ -16,5 +18,7 @@ __all__ = [
     "read_dir",
     "read_dir_aggregate",
     "read_strava",
+    "read_nikerun",
+    "read_dir_nikerun",
     "activity_examples",
 ]

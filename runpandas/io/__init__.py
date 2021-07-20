@@ -1,1 +1,1 @@
-__all__ = ["gpx", "fit", "strava", "tcx"]
+__all__ = ["gpx", "fit", "strava", "tcx", "nikerun"]
