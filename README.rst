@@ -11,6 +11,9 @@ RunPandas - Python Package for handing running data from GPS-enabled tracking de
     :target: https://anaconda.org/marcelcaraciolo/runpandas
 
 
+.. image:: https://img.shields.io/github/issues/corriporai/runpandas.svg
+    :target: https://github.com/corriporai/runpandas/issues
+
 .. image:: https://www.codefactor.io/repository/github/corriporai/runpandas/badge
    :target: https://www.codefactor.io/repository/github/corriporai/runpandas
    :alt: CodeFactor
@@ -35,7 +38,11 @@ RunPandas - Python Package for handing running data from GPS-enabled tracking de
 
 .. image:: https://mybinder.org/badge_logo.svg
  :target: https://mybinder.org/v2/gh/corriporai/runpandas/HEAD
- 
+
+.. image:: https://requires.io/github/corriporai/runpandas/requirements.svg?branch=master
+     :target: https://requires.io/github/corriporai/runpandas/requirements/?branch=master
+     :alt: Requirements Status
+
 .. image:: https://zenodo.org/badge/272209151.svg
    :target: https://zenodo.org/badge/latestdoi/272209151
 
