@@ -112,16 +112,23 @@ def __nikerun_streams(metrics):
     final_streams["time"] = epoch_datetime
 
     final_streams["elevation"] = __update_single_metrics(epoch_ms, streams["elevation"])
-    final_streams["heart_rate"] = __update_single_metrics(
-        epoch_ms, streams["heart_rate"]
-    )
-    final_streams["calories"] = __update_acummulative_metrics(
-        epoch_ms, streams["calories"]
-    )
-    final_streams["steps"] = __update_acummulative_metrics(epoch_ms, streams["steps"])
-    final_streams["nikefuel"] = __update_acummulative_metrics(
-        epoch_ms, streams["nikefuel"]
-    )
+    if "heart_rate" in streams:
+        final_streams["heart_rate"] = __update_single_metrics(
+            epoch_ms, streams["heart_rate"]
+        )
+
+    if "calories" in streams:
+        final_streams["calories"] = __update_acummulative_metrics(
+            epoch_ms, streams["calories"]
+        )
+    if "steps" in streams:
+        final_streams["steps"] = __update_acummulative_metrics(
+            epoch_ms, streams["steps"]
+        )
+    if "nikefuel" in streams:
+        final_streams["nikefuel"] = __update_acummulative_metrics(
+            epoch_ms, streams["nikefuel"]
+        )
 
     return final_streams
 
