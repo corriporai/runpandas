@@ -167,3 +167,13 @@ def test_read_dir_full_nikerun(dirpath):
             for index in session.index.unique(level="start")
         ]
     )
+
+
+def test_read_file_missing_data_nikerun_basic_activity(dirpath):
+    json_file = os.path.join(dirpath, "nikerun", "missing_columns_nikerun.json")
+    activity = read_nikerun(json_file, to_df=False)
+    assert isinstance(activity, types.Activity)
+    assert isinstance(activity.index, TimedeltaIndex)
+    assert activity.size == 1212
+    included_data = set(["lat", "lon", "alt"])
+    assert included_data <= set(activity.columns.to_list())
