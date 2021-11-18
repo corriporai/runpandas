@@ -46,7 +46,7 @@ class HTTPServerHandler(BaseHTTPRequestHandler):
             self.server.access_token = self.auth_code
 
     # Disable logging from the HTTP Server
-    def log_message(self, format, *args):
+    def log_message(self, *args):
         return
 
 
@@ -124,9 +124,7 @@ class StravaClient(Client):
         webbrowser.open(authorize_url)
         httpServer = HTTPResponder(
             ("localhost", 5000),
-            lambda request, address, server: HTTPServerHandler(
-                request, address, server
-            ),
+            HTTPServerHandler,
         )
         httpServer.handle_request()
 
