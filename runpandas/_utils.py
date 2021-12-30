@@ -32,7 +32,7 @@ def splitext_plus(fname):
     if ext in [".gz", ".bz2", ".zip"]:
         base, ext2 = os.path.splitext(base)
         ext = ext2 + ext
-    return base, ext
+    return base, ext.lower()
 
 
 def is_valid(fname):
@@ -48,7 +48,7 @@ def is_valid(fname):
     It returns True if the it is a valid format for activities handling.
     """
     _, ext = os.path.splitext(fname)
-    return ext in [".tcx", ".gpx", ".fit"]
+    return ext.lower() in [".tcx", ".gpx", ".fit"]
 
 
 def recursive_text_extract(node):
