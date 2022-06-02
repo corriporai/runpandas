@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
- python -m pip install --upgrade pip
+
+python -m pip install --upgrade pip
 
 #pip install pip --upgrade --user
 pip install numpy=="$NUMPY" lxml
