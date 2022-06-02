@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
-if [[ "$os" == "windows-latest" ]]; then
  python -m pip install --upgrade pip
-else
-  pip install pip --upgrade --user
-fi
 
+#pip install pip --upgrade --user
 pip install numpy=="$NUMPY" lxml
 pip install -r requirements-dev.txt
 
