@@ -2,9 +2,7 @@
 
 
 python -m pip install --upgrade pip
-
-#pip install pip --upgrade --user
-pip install numpy=="$NUMPY" lxml
+pip install numpy lxml
 pip install -r requirements-dev.txt
 
 if [[ "$PANDAS" == "MASTER" ]]; then
