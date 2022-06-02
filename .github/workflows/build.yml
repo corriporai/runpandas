@@ -24,10 +24,15 @@ jobs:
     strategy:
       matrix:
         include:
-          - env: "PANDAS=1.0.5 NUMPY=1.18 PYTHON=3.10"
+          - env: "PANDAS=1.4.2 NUMPY=1.19 PYTHON=3.10"
+            os: ubuntu-latest
+            PANDAS: '1.4.2'
+            NUMPY: '1.19'
+            python-version: '3.10'
+          - env: "PANDAS=1.0.5 NUMPY=1.19 PYTHON=3.10"
             os: ubuntu-latest
             PANDAS: '1.0.5'
-            NUMPY: '1.18'
+            NUMPY: '1.19'
             python-version: '3.10'
           - env: "PANDAS=1.0.5 NUMPY=1.18 PYTHON=3.8"
             os: ubuntu-latest
