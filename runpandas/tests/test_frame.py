@@ -175,21 +175,32 @@ def test_mean_pace_frame(dirpath):
 
     # Calculate the mean pace with only moving  and smoothing using speed (m/s)
     assert (
-        frame_gpx_only_moving.mean_pace(only_moving=True, smoothing=True)
-    ) == Timedelta("0 days 00:00:00.357566")
+        frame_gpx_only_moving.mean_pace(
+            only_moving=True, smoothing=True
+        ).total_seconds()
+    ) == pytest.approx(
+        Timedelta("0 days 00:00:00.357565610").total_seconds(), rel=0.001
+    )
+
     # Calculate the mean pace with only moving  and no smoothing (total distance)
     assert (
-        frame_gpx_only_moving.mean_pace(only_moving=True, smoothing=False)
-    ) == Timedelta("0 days 00:00:00.357566")
+        frame_gpx_only_moving.mean_pace(
+            only_moving=True, smoothing=False
+        ).total_seconds()
+    ) == pytest.approx(Timedelta("0 days 00:00:0.357565610").total_seconds(), rel=0.001)
 
     # Calculate the mean pace with all data  and no smoothing (total distance)
     assert (
-        frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=False)
-    ) == Timedelta("0 days 00:00:00.407078")
+        frame_gpx_only_moving.mean_pace(
+            only_moving=False, smoothing=False
+        ).total_seconds()
+    ) == pytest.approx(Timedelta("0 days 00:00:00.407078").total_seconds(), rel=0.001)
     # Calculate the mean pace with all data  and smoothing (total distance)
     assert (
-        frame_gpx_only_moving.mean_pace(only_moving=False, smoothing=True)
-    ) == Timedelta("0 days 00:00:00.407078")
+        frame_gpx_only_moving.mean_pace(
+            only_moving=False, smoothing=True
+        ).total_seconds()
+    ) == pytest.approx(Timedelta("0 days 00:00:00.407078").total_seconds(), rel=0.001)
 
 
 def convert_pace_secmeters2minkms(seconds):
