@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2.0.0
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - uses: pre-commit/action@v2.0.3
 
   Test:
     needs: Linting
@@ -24,61 +24,51 @@ jobs:
     strategy:
       matrix:
         include:
-          - env: "PANDAS=0.24 NUMPY=1.16 PYTHON=3.6"
+          - env: "PANDAS=1.4.2 PYTHON=3.10"
             os: ubuntu-latest
-            PANDAS: '0.24'
-            NUMPY: '1.16'
-            python-version: '3.6'
-          - env: "PANDAS=0.25 NUMPY=1.17 PYTHON=3.7 DOCBUILD=true"
+            PANDAS: '1.4.2'
+            python-version: '3.10'
+          - env: "PANDAS=1.0.5 PYTHON=3.8"
             os: ubuntu-latest
-            PANDAS: '0.25'
-            NUMPY: '1.17'
-            python-version: '3.7'
-          - env: "PANDAS=0.25 NUMPY=1.18 PYTHON=3.7"
-            os: ubuntu-latest
-            PANDAS: '0.25'
-            NUMPY: '1.18'
-            python-version: '3.7'
-          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
-            os: ubuntu-latest
-            PANDAS: '1'
-            NUMPY: '1.18'
+            PANDAS: '1.0.5'
             python-version: '3.8'
-          - env: "PANDAS=1 NUMPY=1.19 PYTHON=3.8"
-            os: ubuntu-latest
-            PANDAS: '1'
-            NUMPY: '1.19'
-            python-version: '3.8'
-          - env: "PANDAS=MASTER NUMPY=1.18 PYTHON=3.7"
+          - env: "PANDAS=MASTER PYTHON=3.7"
             os: ubuntu-latest
             PANDAS: 'MASTER'
-            NUMPY: '1.18'
             python-version: '3.7'
-          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
-            os: macos-latest
-            PANDAS: '1'
-            NUMPY: '1.18'
-            python-version: '3.8'
-          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.8"
-            os: windows-latest
-            PANDAS: '1'
-            NUMPY: '1.18'
-            python-version: '3.8'
-          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.7"
-            os: macos-latest
-            PANDAS: '1'
-            NUMPY: '1.18'
+          - env: "PANDAS=1.1 PYTHON=3.7"
+            os: ubuntu-latest
+            PANDAS: '1.1'
             python-version: '3.7'
-          - env: "PANDAS=1 NUMPY=1.18 PYTHON=3.7"
+          - env: "PANDAS=1.3 PYTHON=3.8"
+            os: ubuntu-latest
+            PANDAS: '1.3'
+            python-version: '3.8'
+          - env: "PANDAS=1.2 PYTHON=3.8"
+            os: ubuntu-latest
+            PANDAS: '1.2'
+            python-version: '3.8'
+          - env: "PANDAS=1.0.5 PYTHON=3.8"
+            os: macos-latest
+            PANDAS: '1.0.5'
+            python-version: '3.8'
+          - env: "PANDAS=1.0.5 PYTHON=3.7"
+            os: macos-latest
+            PANDAS: '1.0.5'
+            python-version: '3.7'
+          - env: "PANDAS=1.0.5 PYTHON=3.8"
             os: windows-latest
-            PANDAS: '1'
-            NUMPY: '1.18'
+            PANDAS: '1.0.5'
+            python-version: '3.8'
+          - env: "PANDAS=1.0.5 PYTHON=3.7"
+            os: windows-latest
+            PANDAS: '1.0.5'
             python-version: '3.7'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -104,7 +94,7 @@ jobs:
           PANDAS: ${{ matrix.PANDAS }}
           NUMPY: ${{ matrix.NUMPY }}
 
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v2
         if: startsWith(matrix.os, 'ubuntu')
 
       - name: Coveralls

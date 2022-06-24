@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-pip install pip --upgrade --user
-pip install numpy=="$NUMPY" lxml
+
+python -m pip install --upgrade pip
+pip install numpy lxml
 pip install -r requirements-dev.txt
 
 if [[ "$PANDAS" == "MASTER" ]]; then

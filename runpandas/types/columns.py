@@ -132,7 +132,7 @@ class LonLat(MeasureSeries):
     @classmethod
     def _from_semicircles_to_degrees(cls, data, *args, **kwargs):
         # https://github.com/kuperov/fit/blob/master/R/fit.R
-        deg = (data * 180 / 2 ** 31 + 180) % 360 - 180
+        deg = (data * 180 / 2**31 + 180) % 360 - 180
         return cls(deg, *args, **kwargs)
 
     @series_property
@@ -186,7 +186,7 @@ class Speed(MeasureSeries):
         """
         Returns the speed converted from m/s to km/h
         """
-        return self * 60 ** 2 / 1000
+        return self * 60**2 / 1000
 
     @property
     def mph(self):
