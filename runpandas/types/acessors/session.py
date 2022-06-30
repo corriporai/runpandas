@@ -91,7 +91,7 @@ class _SessionAcessor(object):
             distpos = self._session.xs(index, level=0).compute.distance(
                 correct_distance=correct_distance,
                 to_special_column=to_special_column,
-                **kwargs
+                **kwargs,
             )
             self._session.loc[
                 pd.IndexSlice[index, distpos.index.tolist()], "distpos"
@@ -131,7 +131,7 @@ class _SessionAcessor(object):
             speed = self._session.xs(index, level=0).compute.speed(
                 from_distances=from_distances,
                 to_special_column=to_special_column,
-                **kwargs
+                **kwargs,
             )
             self._session.loc[
                 pd.IndexSlice[index, speed.index.tolist()], "speed"
