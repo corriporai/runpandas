@@ -15,7 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
-      - uses: pre-commit/action@v2.0.3
+        with:
+          python-version: '3.8'
+      - name: Setup pre-commit
+        run: |
+          python3 -m pip install pre-commit
+          pre-commit install
+      - name: Run black
+        run: pre-commit run --hook-stage manual black --all-files --show-diff-on-failure
+      - name: Setup pre-commit
+        run: |
+          python3 -m pip install pre-commit
+          pre-commit install
+      - name: Run flake8
+        run: pre-commit run --hook-stage manual flake8 --all-files
 
   Test:
     needs: Linting

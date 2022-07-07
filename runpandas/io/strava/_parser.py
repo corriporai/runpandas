@@ -53,7 +53,7 @@ def read_strava(
     activity_id,
     client=None,
     to_df=False,
-    **kwargs
+    **kwargs,
 ):
     """
     This method loads the activity data from Strava into a Pandas DataFrame or
