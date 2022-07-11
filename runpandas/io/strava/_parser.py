@@ -1,7 +1,7 @@
 """
 Tools for pulling and parsing stream data from Strava.
 """
-
+import time
 from datetime import timedelta
 import pandas as pd
 from pandas import TimedeltaIndex
@@ -89,6 +89,7 @@ def read_strava(
     client = Client()
     client.access_token = access_token
     client.refresh_token = refresh_token
+    client.token_expires_at = time.time()
 
     activity = client.get_activity(activity_id)
 
