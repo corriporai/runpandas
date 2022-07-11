@@ -23,14 +23,13 @@ jobs:
           pre-commit install
       - name: Run black
         run: |
-          black --version
-          pre-commit run --hook-stage manual black --all-files --show-diff-on-failure
+          pre-commit run --hook-stage manual black --all-files --show-diff-on-failure --verbose
       - name: Setup pre-commit
         run: |
           python3 -m pip install pre-commit
           pre-commit install
       - name: Run flake8
-        run: pre-commit run --hook-stage manual flake8 --all-files
+        run: pre-commit run --hook-stage manual flake8 --all-files --verbose
 
   Test:
     needs: Linting
