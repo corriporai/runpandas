@@ -22,7 +22,9 @@ jobs:
           python3 -m pip install pre-commit
           pre-commit install
       - name: Run black
-        run: pre-commit run --hook-stage manual black --all-files --show-diff-on-failure
+        run: |
+          black --version
+          pre-commit run --hook-stage manual black --all-files --show-diff-on-failure
       - name: Setup pre-commit
         run: |
           python3 -m pip install pre-commit
