@@ -8,7 +8,8 @@ from pandas import TimedeltaIndex
 from runpandas import _utils as utils
 from runpandas.types import Activity
 from runpandas.types import columns
-from stravalib.client import Client
+from runpandas.io.strava._client import StravaClient
+import os
 
 
 COLUMNS_SCHEMA = {
@@ -50,10 +51,7 @@ def gen_records(streams):
 
 def read_strava(
     activity_id,
-    access_token,
-    refresh_token=None,
-    client_id=None,
-    client_secret=None,
+    client=None,
     to_df=False,
     **kwargs,
 ):
@@ -86,10 +84,9 @@ def read_strava(
              a :obj:`pandas.DataFrame` will be returned.
     """
 
-    client = Client()
-    client.access_token = access_token
-    client.refresh_token = refresh_token
-    client.token_expires_at = time.time()
+    if client is None:
+        client = StravaClient()
+    client.refresh()
 
     activity = client.get_activity(activity_id)
 
