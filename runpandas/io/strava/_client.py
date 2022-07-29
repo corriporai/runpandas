@@ -50,8 +50,7 @@ class HTTPServerHandler(BaseHTTPRequestHandler):
 
 
 class StravaClient(Client):
-    """
-    The StravaClient object is a helper tool for handling
+    """The StravaClient object is a helper tool for handling
     the authentication process (i.e. authorization, token update, ...) against the Strava.
 
     Parameters
@@ -60,6 +59,7 @@ class StravaClient(Client):
         refresh_token: str, The Strava refresh token, optional
         client_secret: str, The strava client secret used for token refresh, optional
         client_id: int, The Strava client id used for token refresh, optional
+
     """
 
     def __init__(
