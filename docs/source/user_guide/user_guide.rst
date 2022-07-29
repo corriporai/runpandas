@@ -15,3 +15,4 @@ Further information on any specific method can be obtained in the
    1-overview
    2-heartrate
    3-session
+   4-strava

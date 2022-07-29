@@ -23,3 +23,12 @@ Social Apps
    read_strava
    read_nikerun
    read_dir_nikerun
+
+
+Strava
+------
+
+.. autosummary::
+   :toctree: api/
+
+   StravaClient
