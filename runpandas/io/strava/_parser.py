@@ -1,7 +1,6 @@
 """
 Tools for pulling and parsing stream data from Strava.
 """
-import time
 from datetime import timedelta
 import pandas as pd
 from pandas import TimedeltaIndex
@@ -9,7 +8,6 @@ from runpandas import _utils as utils
 from runpandas.types import Activity
 from runpandas.types import columns
 from runpandas.io.strava._client import StravaClient
-import os
 
 
 COLUMNS_SCHEMA = {
@@ -83,7 +81,6 @@ def read_strava(
     Return a obj:`runpandas.Activity` if `to_df=True`, otherwise
              a :obj:`pandas.DataFrame` will be returned.
     """
-
     if client is None:
         client = StravaClient()
     client.refresh()

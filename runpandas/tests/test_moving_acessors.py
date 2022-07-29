@@ -4,6 +4,7 @@ Test module for runpandas acessors
 
 import os
 import json
+import time
 import pytest
 from pandas import Timedelta
 from stravalib.protocol import ApiV3
@@ -11,6 +12,7 @@ from stravalib.client import Client
 from stravalib.model import Stream
 from runpandas import reader
 from runpandas import read_strava
+from runpandas import StravaClient
 
 pytestmark = pytest.mark.stable
 
@@ -18,6 +20,28 @@ pytestmark = pytest.mark.stable
 @pytest.fixture
 def dirpath(datapath):
     return datapath("io", "data")
+
+
+@pytest.fixture(scope="session")
+def valid_token_file(tmpdir_factory):
+    return tmpdir_factory.getbasetemp().join("token.json")
+
+
+@pytest.fixture
+def strava_client(valid_token_file):
+    file_handler = open(valid_token_file, "w")
+    file_handler.write(
+        '{"access_token": "2334444",  "refresh_token": "235555", "expires_at": %d}'
+        % (time.time() + 3600)
+    )
+    file_handler.close()
+
+    client = StravaClient(
+        client_id="STRAVA_ID",
+        client_secret="STRAVA_CLIENT_SECRET",
+        token_file=valid_token_file,
+    )
+    return client
 
 
 class MockResponse:
@@ -68,7 +92,7 @@ def test_metrics_validate(dirpath):
         frame_without_index.only_moving()
 
 
-def test_only_moving_acessor(dirpath, mocker):
+def test_only_moving_acessor(dirpath, mocker, strava_client):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
     frame_gpx = reader._read_file(gpx_file, to_df=False)
     frame_gpx["distpos"] = frame_gpx.compute.distance(correct_distance=False)
@@ -116,6 +140,7 @@ def test_only_moving_acessor(dirpath, mocker):
     activity_strava = read_strava(
         activity_id=4437021783,
         access_token=None,
+        client=strava_client,
         refresh_token=None,
         to_df=False,
     )

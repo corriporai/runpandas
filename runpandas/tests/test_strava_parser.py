@@ -4,10 +4,12 @@ Test module for Strava API reader base module
 
 import os
 import json
+import time
 import pytest
 from pandas import DataFrame, Timedelta, Timestamp
 from runpandas import read_strava
 from runpandas import types
+from runpandas import StravaClient
 from stravalib.protocol import ApiV3
 from stravalib.client import Client
 from stravalib.model import Stream
@@ -44,8 +46,30 @@ def dirpath(datapath):
     return datapath("io", "data")
 
 
+@pytest.fixture(scope="session")
+def valid_token_file(tmpdir_factory):
+    return tmpdir_factory.getbasetemp().join("token.json")
+
+
 @pytest.fixture
-def strava_activity(dirpath, mocker):
+def strava_client(valid_token_file):
+    file_handler = open(valid_token_file, "w")
+    file_handler.write(
+        '{"access_token": "2334444",  "refresh_token": "235555", "expires_at": %d}'
+        % (time.time() + 3600)
+    )
+    file_handler.close()
+
+    client = StravaClient(
+        client_id="STRAVA_ID",
+        client_secret="STRAVA_CLIENT_SECRET",
+        token_file=valid_token_file,
+    )
+    return client
+
+
+@pytest.fixture
+def strava_activity(dirpath, mocker, strava_client):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
@@ -61,13 +85,14 @@ def strava_activity(dirpath, mocker):
         activity_id=4437021783,
         access_token=None,
         refresh_token=None,
+        client=strava_client,
         to_df=False,
     )
     return activity
 
 
 @pytest.fixture
-def strava_dataframe(dirpath, mocker):
+def strava_dataframe(dirpath, mocker, strava_client):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
@@ -82,13 +107,14 @@ def strava_dataframe(dirpath, mocker):
     activity = read_strava(
         activity_id=4437021783,
         access_token=None,
+        client=strava_client,
         refresh_token=None,
         to_df=True,
     )
     return activity
 
 
-def test_read_strava_basic_dataframe(dirpath, mocker):
+def test_read_strava_basic_dataframe(dirpath, mocker, strava_client):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
@@ -104,6 +130,7 @@ def test_read_strava_basic_dataframe(dirpath, mocker):
         activity_id=4437021783,
         access_token=None,
         refresh_token=None,
+        client=strava_client,
         to_df=True,
     )
     assert isinstance(activity, DataFrame)
@@ -124,7 +151,7 @@ def test_read_strava_basic_dataframe(dirpath, mocker):
     assert activity.size == 15723
 
 
-def test_read_strava_activity(dirpath, mocker):
+def test_read_strava_activity(dirpath, mocker, strava_client):
     activity_json = os.path.join(dirpath, "strava", "activity.json")
     streams_json = os.path.join(dirpath, "strava", "streams.json")
 
@@ -141,6 +168,7 @@ def test_read_strava_activity(dirpath, mocker):
         activity_id=4437021783,
         access_token=None,
         refresh_token=None,
+        client=strava_client,
         to_df=False,
     )
     assert isinstance(activity, types.Activity)
