@@ -7,7 +7,7 @@ dependencies:
 - nbformat
 - jupyter_client
 - ipykernel
-- sphinx
+- sphinx==4.4.0
 - terminado
 - pip:
   - nbsphinx

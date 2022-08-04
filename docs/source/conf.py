@@ -48,7 +48,7 @@ source_parsers = {
     ".md": "recommonmark.parser.CommonMarkParser",
 }
 
-source_suffix = [".rst", ".md", ".ipynb"]
+source_suffix = [".rst", ".md"]  # #".ipynb"]
 master_doc = "index"
 
 github_project_url = "https://github.com/corriporai/runpandas"
