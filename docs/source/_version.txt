@@ -1,1 +1,1 @@
-Version: **0.5.1 (+38, b313d25)** Date: **July 29, 2022**
+Version: **0.5.2 (+0, 27c3793)** Date: **August 4, 2022**
