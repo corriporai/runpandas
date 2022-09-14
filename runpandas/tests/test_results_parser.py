@@ -89,13 +89,17 @@ def test_read_file_result_valid_race_result(dirpath):
     assert race.event.event_date == datetime.datetime(2017, 4, 17)
     assert race.shape[0] == 26410  ##number of lines
 
+    included_data = set(["position", "bib", "name", "age", "sex", "city", "state", "country", "citizen", "unnamed:9", "5k", "10k", "15k", "half", "25k", "30k", "35k", "40k", "pace", "proj_time", "nettime", "overall", "gender", "division"])
+    assert included_data <= set(race.columns.to_list())
 
-    #included_data = set(["position", "bib", "name", "age", "sex", "city", "state", "country", "citizen", "unnamed:9", "5k", "10k", "15k", "half", "25k", "30k", "35k", "40k", "pace", "proj_time", "nettime", "overall", "gender", "division"])
-    #assert included_data <= set(race.columns.to_list())
-
-    #result_file = os.path.join(dirpath, "results", "valid_result_br.csv")
-    #race = read_result(result_file, to_df=True)
-    #assert isinstance(race, pd.DataFrame)
-    #assert race.size == 31670
-    #included_data = set(["position", "bib", "name", "sex", "age", "faixa", "cl._fx.", "equipe", "grosstime", "nettime"])
-    #assert included_data <= set(race.columns.to_list())
+    result_file = os.path.join(dirpath, "results", "valid_result_br.csv")
+    race = read_result(result_file, to_df=False)
+    assert isinstance(race, RaceResult)
+    assert isinstance(race.event, Event)
+    assert race.event.event_country == 'BR'
+    assert race.event.event_name == 'Porto Alegre Marathon'
+    assert race.event.event_type == '42k'
+    assert race.event.event_date == datetime.datetime(2019, 6, 2)
+    assert race.shape[0] == 3167  ##number of lines
+    included_data = set(["position", "bib", "name", "sex", "age", "faixa", "cl._fx.", "equipe", "grosstime", "nettime"])
+    assert included_data <= set(race.columns.to_list())
