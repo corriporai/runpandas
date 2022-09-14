@@ -114,3 +114,64 @@ def _read_dir_aggregate(dirname, **kwargs):
         return multi_frame
 
     return None
+
+
+def _read_race_result(filename, to_df=False, **kwargs):
+    """
+    Parameters
+    ----------
+        filename : str, The path to a result file.
+        to_df : bool, optional
+             Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs :
+        Keyword args to be passed to the `read` method accordingly to the
+        file format.
+
+    Returns
+    -------
+    Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
+             a :obj:`pandas.DataFrame` will be returned.
+
+    """
+    if not utils.file_exists(filename):
+            raise IOError("%s does not exist" % filename)
+
+    _, ext = utils.splitext_plus(filename)
+    if ext not in ['.csv']:
+        raise exceptions.InvalidFileError(
+            "File {filename} with invalid filetype.".format(**locals())
+        )
+    module = _import_module('result')
+    return module.read(filename, to_df, **kwargs)
+
+def _load_race(dirname,  to_df=False,  **kwargs):
+    """
+    Load the result races files files from a supplied directory
+    as `runpandas.RaceResult` dataframes, and aggregate them
+    to a results table as a `pandas.MultiIndex` results dataframe.
+
+    Parameters
+    ----------
+        dirname : str, The path to a directory with result files.
+             Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs : Keyword args to be passed to the `read_file` method
+
+    Returns
+    -------
+    Return a  :obj:`runpandas.RaceResult` split into sessions based
+    on the `pandas.MultiIndex` with the date/time of the race
+    as first level and the second the athlete results for each record.
+    """
+
+    path_dir = Path(dirname)
+
+    assert path_dir.is_dir()
+
+    for path_file in path_dir.iterdir():
+        if path_file.is_dir():
+            continue
+
+        yield _read_race_result(filename=path_file, to_df=to_df, kwargs=kwargs)
+

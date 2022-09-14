@@ -1,0 +1,1145 @@
+position,bib,firstname,lastname,halftime,guntime,chiptime,category
+1,1486,Simon,Pride,N/A,02:30:17,02:30:15,Male
+2,1204,Andrew,Farquharson,N/A,02:31:04,02:31:02,Male 40+
+3,1774,Patrick,,N/A,02:38:03,02:38:01,Male
+4,1794,RUAIRIDH,CAMPBELL,N/A,02:38:12,02:38:10,Male
+5,1820,Sean,Cotter,N/A,02:39:06,02:39:02,Male
+6,1533,James,Snodgrass,N/A,02:39:45,02:39:44,Male
+7,901,Adam,Breaks,N/A,02:39:49,02:39:45,Male
+8,1827,Christopher,Wilson,N/A,02:41:38,02:41:37,Male
+9,1849,stevie,ogg,N/A,02:41:44,02:41:43,Male
+10,630,John J,Duffy,N/A,02:42:14,02:42:11,Male 40+
+11,1712,Keith,Dowson,N/A,02:43:58,02:43:57,Male 40+
+12,1688,damian,mcauley,N/A,02:44:56,02:44:52,Male
+13,1725,Craig,Stewart,N/A,02:45:55,02:45:52,Male
+14,1484,Darren,Washington,N/A,02:47:16,02:47:14,Male
+15,1286,Terry,Coyle,N/A,02:49:23,02:49:18,Male 40+
+16,258,Richard,Watkinson,N/A,02:50:13,02:50:10,Male
+17,1723,darren,hoolahan,N/A,02:50:25,02:50:21,Male
+18,1673,Julia,Myatt,N/A,02:51:56,02:51:52,Female 35+
+19,1589,Alistair,Hennessey,N/A,02:52:56,02:52:54,Male
+20,1767,Fiona,Matheson,N/A,02:53:24,02:53:20,Female 35+
+21,1094,Craig,Ross,N/A,02:53:38,02:53:35,Male
+22,1450,Russell,Whittington,N/A,02:53:46,02:53:41,Male
+23,1449,Philip,Williams,N/A,02:54:00,02:53:54,Male
+24,1039,mark,riches,N/A,02:54:05,02:54:02,Male 40+
+25,1608,Joakim,Svensson,N/A,02:54:06,02:54:01,Male
+26,101,David,McLelland,N/A,02:55:28,02:55:24,Male
+27,1599,Jason,Wray,N/A,02:56:01,02:55:46,Male
+28,1382,Colin,McGill,N/A,02:56:08,02:56:04,Male
+29,1011,Graeme,Carracher,N/A,02:57:11,02:57:08,Male 40+
+30,1736,Graham,McNeill,N/A,02:57:18,02:57:15,Male
+31,262,BRIAN,MACKIE,N/A,02:58:16,02:58:13,Male
+32,964,Mick,Nally,N/A,02:58:18,02:58:15,Male
+33,1424,Hugh,Bingham,N/A,02:58:37,02:58:33,Male 40+
+34,542,neil,douglas,N/A,02:58:57,02:58:53,Male 40+
+35,713,David,Henderson,N/A,02:59:25,02:59:14,Male
+36,1583,Mike,Proven,N/A,02:59:26,02:59:21,Male 40+
+37,450,Tim,Charles,N/A,03:00:28,03:00:23,Male
+38,1444,derek,houstoun,N/A,03:00:52,03:00:49,Male
+39,1647,T. Justin,Bronder,N/A,03:01:19,03:01:08,Male
+40,645,Steven,Battle,N/A,03:01:33,03:01:30,Male 40+
+41,1776,tony,price,N/A,03:01:42,03:01:35,Male 40+
+42,563,Paul,Van Moerbeke,N/A,03:02:32,03:02:25,Male 40+
+43,1538,George,Cairns,N/A,03:02:46,03:02:27,Male
+44,220,Lee,Holland,N/A,03:02:51,03:02:48,Male
+45,1547,Nils-Allan,Torstensson,N/A,03:03:27,03:03:24,Male 40+
+46,91,mark,crawford,N/A,03:04:50,03:04:44,Male
+47,1644,Joachim,Sander,N/A,03:05:06,03:04:53,Male 40+
+48,1013,Tom,Matko,N/A,03:05:31,03:05:23,Male
+49,1780,Dominic,Scott,N/A,03:05:37,03:05:32,Male
+50,1724,Mark,EVANS,N/A,03:06:02,03:05:56,Male 40+
+51,1738,carl speedster,ellis,N/A,03:06:12,03:06:03,Male
+52,1481,David,Schubert,N/A,03:06:14,03:06:09,Male 40+
+53,1582,Darren,Lewis,N/A,03:06:27,03:06:22,Male
+54,782,paul,griffiths,N/A,03:06:42,03:06:31,Male 40+
+55,437,Paul,Holmes,N/A,03:06:47,03:06:33,Male
+56,1524,Susan,McCann,N/A,03:07:00,03:06:36,Female 35+
+57,1845,Robin,Scott,N/A,03:07:05,03:06:57,Male 60+
+58,1646,Mark,Levine,N/A,03:07:21,03:07:15,Male 40+
+59,601,Gavin,Reid,N/A,03:07:32,03:07:30,Male 40+
+60,1635,Christian,Schmid,N/A,03:07:52,03:07:33,Male
+61,1096,john,cassells,N/A,03:08:20,03:08:03,Male
+62,1735,Trevor,Gray,N/A,03:08:24,03:08:12,Male 40+
+63,1792,andrew,mccall,N/A,03:08:30,03:08:25,Male 40+
+64,1458,Daniel,Dickens,N/A,03:08:34,03:08:14,Male
+65,76,Lee,Greenhalgh,N/A,03:08:41,03:08:33,Male
+66,439,Fari,Shams,N/A,03:08:53,03:08:50,Female
+67,528,Mark,Clague,N/A,03:09:54,03:09:32,Male
+68,1817,Paul,Carmody,N/A,03:10:01,03:09:23,Male
+69,687,James,Midgley,N/A,03:10:03,03:09:55,Male
+70,1652,Paraic,McLoughney,N/A,03:10:49,03:09:48,Male
+71,1311,Gavin,Harvie,N/A,03:11:06,03:10:58,Male
+72,1488,David,Lansdell,N/A,03:11:08,03:10:48,Male
+73,1454,David,Hayton,N/A,03:11:15,03:10:58,Male 40+
+74,634,Arthur,Murphy,N/A,03:11:21,03:11:10,Male
+75,944,Dirk,Verbiest,N/A,03:11:32,03:10:36,Male 40+
+76,1302,John,Gibson,N/A,03:11:43,03:11:14,Male 40+
+77,434,graeme,gatherer,N/A,03:12:05,03:11:49,Male
+78,1629,Paul,Webster,N/A,03:12:12,03:12:01,Male
+79,791,Martyn,Morge,N/A,03:12:38,03:12:18,Male
+80,813,Roderick,Pugh,N/A,03:12:40,03:12:34,Male 40+
+81,920,graham,moorhouse,N/A,03:12:55,03:12:52,Male 40+
+82,900,Roger,Pim,N/A,03:13:09,03:13:01,Male
+83,1844,Sandy,Christie,N/A,03:13:29,03:13:13,Male 40+
+84,1072,alison,campbell,N/A,03:13:37,03:13:02,Female
+85,1384,Victor,Tregubov,N/A,03:13:45,03:13:41,Male 40+
+86,1623,Erica,Christie,N/A,03:13:48,03:13:45,Female 45+
+87,814,Hugh,Laverty,N/A,03:13:59,03:13:41,Male 40+
+88,740,angela,jones,N/A,03:14:07,03:14:02,Female 35+
+89,331,Les,Crownshaw,N/A,03:14:08,03:12:22,Male 50+
+90,1593,Jonathan,Cole,N/A,03:14:25,03:14:09,Male
+91,1811,Richard,Kellett,N/A,03:14:43,03:14:37,Male
+92,125,robert,unwin,N/A,03:15:34,03:15:26,Male 40+
+93,1503,billy,braidwood,N/A,03:15:35,03:15:26,Male 40+
+94,1821,Michael,Dick,N/A,03:15:38,03:15:31,Male 40+
+95,743,christopher,kelly,N/A,03:15:43,03:15:30,Male
+96,1658,Richard,Stewart,N/A,03:16:09,03:16:05,Male
+97,807,David,Parkhouse,N/A,03:16:18,03:16:09,Male
+98,815,Paul,Heckroodt,N/A,03:16:44,03:16:30,Male
+99,1799,robert,winkler,N/A,03:16:56,03:16:37,Male 40+
+100,1319,Margaret,Anderson,N/A,03:16:57,03:16:44,Female 45+
+101,1580,Tony,Dockett,N/A,03:17:21,03:15:37,Male
+102,773,Pauline,Walker,N/A,03:17:21,03:17:01,Female 35+
+103,1839,giovanni,della pietra,N/A,03:17:25,03:17:00,Male
+104,1747,Niamh,Mooney,N/A,03:17:31,03:17:00,Female
+105,1691,Alan,young,N/A,03:17:47,03:17:42,Male
+106,1442,ian,slater,N/A,03:18:22,03:17:25,Male 40+
+107,1174,MARK,HUGHES,N/A,03:18:24,03:18:21,Male 50+
+108,1698,Sam,Perry,N/A,03:18:39,03:17:38,Male
+109,66,Rik,Hamilton,N/A,03:18:50,03:18:34,Male 40+
+110,1737,Jeremy,Spinks,N/A,03:19:08,03:18:53,Male
+111,1530,Karen,Young,N/A,03:19:10,03:18:44,Female 35+
+112,1224,mike,hayes,N/A,03:19:32,03:19:19,Male 40+
+113,1105,Gilbert,Blackwood,N/A,03:19:59,03:19:48,Male 50+
+114,655,Scuz,Wingrove,N/A,03:20:18,03:19:02,Female
+115,1636,Reg,Chapman,N/A,03:20:37,03:19:59,Male 50+
+116,1664,Kevin,Day,N/A,03:20:57,03:20:38,Male 40+
+117,1802,colin,Fitzjohn,N/A,03:21:30,03:21:00,Male 40+
+118,1611,Kjell,Lundahl,N/A,03:21:42,03:21:06,Male 50+
+119,1806,andrew,mccall,N/A,03:21:43,03:21:37,Male
+120,1014,Fabienne,Thompson,N/A,03:22:16,03:21:54,Female 35+
+121,266,Graeme,Williamson,N/A,03:22:25,03:21:54,Male 40+
+122,354,Allan,Tanner,N/A,03:22:32,03:22:02,Male
+123,715,Peter,Briggs,N/A,03:22:42,03:22:30,Male
+124,234,Craig,Munro,N/A,03:23:02,03:22:13,Male 40+
+125,1765,Graeme,MacGregor,N/A,03:23:18,03:23:10,Male 40+
+126,1398,Lachlan,Wallace,N/A,03:23:39,03:23:23,Male
+127,1535,Colin,MacLean,N/A,03:23:48,03:23:08,Male
+128,795,John,McGivern,N/A,03:23:51,03:23:24,Male
+129,1690,Mike,Connor,N/A,03:23:51,03:23:45,Male
+130,1383,Mike,Farmer,N/A,03:23:53,03:23:29,Male 50+
+131,1219,Peter,Thorn,N/A,03:24:18,03:24:10,Male 40+
+132,1152,Jacqui,Lumsden,N/A,03:24:23,03:24:12,Female 35+
+133,384,Derek,Robertson,N/A,03:24:44,03:24:14,Male
+134,84,Jonathan,Whitehead,N/A,03:24:57,03:24:55,Male 40+
+135,1705,Gerald,Evans,N/A,03:25:06,03:24:40,Male 50+
+136,504,Alison,Lindsay,N/A,03:25:36,03:24:59,Female
+137,963,colin,shilton,N/A,03:25:50,03:25:43,Male 40+
+138,180,Bill,Dallas,N/A,03:26:23,03:25:40,Male 40+
+139,1627,Manuela,Imboden,N/A,03:26:23,03:26:03,Female
+140,1681,Neil,McBain,N/A,03:26:31,03:25:45,Male
+141,22,Ivan,Field,N/A,03:26:37,03:26:30,Male 40+
+142,1722,david,cole,N/A,03:26:37,03:26:31,Male 40+
+143,1315,Andrew,Murphy,N/A,03:26:42,03:25:46,Male
+144,796,Ross,Bailey,N/A,03:27:31,03:26:50,Male
+145,810,Catherine,Shelley,N/A,03:27:34,03:27:17,Female 35+
+146,1018,Michel,Lerner,N/A,03:27:43,03:27:38,Male
+147,225,Patrick,Cowie,N/A,03:27:44,03:27:39,Male
+148,521,Gail,Walters,N/A,03:27:45,03:27:13,Female 35+
+149,1585,Ross,Kirke,N/A,03:27:46,03:27:09,Male
+150,1612,Rickard,Danielsson,N/A,03:27:53,03:27:20,Male
+151,166,Phil,Hindell,N/A,03:27:53,03:27:39,Male
+152,1650,Tim,Makin,N/A,03:28:09,03:27:29,Male 40+
+153,789,Gareth,Hughes,N/A,03:28:13,03:27:43,Male
+154,1822,Andrew,Duncan,N/A,03:28:35,03:27:48,Male
+155,1744,Iain,Lindsay,N/A,03:28:38,03:27:36,Male 40+
+156,978,Sharon,Percy,N/A,03:28:41,03:28:31,Female
+157,680,Hugh,Lee,N/A,03:28:44,03:27:51,Male 40+
+158,69,Kevin,Curtin,N/A,03:29:10,03:28:56,Male
+159,1657,Ross,Stewart,N/A,03:29:11,03:29:07,Male
+160,1024,Ann,Stuart,N/A,03:29:13,03:29:06,Female 45+
+161,8,david,ballantyne,N/A,03:29:16,03:27:41,Male
+162,802,WILLIAM,LONSDALE,N/A,03:29:23,03:29:09,Male 50+
+163,1610,Goran,Lennstrom,N/A,03:29:26,03:28:51,Male 50+
+164,628,Neil,Bowmer,N/A,03:29:44,03:29:21,Male
+165,70,frankie,macbeath,N/A,03:29:46,03:29:33,Male 50+
+166,1154,Scott,Nicol,N/A,03:29:49,03:29:33,Male
+167,509,Ross,Nixon,N/A,03:29:52,03:29:48,Male
+168,248,Simon,Lowe,N/A,03:29:57,03:28:50,Male
+169,536,Robert,English,N/A,03:29:59,03:29:53,Male 50+
+170,555,Iain,Wales,N/A,03:30:02,03:29:19,Male 40+
+171,531,Sian,Llewellyn,N/A,03:30:08,03:28:47,Female 35+
+172,4,Chris,Dawson,N/A,03:30:51,03:29:44,Male
+173,829,Giles,Ruck,N/A,03:30:51,03:30:20,Male
+174,443,Jamie,Drummond,N/A,03:30:51,03:30:12,Male
+175,670,Peter,McLuckie,N/A,03:31:00,03:29:25,Male
+176,42,Dawne,Renwick,N/A,03:31:04,03:30:37,Female 45+
+177,189,Mark,Warren,N/A,03:31:06,03:30:51,Male 40+
+178,1609,Jennie,Karlsson,N/A,03:31:07,03:31:00,Female
+179,1837,Duncan,Reid,N/A,03:31:10,03:30:37,Male 40+
+180,1571,Richard,Gray,N/A,03:31:19,03:31:06,TBC
+181,731,Michael,Letwenjuk,N/A,03:31:25,03:30:51,Male 40+
+182,276,MICHELLE,MCCORMICK,N/A,03:31:25,03:30:50,Female
+183,778,Linda,Mathers,N/A,03:31:28,03:31:08,Female 45+
+184,1638,Simon,Mair,N/A,03:31:35,03:30:58,Male
+185,1630,David,Webster,N/A,03:31:38,03:31:26,Male 50+
+186,290,Hazel,McCluskey,N/A,03:31:39,03:31:17,Female 35+
+187,571,Sally,Scott,N/A,03:31:40,03:31:14,Female
+188,1768,Robert,Henderson,N/A,03:31:40,03:31:25,Male 40+
+189,1130,Karl,Fisher,N/A,03:31:54,03:31:42,Male 40+
+190,1643,Rob,Reid,N/A,03:31:55,03:31:27,Male 60+
+191,1628,Frederic,DEVAUD,N/A,03:32:05,03:30:44,Male
+192,229,Andrew,Coull,N/A,03:32:10,03:31:52,Male
+193,1340,John,Lewis,N/A,03:32:20,03:31:06,Male 50+
+194,765,Andrew,Page,N/A,03:32:22,03:31:48,Male
+195,1155,Carol,Nicol,N/A,03:32:25,03:32:09,Female 35+
+196,501,Oliver,Meade,N/A,03:32:26,03:32:20,Male
+197,72,Lynn,Henderson,N/A,03:32:29,03:31:32,Female
+198,11,Sandy,CASS,N/A,03:32:29,03:31:14,Male 50+
+199,969,catherine,young,N/A,03:32:37,03:32:27,Female 45+
+200,994,quy,tham,N/A,03:32:46,03:32:26,Male
+201,916,Tania,Wilson,N/A,03:32:56,03:32:17,Female 35+
+202,420,charles thomas,walsh,N/A,03:33:07,03:32:53,Male
+203,1443,helena,bramwell,N/A,03:33:16,03:32:19,Female 35+
+204,1001,Jonathan,Bellarby,N/A,03:33:44,03:33:00,Male
+205,58,Deborah,Macdonald,N/A,03:33:47,03:33:38,Female 45+
+206,1782,colin,reynolds,N/A,03:33:50,03:33:44,Male
+207,1826,Peter,Carne,N/A,03:33:50,03:33:08,Male 40+
+208,631,Steven,Sherman,N/A,03:33:52,03:33:37,Male 40+
+209,682,Brian,Jonckheere,N/A,03:34:00,03:32:37,Male 50+
+210,1764,James,Maybee,N/A,03:34:02,03:33:45,Male 40+
+211,222,David,Tyler,N/A,03:34:07,03:33:52,Male
+212,675,Camilla,Stewart,N/A,03:34:14,03:33:55,Female
+213,1390,Craig,Harrison,N/A,03:34:16,03:33:50,TBC
+214,318,Lucy,Scott,N/A,03:34:17,03:33:30,Female
+215,317,Adam,Scott,N/A,03:34:17,03:33:30,Male
+216,1660,Arnout,Rogiers,N/A,03:34:22,03:33:45,Male
+217,505,Ian,Beattie,N/A,03:34:28,03:34:22,Male
+218,1835,George,McGregor,N/A,03:34:28,03:34:21,Male 50+
+219,1692,Neil,Jones,N/A,03:34:29,03:34:02,Male
+220,1752,norma,BIRD,N/A,03:34:31,03:34:05,Female 45+
+221,1177,robert,bonson,N/A,03:34:41,03:34:07,Male
+222,924,Graham,McPheat,N/A,03:34:59,03:34:03,Male
+223,1710,Andreas,Wilhelm,N/A,03:35:04,03:34:37,Male
+224,1516,Carole,Fortune,N/A,03:35:08,03:34:47,Female 35+
+225,1677,Algie,Audas,N/A,03:35:12,03:34:26,Male 40+
+226,700,Steve,Haswell,N/A,03:35:12,03:34:42,Male
+227,97,iain,martin,N/A,03:35:12,03:34:49,Male
+228,344,Bob,Brown,N/A,03:35:13,03:34:57,Male 60+
+229,1356,Donald,Simpson,N/A,03:35:14,03:34:28,Male
+230,1649,Glynn,Harby,N/A,03:35:27,03:35:16,Male 40+
+231,155,Richard,Searle,N/A,03:35:33,03:34:36,Male
+232,1639,Alexander,McFarlane,N/A,03:35:36,03:35:07,Male
+233,1061,Ralph,Dickinson,N/A,03:35:44,03:35:34,Male 50+
+234,1687,David,Wheeler,N/A,03:35:49,03:35:25,Male 50+
+235,1107,david,batty,N/A,03:35:51,03:35:26,Male 60+
+236,1634,Daniel,Reeves,N/A,03:36:13,03:35:30,Male
+237,65,Greta,Jenkins,N/A,03:36:18,03:36:14,Female 35+
+238,1101,neil,mitchell,N/A,03:36:21,03:35:55,Male
+239,1446,Robby,De Waele,N/A,03:36:30,03:36:09,Male 40+
+240,772,Steven,Young,N/A,03:36:37,03:36:25,Male 40+
+241,1654,rachel,gillingham,N/A,03:36:39,03:35:04,Female 35+
+242,268,STEPHEN,MANCINI,N/A,03:36:43,03:36:08,Male 40+
+243,838,Julie,Mackay,N/A,03:36:44,03:36:20,Female
+244,1314,Ian,Owen,N/A,03:36:56,03:36:00,Male
+245,1787,Christine,Catterson,N/A,03:36:57,03:36:12,Female 45+
+246,281,Tom,Lewis,N/A,03:37:00,03:36:04,Male
+247,939,Joseph,Battle,N/A,03:37:10,03:36:49,Male 40+
+248,1694,Jennifer,Stewart,N/A,03:37:18,03:36:10,Female
+249,302,Kevin,Morrison,N/A,03:37:25,03:36:43,Male
+250,1665,Steven,Hennessey,N/A,03:37:27,03:37:08,Male 40+
+251,300,Carole,Munro,N/A,03:37:27,03:36:46,Female 45+
+252,226,john,kinsella,N/A,03:37:28,03:36:46,Male 40+
+253,27,David,McGurk,N/A,03:37:35,03:36:52,Male 40+
+254,1741,Derek,Kennedy,N/A,03:37:36,03:36:43,Male
+255,1701,gillian,cardno-strachan,N/A,03:37:39,03:37:31,Female
+256,1428,Jane,Ward,N/A,03:38:00,03:36:52,Female 35+
+257,1772,Ceri,Phipps,N/A,03:38:11,03:37:30,Male 40+
+258,293,laura,mackay,N/A,03:38:16,03:37:19,Female
+259,1133,David,Hiatt,N/A,03:38:17,03:38:01,Male 40+
+260,639,Noel,McInerney,N/A,03:38:19,03:37:48,Male 60+
+261,952,Christine,Milne,N/A,03:38:24,03:38:09,Female
+262,1682,Brian,Murray,N/A,03:38:27,03:38:00,Male 40+
+263,454,stephen,mcinally,N/A,03:38:29,03:37:20,Male
+264,418,Thomas Joseph,McFarlane,N/A,03:38:30,03:37:33,Male 50+
+265,559,Nicholas,Feakins,N/A,03:38:30,03:38:17,Male 50+
+266,1719,Christian,Arno,N/A,03:38:30,03:37:44,Male
+267,1242,Ian,Flinders,N/A,03:38:32,03:38:08,Male 40+
+268,906,rahim,mir,N/A,03:38:40,03:37:50,Male
+269,1441,Ian,Gourlay,N/A,03:38:40,03:37:36,Male
+270,1653,raymond,humphries,N/A,03:38:53,03:37:33,Male
+271,1775,Geza Peter,Kliment,N/A,03:38:59,03:37:01,Male
+272,254,robert,ewing,N/A,03:39:05,03:38:06,Male
+273,1808,Charlie,Gillon,N/A,03:39:21,03:38:48,Female 45+
+274,1404,Paul,Ward,N/A,03:39:39,03:38:18,Male 40+
+275,1544,Philip,Catterall,N/A,03:39:45,03:39:34,Male 40+
+276,1464,Paul,Findlay,N/A,03:39:49,03:39:01,Male
+277,1077,John,Etherington,N/A,03:39:50,03:38:56,Male 40+
+278,1797,Henry,Angus,N/A,03:39:50,03:38:56,Male
+279,1622,Iain,Burke,N/A,03:40:10,03:40:06,Male 50+
+280,736,Nicky,Macdonald,N/A,03:40:11,03:39:07,Female 35+
+281,17,Andrew,Campbell,N/A,03:40:32,03:39:33,TBC
+282,834,Martin,Hillson,N/A,03:40:33,03:39:24,Male 40+
+283,1226,Lucy,Reid,N/A,03:40:35,03:39:14,Female
+284,1050,Stuart,Douglas,N/A,03:40:38,03:39:26,Male
+285,1266,jim,ling,N/A,03:40:39,03:39:28,Male 40+
+286,561,Luc,Maes,N/A,03:40:42,03:40:09,Male 50+
+287,496,Jim,Towers,N/A,03:40:47,03:39:31,Male 50+
+288,755,Jim,Shipman,N/A,03:40:50,03:40:09,Male 40+
+289,1234,Barry,Mulheran,N/A,03:40:51,03:40:32,Male 60+
+290,464,Sandy,Kerr,N/A,03:41:01,03:40:05,Male
+291,1763,Laurence,Lane,N/A,03:41:06,03:40:46,Male
+292,1099,Wayne Nigel,Brookes,N/A,03:41:14,03:40:29,Male
+293,1399,EDMUND,PRESTON,N/A,03:41:22,03:40:39,Male 50+
+294,1422,Kimberly,Fisk,N/A,03:41:46,03:41:07,Female
+295,1423,Nicholas,Sloper,N/A,03:41:46,03:41:06,Male
+296,1108,Adrian,Hotson,N/A,03:41:57,03:41:08,Male
+297,1240,Shane,OHara,N/A,03:41:57,03:41:35,Male
+298,613,Andrew,Kerr,N/A,03:41:58,03:41:09,Male
+299,1588,George,Inglis,N/A,03:41:59,03:41:38,Male 60+
+300,1332,Evelyn,Grant,N/A,03:42:01,03:41:18,Female 45+
+301,1793,Jim,McLaren,N/A,03:42:07,03:41:54,Male 40+
+302,1433,Ann,Cummings,N/A,03:42:08,03:41:20,Female 45+
+303,1480,Greg,Taylor,N/A,03:42:10,03:41:54,Male 50+
+304,1000,Terence,Cowan,N/A,03:42:14,03:41:50,Male
+305,1755,Andrew,Skirenko,N/A,03:42:14,03:41:28,Male
+306,923,David,Hunter,N/A,03:42:15,03:42:07,Male 60+
+307,88,George,Reid,N/A,03:42:17,03:41:55,Male 50+
+308,365,Tim,Clarke,N/A,03:42:18,03:40:56,Male
+309,867,David,Goodwin,N/A,03:42:18,03:42:09,Male
+310,1153,Kenneth,Stewart,N/A,03:42:42,03:42:24,Male 50+
+311,1757,Martin,Peevor,N/A,03:42:45,03:42:17,Male
+312,1109,Ivan Derek,Van Niekerk,N/A,03:42:50,03:42:18,Male 40+
+313,616,STEPHEN,WALTON,N/A,03:42:51,03:42:26,Male 50+
+314,1324,leslie,mc derment,N/A,03:42:51,03:42:03,Male
+315,540,katherine,mitchell,N/A,03:42:53,03:42:46,Female
+316,1137,Rhona,Van Rensburgh,N/A,03:42:58,03:42:13,Female
+317,1573,Iain,Anderson,N/A,03:43:01,03:42:25,Male
+318,1522,Kevin,Giudici,N/A,03:43:05,03:42:12,Male
+319,722,michael,hoult,N/A,03:43:12,03:42:21,Male
+320,701,Johanna,Paananen,N/A,03:43:14,03:42:38,Female 35+
+321,1342,william,haining,N/A,03:43:18,03:43:11,Male 40+
+322,1490,Michael,Kottek,N/A,03:43:22,03:42:31,Male
+323,1180,Ronald,Ritchie,N/A,03:43:28,03:41:58,Male 40+
+324,451,Dirk,Flies,N/A,03:43:32,03:42:59,Male 40+
+325,1100,keith,rens,N/A,03:43:34,03:43:27,Male 40+
+326,844,John,Johnstone,N/A,03:43:43,03:42:37,Male
+327,1413,roddy,mcleod,N/A,03:43:52,03:43:44,Male
+328,660,TONY,HALL,N/A,03:43:54,03:42:22,Male 50+
+329,1591,Lorna,Masterton,N/A,03:44:01,03:42:25,Female 35+
+330,837,David,Seaman,N/A,03:44:06,03:42:46,Male 50+
+331,36,Hilary,Holding,N/A,03:44:06,03:43:44,Female
+332,1565,Richard,Marling,N/A,03:44:06,03:43:15,Male
+333,957,Phil,Eames,N/A,03:44:07,03:43:40,Male 40+
+334,1721,Shane,Bouchier,N/A,03:44:07,03:43:46,Male
+335,1258,John,McColgan,N/A,03:44:22,03:42:54,Male 40+
+336,64,Peter,Rogan,N/A,03:44:29,03:42:56,Male 40+
+337,541,Calum,MacGregor,N/A,03:44:32,03:42:50,Male
+338,1804,Hamish,Wilton,N/A,03:44:39,03:44:01,Male
+339,1803,Charles,Matthews,N/A,03:44:39,03:44:01,Male
+340,435,David,Tolmie,N/A,03:44:46,03:44:33,Male 40+
+341,784,Alan,Barton,N/A,03:44:53,03:42:47,Male
+342,517,Jose,Messa,N/A,03:45:00,03:43:44,Male
+343,483,Alejandro,Casasus,N/A,03:45:01,03:43:44,Male
+344,61,Jock,Murdoch,N/A,03:45:13,03:43:46,Female 35+
+345,132,Nigel,Unwin,N/A,03:45:27,03:45:19,Male 40+
+346,1726,Stuart,McDonald,N/A,03:45:29,03:44:10,Male
+347,33,James,Hume,N/A,03:45:38,03:44:38,Male
+348,943,Sarah,Booth,N/A,03:45:42,03:44:47,Female 35+
+349,148,Alistair,whyte,N/A,03:45:51,03:44:26,Male 40+
+350,723,Tim,Emler,N/A,03:45:55,03:45:31,Male 40+
+351,1232,John,Weeks,N/A,03:46:01,03:43:32,Male 50+
+352,745,Michael,Curtis,N/A,03:46:20,03:44:42,Male
+353,1089,Kevin,Stewart,N/A,03:46:23,03:45:33,Male
+354,595,John,Colegrave,N/A,03:46:24,03:45:40,Male 40+
+355,1348,John,Dalgarno,N/A,03:46:25,03:45:43,Male
+356,1596,David,Weir,N/A,03:46:27,03:45:21,Male
+357,554,Philip,Long,N/A,03:46:28,03:45:16,Male
+358,1002,Michael,Beattie,N/A,03:46:33,03:46:22,Male
+359,1352,Stuart,Williams,N/A,03:46:34,03:45:57,Male 40+
+360,1346,Patrick,Collins,N/A,03:46:35,03:45:55,Male 50+
+361,1175,Bruce,Farquhar,N/A,03:46:36,03:46:23,Male 40+
+362,1761,Chris,O'Brien,N/A,03:46:37,03:46:03,Male
+363,161,Alan,Inglis,N/A,03:46:40,03:46:05,Male
+364,1120,Mark,Ludiman,N/A,03:46:45,03:44:46,Male
+365,1581,Pat,Goddard,N/A,03:46:55,03:46:32,Female 45+
+366,103,Ollie,Downs,N/A,03:47:06,03:46:07,Male
+367,1462,Iain,Sinclair,N/A,03:47:07,03:45:57,Male
+368,1601,Grant,Laycock,N/A,03:47:21,03:46:51,Male
+369,1149,graham,wilkinson,N/A,03:47:24,03:47:02,Male
+370,730,Ian,Rudd,N/A,03:47:43,03:47:05,Male 40+
+371,1195,Tony,Watters,N/A,03:48:04,03:47:42,Male
+372,1112,William,Ion,N/A,03:48:06,03:47:08,Male 40+
+373,1057,Stu,Cameron,N/A,03:48:10,03:46:59,Male
+374,154,John,King,N/A,03:48:18,03:48:01,Male 50+
+375,1217,Robert,Bertram,N/A,03:48:21,03:48:09,Male
+376,580,Graham,Paterson,N/A,03:48:33,03:47:25,Male 40+
+377,692,Ian,Anderson,N/A,03:48:33,03:47:54,Male 50+
+378,35,Richard,Ingrey,N/A,03:48:35,03:46:59,Male
+379,1294,Sinead,Reynolds,N/A,03:48:39,03:47:32,Female
+380,86,Niall,Dinwoodie,N/A,03:48:41,03:48:06,Male 40+
+381,265,Stuart,Ritchie,N/A,03:48:42,03:47:33,Male 40+
+382,29,Norman,Duncan,N/A,03:48:50,03:47:24,Male 40+
+383,432,James,Marjoribanks,N/A,03:48:59,03:48:46,Male 50+
+384,1097,Tony,Lord,N/A,03:49:02,03:48:18,Male 40+
+385,485,alan,connor,N/A,03:49:04,03:48:37,Male 40+
+386,205,andrew,cable,N/A,03:49:05,03:47:36,Male 40+
+387,1092,Roger,Brown,N/A,03:49:10,03:47:50,Male
+388,1815,Philip,Morton,N/A,03:49:12,03:48:04,Male
+389,1453,Diane,Hayton,N/A,03:49:17,03:48:59,Female 45+
+390,966,Tim,Willson,N/A,03:49:19,03:48:28,Male 40+
+391,1297,Anthony,Clifford,N/A,03:49:22,03:48:32,Male
+392,455,ian,laird,N/A,03:49:39,03:48:12,Male
+393,1145,Craig,Murphy,N/A,03:49:44,03:49:16,Male
+394,306,Ian,Laming,N/A,03:49:46,03:49:36,Male
+395,808,Jonathan,Beamish,N/A,03:49:49,03:48:56,Male
+396,562,Swa,Akkermans,N/A,03:49:50,03:49:16,Male 50+
+397,1472,Graham,Potter,N/A,03:49:52,03:49:10,Male 40+
+398,1508,John,Kennedy,N/A,03:49:55,03:49:44,Male 40+
+399,1122,john,mckenzie,N/A,03:49:57,03:49:20,Male
+400,1392,david,brown,N/A,03:49:57,03:48:42,Male
+401,393,Sarah,Williams,N/A,03:49:57,03:49:01,Female
+402,914,Jayne,Ferguson,N/A,03:49:58,03:48:40,Female 45+
+403,1306,Ray,Stuart,N/A,03:50:04,03:49:21,Male 40+
+404,1379,Steve,Jackson,N/A,03:50:14,03:49:31,Male 40+
+405,1425,Spencer,Farrar,N/A,03:50:20,03:49:46,Male
+406,905,Hayley,Lowes,N/A,03:50:23,03:49:06,Female
+407,1672,PHIL,DODDS,N/A,03:50:31,03:49:53,Male
+408,75,Rizwan,Nazir,N/A,03:50:38,03:50:19,Male
+409,1655,Lee,Boothby,N/A,03:50:58,03:50:29,Male 40+
+410,1790,Sarah,Hazell,N/A,03:50:58,03:49:09,Female
+411,870,Sally,Wilson,N/A,03:51:09,03:49:47,Female 35+
+412,1162,COLIN,STRATHERN,N/A,03:51:11,03:50:22,Male
+413,1496,Ellen,Thomson,N/A,03:51:15,03:49:39,Female 35+
+414,55,James,Rice,N/A,03:51:26,03:50:45,Male 40+
+415,367,NICK,BURTON,N/A,03:51:28,03:50:08,Male 50+
+416,1727,Steven,Bryant,N/A,03:51:30,03:50:10,Male 40+
+417,1527,Elspeth,Knott,N/A,03:51:40,03:50:38,Female 55+
+418,1378,george,haining,N/A,03:51:43,03:51:36,Male 40+
+419,385,Michael,Smith,N/A,03:51:44,03:51:08,Male
+420,31,rory,gordon,N/A,03:51:49,03:51:02,Male 40+
+421,1185,Gregory,Godeau,N/A,03:51:53,03:50:17,Male
+422,809,Tim,Walsh,N/A,03:51:55,03:51:14,Male 40+
+423,1602,Sue,Carter,N/A,03:51:56,03:51:33,Female 35+
+424,833,ROBERT ALLAN,WHITE,N/A,03:51:58,03:50:29,Male 40+
+425,1249,Mark,Calvert,N/A,03:51:58,03:50:52,Male 40+
+426,143,ALAN,CLARK,N/A,03:52:02,03:51:34,Male 40+
+427,779,Colin,O'Neill,N/A,03:52:04,03:51:55,Male 40+
+428,414,Martin,Alderson,N/A,03:52:05,03:51:31,Male 40+
+429,440,susan,denton,N/A,03:52:09,03:51:23,Female 45+
+430,1590,James,McKeown,N/A,03:52:11,03:51:50,Male 50+
+431,1531,DAVID,CARMICHAEL,N/A,03:52:12,03:51:18,Male
+432,1124,rob,smith,N/A,03:52:16,03:51:21,Male 50+
+433,819,Andrew,Bennett,N/A,03:52:38,03:52:25,Male 50+
+434,1525,carol,butterill,N/A,03:52:39,03:51:08,Female 35+
+435,1087,HELEN,NEARY,N/A,03:52:57,03:51:58,Female 45+
+436,1706,CLIVE,BELL,N/A,03:53:08,03:52:07,Male
+437,1344,william,mackay,N/A,03:53:20,03:51:44,Male 40+
+438,1519,Joanna,Pearson,N/A,03:53:24,03:51:43,Female 45+
+439,174,Josie,Wells,N/A,03:53:26,03:52:02,Female
+440,806,Neil,Stoneman,N/A,03:53:30,03:51:01,Male
+441,1040,stephen,joyce,N/A,03:53:35,03:52:42,Male
+442,840,Lucas,Bateman,N/A,03:53:42,03:53:05,Male
+443,1216,Graeme,Moffat,N/A,03:53:49,03:53:17,Male 50+
+444,1840,Robert,Bruce,N/A,03:53:56,03:52:59,Male 50+
+445,1700,Ian,Simpson,N/A,03:53:57,03:53:34,Male 40+
+446,1381,Mary,Hardwick,N/A,03:53:59,03:52:18,Female 45+
+447,87,Mary,Schumann,N/A,03:54:00,03:53:28,Female 45+
+448,732,jim,quate,N/A,03:54:07,03:53:23,Male
+449,1327,Stuart,Gray,N/A,03:54:10,03:53:42,Male
+450,356,Graham,Mutch,N/A,03:54:12,03:52:43,Male
+451,1228,Robert,Fisher,N/A,03:54:15,03:53:07,Male
+452,467,Mike,Cooper,N/A,03:54:15,03:53:04,Male
+453,1029,robert,shaw,N/A,03:54:22,03:53:10,Male
+454,843,Francesca,Ardigo,N/A,03:54:27,03:53:14,Female 35+
+455,62,peter,speck,N/A,03:54:27,03:53:22,Male
+456,1617,david,hordon,N/A,03:54:33,03:54:06,Male
+457,1577,Audrey,Foley,N/A,03:54:41,03:53:46,Female 35+
+458,413,Roy,Dalgarno,N/A,03:54:43,03:53:49,Male 40+
+459,716,kevin,ottley,N/A,03:54:45,03:54:35,Male
+460,1753,Rebecca,Cook,N/A,03:54:50,03:53:44,Female
+461,343,Kevin,Boroduwicz,N/A,03:55:11,03:53:52,Male 40+
+462,1179,Lucy Sarah,Mackay,N/A,03:55:15,03:54:40,Female 35+
+463,92,Dave,Thompson,N/A,03:55:24,03:54:50,Male 40+
+464,1025,Jonathan,Swan,N/A,03:55:31,03:54:26,Male 40+
+465,476,David,Rodley,N/A,03:55:35,03:54:24,Male 40+
+466,1685,Andy,Johnson,N/A,03:55:37,03:53:46,Male
+467,465,jonathan,millard,N/A,03:55:38,03:54:27,Male
+468,1260,Michael,Mahon,N/A,03:55:45,03:55:40,Male 50+
+469,954,Tracey,Sahraie,N/A,03:55:47,03:54:38,Female 35+
+470,1322,Alan,Buckberry,N/A,03:55:50,03:55:08,Male 50+
+471,294,Andrew,Bell,N/A,03:55:55,03:54:25,Male 40+
+472,1186,Ian,Glover,N/A,03:55:59,03:54:49,Male
+473,462,robert,hamilton,N/A,03:56:19,03:55:12,Male 40+
+474,1556,Bernard,Norris,N/A,03:56:26,03:55:07,Male
+475,1834,Fernand,Comin,N/A,03:56:35,03:55:02,Male 40+
+476,1624,Alison,Marvel,N/A,03:56:39,03:55:54,Female 35+
+477,991,Amanda,Eames,N/A,03:56:41,03:56:14,Female 35+
+478,144,Simon,Taylor,N/A,03:56:45,03:55:32,Male 40+
+479,1632,Mark,Blower,N/A,03:56:53,03:56:15,Male
+480,187,anne-marie,macpherson,N/A,03:56:58,03:55:14,Female 35+
+481,558,Stephen,Hutchison,N/A,03:56:59,03:56:11,Male 50+
+482,25,Peter,Dunnachie,N/A,03:57:02,03:56:24,Male 40+
+483,1048,Brian,Sharp,N/A,03:57:11,03:56:00,Male
+484,1215,Ian,Edwards,N/A,03:57:13,03:56:48,Male 50+
+485,1703,James,Felstead,N/A,03:57:18,03:57:06,Male
+486,1304,Calum,Mackenzie,N/A,03:57:22,03:56:39,Male 40+
+487,1075,ivo junior,frias,N/A,03:57:29,03:56:29,Male 50+
+488,1537,Grant,Gilroy,N/A,03:57:31,03:57:10,Male 40+
+489,1373,Jennifer,Fitzgerald,N/A,03:57:35,03:56:01,Female
+490,1367,Debbie,Savage,N/A,03:57:35,03:56:01,Female
+491,775,Matthew William,parkes,N/A,03:57:36,03:56:50,Male
+492,286,Paul,Rowlinson,N/A,03:57:41,03:56:16,Male 40+
+493,1812,Ross,Hayworth,N/A,03:57:42,03:56:26,Male
+494,1515,Daniela,Rivatelli,N/A,03:57:47,03:56:49,Female 35+
+495,26,Michael,MacLennan,N/A,03:57:50,03:57:18,Male
+496,590,Alisdair,Beveridge,N/A,03:57:53,03:57:44,Male
+497,657,Kate,Scott,N/A,03:57:56,03:56:58,Female
+498,1325,Robert,Westwater,N/A,03:58:01,03:57:30,Male 40+
+499,544,michael,cairns,N/A,03:58:17,03:57:31,Male 50+
+500,706,Gareth,Easton,N/A,03:58:31,03:57:26,Male
+501,508,Dave,Tynan,N/A,03:58:34,03:57:54,Male 40+
+502,1760,Brian,Hogan,N/A,03:58:38,03:58:04,Male
+503,412,Joanna,Whillis,N/A,03:58:41,03:57:14,Female 45+
+504,1800,Sandro,Bacarini,N/A,03:59:03,03:57:30,Male 50+
+505,1385,alison,williams,N/A,03:59:04,03:57:54,Female 35+
+506,578,David,Pirrie,N/A,03:59:04,03:58:15,Male
+507,419,Stuart,Redfern,N/A,03:59:08,03:58:10,Male 50+
+508,1452,Margaret,Woodhouse,N/A,03:59:10,03:58:30,Female 55+
+509,1391,Alison,Wynn,N/A,03:59:13,03:57:59,Female 35+
+510,85,Alexandra,Aitken,N/A,03:59:13,03:58:39,Female 45+
+511,1697,gonzalo,avila sanchez,N/A,03:59:16,03:58:28,Male
+512,1140,Jim,Orr,N/A,03:59:18,03:57:49,Male
+513,1574,dave,cawte,N/A,03:59:18,03:58:11,Male
+514,925,Jamie,Luxmoore,N/A,03:59:19,03:58:25,Male
+515,1267,Alan,Harby,N/A,03:59:26,03:58:30,Male 60+
+516,494,Jason,McInally,N/A,03:59:29,03:58:21,Male
+517,1696,Paul,Hutchinson,N/A,03:59:31,03:57:59,Male
+518,1233,Alistair,Korn,N/A,03:59:32,03:57:59,Male
+519,1833,Didier,Loze,N/A,03:59:34,03:58:01,Male
+520,372,Fiona,Shearlaw,N/A,03:59:50,03:59:01,Female 45+
+521,890,Ellen,Potts,N/A,03:59:54,03:59:06,Female
+522,257,Duncan,Anderson,N/A,04:00:00,03:58:21,Male
+523,690,Matthew,Cook,N/A,04:00:00,03:59:03,Male
+524,1003,Antony,Allen,N/A,04:00:06,03:59:25,Male 40+
+525,1494,Debbie,Gray,N/A,04:00:10,03:59:21,Female 35+
+526,686,Jacqueline,Phares,N/A,04:00:10,03:59:21,Female 35+
+527,1337,Neil,Solender,N/A,04:00:18,03:58:29,Male
+528,881,hugo,smyth,N/A,04:00:27,03:59:51,Male
+529,325,Colin,Costello,N/A,04:00:28,03:59:16,Male 40+
+530,1405,Peter,Bryan,N/A,04:00:33,03:59:52,Male 40+
+531,744,Jens,Koch,N/A,04:00:38,04:00:02,Male
+532,918,LINDSAY,HORTON,N/A,04:00:40,03:59:54,Female 35+
+533,168,daniel,burke,N/A,04:00:45,03:59:32,Male 40+
+534,1187,MARK,PEACHEY,N/A,04:00:50,04:00:26,Male
+535,1389,Ulrik,Andersen,N/A,04:00:52,03:59:23,Male
+536,152,Ben-Burt,Smit,N/A,04:00:58,04:00:26,Male
+537,441,Shona,Morrison,N/A,04:01:01,03:59:26,Female 35+
+538,1648,Rebecca,Rae,N/A,04:01:01,03:59:42,Female
+539,643,Linda,Penman,N/A,04:01:09,04:00:45,Female 35+
+540,859,Paul,Fisher,N/A,04:01:10,03:59:54,Male 50+
+541,1795,Kirsty,Hutcheson,N/A,04:01:10,04:00:01,Female
+542,1411,Andy,Gumbrell,N/A,04:01:15,04:00:00,Male
+543,979,Faye,Leedham,N/A,04:01:16,03:59:45,Female
+544,1098,kenneth,lorimer,N/A,04:01:19,04:00:02,Male
+545,644,Ann,Clark,N/A,04:01:27,03:59:50,Female 45+
+546,1079,Marina,McCallum,N/A,04:01:31,04:00:33,Female
+547,1699,Ramsay,Blair,N/A,04:01:32,04:00:30,Male
+548,864,David,Drury,N/A,04:01:34,04:00:57,Male
+549,527,James Anthony,Lyons,N/A,04:01:35,04:00:13,Male 50+
+550,301,Graham,Jones,N/A,04:01:40,04:01:01,Male
+551,912,Scott,Russell,N/A,04:01:42,04:00:00,Male 60+
+552,1353,COLIN,PILOT,N/A,04:01:43,04:01:26,Male 40+
+553,500,Simon,Ashton,N/A,04:01:55,04:01:22,Male 40+
+554,1463,Keith,Hughes,N/A,04:01:57,04:01:21,Male
+555,1380,Archibald,Hamilton,N/A,04:02:11,04:00:38,Male 50+
+556,1819,Crawford,Davidson,N/A,04:02:36,04:01:34,Male 40+
+557,1659,George,Goldsmith,N/A,04:02:38,04:01:29,Male
+558,510,colin,feesey,N/A,04:02:39,04:01:18,Male
+559,388,emma,feesey,N/A,04:02:39,04:01:18,Female
+560,1848,Mark,Chadwick,N/A,04:02:41,04:00:57,Male
+561,1218,Sara,Burke,N/A,04:02:44,04:01:31,Female
+562,863,NEIL,WILSON,N/A,04:02:46,04:01:41,Male
+563,899,Jill,Marwick,N/A,04:02:51,04:01:40,Female
+564,236,Juergen,Roscher,N/A,04:02:52,04:01:37,Male 60+
+565,659,Louise,Bond,N/A,04:02:58,04:01:26,Female
+566,247,michele,stephenson,N/A,04:03:09,04:02:53,Female 35+
+567,60,Hector,Pottie,N/A,04:03:15,04:02:28,Male
+568,264,Alexander,Moore,N/A,04:03:25,04:02:00,Male 40+
+569,256,Jeremy,Tait,N/A,04:03:28,04:02:26,Male
+570,799,Richard,Williams,N/A,04:03:42,04:01:48,Male
+571,165,Colin,Bullen,N/A,04:03:54,04:02:59,Male 40+
+572,832,Jenny,Britton,N/A,04:04:02,04:02:31,Female
+573,1351,Stuart,Hamilton,N/A,04:04:04,04:02:52,TBC
+574,1841,GAUTHIER,MARC,N/A,04:04:04,04:02:32,Male 40+
+575,1728,Sean,Burke,N/A,04:04:12,04:02:52,Male
+576,1532,Stephen,Conway,N/A,04:04:12,04:02:35,Male 40+
+577,800,Christopher,Street,N/A,04:04:26,04:03:37,Male 50+
+578,1438,Anne,Laking,N/A,04:04:28,04:02:50,Female 35+
+579,1439,George,Laking,N/A,04:04:28,04:02:50,Male
+580,768,Eeyin,Rankin,N/A,04:04:36,04:04:15,Male 40+
+581,1640,Gary,Scott,N/A,04:04:36,04:04:07,Male
+582,719,brian gary,elgy,N/A,04:04:40,04:04:09,Male
+583,1607,Anders,Nilsson,N/A,04:04:45,04:03:38,Male 40+
+584,632,Martin,Coyle,N/A,04:04:58,04:04:36,Male 50+
+585,818,ROBERT,JOHNSTONE,N/A,04:05:10,04:03:41,Male 50+
+586,1541,Murdo,McIntosh,N/A,04:05:50,04:04:17,Male 40+
+587,1661,Teri,Wishart,N/A,04:05:50,04:04:56,Female
+588,1227,Angela,Burnside,N/A,04:05:52,04:04:22,Female
+589,2,Paul,Kilvington,N/A,04:05:52,04:05:27,Male 40+
+590,1168,Mark,Hanlon,N/A,04:05:56,04:04:01,Male
+591,1086,david,wright,N/A,04:06:07,04:05:28,Male 40+
+592,1084,steve,strickland,N/A,04:06:08,04:05:29,Male 40+
+593,1085,donna,wass,N/A,04:06:08,04:05:29,Female 35+
+594,647,Billy,Cowan,N/A,04:06:19,04:04:54,Male
+595,648,Paul,Cowan,N/A,04:06:19,04:04:53,TBC
+596,865,Simon,Buckingham,N/A,04:06:21,04:05:05,Male 50+
+597,374,Helen,Kelly,N/A,04:06:31,04:04:55,Female 35+
+598,387,sue,thompson,N/A,04:06:31,04:04:55,Female 35+
+599,1786,John,Surginson,N/A,04:06:33,04:05:16,Male
+600,137,Andy,Canning,N/A,04:06:47,04:05:06,Male 40+
+601,575,Stuart,Moggach,N/A,04:06:58,04:05:06,Male
+602,1125,david,reid,N/A,04:07:13,04:06:08,Male
+603,1376,sarah,lewis,N/A,04:07:30,04:05:55,Female
+604,821,Richard,Moss,N/A,04:07:38,04:05:49,Male
+605,1595,jenny,henderson,N/A,04:07:46,04:06:20,Female
+606,348,James,Penson,N/A,04:07:58,04:07:23,Male
+607,849,David,Davidson,N/A,04:08:00,04:06:30,Male
+608,1785,Malcolm,Jones,N/A,04:08:09,04:06:39,Male
+609,672,Chris,Williamson,N/A,04:08:12,04:06:12,Male
+610,896,Gordon,Mair,N/A,04:08:20,04:07:05,Male 40+
+611,351,jeff,chambers,N/A,04:08:23,04:07:43,Male
+612,1261,Judith,Donaldson,N/A,04:08:26,04:07:03,Female 45+
+613,707,Robert,Annand,N/A,04:08:27,04:07:51,Male 40+
+614,291,Martin,Nairn,N/A,04:08:36,04:07:42,Male
+615,1256,Thomas,Mathieson,N/A,04:08:38,04:07:12,Male 40+
+616,1551,Moira,Connell,N/A,04:08:50,04:07:13,Female 45+
+617,119,John,Deffenbaugh,N/A,04:08:55,04:08:01,Male 50+
+618,738,Roger,Hellings,N/A,04:08:59,04:08:21,Male 50+
+619,190,David,Toms,N/A,04:09:11,04:07:55,Male 50+
+620,781,Kirsty,Henry,N/A,04:09:13,04:08:49,Female
+621,1170,John,Johnston,N/A,04:09:16,04:08:48,Male
+622,273,alex,callan,N/A,04:09:22,04:08:07,Male 40+
+623,1539,kevin,douglas,N/A,04:09:25,04:08:21,Male 40+
+624,1745,Charles,Beard,N/A,04:09:27,04:09:09,Male
+625,746,Jim,Hinshelwood,N/A,04:09:28,04:08:56,Male 50+
+626,1740,Scott,Young,N/A,04:09:30,04:07:27,Male
+627,537,William,Ewing,N/A,04:09:34,04:08:39,Male 50+
+628,694,Eric,Foster,N/A,04:09:58,04:09:01,Male 40+
+629,1479,Kurt,Rossow,N/A,04:10:08,04:09:57,Male 40+
+630,1597,Liz,Forbes,N/A,04:10:11,04:09:31,Female 45+
+631,1188,Ann-Marie,Savage,N/A,04:10:14,04:08:12,Female
+632,1734,Aaron,Hastie,N/A,04:10:14,04:08:19,Male
+633,201,david,SHEPHERD,N/A,04:10:21,04:09:45,Male 40+
+634,519,Simon,Pearce,N/A,04:10:28,04:10:12,Male
+635,1330,Mark,David,N/A,04:10:32,04:10:20,Male 40+
+636,1194,Phil,Gilson,N/A,04:10:37,04:10:14,Male
+637,37,Robert,Hutchison,N/A,04:10:46,04:09:19,Male 50+
+638,1190,carol,benson,N/A,04:10:46,04:10:06,Female 35+
+639,522,Hazel,Hendry,N/A,04:11:06,04:09:43,Female
+640,1469,James,Hunter,N/A,04:11:11,04:09:43,Male
+641,761,Nicholas,Sclater,N/A,04:11:16,04:09:43,Male
+642,438,David,Nicholson,N/A,04:11:19,04:09:52,Male
+643,6,christine,welsh,N/A,04:11:22,04:09:40,Female 35+
+644,801,laura,douglas,N/A,04:11:23,04:10:01,Female
+645,309,Kevin,Skivington,N/A,04:11:28,04:10:04,Male
+646,1042,Jean,Gillespie,N/A,04:11:33,04:10:20,Female 45+
+647,956,Jane,Nathan,N/A,04:11:33,04:10:21,Female 35+
+648,1434,Karen,Robb,N/A,04:11:34,04:11:24,Female
+649,1742,Sandy,McPherson,N/A,04:11:42,04:10:37,Male 40+
+650,1251,DAVID,GOW,N/A,04:11:45,04:11:02,Male
+651,1235,Allan,Bryce,N/A,04:11:57,04:11:21,Male
+652,1181,Catherine,McKean,N/A,04:12:01,04:10:31,Female 45+
+653,1448,Andrew,Pallister,N/A,04:12:07,04:10:59,Male 50+
+654,970,Peter,LORRAIN-SMITH,N/A,04:12:15,04:10:57,Male
+655,1252,pamela,brandie,N/A,04:12:18,04:11:19,Female 35+
+656,1750,Kate,Brown,N/A,04:12:22,04:11:17,Female 35+
+657,337,Catherine,Brown,N/A,04:12:42,04:11:25,Female 35+
+658,1045,David,Spy,N/A,04:12:50,04:11:07,Male 40+
+659,1418,Christopher,Swift,N/A,04:12:53,04:11:26,Male 40+
+660,9,David,Hobbs,N/A,04:13:18,04:11:38,Male 40+
+661,1229,steve,roper,N/A,04:13:19,04:11:42,Male 60+
+662,270,Nicholas,Martin,N/A,04:13:24,04:12:02,TBC
+663,390,Barbara,Anderson,N/A,04:13:27,04:12:13,Female
+664,426,Susan,Dearness,N/A,04:13:30,04:12:24,Female 35+
+665,1517,Liz,Begg,N/A,04:13:32,04:13:21,Female 35+
+666,169,Jacoline,McDiarmid,N/A,04:13:35,04:11:56,Female
+667,1502,Deborah,Morrison,N/A,04:13:35,04:11:56,Female
+668,1717,angus,whyte,N/A,04:13:53,04:12:20,Male 60+
+669,1558,Richard,Kendrick,N/A,04:13:56,04:12:04,Male
+670,456,david,taylor,N/A,04:14:00,04:12:32,Male
+671,1645,Jacqueline,Paterson,N/A,04:14:09,04:13:30,Female 35+
+672,463,COLIN,SMITH,N/A,04:14:10,04:12:47,Male
+673,663,Alisdair,Millan,N/A,04:14:12,04:13:20,Male
+674,329,Jane,Allen,N/A,04:14:25,04:12:38,Female 45+
+675,1564,Jillian,Boag,N/A,04:14:26,04:12:23,Female
+676,797,Martine,Petale,N/A,04:14:28,04:13:08,Female
+677,209,Pamela,Parker,N/A,04:14:28,04:13:08,Female 35+
+678,739,James,Duncan,N/A,04:14:36,04:13:03,Male 50+
+679,1201,Henry,Fiddike,N/A,04:14:48,04:12:59,Male 40+
+680,314,sharon,mckinley,N/A,04:14:57,04:14:30,Female
+681,32,Sarah,Grigor,N/A,04:14:57,04:13:57,Female 35+
+682,1257,ANTHONY,ROUSE,N/A,04:15:02,04:14:07,Male 50+
+683,570,Isobel,Wilson,N/A,04:15:12,04:14:29,Female 45+
+684,1836,Tim,Eley,N/A,04:15:23,04:14:16,Male 50+
+685,1505,Quintin,cutler,N/A,04:15:28,04:14:35,Male 40+
+686,928,STEPHANIE,MACKINNON,N/A,04:15:30,04:13:52,Female
+687,492,Alison,Tynon,N/A,04:15:30,04:15:16,Female
+688,703,Donald,Proctor,N/A,04:15:31,04:13:39,Male 40+
+689,1243,Ian,OConnor,N/A,04:15:32,04:15:10,Male
+690,658,Amanda,Aitken,N/A,04:15:34,04:14:02,Female
+691,150,Lucie,Custance,N/A,04:15:51,04:14:19,Female
+692,368,DEBBIE,GIBSON,N/A,04:15:52,04:14:09,Female 35+
+693,81,malcolm,watson,N/A,04:15:54,04:14:50,Male
+694,394,Jeremy,Burnside,N/A,04:16:13,04:15:01,Male
+695,457,Rob,Mackean,N/A,04:16:14,04:15:02,Male 40+
+696,776,Stephen,Miles,N/A,04:16:18,04:15:01,TBC
+697,1730,Andrew,Calderwood,N/A,04:16:33,04:14:54,Male
+698,1237,michael,gallagher,N/A,04:16:56,04:15:38,Male 40+
+699,1709,Lisa,Brebner,N/A,04:16:59,04:14:59,Female
+700,793,david,fletcher,N/A,04:17:07,04:15:27,Male 40+
+701,1751,Mark,Brown,N/A,04:17:14,04:16:08,Male 40+
+702,1563,Ian,Campbell,N/A,04:17:14,04:16:21,Male 40+
+703,1296,Nicola,Jones,N/A,04:17:16,04:16:03,Female
+704,1523,angela,susskind,N/A,04:17:28,04:17:12,Female 45+
+705,576,COLIN,BROWN,N/A,04:17:29,04:15:39,Male 40+
+706,1081,Fiona,logan,N/A,04:17:36,04:15:48,Female 35+
+707,514,ROBERT,SWEETING,N/A,04:17:43,04:16:01,Male 50+
+708,1400,Angie,Ljubojevic,N/A,04:17:56,04:16:42,Female 35+
+709,1587,Susan,Nicol,N/A,04:18:02,04:15:54,Female
+710,277,carolyn,trainer,N/A,04:18:03,04:16:54,Female 35+
+711,1102,Bryan,Walter,N/A,04:18:11,04:18:06,Male
+712,1062,Ewart,Baxter,N/A,04:18:14,04:16:05,Male
+713,691,Cynthia,Avis,N/A,04:18:30,04:18:00,Female
+714,1127,Matthew,Bailey,N/A,04:18:30,04:16:38,Male
+715,1269,Michael,Guest,N/A,04:18:32,04:16:26,Male
+716,1135,Gavin,Third,N/A,04:18:32,04:17:34,Male
+717,842,George,Davidson,N/A,04:18:48,04:17:14,Male
+718,495,jenny,newman,N/A,04:18:58,04:18:20,Female
+719,28,David,Ruxton,N/A,04:19:08,04:18:53,Male 50+
+720,962,Ian,Roberts,N/A,04:19:11,04:18:47,Male
+721,118,Noel,Cheseldine,N/A,04:19:12,04:18:02,Male
+722,1183,Phil,Hungerford,N/A,04:19:17,04:18:58,Male 50+
+723,57,Ian,Cooper,N/A,04:19:17,04:17:49,Male 60+
+724,18,Linda,Hinshelwood,N/A,04:19:18,04:18:46,Female 45+
+725,653,Simon,Smith,N/A,04:19:26,04:18:04,Male
+726,263,Johnathan,Gibson,N/A,04:19:27,04:18:03,Male
+727,459,Helen,Brown,N/A,04:19:27,04:17:54,Female 35+
+728,244,David,Burn,N/A,04:19:35,04:18:08,Male
+729,283,Shaun,Smith,N/A,04:19:46,04:18:45,Male 40+
+730,1749,Hilda,Paton,N/A,04:19:48,04:18:17,Female 45+
+731,1546,Kurt,Gustavsson,N/A,04:19:59,04:18:52,Male 50+
+732,431,mark,pomford,N/A,04:20:00,04:17:43,Male
+733,237,Brian,Macfarlane,N/A,04:20:04,04:18:50,Male
+734,1575,John,Hardman,N/A,04:20:10,04:18:46,Male
+735,1743,Alan,Crawley,N/A,04:20:16,04:19:12,Male 40+
+736,1669,John,Ross,N/A,04:20:20,04:18:55,Male
+737,1504,Louise,Duffy,N/A,04:20:22,04:18:26,Female
+738,638,Judith,Webb,N/A,04:20:22,04:18:34,Female 35+
+739,410,emma,kicks,N/A,04:20:29,04:18:45,Female
+740,767,Judy,Greenwood,N/A,04:20:29,04:18:46,Female 45+
+741,1482,Alexander,Chalmers,N/A,04:20:35,04:19:32,Male 60+
+742,359,Paul,Scholfield,N/A,04:20:37,04:19:09,Male 40+
+743,1223,Mandy,Griffin,N/A,04:20:38,04:19:52,Female 35+
+744,1759,Benjamin,Napier,N/A,04:20:42,04:19:40,Male
+745,1198,Alice,Tree,N/A,04:21:04,04:19:21,Female
+746,261,Elizabeth,Grant,N/A,04:21:05,04:19:44,Female
+747,1259,Steven,Beattie,N/A,04:21:16,04:19:30,Male
+748,1489,Donnacha,O'Donovan,N/A,04:21:17,04:19:00,Male
+749,1579,jenny,Fleming,N/A,04:21:21,04:20:41,Female 35+
+750,534,Malcolm,Quinn,N/A,04:21:39,04:20:07,Male 40+
+751,490,Jonathan,Dormand,N/A,04:21:44,04:20:53,Male
+752,980,Michael,Griffiths,N/A,04:21:54,04:21:24,Male 50+
+753,1131,Mark,Coleman,N/A,04:21:54,04:21:25,Male 40+
+754,1307,Stuart,Henderson,N/A,04:21:55,04:20:14,Male 40+
+755,1432,Alison,Girdwood,N/A,04:21:59,04:19:52,Female 45+
+756,1689,jacqueline,crowther,N/A,04:22:00,04:20:53,Female 35+
+757,1292,Andrew,Walker,N/A,04:22:05,04:20:54,TBC
+758,627,Ros,Blackmore,N/A,04:22:11,04:21:38,Male
+759,1073,Kirk,McLeod,N/A,04:22:35,04:20:53,Male
+760,1667,Sara,Dettman,N/A,04:22:38,04:22:12,Female
+761,20,JACQUI,MCDONALD,N/A,04:22:57,04:21:36,Female 35+
+762,1783,Allan,Wallace,N/A,04:23:13,04:22:21,Male
+763,569,Clinton,Smith,N/A,04:23:13,04:22:44,Male
+764,1440,Gary,Clark,N/A,04:23:22,04:22:11,Male
+765,752,Kerry Lyn,Easton,N/A,04:23:23,04:22:18,Female
+766,287,Alison,Hinde,N/A,04:23:26,04:21:29,Female 45+
+767,202,Elena,Fraser,N/A,04:23:29,04:22:45,Female 35+
+768,488,Archie,Prentice,N/A,04:23:50,04:22:21,Male
+769,333,John,Forward,N/A,04:23:57,04:22:02,Male
+770,941,Ian,Trotter,N/A,04:23:59,04:23:29,Male 40+
+771,1678,Katrina,Stewart,N/A,04:24:19,04:24:11,Female
+772,1733,Thomas,Hastie,N/A,04:24:20,04:22:23,Male
+773,911,kristyna,oliver,N/A,04:24:25,04:23:07,Female 45+
+774,879,Mark,Newman,N/A,04:24:41,04:22:54,Male
+775,1010,jim,lamb,N/A,04:24:44,04:22:36,Male
+776,153,annie,everett,N/A,04:24:49,04:23:07,Female 45+
+777,1028,Brian,Wilson,N/A,04:24:51,04:22:48,Male
+778,74,James,Jardine,N/A,04:24:52,04:24:38,Male
+779,711,Fiona,Athron,N/A,04:24:58,04:24:47,Female
+780,497,Lyn,Eden,N/A,04:25:03,04:23:19,Female 55+
+781,1756,Peter,Stephenson,N/A,04:25:13,04:24:09,Female 45+
+782,406,Tony,Robinson,N/A,04:25:20,04:23:36,Male 40+
+783,986,colin,lavery,N/A,04:25:40,04:24:18,Male 50+
+784,922,tom,stevens,N/A,04:25:41,04:24:49,Male 40+
+785,875,Timothy,Watterson,N/A,04:25:41,04:24:14,Male
+786,587,James,Morris,N/A,04:25:51,04:24:15,Male
+787,1402,Andrew,Putland,N/A,04:25:51,04:24:20,Male
+788,1255,Morag,Cameron,N/A,04:25:56,04:23:54,Female
+789,1320,Fiona,Kirkland,N/A,04:25:57,04:23:54,Female 35+
+790,1282,Peter,Shaw,N/A,04:26:08,04:24:28,Male 50+
+791,198,Robert,Shanks,N/A,04:26:09,04:24:05,Male
+792,1831,Barrie,Pettie,N/A,04:26:12,04:25:40,Male 50+
+793,1386,Kate,Binedell,N/A,04:26:17,04:25:26,Female
+794,897,Fraser,Tait,N/A,04:26:35,04:24:48,Male
+795,598,Rob,Menlove,N/A,04:26:44,04:24:48,Male 50+
+796,251,Rachael,Smith,N/A,04:26:48,04:26:32,Female
+797,405,Gary,Carlile,N/A,04:26:48,04:25:06,Male 40+
+798,206,sally,cable,N/A,04:27:00,04:25:30,Female 45+
+799,362,Steven,Salt,N/A,04:27:03,04:26:00,Male 40+
+800,310,John,Hughes,N/A,04:27:12,04:25:43,Male 40+
+801,674,Caroline,Strain,N/A,04:27:15,04:25:43,Female 35+
+802,511,Paul,Heron,N/A,04:27:17,04:25:38,Male
+803,382,Graeme,Ambrose,N/A,04:27:18,04:26:14,Male 40+
+804,430,Alan,Dunning,N/A,04:27:21,04:25:41,Male 40+
+805,855,Pauline,Kirkcaldy,N/A,04:27:31,04:25:50,Female
+806,856,George,Kirkcaldy,N/A,04:27:31,04:25:51,Male
+807,98,caroline,richmond,N/A,04:27:35,04:26:20,Female 35+
+808,603,Ian,Lawrence,N/A,04:27:35,04:26:09,Male 40+
+809,146,sam,jackson,N/A,04:27:40,04:25:48,Male 40+
+810,1136,Wendy,Shanley,N/A,04:27:40,04:26:10,Female 35+
+811,871,Vicky,Howland,N/A,04:27:42,04:26:16,Female
+812,183,Ross,Priday,N/A,04:27:46,04:27:21,Male
+813,1021,james,thompson,N/A,04:27:48,04:26:17,Male 40+
+814,1283,Lorraine,Baird,N/A,04:27:51,04:26:28,Female
+815,1111,George,Bell,N/A,04:27:51,04:26:27,Male 50+
+816,583,Alan,Rogers,N/A,04:28:00,04:26:12,Male
+817,379,Mark,Wood,N/A,04:28:07,04:26:43,Male
+818,1370,brenda,loades,N/A,04:28:14,04:26:30,Female 45+
+819,988,Brian,Shand,N/A,04:28:14,04:26:24,Male 40+
+820,364,John,Lewis,N/A,04:28:19,04:26:22,Male 50+
+821,1321,Clive,Holden,N/A,04:28:57,04:27:46,Male 40+
+822,935,Andy,Bowker,N/A,04:29:03,04:28:35,Male 40+
+823,934,Margot,Bowker,N/A,04:29:03,04:28:35,Female 45+
+824,1470,Thomas,Braun,N/A,04:29:10,04:28:52,Male 40+
+825,1471,Elizabeth,Braun,N/A,04:29:10,04:28:52,Female 35+
+826,938,Christine,Garvie,N/A,04:29:26,04:27:56,Female 55+
+827,322,Kate,Fisher,N/A,04:29:31,04:28:14,Female 35+
+828,685,steven,laird,N/A,04:29:32,04:27:38,Male
+829,618,jonathan,jarratt,N/A,04:29:33,04:27:59,Male
+830,1354,DEBORAH FRANCES,PILOT,N/A,04:29:34,04:29:17,Female 35+
+831,937,Lisa,Kallal,N/A,04:29:53,04:28:35,Female
+832,73,Lorna,Sherwood,N/A,04:30:15,04:28:19,Female
+833,945,colin,maclean,N/A,04:30:16,04:29:26,Male 40+
+834,592,Fiona,Rennie,N/A,04:30:59,04:30:26,Female 35+
+835,827,Michael,Cafferkey,N/A,04:31:18,04:29:37,Male 40+
+836,46,Kim,Andrews,N/A,04:31:29,04:29:56,Female 35+
+837,515,JANE,BINNIE,N/A,04:31:34,04:29:49,Female 45+
+838,1128,Katie,Page,N/A,04:31:55,04:29:56,Female
+839,93,Anne,Thompson,N/A,04:32:07,04:30:22,Female 45+
+840,212,Alexander,Mead,N/A,04:32:37,04:31:13,Male
+841,1244,Neil,Upham,N/A,04:32:48,04:30:34,Male 50+
+842,998,Donald,Strachan,N/A,04:32:54,04:30:41,Male 50+
+843,705,andrew,downie,N/A,04:33:04,04:32:34,Male
+844,891,Jon,Redpath,N/A,04:33:24,04:32:56,Male
+845,298,ronald,dobie,N/A,04:33:44,04:32:26,Male 40+
+846,584,John,Holloway,N/A,04:33:52,04:32:40,Male 40+
+847,1451,Michael,Clark,N/A,04:34:00,04:32:08,Male
+848,1830,Tony,Thewlis,N/A,04:34:00,04:32:08,Male 40+
+849,1169,martin,ogg,N/A,04:34:03,04:32:56,Male
+850,958,David,Mestres,N/A,04:34:08,04:32:47,Male
+851,568,carol-anne,mccallum,N/A,04:34:13,04:32:23,Female 45+
+852,1707,Robert,Thomson,N/A,04:34:23,04:32:33,Male 40+
+853,1336,David,James,N/A,04:34:24,04:33:24,Male
+854,1605,Julie,Schubert,N/A,04:34:41,04:33:49,Female 45+
+855,1456,Neil,Gourlay,N/A,04:34:42,04:33:37,Male
+856,142,STACEY,NICOL,N/A,04:34:51,04:34:38,Male
+857,79,Jillian,Gray,N/A,04:34:58,04:33:44,Female
+858,1374,paul,patrick,N/A,04:34:59,04:34:52,Male 40+
+859,1465,Pauline,Proudlock,N/A,04:34:59,04:33:01,Female
+860,288,Roger,Zoephel,N/A,04:35:26,04:33:15,Male 40+
+861,299,Thomas,Scheidlock,N/A,04:35:27,04:33:15,Male 40+
+862,330,Cathryn,Gregory,N/A,04:35:41,04:33:55,Female
+863,1248,andrew,ryan,N/A,04:35:44,04:34:09,Male
+864,1129,Tracy,Hepburn,N/A,04:35:44,04:33:45,Female 35+
+865,284,Donald,Pollard,N/A,04:35:51,04:33:44,Male 40+
+866,253,Ben,Wigglesworth,N/A,04:35:59,04:34:08,Male 50+
+867,975,Andrew,Peers,N/A,04:36:08,04:34:21,Male
+868,1284,Peter,Bullock,N/A,04:36:19,04:35:09,Male 50+
+869,34,terry,phipps,N/A,04:36:24,04:34:28,Male 50+
+870,1414,George,Martin,N/A,04:36:24,04:35:09,Male
+871,1616,bryan,sheils,N/A,04:36:34,04:34:45,Male
+872,481,Martin,Burke,N/A,04:36:35,04:35:00,Male 50+
+873,1598,Jen,Stocks,N/A,04:37:00,04:36:32,Female
+874,525,Austin,Bellaris,N/A,04:37:41,04:35:53,Male
+875,167,chris,Newcombe,N/A,04:37:43,04:35:33,Male 50+
+876,774,Colin,Orr,N/A,04:37:43,04:35:44,Male
+877,1375,Colin,Dowell,N/A,04:37:52,04:36:52,Male
+878,669,jan,mcleod,N/A,04:37:54,04:37:07,Female 45+
+879,684,marion,burns,N/A,04:37:54,04:37:07,Female 45+
+880,649,Murray,Ross,N/A,04:38:00,04:36:08,Male 40+
+881,1397,Brian,Hodge,N/A,04:38:11,04:36:26,Male 40+
+882,895,Andy,Byatt,N/A,04:38:13,04:36:30,Male 40+
+883,861,jason,o'rourke,N/A,04:38:13,04:36:29,Male
+884,917,alan,marshall,N/A,04:38:14,04:36:30,Male 40+
+885,3,Tony,Dockett,N/A,04:38:18,04:37:17,Male
+886,141,Louise,Daw,N/A,04:38:23,04:36:58,Female
+887,851,Lee,Black,N/A,04:38:25,04:36:34,Male 40+
+888,147,Linda,MacAuslan,N/A,04:38:30,04:36:25,Female 45+
+889,608,Kevin,Corrigan,N/A,04:38:33,04:37:41,Male 50+
+890,798,john,Bromfield,N/A,04:38:33,04:36:35,TBC
+891,285,Yvonne,Pollard,N/A,04:38:44,04:36:38,Female 35+
+892,1693,Carrie,Patterson,N/A,04:38:46,04:38:02,Female
+893,328,Sallyann,Smith,N/A,04:38:54,04:37:08,Female 45+
+894,790,Iain,Reid,N/A,04:39:02,04:38:37,Male
+895,145,fiona,findlay,N/A,04:39:03,04:37:05,Female 45+
+896,1213,simon,sampson,N/A,04:39:13,04:38:05,Male 40+
+897,1671,Neil,Melville,N/A,04:39:26,04:38:27,Male
+898,350,Andrew,Stokes,N/A,04:39:29,04:38:11,Male 40+
+899,811,colin,clark,N/A,04:39:30,04:38:02,Male 40+
+900,1540,Robert,Brannigan,N/A,04:39:33,04:38:07,Male
+901,1729,Ross,Mackey,N/A,04:39:38,04:38:01,Male
+902,1231,Melanie,Torrance,N/A,04:39:57,04:39:31,Female
+903,1043,David,Fulford,N/A,04:40:01,04:38:15,Male 50+
+904,1372,Carol,Summers,N/A,04:40:05,04:38:30,Female
+905,679,Andrew,Laing,N/A,04:40:09,04:38:15,Male
+906,1076,Brendan,Linnane,N/A,04:40:18,04:39:11,Male 40+
+907,853,Nick,Arthur,N/A,04:40:32,04:39:22,Male
+908,1521,Claudia,Ennemoser,N/A,04:41:05,04:39:09,Female
+909,737,Charles,Wilson,N/A,04:41:21,04:39:55,Male
+910,777,Kirsten,Saville,N/A,04:41:21,04:39:55,Female
+911,1495,Matthew,Kennedy,N/A,04:41:25,04:40:02,Male 40+
+912,602,Colin,Millum,N/A,04:41:25,04:40:02,Male 40+
+913,383,Kirsty,Gordon,N/A,04:41:29,04:39:32,Female
+914,1394,JULIE,HANKS,N/A,04:41:32,04:40:21,Female 35+
+915,159,Mark,Chenhall,N/A,04:41:37,04:39:49,Male
+916,447,Linda,Thompson,N/A,04:41:45,04:41:36,Female 45+
+917,502,Naomi,Martin,N/A,04:41:46,04:41:15,Female 35+
+918,243,Andrew,Hollingsworth,N/A,04:42:07,04:41:07,Male 40+
+919,1388,Mark,Underwood,N/A,04:42:28,04:40:20,Male 40+
+920,506,James,Pirrie,N/A,04:42:30,04:41:40,Male
+921,1498,Rodge,Wingfield,N/A,04:42:33,04:40:25,Male
+922,1777,Chris,Trotter,N/A,04:42:40,04:40:50,Male
+923,1600,Kevin,Liddell,N/A,04:42:55,04:40:58,Male 40+
+924,656,Cassandra,Jones,N/A,04:43:01,04:41:22,Female
+925,720,David,Jones,N/A,04:43:02,04:41:22,Male 50+
+926,1172,stephen,goss,N/A,04:43:10,04:41:12,Male
+927,1779,Anne,Pearson,N/A,04:43:40,04:41:41,Female 55+
+928,710,Mike,Baxter,N/A,04:44:10,04:43:12,Male 40+
+929,678,Jane,MacAskill,N/A,04:44:24,04:42:20,Female 45+
+930,207,Alastair,McGhee,N/A,04:44:41,04:43:17,Male
+931,949,Iain,Morrison,N/A,04:45:01,04:43:10,Male
+932,338,Paul,Tuffnell,N/A,04:45:06,04:42:57,Male 50+
+933,1335,neal,baker,N/A,04:45:12,04:44:24,Male
+934,1810,Barbara,Kellett,N/A,04:45:56,04:44:48,Female 45+
+935,428,Helen,Revill,N/A,04:46:26,04:44:33,Female
+936,375,Karen,Robertson,N/A,04:46:42,04:45:13,Female 35+
+937,1035,Donald,McLellan,N/A,04:46:56,04:46:07,Male 40+
+938,1621,Keren,Cafferty,N/A,04:47:18,04:45:25,Female 35+
+939,404,Michael,Frisby,N/A,04:47:31,04:45:49,Male 40+
+940,582,Catherine,Gray,N/A,04:47:31,04:45:21,Female
+941,395,Dawn,Wood,N/A,04:47:44,04:45:42,Female
+942,1731,Phillip,Hastie,N/A,04:47:58,04:46:01,Male
+943,1732,Michael,Hastie,N/A,04:47:59,04:46:04,Male
+944,1121,Charlotte,Robinson,N/A,04:48:19,04:46:20,Female
+945,848,richard,vaughan,N/A,04:48:41,04:46:30,Male
+946,642,Andrew,Speake,N/A,04:49:08,04:47:24,Male 40+
+947,1847,Tommy,Yeomans,N/A,04:49:20,04:48:49,Male
+948,15,Tony,Britt,N/A,04:49:32,04:48:06,Male 40+
+949,668,Jim,Francis,N/A,04:49:48,04:47:55,Male
+950,1552,onno,wieringa,N/A,04:50:54,04:49:36,TBC
+951,1459,neil,parrott,N/A,04:51:11,04:50:22,Male 40+
+952,878,Will,Plumley,N/A,04:51:32,04:49:21,Male
+953,1560,Dave,Rochford,N/A,04:52:07,04:50:32,Male 50+
+954,581,Vince,Mullen,N/A,04:52:07,04:50:05,Male
+955,1758,Istvan,Harmati,N/A,04:52:18,04:50:40,Male
+956,135,vernon,campbell,N/A,04:52:44,04:51:15,Male
+957,788,Steve,Devonshire,N/A,04:52:44,04:51:00,Male 50+
+958,1343,Benjamin,Pilley,N/A,04:53:05,04:51:06,Male
+959,727,Daniel,McAusland,N/A,04:53:06,04:51:06,Male
+960,124,Richard,Custance,N/A,04:53:24,04:51:51,Male
+961,1809,Daniel,Webb,N/A,04:53:34,04:51:40,Male
+962,929,CLARE,OUTTERSIDE,N/A,04:53:52,04:52:39,Female
+963,1239,Mary,Gibson,N/A,04:53:53,04:52:40,Female 45+
+964,993,Jonathan,Mcpherson,N/A,04:54:02,04:51:56,Male
+965,43,Stuart,Clarke,N/A,04:54:03,04:52:50,Male 40+
+966,272,eilidh,gilchrist,N/A,04:54:19,04:53:04,Female
+967,1316,Mark,Matheson,N/A,04:54:22,04:52:33,Male
+968,181,Chris,Truman,N/A,04:54:41,04:52:48,Male
+969,607,Sally,Lawson-Cruttenden,N/A,04:54:56,04:53:00,Female 35+
+970,215,Claire,Pearson,N/A,04:55:02,04:54:52,Female
+971,733,David,Robinson,N/A,04:55:42,04:54:14,Male
+972,666,Eric,Baird,N/A,04:55:56,04:55:23,Male 50+
+973,1641,fernando,Martinez,N/A,04:56:11,04:53:58,Male
+974,392,Mick,James,N/A,04:56:22,04:54:15,Male
+975,538,alison,stewart,N/A,04:56:25,04:54:31,Female
+976,526,Bruce,Waters,N/A,04:56:39,04:54:24,Male 40+
+977,401,Lorraine,McSporran,N/A,04:57:49,04:56:11,Female
+978,398,ruth,hurrell,N/A,04:57:49,04:56:11,Female
+979,411,patricia,gillan,N/A,04:57:49,04:56:11,Female 35+
+980,820,Jo,Fraser,N/A,04:58:29,04:56:54,Female 35+
+981,984,Fergus,Speed,N/A,04:58:29,04:56:35,Male 60+
+982,1426,Caron,Jeffrey,N/A,04:58:29,04:56:43,Female
+983,955,IAN,MACKIN,N/A,04:58:44,04:57:49,Male 40+
+984,884,Matthew,Maley,N/A,04:58:47,04:57:29,Male
+985,305,graham,bain,N/A,04:58:47,04:56:36,Male 40+
+986,885,Jamie,Bicket,N/A,04:58:47,04:57:29,Male
+987,170,Amanda,Simpson,N/A,04:59:10,04:57:31,Female 35+
+988,817,James,Stuart,N/A,04:59:15,04:57:50,Male
+989,260,Andrew,Stuart,N/A,04:59:16,04:57:52,Male
+990,816,Edward,Stuart,N/A,04:59:16,04:57:51,Male
+991,783,Brian,Stoneham,N/A,04:59:19,04:57:18,Male 60+
+992,990,David,Rowe,N/A,05:00:21,04:58:44,Male 40+
+993,149,Lesley,Howkins,N/A,05:00:21,04:58:44,Female 45+
+994,786,Michel,Fouinneteau,N/A,05:00:31,05:00:17,Male
+995,204,paul,wilkinson,N/A,05:00:43,05:00:17,Male
+996,1545,Sarah,Butchart,N/A,05:00:51,05:00:09,Female
+997,123,David,Parker,N/A,05:01:30,04:59:58,Male 40+
+998,59,Andrew,Hudson,N/A,05:01:52,04:59:45,Male
+999,1288,Jim,Masson,N/A,05:01:55,05:01:29,Male 40+
+1000,1310,Andrew,Mills,N/A,05:01:59,05:00:25,Male
+1001,1739,David,Elder,N/A,05:02:05,05:01:44,Male
+1002,1295,SARAH,BEECH,N/A,05:02:34,05:00:28,Female
+1003,1421,Ian,Munro,N/A,05:02:42,05:01:51,Male
+1004,1825,Michelle,Kasper,N/A,05:03:18,05:02:56,Female
+1005,513,Ian,McDonald,N/A,05:03:23,05:01:33,Male 40+
+1006,1225,John,Ferrie,N/A,05:04:18,05:02:23,Male 50+
+1007,977,James,Waters,N/A,05:04:35,05:03:34,Male 60+
+1008,1308,Ian,Sparks,N/A,05:04:54,05:02:56,Male 40+
+1009,1309,Elizabeth,Walker,N/A,05:04:54,05:02:55,Female
+1010,902,Dave,Welsh,N/A,05:05:26,05:03:15,Male 40+
+1011,1263,Andrew,Joss,N/A,05:06:07,05:05:23,Male
+1012,24,Gillian,Bruce,N/A,05:06:12,05:04:07,Female
+1013,486,Thomas,Hughes,N/A,05:07:22,05:05:18,Male
+1014,594,Ken,White,N/A,05:07:45,05:05:37,Male 50+
+1015,1080,louise,moss,N/A,05:08:10,05:06:11,Female 35+
+1016,1778,Tommaso,Lordi,N/A,05:10:06,05:10:01,Male
+1017,71,James,Hope,N/A,05:10:24,05:09:46,Male 50+
+1018,213,Leo,Ennis,N/A,05:10:51,05:10:19,Male 60+
+1019,1686,Steven,McPike,N/A,05:11:16,05:09:36,Male
+1020,1553,Ramon,Muga,N/A,05:11:27,05:10:10,Male
+1021,636,Angela,Hartas,N/A,05:11:44,05:11:34,Female
+1022,1542,Rebecca,Hornsby,N/A,05:11:49,05:09:52,Female
+1023,487,Neil,McLeod,N/A,05:13:45,05:11:41,Male
+1024,1823,Celeste,McDonell,N/A,05:14:13,05:12:34,Female 45+
+1025,520,Kio,Vejdani,N/A,05:14:37,05:13:46,Male 60+
+1026,50,Charles,Flach,N/A,05:15:24,05:13:15,Male 50+
+1027,346,Christopher,David,N/A,05:15:33,05:14:48,Male
+1028,1576,Jonathan,Russell,N/A,05:16:56,05:16:09,Male
+1029,1816,Mark,Sinclair,N/A,05:16:56,05:16:09,Male
+1030,1058,hong,tang,N/A,05:17:00,05:14:43,Male
+1031,1117,John,Marshall,N/A,05:17:42,05:16:40,Male 50+
+1032,741,Andy,Gilliver,N/A,05:17:42,05:16:49,TBC
+1033,770,Richard,Stroud,N/A,05:19:06,05:16:59,Male
+1034,769,Elaine,Stroud,N/A,05:19:07,05:16:59,Female 35+
+1035,869,jean,stewart,N/A,05:19:37,05:17:49,Female 45+
+1036,1679,John,Bryson,N/A,05:19:37,05:19:29,Male
+1037,825,Thomas,Rocks,N/A,05:19:38,05:17:50,Male
+1038,1070,stephen,brear,N/A,05:19:46,05:19:08,Male
+1039,1536,Keir,Marshall,N/A,05:19:54,05:17:56,Male
+1040,164,Collette,O Hagan,N/A,05:19:56,05:19:27,Female 55+
+1041,289,Eugene,Kemp,N/A,05:20:21,05:18:20,Male 50+
+1042,307,Abi,Kan,N/A,05:20:21,05:19:33,Female
+1043,280,steve,free,N/A,05:20:24,05:18:15,Male 40+
+1044,1526,Jenny,Bullock,N/A,05:20:26,05:18:55,Female 35+
+1045,1766,Keith,Hillsden,N/A,05:20:27,05:18:55,Male 40+
+1046,721,Carol,Culley,N/A,05:20:45,05:18:59,Female 45+
+1047,1355,Arlene,Milne,N/A,05:21:28,05:20:14,Female
+1048,702,Judith,Proctor,N/A,05:21:50,05:19:45,Female 35+
+1049,1606,Mairi,McKinley,N/A,05:22:14,05:20:54,Female
+1050,1427,Victoria,Robb,N/A,05:22:28,05:20:24,Female 35+
+1051,654,lee,haley,N/A,05:23:07,05:22:49,Male 40+
+1052,1702,Lindsay,Armstrong,N/A,05:23:23,05:23:00,Female
+1053,1209,Jackie,Cameron,N/A,05:23:27,05:21:24,Female
+1054,1049,Cathy,Wilson,N/A,05:23:27,05:21:28,Female 35+
+1055,1312,joanna,sornat,N/A,05:23:27,05:21:27,Female 35+
+1056,347,alistair,syme,N/A,05:24:34,05:23:31,Male 40+
+1057,556,Karen,Corrall,N/A,05:25:08,05:24:23,Female 55+
+1058,1365,kenneth,simpson,N/A,05:25:17,05:23:18,Male
+1059,1118,Jamie,Marshall,N/A,05:25:37,05:24:34,Male
+1060,1620,Linda,McDermid,N/A,05:25:46,05:23:30,Female 45+
+1061,1618,Margaret,Forrest,N/A,05:25:47,05:23:31,Female 45+
+1062,425,stuart,thomson,N/A,05:25:59,05:23:49,Male 40+
+1063,1832,Billy,Gollan,N/A,05:26:49,05:26:18,Male 50+
+1064,667,Neil,Clark,N/A,05:26:53,05:25:00,Male 40+
+1065,1769,Arthur,Faherty,N/A,05:27:21,05:25:43,Male 50+
+1066,759,Declan,Hourihan,N/A,05:27:25,05:25:17,Male
+1067,186,steve,fields,N/A,05:27:35,05:25:59,Male
+1068,1668,Sara,Wrenn,N/A,05:27:59,05:26:25,Female 45+
+1069,1012,marc,jones,N/A,05:28:07,05:26:20,Male
+1070,1250,Graham,May,N/A,05:28:17,05:26:15,Male 40+
+1071,1509,Rebecca,Riley,N/A,05:28:27,05:26:29,Female
+1072,1281,Maureen,Ellis,N/A,05:28:48,05:26:52,Female 45+
+1073,1279,Suzanne,Howat,N/A,05:28:49,05:26:52,Female 35+
+1074,1065,Stephen,Sylvester,N/A,05:29:06,05:27:18,Male
+1075,1063,Kate,maynard,N/A,05:29:07,05:27:19,Female 45+
+1076,460,Russell,Bain,N/A,05:29:47,05:27:35,Male
+1077,1514,Paul,Allan,N/A,05:29:54,05:27:45,Male
+1078,995,Steven,Duncan,N/A,05:30:05,05:28:00,Male
+1079,361,Robbie,Stronach,N/A,05:30:05,05:28:01,Male
+1080,216,Katharine,Woods,N/A,05:30:13,05:28:13,Female 45+
+1081,235,George,Shaw,N/A,05:30:38,05:29:04,Male 60+
+1082,1,Liz,Proudlock,N/A,05:31:36,05:29:36,Female
+1083,499,Deborah,Manz,N/A,05:32:25,05:30:35,Female 45+
+1084,127,STEPHEN,KIDD,N/A,05:32:47,05:31:21,Male 40+
+1085,491,Graeme,Brown,N/A,05:33:39,05:31:32,Male
+1086,1567,Alan,Lothian,N/A,05:33:53,05:31:46,Male 40+
+1087,1796,Ronald,Smith,N/A,05:34:07,05:33:23,TBC
+1088,523,Todd,Bellaris,N/A,05:35:37,05:33:50,Male
+1089,1202,Claire,McArthur,N/A,05:35:47,05:34:01,Female
+1090,1173,emily,courtier,N/A,05:36:13,05:34:26,Female
+1091,233,Francis,Slade,N/A,05:37:14,05:35:52,Male 50+
+1092,728,Celine,Hivet,N/A,05:37:55,05:37:45,Female
+1093,889,Calum,Watson,N/A,05:38:33,05:37:16,Male
+1094,886,Alan,Kinnaird,N/A,05:38:33,05:37:16,Male 40+
+1095,7,Laura,Harold,N/A,05:42:13,05:40:09,Female
+1096,470,Fifi,Nesbitt,N/A,05:43:26,05:41:32,Female 45+
+1097,407,samantha,McKay,N/A,05:44:01,05:42:08,Female 35+
+1098,1289,Fiona,Macphail,N/A,05:44:06,05:43:56,Female 35+
+1099,1713,Kirsteen,Torrance,N/A,05:44:08,05:42:48,Female
+1100,1838,Gerald,Fraser,N/A,05:44:11,05:42:46,Male 40+
+1101,1651,Colin,Steenson,N/A,05:45:05,05:42:57,Male 60+
+1102,312,Christine,Pandrich,N/A,05:45:49,05:44:57,Female 55+
+1103,868,Mark,Bennett,N/A,05:46:12,05:44:24,Male
+1104,51,TOBY,FLINT,N/A,05:46:58,05:44:42,Male
+1105,373,timothy,Newstead,N/A,05:47:16,05:44:59,Male
+1106,391,Gail,Chalmers,N/A,05:47:21,05:46:07,Female
+1107,1637,Neil,McGee,N/A,05:52:08,05:50:49,Male
+1108,1182,Jane,McDiarmid,N/A,05:52:18,05:51:22,Female 35+
+1109,77,Jeanne,Laurie,N/A,05:52:27,05:50:24,Female 35+
+1110,524,Wendy,Bellaris,N/A,05:52:49,05:51:01,Female 55+
+1111,30,Stephen,McLelland,N/A,05:54:20,05:53:04,TBC
+1112,1485,Susan,McClanahan,N/A,05:57:31,05:57:18,Female 45+
+1113,1474,Timothy,Lawson-Cruttenden,N/A,05:59:23,05:58:15,Male 50+
+1114,1115,ROWAN,BAILEY,N/A,05:59:37,05:57:22,Female
+1115,403,Helen,Stanley,N/A,06:00:15,05:58:01,Female 45+
+1116,416,Robert,Cumming,N/A,06:01:14,05:59:28,Male 40+
+1117,742,Helen,Bishopp,N/A,06:01:14,06:00:20,Female 35+
+1118,626,GILLIAN,TARLETON,N/A,06:02:50,06:00:53,Female 35+
+1119,942,Lyn,McVicar,N/A,06:05:05,06:03:52,Female 45+
+1120,1241,Alison,Fraser,N/A,06:07:14,06:05:19,Female
+1121,128,Anita,Lawson,N/A,06:09:12,06:07:07,Female 35+
+1122,355,William,Stobie,N/A,06:13:44,06:11:43,Male
+1123,1663,Lynn,Paddock,N/A,06:14:04,06:12:00,Female
+1124,1662,Murray,Jenkinson,N/A,06:14:04,06:12:00,Male
+1125,822,George,Calder,N/A,06:14:46,06:13:43,Male 40+
+1126,823,Josephine,Brumpton,N/A,06:14:47,06:13:44,Female 55+
+1127,1429,Vivienne,Winterbottom,N/A,06:18:15,06:16:30,Female 45+
+1128,138,Pauline,Lynch,N/A,06:18:34,06:16:52,Female 35+
+1129,56,sonja,brakell,N/A,06:28:42,06:26:40,Female 45+
+1130,172,margot,matheson,N/A,06:34:25,06:32:07,Female 45+
+1131,1436,Julie Anne,Allan,N/A,06:44:22,06:42:23,Female
+1132,1290,Eilidh,Macdonald,N/A,06:44:52,06:44:43,Female 35+
+1133,771,Emma,Aitken,N/A,06:46:06,06:44:21,Female
+1134,1146,elspeth,stewart,N/A,06:46:06,06:43:52,Female 35+
+1135,535,Karen,Fisher,N/A,06:46:10,06:44:08,Female 35+
+1136,96,Jo,Byrne,N/A,06:48:52,06:46:43,Female 35+
+1137,1148,nicki,garrish,N/A,06:56:10,06:54:13,Female 35+
+1138,1044,Raymond,Kerrigan,N/A,07:12:10,07:09:56,Male 40+
+1139,308,Kay,Sowerby,N/A,07:17:02,07:14:52,Female 35+
+1140,1157,Phyl,Kiff,N/A,07:17:02,07:14:52,Female 55+
+1141,1420,Hilda,McCann,N/A,07:17:03,07:16:13,Female 35+
+1142,1549,Suraya,Latie,N/A,07:23:54,07:21:39,Female
+1143,936,John,Macrae,N/A,07:24:10,07:23:17,Male 50+
+1144,363,mike,getchell,N/A,07:37:00,07:34:59,Male 50+
