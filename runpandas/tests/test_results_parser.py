@@ -20,11 +20,15 @@ pytestmark = pytest.mark.stable
 def dirpath(datapath):
     return datapath("io", "data")
 
-
-def pandas_activity(dirpath):
+@pytest.fixture
+def pandas_race(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
     return read_result(result_file, to_df=True)
 
+@pytest.fixture
+def runpandas_race(dirpath):
+    result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
+    return read_result(result_file, to_df=False)
 
 @pytest.mark.results
 def test_extract_valid_metadata(dirpath):
@@ -103,3 +107,107 @@ def test_read_file_result_valid_race_result(dirpath):
     assert race.shape[0] == 3167  ##number of lines
     included_data = set(["position", "bib", "name", "sex", "age", "faixa", "cl._fx.", "equipe", "grosstime", "nettime"])
     assert included_data <= set(race.columns.to_list())
+
+test_data = [
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "position",
+        0,
+        0,
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "position",
+        -1,
+        26409,
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "age",
+        0,
+        24,
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "age",
+        -1,
+        48,
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "nettime",
+        0,
+        pd.Timedelta('0 days 02:09:37'),
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "sex",
+        0,
+        'M',
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "bib",
+        -1,
+        '25266',
+    ),
+    (
+        pytest.lazy_fixture("pandas_race"),
+        "bib",
+        0,
+        '11',
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "position",
+        0,
+        0,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "position",
+        -1,
+        26409,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "age",
+        0,
+        24,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "age",
+        -1,
+        48,
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "nettime",
+        0,
+        pd.Timedelta('0 days 02:09:37'),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "sex",
+        0,
+        "M",
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "nettime",
+        -1,
+        pd.Timedelta('0 days 07:58:14'),
+    ),
+    (
+        pytest.lazy_fixture("runpandas_race"),
+        "half",
+        0,
+        pd.Timedelta('0 days 01:04:35'),
+    ),
+]
+
+@pytest.mark.results
+@pytest.mark.parametrize("race,column,index,expected", test_data)
+def test_race_result_values(race, column, index, expected):
+    assert race[column].iloc[index] == expected
