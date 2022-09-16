@@ -257,3 +257,59 @@ def session_summary(session):
     session_summary = pd.concat(frames, axis=0, verify_integrity=True)
     session_summary.sort_index(inplace=True)
     return session_summary
+
+
+def _build_race_statistics(obj):
+    """
+    Generate race statistics from a given DataFrame.
+
+    Parameters
+    ----------
+    obj:  The DataFrame to generate basic commute statistics from.
+
+    Returns:
+    --------
+    A Dictionary containing the following statistics:
+    - Race event name
+    - Race type
+    - Country which the event ocurred
+    - Date when the event ocurred
+    - Number of participants
+    - Number of male finishers
+    - Number of female finishers
+    - Number of finishers
+    - Winner NetTime
+    """
+    try:
+        event_name = obj.event.event_name
+    except AttributeError:
+        event_name = ""
+
+    try:
+        event_type = obj.event.event_type
+    except AttributeError:
+        event_type = ""
+
+    try:
+        event_country = obj.event.event_country
+    except AttributeError:
+        event_country = ""
+
+    try:
+        event_date = obj.event.event_date
+    except AttributeError:
+        event_date = ""
+
+    number_of_participants = len(obj)
+
+    number_of_non_finishers = (obj.position.values == "DNF").sum()
+
+    finishers = obj[obj["position"].ne("DNF")].value_counts(subset=["sex"])
+
+    print(finishers)
+
+    number_of_male_finishers = (obj.position.values == "DNF").sum()
+
+    number_of_female_finishers = (obj.position.values == "DNF").sum()
+
+    winner_nettime = (obj.position.values == "DNF").sum()

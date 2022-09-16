@@ -5,27 +5,26 @@ from datetime import datetime
 import pandas as pd
 from runpandas import _utils as utils
 from runpandas import exceptions
-from runpandas.types import columns
 from runpandas.types.frame import RaceResult, Event
 
 COL_TYPES = {
-    'position': {'alias': ['position','coloc'], 'apply': lambda x : int(x)},
-    'bib': {'alias': ['bib', 'num'], 'apply': lambda x : str(x)},
-    'name': {'alias': ['name', 'nome'],  'apply': lambda x: str(x)},
-    'age': {'alias': ['age', 'idade'], 'apply': lambda x : int(x)},
-    'sex': {'alias': ['sexo', 'sex','m/f'], 'apply': lambda x : str(x)},
-    'nettime': {'alias': ['official_time', 'liquido'], 'apply': pd.to_timedelta},
-    'grosstime': {'alias': ['tempo'], 'apply': pd.to_timedelta},
-    'half': {'alias': ['halftime', 'half'], 'apply': pd.to_timedelta},
-    '5k': {'alias': ['5_k'], 'apply': pd.to_timedelta},
-    '10k': {'alias': ['10_k'], 'apply': pd.to_timedelta},
-    '15k': {'alias': ['15_k'], 'apply': pd.to_timedelta},
-    '20k': {'alias': ['20_k'], 'apply': pd.to_timedelta},
-    '25k': {'alias': ['25_k'], 'apply': pd.to_timedelta},
-    '30k': {'alias': ['30_k'], 'apply': pd.to_timedelta},
-    '35k': {'alias': ['35_k'], 'apply': pd.to_timedelta},
-    '40k': {'alias': ['40_k'], 'apply': pd.to_timedelta},
-    'pace':{'alias': ['pace'], 'apply': pd.to_timedelta}
+    "position": {"alias": ["position", "coloc"], "apply": lambda x: str(x)},
+    "bib": {"alias": ["bib", "num"], "apply": lambda x: str(x)},
+    "name": {"alias": ["name", "nome"], "apply": lambda x: str(x)},
+    "age": {"alias": ["age", "idade"], "apply": lambda x: int(x)},
+    "sex": {"alias": ["sexo", "sex", "m/f"], "apply": lambda x: str(x)},
+    "nettime": {"alias": ["official_time", "liquido"], "apply": pd.to_timedelta},
+    "grosstime": {"alias": ["tempo"], "apply": pd.to_timedelta},
+    "half": {"alias": ["halftime", "half"], "apply": pd.to_timedelta},
+    "5k": {"alias": ["5_k"], "apply": pd.to_timedelta},
+    "10k": {"alias": ["10_k"], "apply": pd.to_timedelta},
+    "15k": {"alias": ["15_k"], "apply": pd.to_timedelta},
+    "20k": {"alias": ["20_k"], "apply": pd.to_timedelta},
+    "25k": {"alias": ["25_k"], "apply": pd.to_timedelta},
+    "30k": {"alias": ["30_k"], "apply": pd.to_timedelta},
+    "35k": {"alias": ["35_k"], "apply": pd.to_timedelta},
+    "40k": {"alias": ["40_k"], "apply": pd.to_timedelta},
+    "pace": {"alias": ["pace"], "apply": pd.to_timedelta},
 }
 
 
@@ -46,16 +45,17 @@ def __extract_metadata(file_path):
     parsed_metadata = {}
 
     try:
-        parsed_metadata['name'] = data[0]
-        parsed_metadata['race_date'] = datetime.strptime(data[1], '%d/%m/%Y')
-        parsed_metadata['run_type'] = data[2]
-        parsed_metadata['country'] = data[3]
+        parsed_metadata["name"] = data[0]
+        parsed_metadata["race_date"] = datetime.strptime(data[1], "%d/%m/%Y")
+        parsed_metadata["run_type"] = data[2]
+        parsed_metadata["country"] = data[3]
     except IndexError:
         raise exceptions.MissingHeaderError(file_path)
     except ValueError:
         raise exceptions.InvalidHeaderError(file_path)
 
     return parsed_metadata
+
 
 def read(file_path, to_df=False, **kwargs):
     """
@@ -80,19 +80,18 @@ def read(file_path, to_df=False, **kwargs):
 
     metadata = __extract_metadata(file_path)
 
-    data = pd.read_csv(file_path, skiprows=1 , **kwargs)
-
+    data = pd.read_csv(file_path, skiprows=1, **kwargs)
 
     data.columns = map(utils.camelcase_to_snakecase, data.columns)
-    data.columns= data.columns.str.replace(' ', '')
+    data.columns = data.columns.str.replace(" ", "")
 
     to_rename = {}
-    #transform data to specific dtypes
-    for col , _type in COL_TYPES.items():
-        for alias in COL_TYPES[col]['alias']:
+    # transform data to specific dtypes
+    for col, _type in COL_TYPES.items():
+        for alias in COL_TYPES[col]["alias"]:
             if alias in data.columns:
                 to_rename[alias] = col
-                data[alias] = data[alias].apply(COL_TYPES[col]['apply'])
+                data[alias] = data[alias].apply(COL_TYPES[col]["apply"])
 
     if to_rename:
         data.rename(columns=to_rename, inplace=True)
@@ -102,9 +101,11 @@ def read(file_path, to_df=False, **kwargs):
     if to_df:
         return data
 
-    event = Event(event_name=metadata['name'],
-                  event_type=metadata['run_type'],
-                  event_country=metadata['country'],
-                  event_date=metadata['race_date'])
+    event = Event(
+        event_name=metadata["name"],
+        event_type=metadata["run_type"],
+        event_country=metadata["country"],
+        event_date=metadata["race_date"],
+    )
 
     return RaceResult(data, event=event)

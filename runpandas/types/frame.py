@@ -293,7 +293,7 @@ class Activity(pd.DataFrame):
         return runpandas.types.summary.activity_summary(self)
 
 
-class Event(object):
+class Event:
     """Object for accessing race event metadata.
 
     Parameters
@@ -307,11 +307,15 @@ class Event(object):
     event_date :  pandas.Datetime:
          Date at which this event took place.
     """
+
+    __slots__ = ("event_name", "event_type", "event_country", "event_date")
+
     def __init__(self, event_name, event_type, event_country, event_date):
         self.event_name = event_name
         self.event_type = event_type
         self.event_country = event_country
         self.event_date = event_date
+
 
 class RaceResult(pd.DataFrame):
     """
@@ -328,7 +332,7 @@ class RaceResult(pd.DataFrame):
     """
 
     # properties to propagate
-    _metadata = ['event']
+    _metadata = ["event"]
 
     def __init__(self, *args, **kwargs):
         event = kwargs.pop("event", None)
@@ -356,5 +360,6 @@ class RaceResult(pd.DataFrame):
 
     @property
     def base_class_view(self):
-        """For a nicer debugging experience; can view DataFrame through this property in various IDEs"""
+        """For a nicer debugging experience; can view DataFrame through
+        this property in various IDEs"""
         return pd.DataFrame(self)

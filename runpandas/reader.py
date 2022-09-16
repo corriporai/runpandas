@@ -135,17 +135,18 @@ def _read_race_result(filename, to_df=False, **kwargs):
 
     """
     if not utils.file_exists(filename):
-            raise IOError("%s does not exist" % filename)
+        raise IOError("%s does not exist" % filename)
 
     _, ext = utils.splitext_plus(filename)
-    if ext not in ['.csv']:
+    if ext not in [".csv"]:
         raise exceptions.InvalidFileError(
             "File {filename} with invalid filetype.".format(**locals())
         )
-    module = _import_module('result')
+    module = _import_module("result")
     return module.read(filename, to_df, **kwargs)
 
-def _load_race(dirname,  to_df=False,  **kwargs):
+
+def _load_race(dirname, to_df=False, **kwargs):
     """
     Load the result races files files from a supplied directory
     as `runpandas.RaceResult` dataframes, and aggregate them
@@ -174,4 +175,3 @@ def _load_race(dirname,  to_df=False,  **kwargs):
             continue
 
         yield _read_race_result(filename=path_file, to_df=to_df, kwargs=kwargs)
-

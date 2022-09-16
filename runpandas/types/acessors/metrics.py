@@ -25,8 +25,9 @@ class MetricsAcessor(object):
     """
 
     def __init__(self, activity):
-        self._validate(activity)
-        self._activity = activity
+        if isinstance(activity, Activity):
+            self._validate(activity)
+            self._activity = activity
 
     @staticmethod
     def _validate(activity):
