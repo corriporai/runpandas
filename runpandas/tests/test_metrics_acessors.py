@@ -51,7 +51,7 @@ def runpandas_tcx_basic_activity(dirpath):
 def test_metrics_validate(dirpath):
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(AttributeError):
         activity_gpx = reader._read_file(gpx_file, to_df=True)
         activity_gpx.compute.speed()
 

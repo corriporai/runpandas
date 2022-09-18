@@ -6,6 +6,7 @@ import pytest
 import numpy as np
 from pandas import Timedelta, Series, concat, isna
 from runpandas import reader, read_dir
+from runpandas.io.result._parser import read as read_result
 from pandas.testing import assert_series_equal
 
 
@@ -197,3 +198,39 @@ def test_summary_session(multi_frame, simple_activity):
     )
     assert isna(summary_single_activity.loc["Average temperature"])
     assert isna(summary_session_activity.loc["mean_temperature"])
+
+
+@pytest.mark.summary
+def test_race_full_summary(dirpath):
+    race_result = os.path.join(dirpath, "results", "valid_result_br.csv")
+    race = read_result(race_result, to_df=False)
+
+    result = race.summary()
+
+    expected = Series(
+        [
+            "Porto Alegre Marathon",
+            "42k",
+            "BR",
+            "02-06-2019",
+            3167,
+            3167,
+            0,
+            2440,
+            727,
+            "02:18:27",
+        ],
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+    assert_series_equal(result, expected)

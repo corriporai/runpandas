@@ -363,3 +363,14 @@ class RaceResult(pd.DataFrame):
         """For a nicer debugging experience; can view DataFrame through
         this property in various IDEs"""
         return pd.DataFrame(self)
+
+    def summary(self):
+        """
+        Display the summary statistics from the race.
+
+        Returns:
+        --------
+            pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
+            inclues the race event info , demographics statistics and winner race's result.
+        """
+        return runpandas.types.summary.race_summary(self)

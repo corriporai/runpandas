@@ -199,7 +199,7 @@ def test_read_file_result_valid_race_result(dirpath):
     assert (race.position.values == "DNF").sum() == 0  # number of non-finishers
 
 
-@pytest.mark.results
+@pytest.mark.results2
 def test_read_file_result_valid_race_result_with_nonfinishers(dirpath):
     result_file = os.path.join(dirpath, "results", "result_with_nonfinishers.csv")
     race = read_result(result_file, to_df=False)
@@ -212,10 +212,6 @@ def test_read_file_result_valid_race_result_with_nonfinishers(dirpath):
     assert race.shape[0] == 2825  # number of lines
 
     assert (race.position.values == "DNF").sum() == 15  # number of non-finishers
-
-    print(dir(race))
-    # finishers = race[race['position'].ne('DNF')] #.value_counts(subset=['sex'])
-    # print(dir(finishers))
 
 
 test_data = [
