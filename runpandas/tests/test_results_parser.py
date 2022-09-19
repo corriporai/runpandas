@@ -36,8 +36,8 @@ def runpandas_race(dirpath):
 def test_extract_valid_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result.csv")
     header = __extract_metadata(result_file)
-    assert "lochness marathon" in header["name"]
-    assert datetime.datetime(2003, 4, 10) == header["race_date"]
+    assert "Lochness marathon" in header["name"]
+    assert datetime.datetime(2003, 10, 4) == header["race_date"]
     assert "42k" in header["run_type"]
     assert "UK" in header["country"]
     assert len(header) == 4
@@ -126,7 +126,6 @@ def test_read_file_result_basic_dataframe(dirpath):
         ]
     )
     assert included_data <= set(race.columns.to_list())
-    print(dir(race))
 
 
 @pytest.mark.results

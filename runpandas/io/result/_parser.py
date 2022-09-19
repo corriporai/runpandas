@@ -13,8 +13,11 @@ COL_TYPES = {
     "name": {"alias": ["name", "nome"], "apply": lambda x: str(x)},
     "age": {"alias": ["age", "idade"], "apply": lambda x: int(x)},
     "sex": {"alias": ["sexo", "sex", "m/f"], "apply": lambda x: str(x)},
-    "nettime": {"alias": ["official_time", "liquido"], "apply": pd.to_timedelta},
-    "grosstime": {"alias": ["tempo"], "apply": pd.to_timedelta},
+    "nettime": {
+        "alias": ["official_time", "chiptime", "liquido"],
+        "apply": pd.to_timedelta,
+    },
+    "grosstime": {"alias": ["tempo", "guntime"], "apply": pd.to_timedelta},
     "half": {"alias": ["halftime", "half"], "apply": pd.to_timedelta},
     "5k": {"alias": ["5_k"], "apply": pd.to_timedelta},
     "10k": {"alias": ["10_k"], "apply": pd.to_timedelta},

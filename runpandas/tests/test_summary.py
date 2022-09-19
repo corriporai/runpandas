@@ -234,3 +234,39 @@ def test_race_full_summary(dirpath):
         ],
     )
     assert_series_equal(result, expected)
+
+
+@pytest.mark.summary
+def test_race_missing_values_summary(dirpath):
+    race_result = os.path.join(dirpath, "results", "valid_result.csv")
+    race = read_result(race_result, to_df=False)
+
+    result = race.summary()
+
+    expected = Series(
+        [
+            "Lochness marathon",
+            "42k",
+            "UK",
+            "04-10-2003",
+            752,
+            752,
+            0,
+            "",
+            "",
+            "02:20:59",
+        ],
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+    assert_series_equal(result, expected)
