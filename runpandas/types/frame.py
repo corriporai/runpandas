@@ -374,3 +374,39 @@ class RaceResult(pd.DataFrame):
             inclues the race event info , demographics statistics and winner race's result.
         """
         return runpandas.types.summary.race_summary(self)
+
+    @property
+    def total_participants(self):
+        """
+        Returns:
+            The number of participants as an integer number.
+        """
+        return len(self)
+
+    @property
+    def total_finishers(self):
+        """
+        Returns:
+            The number of finishers as an integer number.
+        """
+        return (self.position.values != "DNF").sum()
+
+    @property
+    def total_nonfinishers(self):
+        """
+        Returns:
+            The number of non-finishers as an integer number.
+        """
+        return (self.position.values == "DNF").sum()
+
+    @property
+    def winner(self):
+        """
+        Returns:
+            The winner record row as a pandas.Series object.
+        """
+        winner_nettime = self[self["position"].ne("DNF")]
+        winner_nettime["pos"] = winner_nettime["position"].astype(int)
+        winner_nettime.sort_values("pos", inplace=True)
+        winner_nettime.drop(columns=["pos"], inplace=True)
+        return winner_nettime.iloc[0]

@@ -7,6 +7,7 @@ import os
 
 import pandas as pd
 import pytest
+from pandas.testing import assert_series_equal
 from runpandas import exceptions
 from runpandas.io.result._parser import __extract_metadata
 from runpandas.io.result._parser import read as read_result
@@ -317,3 +318,39 @@ test_data = [
 @pytest.mark.parametrize("race,column,index,expected", test_data)
 def test_race_result_values(race, column, index, expected):
     assert race[column].iloc[index] == expected
+
+
+@pytest.mark.results2
+def test_properties_result_valid_race_result_with_nonfinishers(dirpath):
+    result_file = os.path.join(dirpath, "results", "result_with_nonfinishers.csv")
+    race = read_result(result_file, to_df=False)
+
+    assert race.total_participants == 2825
+    assert race.total_finishers == 2810
+    assert race.total_nonfinishers == 15
+    assert isinstance(race.winner, pd.Series)
+
+    expected = pd.Series(
+        [
+            "1",
+            "1",
+            "Mohammad",
+            "Aburezeq",
+            pd.Timedelta("0 days 01:09:21"),
+            pd.Timedelta("0 days 02:22:56"),
+            pd.Timedelta("0 days 02:22:56"),
+            "Mara-MS",
+        ],
+        index=[
+            "position",
+            "bib",
+            "firstname",
+            "lastname",
+            "half",
+            "grosstime",
+            "nettime",
+            "category",
+        ],
+        name=0,
+    )
+    assert_series_equal(race.winner, expected)
