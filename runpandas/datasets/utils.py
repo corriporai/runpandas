@@ -1,17 +1,36 @@
 """Utility functions for loading example datasets"""
 
 import os
-import yaml
 from typing import List
-
-from urllib.request import urlopen, urlretrieve, Request
+from urllib.request import Request, urlopen, urlretrieve
+import yaml
 from pydantic import parse_obj_as
-from runpandas.datasets.schema import ActivityData
+from runpandas.datasets.schema import ActivityData, RaceData, EventData
+from thefuzz import fuzz
 
 ACTIVITIES_INDEX = (
     "https://raw.githubusercontent.com/"
     "corriporai/runpandas-data/master/activities/index.yml"
 )
+
+RACES_INDEX = (
+    "https://raw.githubusercontent.com/"
+    "corriporai/runpandas-data/master/races/index.yml"
+)
+
+
+def _get_event_index(index=RACES_INDEX):
+    """
+    Race results available for data analytics.
+    Requires an internet connection.
+    """
+    req = Request(index)
+    with urlopen(req) as resp:  # nosec
+        content = resp.read()
+        raw_index = yaml.safe_load(content)
+
+    loaded_data = parse_obj_as(List[RaceData], raw_index)
+    return loaded_data
 
 
 def _get_activity_index(index=ACTIVITIES_INDEX):
@@ -98,3 +117,96 @@ def activity_examples(path=None, file_type=None, config=None, **kwargs):
         )
 
     return activities
+
+
+def get_events(identifier, year=None, run_type=None, config=None):
+    """
+    Return the event results (i.e. races) from the online repository (requires internet).
+
+    ..warning:: A fuzzy match is performed to find the event that best matches the
+    given identifier. Fuzzy matching is performed using the country, location,
+    name and officialName of each event. This is not guaranteed to return
+    the correct result. You should therefore always check if the function
+    actually returns the event you had wanted.
+
+    Use :func:`_get_event_index` to see a list of available datasets.
+
+    Parameters
+    ----------
+    identifier : str
+        Name of the event or any identifier related to it.
+    year: str, optional
+        Iterates over all the events with identificer match and
+        with the given year and return them.
+    run_type: str, optional
+        Iterates over all the events with identificer match and
+        with the given run type and return them.
+    config : yaml file, optional
+        The directory in which to cache data; see :func:`get_cache_path`.
+
+    Returns
+    -------
+    result_set : A list of :class:`schema.EventData` instances.
+
+    """
+
+    def __string_search(events, search_name):
+        match_result = []
+        for event in events:
+            # first try to match the identifier with the path
+            if os.path.basename(event.path) == search_name:
+                match_result.append(event)
+        return match_result
+
+    def __identifier_search(events, search_name):
+        match_result = []
+        # try using the fuzzy match the identifier against the summary
+        for event in events:
+            ratio = fuzz.token_set_ratio(
+                search_name.casefold(), event.summary.casefold()
+            )
+            if ratio > 90:
+                match_result.append(event)
+        return match_result
+
+    events = _get_event_index()
+    match_result = __string_search(events, identifier) or __identifier_search(
+        events, identifier
+    )
+    result_set = []
+    if len(match_result) != 0:
+        for match in match_result:
+            cache_path = os.path.join(
+                _get_cache_path(config), os.path.basename(match.path)
+            )
+            if not os.path.exists(cache_path):
+                os.makedirs(cache_path)
+            for edition in match.editions:
+                url_path = os.path.join(
+                    match.path,
+                    "{path}_{edition}.csv".format(
+                        path=os.path.basename(match.path), edition=edition
+                    ),
+                )
+                event_cache_path = os.path.join(cache_path, os.path.basename(url_path))
+                if not os.path.exists(event_cache_path):
+                    urlretrieve(url_path, event_cache_path)  # nosec
+
+                edition = EventData(
+                    summary=match.summary,
+                    path=event_cache_path,
+                    run_type=match.run_type,
+                    country=match.country,
+                    included_data=match.included_data,
+                    edition=edition,
+                )
+                result_set.append(edition)
+
+    if year is not None:
+        result_set = filter(lambda event: str(event.edition) == str(year), result_set)
+    if run_type is not None:
+        result_set = filter(
+            lambda event: str(event.run_type) == str(run_type), result_set
+        )
+
+    return result_set

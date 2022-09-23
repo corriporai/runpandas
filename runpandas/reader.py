@@ -2,8 +2,10 @@
 Module contains reading logic for several formats of training sources
 """
 
+import datetime
 from pathlib import Path
 import pandas as pd
+from runpandas import datasets
 from runpandas import _utils as utils
 from runpandas import exceptions
 
@@ -175,3 +177,27 @@ def _load_race(dirname, to_df=False, **kwargs):
             continue
 
         yield _read_race_result(filename=path_file, to_df=to_df, kwargs=kwargs)
+
+
+def get_event(identifier, year=None):
+    """
+    Returns a race result based on year or event name identifier.
+    The result will be a list of :obj:`runpandas.RaceResult` instances that macthes
+    the given criteria.
+
+    Parameters
+    ----------
+        identifier : str, the partial or full event race name.
+        year: int, the year when the race event happened.
+
+    Returns
+    -------
+    Return a list of :obj:`runpandas.RaceResult` based on the identifier
+    and year criteria.
+    """
+    events = datasets.utils.get_event_by_name(identifier)
+    if year is None and (year not in range(1990, datetime.datetime.now().year + 1)):
+        events = events.loc[events["EventDate"] >= year]
+
+    events = [_read_race_result(event) for event in events]
+    return events

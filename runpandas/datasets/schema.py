@@ -48,3 +48,51 @@ class ActivityData(BaseModel):
             "corriporai/runpandas-data/master/activities/{}"
         )
         return path.format(v)
+
+
+class RunTypeEnum(str, Enum):
+    MARATHON = "marathon"
+    HALF_MARATHON = "half"
+    TEN_KM = "10km"
+    FIVE_KM = "5km"
+    ULTRA = "ultra"
+
+
+class RaceAttributeEnum(Enum):
+    position = "position"
+    bib = "bib"
+    firstname = "firstname"
+    lastname = "lastname"
+    category = "category"
+    nettime = "nettime"
+    grosstime = "grosstime"
+    sex = "sex"
+
+
+class EventData(BaseModel):
+    summary: str = None
+    path: Path
+    run_type: RunTypeEnum
+    country: str
+    included_data: List[RaceAttributeEnum]
+    edition: str
+
+
+class RaceData(BaseModel):
+
+    summary: str = None
+    path: Path
+    run_type: RunTypeEnum
+    country: str
+    included_data: List[RaceAttributeEnum]
+    editions: List[str] = None
+    sessions: int = None
+
+    @validator("path")
+    @classmethod
+    def make_cached_path(cls, v):
+        path = (
+            "https://raw.githubusercontent.com/"
+            "corriporai/runpandas-data/master/races/{}"
+        )
+        return path.format(v)
