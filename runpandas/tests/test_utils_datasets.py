@@ -21,7 +21,9 @@ from runpandas.datasets.schema import (
     EventData,
 )
 from runpandas import read_file
+from runpandas.io.result._parser import read as read_result
 from runpandas.types import Activity
+from runpandas.types.frame import RaceResult
 
 pytestmark = pytest.mark.stable
 
@@ -229,8 +231,7 @@ def test_get_events(dirpath):
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
         assert os.path.exists(race.path)
-
-    # assert type(read_file(example_activity.path)) is Activity
+        assert type(read_result(race.path)) is RaceResult
 
     # test cached event
     race_events = get_events(identifier="lochness_marathon", config=test_config_file)
@@ -258,8 +259,7 @@ def test_get_events(dirpath):
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
         assert os.path.exists(race.path)
-
-    # assert type(read_file(example_activity.path)) is Activity
+        assert type(read_result(race.path)) is RaceResult
 
     # test filtered events with year
     filtered_events = get_events(
@@ -269,8 +269,8 @@ def test_get_events(dirpath):
     assert len(result_set) == 1
     assert "lochness_marathon_2019.csv" in os.path.basename(result_set[0].path)
     assert os.path.exists(result_set[0].path)
+    assert type(read_result(result_set[0].path)) is RaceResult
 
-    # assert type(read_file(example_activity.path)) is Activity
     # test filtered events with race_type
     filtered_events = get_events(
         identifier="lochness_marathon",
