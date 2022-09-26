@@ -239,7 +239,10 @@ def test_get_events(dirpath):
     for race in race_events:
         assert os.path.exists(race.path)
         assert type(read_result(race.path)) is RaceResult
-
+        assert (
+            "<Event: name=UK Lochness Marathon Results from 2021 to 2003."
+            in race.__repr__()
+        )
     # test cached event
     race_events = get_events(identifier="lochness_marathon", config=test_config_file)
     basename_events = [os.path.basename(item.path) for item in race_events]
@@ -267,6 +270,10 @@ def test_get_events(dirpath):
     for race in race_events:
         assert os.path.exists(race.path)
         assert type(read_result(race.path)) is RaceResult
+        assert (
+            "<Event: name=UK Lochness Marathon Results from 2021 to 2003."
+            in race.__repr__()
+        )
 
     # test filtered events with year
     filtered_events = get_events(
@@ -277,6 +284,11 @@ def test_get_events(dirpath):
     assert "lochness_marathon_2019.csv" in os.path.basename(result_set[0].path)
     assert os.path.exists(result_set[0].path)
     assert type(read_result(result_set[0].path)) is RaceResult
+    assert (
+        "<Event: name=UK Lochness Marathon Results from 2021 to 2003.,"
+        + " country=UK, edition=2019>"
+        in result_set[0].__repr__()
+    )
 
     # test filtered events with race_type
     filtered_events = get_events(

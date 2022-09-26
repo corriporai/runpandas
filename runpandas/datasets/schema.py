@@ -78,6 +78,13 @@ class EventData(BaseModel):
     included_data: List[RaceAttributeEnum]
     edition: str
 
+    def __repr__(self):
+        return "<Event: name=%s, country=%s, edition=%s>" % (
+            self.summary.strip(),
+            self.country,
+            self.edition,
+        )
+
     def load(self):
         from runpandas.io.result._parser import read
 
@@ -85,7 +92,6 @@ class EventData(BaseModel):
 
 
 class RaceData(BaseModel):
-
     summary: str = None
     path: Path
     run_type: RunTypeEnum
