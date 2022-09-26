@@ -218,7 +218,7 @@ def test_race_full_summary(dirpath):
             0,
             2440,
             727,
-            "02:18:27",
+            Timedelta("0 days 02:18:27"),
         ],
         index=[
             "Event name",
@@ -251,7 +251,7 @@ def test_race_full_summary(dirpath):
             15,
             "",
             "",
-            "02:22:56",
+            Timedelta("0 days 02:22:56"),
         ],
         index=[
             "Event name",
@@ -287,7 +287,7 @@ def test_race_missing_values_summary(dirpath):
             0,
             "",
             "",
-            "02:20:59",
+            Timedelta("0 days 02:20:59"),
         ],
         index=[
             "Event name",

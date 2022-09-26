@@ -336,7 +336,7 @@ def _build_race_statistics(obj):
     winner_nettime = obj[obj["position"].ne("DNF")]
     winner_nettime["pos"] = winner_nettime["position"].astype(int)
     winner_nettime.sort_values("pos", inplace=True)
-    winner_time = str(winner_nettime["nettime"].iloc[0]).replace("0 days ", "")
+    winner_time = winner_nettime["nettime"].iloc[0]
 
     rows = {
         "Event name": event_name,
