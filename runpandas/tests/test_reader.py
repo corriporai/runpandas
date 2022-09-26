@@ -250,3 +250,106 @@ def test_read_event_result_race_result(dirpath):
     )
     assert included_data <= set(result_data.columns.to_list())
     assert (result_data.position.values == "DNF").sum() == 0  # number of non-finishers
+
+
+@pytest.mark.reader
+def test_get_events():
+    # test match events
+    race_events = reader.get_events(identifier="lochness_marathon")
+    basename_events = [os.path.basename(item.path) for item in race_events]
+    for yr in [
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2021",
+    ]:
+        assert "lochness_marathon_%s.csv" % yr in basename_events
+
+    assert len(race_events) == 18
+
+    # test empty match events
+    empty_events = reader.get_events(identifier="boston marathon")
+    assert len(list(empty_events)) == 0
+
+    # test empty match events
+    empty_events = reader.get_events(identifier="abc")
+    assert len(list(empty_events)) == 0
+
+    # test fuzzy match events (single word)
+    fuzzy_events = reader.get_events(identifier="lochness")
+    basename_events = [os.path.basename(item.path) for item in fuzzy_events]
+    for yr in [
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2021",
+    ]:
+        assert "lochness_marathon_%s.csv" % yr in basename_events
+
+    assert len(race_events) == 18
+
+    # test filtered events with year
+    filtered_events = reader.get_events(identifier="lochness_marathon", year="2019")
+    result_set = list(filtered_events)
+    assert len(result_set) == 1
+    assert "lochness_marathon_2019.csv" in os.path.basename(result_set[0].path)
+    assert os.path.exists(result_set[0].path)
+    assert type(reader._read_event_result(result_set[0].path)) is types.RaceResult
+
+    from runpandas.datasets.schema import RunTypeEnum
+
+    filtered_events = reader.get_events(
+        identifier="lochness_marathon", run_type=RunTypeEnum.MARATHON
+    )
+    result_set = list(filtered_events)
+    assert len(result_set) == 18
+    basename_events = [os.path.basename(item.path) for item in result_set]
+    for yr in [
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2021",
+    ]:
+        assert "lochness_marathon_%s.csv" % yr in basename_events

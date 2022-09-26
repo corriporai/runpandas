@@ -205,6 +205,7 @@ def get_events(identifier, year=None, run_type=None, config=None):
     if year is not None:
         result_set = filter(lambda event: str(event.edition) == str(year), result_set)
     if run_type is not None:
+        print(result_set)
         result_set = filter(
             lambda event: str(event.run_type) == str(run_type), result_set
         )

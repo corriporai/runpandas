@@ -171,5 +171,5 @@ def get_events(identifier, year=None, run_type=None, config=None):
     Return a list of :obj:`runpandas.RaceResult` based on the identifier,
     run typer or year criteria.
     """
-    events = datasets.utils.get_event_by_name(identifier, year, run_type, config)
+    events = datasets.utils.get_events(identifier, year, run_type, config)
     return events

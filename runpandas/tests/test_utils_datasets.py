@@ -214,7 +214,7 @@ def test_get_events(dirpath):
     # test not cached event
     test_config_file = os.path.join(dirpath, "config.test.yaml")
     race_events = get_events(identifier="lochness_marathon", config=test_config_file)
-    basename_events = [os.path.basename(item.path) for item in fuzzy_events]
+    basename_events = [os.path.basename(item.path) for item in race_events]
     for yr in [
         "2003",
         "2004",
@@ -242,7 +242,7 @@ def test_get_events(dirpath):
 
     # test cached event
     race_events = get_events(identifier="lochness_marathon", config=test_config_file)
-    basename_events = [os.path.basename(item.path) for item in fuzzy_events]
+    basename_events = [os.path.basename(item.path) for item in race_events]
     for yr in [
         "2003",
         "2004",
@@ -294,7 +294,7 @@ def test_get_events(dirpath):
     )
     result_set = list(filtered_events)
     assert len(result_set) == 18
-    basename_events = [os.path.basename(item.path) for item in fuzzy_events]
+    basename_events = [os.path.basename(item.path) for item in result_set]
     for yr in [
         "2003",
         "2004",
