@@ -10,7 +10,7 @@ import pytest
 from pandas.testing import assert_series_equal
 from runpandas import exceptions
 from runpandas.io.result._parser import __extract_metadata
-from runpandas.io.result._parser import read as read_result
+from runpandas import read_event as read_result
 from runpandas.types.frame import RaceResult, Event
 
 pytestmark = pytest.mark.stable

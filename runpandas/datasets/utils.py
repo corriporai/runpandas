@@ -124,10 +124,10 @@ def get_events(identifier, year=None, run_type=None, config=None):
     Return the event results (i.e. races) from the online repository (requires internet).
 
     ..warning:: A fuzzy match is performed to find the event that best matches the
-    given identifier. Fuzzy matching is performed using the country, location,
-    name and officialName of each event. This is not guaranteed to return
-    the correct result. You should therefore always check if the function
-    actually returns the event you had wanted.
+    given identifier. Fuzzy matching is performed using the summary metadata from
+    the event. This is not guaranteed to return the correct result.
+    You should therefore always check if the function actually returns the event
+    you had wanted.
 
     Use :func:`_get_event_index` to see a list of available datasets.
 

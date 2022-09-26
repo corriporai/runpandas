@@ -21,7 +21,7 @@ from runpandas.datasets.schema import (
     EventData,
 )
 from runpandas import read_file
-from runpandas.io.result._parser import read as read_result
+from runpandas import read_event as read_result
 from runpandas.types import Activity
 from runpandas.types.frame import RaceResult
 
@@ -108,6 +108,13 @@ def test_get_get_event_index():
     assert len(index) > 0
     assert type(index[0]) is RaceData
     assert "lochness_marathon" in [os.path.basename(item.path) for item in index]
+
+
+@pytest.mark.datasets
+def test_load_race_data():
+    race_events = get_events(identifier="lochness_marathon", year=2021)
+    result_set = list(race_events)
+    assert type(result_set[0].load()) is RaceResult
 
 
 @pytest.mark.datasets

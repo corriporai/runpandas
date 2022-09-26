@@ -2,7 +2,6 @@
 Module contains reading logic for several formats of training sources
 """
 
-import datetime
 from pathlib import Path
 import pandas as pd
 from runpandas import datasets
@@ -118,7 +117,7 @@ def _read_dir_aggregate(dirname, **kwargs):
     return None
 
 
-def _read_race_result(filename, to_df=False, **kwargs):
+def _read_event_result(filename, to_df=False, **kwargs):
     """
     Parameters
     ----------
@@ -148,56 +147,29 @@ def _read_race_result(filename, to_df=False, **kwargs):
     return module.read(filename, to_df, **kwargs)
 
 
-def _load_race(dirname, to_df=False, **kwargs):
+def get_events(identifier, year=None, run_type=None, config=None):
     """
-    Load the result races files files from a supplied directory
-    as `runpandas.RaceResult` dataframes, and aggregate them
-    to a results table as a `pandas.MultiIndex` results dataframe.
-
-    Parameters
-    ----------
-        dirname : str, The path to a directory with result files.
-             Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
-             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
-        **kwargs : Keyword args to be passed to the `read_file` method
-
-    Returns
-    -------
-    Return a  :obj:`runpandas.RaceResult` split into sessions based
-    on the `pandas.MultiIndex` with the date/time of the race
-    as first level and the second the athlete results for each record.
-    """
-
-    path_dir = Path(dirname)
-
-    assert path_dir.is_dir()
-
-    for path_file in path_dir.iterdir():
-        if path_file.is_dir():
-            continue
-
-        yield _read_race_result(filename=path_file, to_df=to_df, kwargs=kwargs)
-
-
-def get_event(identifier, year=None):
-    """
-    Returns a race result based on year or event name identifier.
+    Returns event results based on year or event name identifier.
     The result will be a list of :obj:`runpandas.RaceResult` instances that macthes
     the given criteria.
 
     Parameters
     ----------
-        identifier : str, the partial or full event race name.
-        year: int, the year when the race event happened.
+    identifier : str
+        Name of the event or any identifier related to it.
+    year: str, optional
+        Iterates over all the events with identificer match and
+        with the given year and return them.
+    run_type: str, optional
+        Iterates over all the events with identificer match and
+        with the given run type and return them.
+    config : yaml file, optional
+        The directory in which to cache data; see :func:`get_cache_path`.
 
     Returns
     -------
-    Return a list of :obj:`runpandas.RaceResult` based on the identifier
-    and year criteria.
+    Return a list of :obj:`runpandas.RaceResult` based on the identifier,
+    run typer or year criteria.
     """
-    events = datasets.utils.get_event_by_name(identifier)
-    if year is None and (year not in range(1990, datetime.datetime.now().year + 1)):
-        events = events.loc[events["EventDate"] >= year]
-
-    events = [_read_race_result(event) for event in events]
+    events = datasets.utils.get_event_by_name(identifier, year, run_type, config)
     return events

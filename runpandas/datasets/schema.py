@@ -1,8 +1,9 @@
 """Schema Models for loading example datasets"""
 
-from typing import List
 from enum import Enum
 from pathlib import Path
+from typing import List
+
 from pydantic import BaseModel, validator
 
 
@@ -76,6 +77,11 @@ class EventData(BaseModel):
     country: str
     included_data: List[RaceAttributeEnum]
     edition: str
+
+    def load(self):
+        from runpandas.io.result._parser import read
+
+        return read(self.path)
 
 
 class RaceData(BaseModel):
