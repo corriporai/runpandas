@@ -2,7 +2,7 @@ sphinx==4.4.0
 ipython
 sphinx_rtd_theme
 requests_cache
-pydata_sphinx_theme==0.9.0
+pydata_sphinx_theme==0.11.0
 ipykernel
 nbsphinx==0.8.9
 sphinxcontrib_github_alt==1.2
