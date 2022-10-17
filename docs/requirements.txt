@@ -1,4 +1,4 @@
-sphinx==4.4.0
+sphinx==5.3.0
 ipython
 sphinx_rtd_theme
 requests_cache
