@@ -328,6 +328,8 @@ def test_properties_result_valid_race_result_with_nonfinishers(dirpath):
     assert race.total_participants == 2825
     assert race.total_finishers == 2810
     assert race.total_nonfinishers == 15
+    assert len(race.participants) == 2825
+    assert isinstance(race.participants, list)
     assert isinstance(race.winner, pd.Series)
 
     expected = pd.Series(

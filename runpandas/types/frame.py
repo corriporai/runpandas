@@ -328,7 +328,8 @@ class RaceResult(pd.DataFrame):
     ----------
     :class:`~Event`: Reference to the associated event with extra metadata
             from the race.
-
+    *args (any): passed through to `pandas.DataFrame` superclass
+    **kwargs (any): passed through to `pandas.DataFrame` superclass
     """
 
     # properties to propagate
@@ -410,3 +411,12 @@ class RaceResult(pd.DataFrame):
         winner_nettime.sort_values("pos", inplace=True)
         winner_nettime.drop(columns=["pos"], inplace=True)
         return winner_nettime.iloc[0]
+
+    @property
+    def participants(self):
+        """
+        Returns:
+            :class:`list`: List of all participants that took part
+            in this race; contains bib numbers as string.
+        """
+        return list(self['bib'].unique())
