@@ -419,4 +419,4 @@ class RaceResult(pd.DataFrame):
             :class:`list`: List of all participants that took part
             in this race; contains bib numbers as string.
         """
-        return list(self['bib'].unique())
+        return list(self["bib"].unique())
