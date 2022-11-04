@@ -102,7 +102,6 @@ def test_activity_examples(dirpath):
     shutil.rmtree(directory)
 
 
-@pytest.mark.datasets
 def test_get_get_event_index():
     index = _get_event_index()
     assert len(index) > 0
@@ -110,14 +109,12 @@ def test_get_get_event_index():
     assert "lochness_marathon" in [os.path.basename(item.path) for item in index]
 
 
-@pytest.mark.datasets
 def test_load_race_data():
     race_events = get_events(identifier="lochness_marathon", year=2021)
     result_set = list(race_events)
     assert type(result_set[0].load()) is RaceResult
 
 
-@pytest.mark.datasets
 def test_get_events(dirpath):
     # test match events
     race_events = get_events(identifier="lochness_marathon")

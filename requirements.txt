@@ -1,6 +1,7 @@
-pandas>=0.21
+pandas>=1.0.5
 fitparse
 stravalib>=0.10.2
 haversine
 pydantic
 pyyaml
+thefuzz

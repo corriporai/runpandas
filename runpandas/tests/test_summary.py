@@ -200,7 +200,6 @@ def test_summary_session(multi_frame, simple_activity):
     assert isna(summary_session_activity.loc["mean_temperature"])
 
 
-@pytest.mark.summary
 def test_race_full_summary(dirpath):
     race_result = os.path.join(dirpath, "results", "valid_result_br.csv")
     race = read_result(race_result, to_df=False)
@@ -269,7 +268,6 @@ def test_race_full_summary(dirpath):
     assert_series_equal(result, expected)
 
 
-@pytest.mark.summary
 def test_race_missing_values_summary(dirpath):
     race_result = os.path.join(dirpath, "results", "valid_result.csv")
     race = read_result(race_result, to_df=False)

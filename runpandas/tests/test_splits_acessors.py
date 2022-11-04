@@ -33,7 +33,6 @@ def pandas_race(dirpath):
     return read_result(result_file, to_df=True)
 
 
-@pytest.mark.splits
 def test_splits_validate(runpandas_race, pandas_race, runpandas_10krace):
     # Assertion error for non race result instances
     with pytest.raises(AssertionError):
@@ -48,7 +47,6 @@ def test_splits_validate(runpandas_race, pandas_race, runpandas_10krace):
         _ = runpandas_10krace.splits.pick_athlete("11", by="BIB")
 
 
-@pytest.mark.splits
 def test_splits_pick_athlete(runpandas_race):
     # Assertion error for wrong by argument
     with pytest.raises(ValueError):

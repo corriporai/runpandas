@@ -8,11 +8,11 @@ from runpandas import exceptions
 from runpandas.types.frame import RaceResult, Event
 
 COL_TYPES = {
-    "position": {"alias": ["position", "coloc"], "apply": lambda x: str(x)},
-    "bib": {"alias": ["bib", "num"], "apply": lambda x: str(x)},
-    "name": {"alias": ["name", "nome"], "apply": lambda x: str(x)},
-    "age": {"alias": ["age", "idade"], "apply": lambda x: int(x)},
-    "sex": {"alias": ["sexo", "sex", "m/f"], "apply": lambda x: str(x)},
+    "position": {"alias": ["position", "coloc"], "apply": lambda x, errors: str(x)},
+    "bib": {"alias": ["bib", "num"], "apply": lambda x, errors: str(x)},
+    "name": {"alias": ["name", "nome"], "apply": lambda x, errors: str(x)},
+    "age": {"alias": ["age", "idade"], "apply": lambda x, errors: int(x)},
+    "sex": {"alias": ["sexo", "sex", "m/f"], "apply": lambda x, errors: str(x)},
     "nettime": {
         "alias": ["official_time", "chiptime", "liquido"],
         "apply": pd.to_timedelta,
@@ -94,7 +94,9 @@ def read(file_path, to_df=False, **kwargs):
         for alias in COL_TYPES[col]["alias"]:
             if alias in data.columns:
                 to_rename[alias] = col
-                data[alias] = data[alias].apply(COL_TYPES[col]["apply"])
+                data[alias] = data[alias].apply(
+                    COL_TYPES[col]["apply"], errors="coerce"
+                )
 
     if to_rename:
         data.rename(columns=to_rename, inplace=True)

@@ -148,20 +148,17 @@ def test_read_dir_aggregate(dirpath):
     )
 
 
-@pytest.mark.reader
 def test_read_event_result_invalid(invalid_result_filename):
     invalid_result_filename.write("content")
     with pytest.raises(exceptions.InvalidFileError):
         reader._read_event_result(invalid_result_filename)
 
 
-@pytest.mark.reader
 def test_read_event_result_not_exists(valid_result_filename):
     with pytest.raises(IOError):
         reader._read_event_result(valid_result_filename)
 
 
-@pytest.mark.reader
 def test_read_event_result_malformed_result(dirpath):
     result_file = os.path.join(dirpath, "results", "invalid_result.csv")
     with pytest.raises(exceptions.InvalidHeaderError):
@@ -172,7 +169,6 @@ def test_read_event_result_malformed_result(dirpath):
         reader._read_event_result(result_file)
 
 
-@pytest.mark.reader
 def test_read_event_result_basic_dataframe(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
     result_data = reader._read_event_result(result_file, to_df=True)
@@ -211,7 +207,6 @@ def test_read_event_result_basic_dataframe(dirpath):
     assert result_data.size == 660250
 
 
-@pytest.mark.reader
 def test_read_event_result_race_result(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
     result_data = reader._read_event_result(result_file, to_df=False)
@@ -252,7 +247,6 @@ def test_read_event_result_race_result(dirpath):
     assert (result_data.position.values == "DNF").sum() == 0  # number of non-finishers
 
 
-@pytest.mark.reader
 def test_get_events():
     # test match events
     race_events = reader.get_events(identifier="lochness_marathon")

@@ -33,7 +33,6 @@ def runpandas_race(dirpath):
     return read_result(result_file, to_df=False)
 
 
-@pytest.mark.results
 def test_extract_valid_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result.csv")
     header = __extract_metadata(result_file)
@@ -44,35 +43,30 @@ def test_extract_valid_metadata(dirpath):
     assert len(header) == 4
 
 
-@pytest.mark.results
 def test_extract_invalid_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "invalid_result.csv")
     with pytest.raises(exceptions.InvalidHeaderError):
         _ = __extract_metadata(result_file)
 
 
-@pytest.mark.results
 def test_extract_missing_header_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "missing_result2.csv")
     with pytest.raises(exceptions.MissingHeaderError):
         _ = __extract_metadata(result_file)
 
 
-@pytest.mark.results
 def test_extract_missing_full_header_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "missing_result.csv")
     with pytest.raises(exceptions.InvalidHeaderError):
         _ = __extract_metadata(result_file)
 
 
-@pytest.mark.results
 def test_extract_empty_full_header_metadata(dirpath):
     result_file = os.path.join(dirpath, "results", "empty_result.csv")
     with pytest.raises(pd.errors.EmptyDataError):
         _ = __extract_metadata(result_file)
 
 
-@pytest.mark.results
 def test_read_file_result_basic_dataframe(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
     race = read_result(result_file, to_df=True)
@@ -129,7 +123,6 @@ def test_read_file_result_basic_dataframe(dirpath):
     assert included_data <= set(race.columns.to_list())
 
 
-@pytest.mark.results
 def test_read_file_result_valid_race_result(dirpath):
     result_file = os.path.join(dirpath, "results", "valid_result_usa.csv")
     race = read_result(result_file, to_df=False)
@@ -140,7 +133,6 @@ def test_read_file_result_valid_race_result(dirpath):
     assert race.event.event_type == "42k"
     assert race.event.event_date == datetime.datetime(2017, 4, 17)
     assert race.shape[0] == 26410  # number of lines
-
     included_data = set(
         [
             "position",
@@ -199,7 +191,6 @@ def test_read_file_result_valid_race_result(dirpath):
     assert (race.position.values == "DNF").sum() == 0  # number of non-finishers
 
 
-@pytest.mark.results2
 def test_read_file_result_valid_race_result_with_nonfinishers(dirpath):
     result_file = os.path.join(dirpath, "results", "result_with_nonfinishers.csv")
     race = read_result(result_file, to_df=False)
@@ -314,13 +305,11 @@ test_data = [
 ]
 
 
-@pytest.mark.results
 @pytest.mark.parametrize("race,column,index,expected", test_data)
 def test_race_result_values(race, column, index, expected):
     assert race[column].iloc[index] == expected
 
 
-@pytest.mark.results2
 def test_properties_result_valid_race_result_with_nonfinishers(dirpath):
     result_file = os.path.join(dirpath, "results", "result_with_nonfinishers.csv")
     race = read_result(result_file, to_df=False)
