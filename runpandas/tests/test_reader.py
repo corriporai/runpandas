@@ -270,10 +270,11 @@ def test_get_events():
         "2018",
         "2019",
         "2021",
+        "2022"
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
-    assert len(race_events) == 18
+    assert len(race_events) == 19
 
     # test empty match events
     empty_events = reader.get_events(identifier="boston marathon")
@@ -308,7 +309,7 @@ def test_get_events():
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
-    assert len(race_events) == 18
+    assert len(race_events) == 19
 
     # test filtered events with year
     filtered_events = reader.get_events(identifier="lochness_marathon", year="2019")
@@ -324,7 +325,7 @@ def test_get_events():
         identifier="lochness_marathon", run_type=RunTypeEnum.MARATHON
     )
     result_set = list(filtered_events)
-    assert len(result_set) == 18
+    assert len(result_set) == 19
     basename_events = [os.path.basename(item.path) for item in result_set]
     for yr in [
         "2003",
@@ -345,5 +346,6 @@ def test_get_events():
         "2018",
         "2019",
         "2021",
+        "2022"
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events

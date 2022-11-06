@@ -138,10 +138,11 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
-    assert len(race_events) == 18
+    assert len(race_events) == 19
     assert all(isinstance(race, EventData) for race in race_events)
 
     # test empty match events
@@ -174,10 +175,11 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
-    assert len(race_events) == 18
+    assert len(race_events) == 19
     assert all(isinstance(race, EventData) for race in fuzzy_events)
 
     # test fuzzy match events (compound word)
@@ -202,10 +204,11 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
-    assert len(fuzzy_events) == 18
+    assert len(fuzzy_events) == 19
     assert all(isinstance(race, EventData) for race in fuzzy_events)
 
     # test not cached event
@@ -231,13 +234,14 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
         assert os.path.exists(race.path)
         assert type(read_result(race.path)) is RaceResult
         assert (
-            "<Event: name=UK Lochness Marathon Results from 2021 to 2003."
+            "<Event: name=UK Lochness Marathon Results from 2022 to 2003."
             in race.__repr__()
         )
     # test cached event
@@ -262,13 +266,14 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
         assert os.path.exists(race.path)
         assert type(read_result(race.path)) is RaceResult
         assert (
-            "<Event: name=UK Lochness Marathon Results from 2021 to 2003."
+            "<Event: name=UK Lochness Marathon Results from 2022 to 2003."
             in race.__repr__()
         )
 
@@ -282,7 +287,7 @@ def test_get_events(dirpath):
     assert os.path.exists(result_set[0].path)
     assert type(read_result(result_set[0].path)) is RaceResult
     assert (
-        "<Event: name=UK Lochness Marathon Results from 2021 to 2003.,"
+        "<Event: name=UK Lochness Marathon Results from 2022 to 2003.,"
         + " country=UK, edition=2019>"
         in result_set[0].__repr__()
     )
@@ -302,7 +307,7 @@ def test_get_events(dirpath):
         run_type=RunTypeEnum.MARATHON,
     )
     result_set = list(filtered_events)
-    assert len(result_set) == 18
+    assert len(result_set) == 19
     basename_events = [os.path.basename(item.path) for item in result_set]
     for yr in [
         "2003",
@@ -323,6 +328,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
+        '2022'
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
