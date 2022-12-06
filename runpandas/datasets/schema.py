@@ -68,6 +68,22 @@ class RaceAttributeEnum(Enum):
     nettime = "nettime"
     grosstime = "grosstime"
     sex = "sex"
+    position_gender = "position_gender"
+    country = "country"
+    gender = "gender"
+    division = "division"
+    club = "club"
+    starttime = "starttime"
+    start_raw_time = "start_raw_time"
+    time_5K = "5K_time"
+    time_10K = "10K_time"
+    time_15K = "15K_time"
+    time_20K = "20K_time"
+    half_time = "half_time"
+    time_25K = "25K_time"
+    time_30K = "30K_time"
+    time_35K = "35K_time"
+    time_40K = "40K_time"
 
 
 class EventData(BaseModel):

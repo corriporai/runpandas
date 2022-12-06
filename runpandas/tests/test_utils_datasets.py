@@ -138,7 +138,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
@@ -175,7 +175,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
@@ -204,7 +204,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
@@ -234,7 +234,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
@@ -266,7 +266,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
     for race in race_events:
@@ -328,7 +328,7 @@ def test_get_events(dirpath):
         "2018",
         "2019",
         "2021",
-        '2022'
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 

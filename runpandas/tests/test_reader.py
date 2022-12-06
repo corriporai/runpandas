@@ -270,7 +270,7 @@ def test_get_events():
         "2018",
         "2019",
         "2021",
-        "2022"
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
 
@@ -346,6 +346,6 @@ def test_get_events():
         "2018",
         "2019",
         "2021",
-        "2022"
+        "2022",
     ]:
         assert "lochness_marathon_%s.csv" % yr in basename_events
