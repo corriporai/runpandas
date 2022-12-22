@@ -62,7 +62,7 @@ def test_splits_pick_athlete(runpandas_race):
     assert included_data == set(splits_data.columns.to_list())
 
     included_data = set(
-        ["0k", "5k", "10k", "15k", "20k", "25k", "30k", "half", "35k", "40k", "nettime"]
+        ["0k", "5k", "10k", "15k", "20k", "half", "25k", "30k", "35k", "40k", "nettime"]
     )
     assert included_data == set(splits_data.index.to_list())
 

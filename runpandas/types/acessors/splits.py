@@ -14,7 +14,7 @@ class _RaceSplitsAcessor(object):
     results.
     """
 
-    SPLITS = ["5k", "10k", "15k", "20k", "25k", "30k", "half", "35k", "40k", "nettime"]
+    SPLITS = ["5k", "10k", "15k", "20k", "half", "25k", "30k", "35k", "40k", "nettime"]
 
     def __init__(self, race_result):
         self._race_result = None
