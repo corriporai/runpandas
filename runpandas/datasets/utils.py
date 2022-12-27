@@ -190,6 +190,7 @@ def get_events(identifier, year=None, run_type=None, config=None):
                 )
                 event_cache_path = os.path.join(cache_path, os.path.basename(url_path))
                 if not os.path.exists(event_cache_path):
+                    print(url_path, event_cache_path)
                     urlretrieve(url_path, event_cache_path)  # nosec
 
                 edition = EventData(
