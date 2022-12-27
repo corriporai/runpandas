@@ -1472,18 +1472,6 @@ from majors to local ones (if it’s available at our data repository).
 In this example we will analyze the 2022 Berlin Marathon using runpandas
 methods specially tailored for handling race results data.
 
-
-Race Overview
-~~~~~~~~~~~~~~
-
-First, let’s load the Berlin Marathon data by using the runpandas method
-``runpandas.get_events``. This function provides a way of accessing the
-race data and visualize the results from several marathons available at
-our datasets repository. Given the year and the marathon identifier you
-can filter any marathon datasets that you want analyze. The result will
-be a list of ``runpandas.EventData`` instances with race result and its
-metadata. Let’s look for Berlin Marathon results.
-
 Get in touch
 ------------
 - Report bugs, suggest features or view the source code [on GitHub](https://github.com/corriporai/runpandas).
