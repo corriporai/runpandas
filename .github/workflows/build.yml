@@ -38,38 +38,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - env: "PANDAS=1.4.2 PYTHON=3.10"
-            os: ubuntu-latest
-            PANDAS: '1.4.2'
-            python-version: '3.10'
-          - env: "PANDAS=1.0.5 PYTHON=3.8"
-            os: ubuntu-latest
-            PANDAS: '1.0.5'
-            python-version: '3.8'
-          - env: "PANDAS=MASTER PYTHON=3.7"
-            os: ubuntu-latest
-            PANDAS: 'MASTER'
-            python-version: '3.7'
-          - env: "PANDAS=1.1 PYTHON=3.7"
-            os: ubuntu-latest
-            PANDAS: '1.1'
-            python-version: '3.7'
-          - env: "PANDAS=1.3 PYTHON=3.8"
-            os: ubuntu-latest
-            PANDAS: '1.3'
-            python-version: '3.8'
-          - env: "PANDAS=1.2 PYTHON=3.8"
-            os: ubuntu-latest
-            PANDAS: '1.2'
-            python-version: '3.8'
-          - env: "PANDAS=1.0.5 PYTHON=3.8"
-            os: macos-latest
-            PANDAS: '1.0.5'
-            python-version: '3.8'
-          - env: "PANDAS=1.0.5 PYTHON=3.7"
-            os: macos-latest
-            PANDAS: '1.0.5'
-            python-version: '3.7'
           - env: "PANDAS=1.0.5 PYTHON=3.8"
             os: windows-latest
             PANDAS: '1.0.5'
