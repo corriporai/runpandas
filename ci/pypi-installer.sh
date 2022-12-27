@@ -12,3 +12,7 @@ if [[ "$PANDAS" == "MASTER" ]]; then
 else
   pip install pandas=="$PANDAS"
 fi
+
+if [[ ! -z "$NUMPY" ]]; then
+  pip install --upgrade --force-reinstall numpy=="$NUMPY"
+fi
