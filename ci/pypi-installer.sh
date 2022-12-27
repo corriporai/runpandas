@@ -2,7 +2,7 @@
 
 
 python -m pip install --upgrade pip
-pip install numpy<1.24 lxml
+pip install "numpy<1.24" lxml
 pip install -r requirements-dev.txt
 pip install -r requirements.txt
 
