@@ -39,10 +39,6 @@ RunPandas - Python Package for handing running data from GPS-enabled devices to 
 .. image:: https://mybinder.org/badge_logo.svg
  :target: https://mybinder.org/v2/gh/corriporai/runpandas/HEAD
 
-.. image:: https://requires.io/github/corriporai/runpandas/requirements.svg?branch=master
-     :target: https://requires.io/github/corriporai/runpandas/requirements/?branch=master
-     :alt: Requirements Status
-
 .. image:: https://zenodo.org/badge/272209151.svg
    :target: https://zenodo.org/badge/latestdoi/272209151
 
@@ -1476,6 +1472,36 @@ from majors to local ones (if it’s available at our data repository).
 In this example we will analyze the 2022 Berlin Marathon using runpandas
 methods specially tailored for handling race results data.
 
+
+Race Overview
+~~~~~~~~~~~~~
+
+First, let’s load the Berlin Marathon data by using the runpandas method
+``runpandas.get_events``. This function provides a way of accessing the
+race data and visualize the results from several marathons available at
+our datasets repository. Given the year and the marathon identifier you
+can filter any marathon datasets that you want analyze. The result will
+be a list of ``runpandas.EventData`` instances with race result and its
+metadata. Let’s look for Berlin Marathon results.
+
+.. code:: ipython3
+
+    import pandas as pd
+    import runpandas as rpd
+    import warnings
+    warnings.filterwarnings('ignore')
+
+.. code:: ipython3
+
+    results = rpd.get_events('Berlin')
+    results
+
+
+
+
+.. parsed-literal::
+
+    [<Event: name=Berlin Marathon Results from 2022., country=DE, edition=2022>]
 
 
 
