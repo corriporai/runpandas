@@ -46,6 +46,7 @@ jobs:
             os: ubuntu-latest
             PANDAS: '1.0.5'
             python-version: '3.8'
+            NUMPY: '1.23.1'
           - env: "PANDAS=MASTER PYTHON=3.7"
             os: ubuntu-latest
             PANDAS: 'MASTER'
