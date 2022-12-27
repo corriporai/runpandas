@@ -1474,7 +1474,7 @@ methods specially tailored for handling race results data.
 
 
 Race Overview
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 First, let’s load the Berlin Marathon data by using the runpandas method
 ``runpandas.get_events``. This function provides a way of accessing the
@@ -1483,7 +1483,6 @@ our datasets repository. Given the year and the marathon identifier you
 can filter any marathon datasets that you want analyze. The result will
 be a list of ``runpandas.EventData`` instances with race result and its
 metadata. Let’s look for Berlin Marathon results.
-
 
 Get in touch
 ------------
