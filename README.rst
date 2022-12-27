@@ -53,7 +53,7 @@ It is a Python package that provides infrastructure for importing tracking data
 from such devices, enabling statistical and visual analysis for running enthusiasts and lovers.
 Its goal is to fill the gap between the routine collection of data and their manual analyses in Pandas and Python.
 
-Since the release `0.6.0` it comes with the support of handling race event results, so we can analyze
+Since the release ``0.6.0`` it comes with the support of handling race event results, so we can analyze
 from race split times, finish times, demographics, etc. The goal is to support several many races results available
 to anyone interested in running race results analytics.
 
@@ -1483,26 +1483,6 @@ our datasets repository. Given the year and the marathon identifier you
 can filter any marathon datasets that you want analyze. The result will
 be a list of ``runpandas.EventData`` instances with race result and its
 metadata. Let’s look for Berlin Marathon results.
-
-.. code:: ipython3
-
-    import pandas as pd
-    import runpandas as rpd
-    import warnings
-    warnings.filterwarnings('ignore')
-
-.. code:: ipython3
-
-    results = rpd.get_events('Berlin')
-    results
-
-
-
-
-.. parsed-literal::
-
-    [<Event: name=Berlin Marathon Results from 2022., country=DE, edition=2022>]
-
 
 
 Get in touch
