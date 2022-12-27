@@ -1,4 +1,4 @@
-runpandas.types.Activity
+﻿runpandas.types.Activity
 ========================
 
 .. currentmodule:: runpandas.types
@@ -31,6 +31,7 @@ runpandas.types.Activity
       ~Activity.assign
       ~Activity.astype
       ~Activity.at_time
+      ~Activity.backfill
       ~Activity.between_time
       ~Activity.bfill
       ~Activity.bool
@@ -38,6 +39,7 @@ runpandas.types.Activity
       ~Activity.clip
       ~Activity.combine
       ~Activity.combine_first
+      ~Activity.compare
       ~Activity.convert_dtypes
       ~Activity.copy
       ~Activity.corr
@@ -85,6 +87,7 @@ runpandas.types.Activity
       ~Activity.info
       ~Activity.insert
       ~Activity.interpolate
+      ~Activity.isetitem
       ~Activity.isin
       ~Activity.isna
       ~Activity.isnull
@@ -124,6 +127,7 @@ runpandas.types.Activity
       ~Activity.notnull
       ~Activity.nsmallest
       ~Activity.nunique
+      ~Activity.pad
       ~Activity.pct_change
       ~Activity.pipe
       ~Activity.pivot
@@ -157,6 +161,7 @@ runpandas.types.Activity
       ~Activity.select_dtypes
       ~Activity.sem
       ~Activity.set_axis
+      ~Activity.set_flags
       ~Activity.set_index
       ~Activity.set_specs
       ~Activity.shift
@@ -187,6 +192,7 @@ runpandas.types.Activity
       ~Activity.to_latex
       ~Activity.to_markdown
       ~Activity.to_numpy
+      ~Activity.to_orc
       ~Activity.to_pandas
       ~Activity.to_parquet
       ~Activity.to_period
@@ -197,6 +203,7 @@ runpandas.types.Activity
       ~Activity.to_string
       ~Activity.to_timestamp
       ~Activity.to_xarray
+      ~Activity.to_xml
       ~Activity.transform
       ~Activity.transpose
       ~Activity.truediv
@@ -206,6 +213,7 @@ runpandas.types.Activity
       ~Activity.tz_localize
       ~Activity.unstack
       ~Activity.update
+      ~Activity.value_counts
       ~Activity.var
       ~Activity.where
       ~Activity.xs
@@ -227,6 +235,7 @@ runpandas.types.Activity
       ~Activity.dtypes
       ~Activity.ellapsed_time
       ~Activity.empty
+      ~Activity.flags
       ~Activity.iat
       ~Activity.iloc
       ~Activity.index

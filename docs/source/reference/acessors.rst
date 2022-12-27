@@ -46,3 +46,11 @@ Session
    session._SessionAcessor.pace
    session._SessionAcessor.heart_zone
    session._SessionAcessor.only_moving
+
+Splits
+-------
+
+.. autosummary::
+   :toctree: api/
+
+   splits._RaceSplitsAcessor.pick_athlete

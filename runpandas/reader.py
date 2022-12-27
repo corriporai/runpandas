@@ -125,9 +125,8 @@ def _read_event_result(filename, to_df=False, **kwargs):
         to_df : bool, optional
              Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
              a :obj:`pandas.DataFrame` will be returned. Defaults to False.
-        **kwargs :
-        Keyword args to be passed to the `read` method accordingly to the
-        file format.
+        **kwargs : Keyword args to be passed to the `read` method accordingly \
+            to the file format.
 
     Returns
     -------

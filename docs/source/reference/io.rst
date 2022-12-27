@@ -32,3 +32,12 @@ Strava
    :toctree: api/
 
    StravaClient
+
+RaceResult
+----------
+
+.. autosummary::
+   :toctree: api/
+
+   get_events
+   read_event

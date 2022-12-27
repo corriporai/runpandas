@@ -35,14 +35,14 @@ class _RaceSplitsAcessor(object):
         Parameters
         ----------
 
-        identifier (str): Athtlete bib identification or race final position.
-        by (str): Use identifier as bib identification (BIB) or race position (POS).
-                Default is BIB.
+        identifier: Athtlete bib identification or race final position.
+
+        by: Use identifier as bib identification (BIB) or race position (POS). Default is BIB.
 
         Returns
         -------
         `pandas.Dataframe`: A pandas dataframe containing the athlete race splits
-            (partial times and distances covered)
+                                (partial times and distances covered)
         """
         _RaceSplitsAcessor._validate(self._race_result)
         assert by in ("BIB", "POS"), "by parameter must be BIB or POS."
