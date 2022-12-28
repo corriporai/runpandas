@@ -16,3 +16,4 @@ Further information on any specific method can be obtained in the
    2-heartrate
    3-session
    4-strava
+   5-marathon_analysis

@@ -2,7 +2,7 @@
 
 
 python -m pip install --upgrade pip
-pip install numpy lxml
+pip install "numpy<1.24" lxml
 pip install -r requirements-dev.txt
 pip install -r requirements.txt
 
@@ -11,4 +11,8 @@ if [[ "$PANDAS" == "MASTER" ]]; then
   pip install --pre --upgrade --timeout=60 -f "$PRE_WHEELS" pandas --user
 else
   pip install pandas=="$PANDAS"
+fi
+
+if [[ ! -z "$NUMPY" ]]; then
+  pip install --upgrade --force-reinstall numpy=="$NUMPY"
 fi

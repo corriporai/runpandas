@@ -4,7 +4,7 @@
 Summary
 =======
 
-Helper module for evaluation and display of the summary of training sessions.
+Helper module for evaluation and display of the summary of training sessions and race results.
 
 .. currentmodule:: runpandas.types.summary
 
@@ -13,3 +13,4 @@ Helper module for evaluation and display of the summary of training sessions.
 
    session_summary
    activity_summary
+   race_summary

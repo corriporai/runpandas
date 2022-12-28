@@ -44,7 +44,7 @@ def test_validate_session(multi_frame, dirpath):
     # test validation error (get the activity)
     gpx_file = os.path.join(dirpath, "gpx", "stopped_example.gpx")
 
-    with pytest.raises(AssertionError):  # Activity instance
+    with pytest.raises(AttributeError):  # Activity instance
         activity_gpx = reader._read_file(gpx_file, to_df=True)
         activity_gpx.session.count()
 

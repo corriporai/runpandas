@@ -23,8 +23,9 @@ class _SessionAcessor(object):
     """
 
     def __init__(self, session):
-        self._validate(session)
-        self._session = session
+        if isinstance(session, Activity):
+            self._validate(session)
+            self._session = session
 
     @staticmethod
     def _validate(activity):

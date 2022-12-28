@@ -4,6 +4,7 @@ Module contains reading logic for several formats of training sources
 
 from pathlib import Path
 import pandas as pd
+from runpandas import datasets
 from runpandas import _utils as utils
 from runpandas import exceptions
 
@@ -114,3 +115,60 @@ def _read_dir_aggregate(dirname, **kwargs):
         return multi_frame
 
     return None
+
+
+def _read_event_result(filename, to_df=False, **kwargs):
+    """
+    Parameters
+    ----------
+        filename : str, The path to a result file.
+        to_df : bool, optional
+             Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
+             a :obj:`pandas.DataFrame` will be returned. Defaults to False.
+        **kwargs : Keyword args to be passed to the `read` method accordingly \
+            to the file format.
+
+    Returns
+    -------
+    Return a obj:`runpandas.RaceResult` if `to_df=False`, otherwise
+             a :obj:`pandas.DataFrame` will be returned.
+
+    """
+    if not utils.file_exists(filename):
+        raise IOError("%s does not exist" % filename)
+
+    _, ext = utils.splitext_plus(filename)
+    if ext not in [".csv"]:
+        raise exceptions.InvalidFileError(
+            "File {filename} with invalid filetype.".format(**locals())
+        )
+    module = _import_module("result")
+    return module.read(filename, to_df, **kwargs)
+
+
+def get_events(identifier, year=None, run_type=None, config=None):
+    """
+    Returns event results based on year or event name identifier.
+    The result will be a list of :obj:`runpandas.RaceResult` instances that macthes
+    the given criteria.
+
+    Parameters
+    ----------
+    identifier : str
+        Name of the event or any identifier related to it.
+    year: str, optional
+        Iterates over all the events with identificer match and
+        with the given year and return them.
+    run_type: str, optional
+        Iterates over all the events with identificer match and
+        with the given run type and return them.
+    config : yaml file, optional
+        The directory in which to cache data; see :func:`get_cache_path`.
+
+    Returns
+    -------
+    Return a list of :obj:`runpandas.RaceResult` based on the identifier,
+    run typer or year criteria.
+    """
+    events = datasets.utils.get_events(identifier, year, run_type, config)
+    return events

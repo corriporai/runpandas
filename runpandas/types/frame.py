@@ -291,3 +291,132 @@ class Activity(pd.DataFrame):
 
         """
         return runpandas.types.summary.activity_summary(self)
+
+
+class Event:
+    """Object for accessing race event metadata.
+
+    Parameters
+    ----------
+    event_name : str
+        Event Name.
+    event_type : str
+        Event type (race marathon, half, 10k, 5km, etc.)
+    event_country : str
+        Country where this= event ocurred (the international code)
+    event_date :  pandas.Datetime:
+         Date at which this event took place.
+    """
+
+    __slots__ = ("event_name", "event_type", "event_country", "event_date")
+
+    def __init__(self, event_name, event_type, event_country, event_date):
+        self.event_name = event_name
+        self.event_type = event_type
+        self.event_country = event_country
+        self.event_date = event_date
+
+
+class RaceResult(pd.DataFrame):
+    """
+    A RaceResult object is a pandas.DataFrame that contains
+    additional metadata and methods pertinent to analysis of
+    race results. In addition to the standard DataFrame constructor
+    arguments, RaceResult also accepts the following optional arguments:
+
+    Parameters
+    ----------
+    :class:`~Event`: Reference to the associated event with extra metadata
+            from the race.
+    *args (any): passed through to `pandas.DataFrame` superclass
+    **kwargs (any): passed through to `pandas.DataFrame` superclass
+    """
+
+    # properties to propagate
+    _metadata = ["event"]
+
+    def __init__(self, *args, **kwargs):
+        event = kwargs.pop("event", None)
+
+        super().__init__(*args, **kwargs)
+        if event is not None:
+            self.event = event
+
+    @property
+    def _constructor(self):
+        return RaceResult
+
+    def to_pandas(self):
+        """
+        Returns:
+            Casted Pandas Dataframe from RaceResult
+        """
+        return DataFrame(self)
+
+    def __finalize__(self, other, method=None, **kwargs):
+        """Propagate metadata from other to self."""
+        for name in self._metadata:
+            object.__setattr__(self, name, getattr(other, name, None))
+        return self
+
+    @property
+    def base_class_view(self):
+        """For a nicer debugging experience; can view DataFrame through
+        this property in various IDEs"""
+        return pd.DataFrame(self)
+
+    def summary(self):
+        """
+        Display the summary statistics from the race.
+
+        Returns:
+        --------
+            pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
+            inclues the race event info , demographics statistics and winner race's result.
+        """
+        return runpandas.types.summary.race_summary(self)
+
+    @property
+    def total_participants(self):
+        """
+        Returns:
+            The number of participants as an integer number.
+        """
+        return len(self)
+
+    @property
+    def total_finishers(self):
+        """
+        Returns:
+            The number of finishers as an integer number.
+        """
+        return (self.position.values != "DNF").sum()
+
+    @property
+    def total_nonfinishers(self):
+        """
+        Returns:
+            The number of non-finishers as an integer number.
+        """
+        return (self.position.values == "DNF").sum()
+
+    @property
+    def winner(self):
+        """
+        Returns:
+            The winner record row as a pandas.Series object.
+        """
+        winner_nettime = self[self["position"].ne("DNF")]
+        winner_nettime["pos"] = winner_nettime["position"].astype(int)
+        winner_nettime.sort_values("pos", inplace=True)
+        winner_nettime.drop(columns=["pos"], inplace=True)
+        return winner_nettime.iloc[0]
+
+    @property
+    def participants(self):
+        """
+        Returns:
+            :class:`list`: List of all participants that took part
+            in this race; contains bib numbers as string.
+        """
+        return list(self["bib"].unique())
