@@ -3,6 +3,7 @@
 import os
 from typing import List
 from urllib.request import Request, urlopen, urlretrieve
+from urllib.parse import urljoin
 import yaml
 from pydantic import parse_obj_as
 from runpandas.datasets.schema import ActivityData, RaceData, EventData
@@ -182,15 +183,14 @@ def get_events(identifier, year=None, run_type=None, config=None):
             if not os.path.exists(cache_path):
                 os.makedirs(cache_path)
             for edition in match.editions:
-                url_path = os.path.join(
-                    match.path,
+                url_path = urljoin(
+                    match.path + "/",
                     "{path}_{edition}.csv".format(
                         path=os.path.basename(match.path), edition=edition
                     ),
                 )
                 event_cache_path = os.path.join(cache_path, os.path.basename(url_path))
                 if not os.path.exists(event_cache_path):
-                    print(url_path, event_cache_path)
                     urlretrieve(url_path, event_cache_path)  # nosec
 
                 edition = EventData(
