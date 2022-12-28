@@ -1,4 +1,4 @@
-.. _whatsnew_051:
+.. _whatsnew_052:
 
 v0.5.2 (July 29, 2022)
 ----------------------------
@@ -17,7 +17,7 @@ Highlights include:
 
 New features
 ~~~~~~~~~~~~
-- Added StravaClient authentication handler for helping the authentication process (:pull:`55`)
+- Added StravaClient authentication handler for helping the authentication process (:issue:`55`)
 - Added docummentation with Strava Examples (:issue:`63`)
 - Fixed the test suites for Strava reading handlers and new tests for StravaClient helper class. (:issue:`63`)
 - improvements on linting and pre-commit process and remove Python 3.6 from the tests suite. (:issue:`59`)

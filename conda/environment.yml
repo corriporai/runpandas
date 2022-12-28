@@ -10,3 +10,4 @@ dependencies:
     - fitparse
     - stravalib
     - haversine
+    - thefuzz
