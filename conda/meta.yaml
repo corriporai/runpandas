@@ -23,6 +23,7 @@ requirements:
     - pydantic
     - pyyaml
     - stravalib
+    - thefuzz
 test:
   imports:
     - runpandas
