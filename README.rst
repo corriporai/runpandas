@@ -1472,6 +1472,770 @@ from majors to local ones (if it’s available at our data repository).
 In this example we will analyze the 2022 Berlin Marathon using runpandas
 methods specially tailored for handling race results data.
 
+First, let’s load the Berlin Marathon data by using the runpandas method
+``runpandas.get_events``. This function provides a way of accessing the
+race data and visualize the results from several marathons available at
+our datasets repository. Given the year and the marathon identifier you
+can filter any marathon datasets that you want analyze. The result will
+be a list of ``runpandas.EventData`` instances with race result and its
+metadata. Let’s look for Berlin Marathon results.
+
+
+.. code:: ipython3
+
+    import pandas as pd
+    import runpandas as rpd
+    import warnings
+    warnings.filterwarnings('ignore')
+
+.. code:: ipython3
+
+    results = rpd.get_events('Berlin')
+    results
+
+
+
+
+.. parsed-literal::
+
+    [<Event: name=Berlin Marathon Results from 2022., country=DE, edition=2022>]
+
+
+
+The result comes with the Berlin Marathon Result from 2022. Let’s take a
+look inside the race event, which comes with a handful method to
+describe its attributes and a special method to load the race result
+data into a ``runpandas.datasets.schema.RaceData`` instance.
+
+.. code:: ipython3
+
+    berlin_result = results[0]
+    print('Event type', berlin_result.run_type)
+    print('Country', berlin_result.country)
+    print('Year', berlin_result.edition)
+    print('Name', berlin_result.summary)
+
+
+.. parsed-literal::
+
+    Event type RunTypeEnum.MARATHON
+    Country DE
+    Year 2022
+    Name Berlin Marathon Results from 2022.
+    
+
+
+Now that we confirmed that we requested the corresponding marathon
+dataset. We will load it into a DataFrame so we can further explore it.
+
+.. code:: ipython3
+
+    #loading the race data into a RaceData Dataframe
+    race_result = berlin_result.load()
+    race_result
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>position</th>
+          <th>position_gender</th>
+          <th>country</th>
+          <th>sex</th>
+          <th>division</th>
+          <th>bib</th>
+          <th>firstname</th>
+          <th>lastname</th>
+          <th>club</th>
+          <th>starttime</th>
+          <th>...</th>
+          <th>10k</th>
+          <th>15k</th>
+          <th>20k</th>
+          <th>25k</th>
+          <th>30k</th>
+          <th>35k</th>
+          <th>40k</th>
+          <th>grosstime</th>
+          <th>nettime</th>
+          <th>category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>1</td>
+          <td>1</td>
+          <td>KEN</td>
+          <td>M</td>
+          <td>1</td>
+          <td>1</td>
+          <td>Eliud</td>
+          <td>Kipchoge</td>
+          <td>–</td>
+          <td>09:15:00</td>
+          <td>...</td>
+          <td>0 days 00:28:23</td>
+          <td>0 days 00:42:33</td>
+          <td>0 days 00:56:45</td>
+          <td>0 days 01:11:08</td>
+          <td>0 days 01:25:40</td>
+          <td>0 days 01:40:10</td>
+          <td>0 days 01:54:53</td>
+          <td>0 days 02:01:09</td>
+          <td>0 days 02:01:09</td>
+          <td>M35</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>2</td>
+          <td>2</td>
+          <td>KEN</td>
+          <td>M</td>
+          <td>1</td>
+          <td>5</td>
+          <td>Mark</td>
+          <td>Korir</td>
+          <td>–</td>
+          <td>09:15:00</td>
+          <td>...</td>
+          <td>0 days 00:28:56</td>
+          <td>0 days 00:43:35</td>
+          <td>0 days 00:58:14</td>
+          <td>0 days 01:13:07</td>
+          <td>0 days 01:28:06</td>
+          <td>0 days 01:43:25</td>
+          <td>0 days 01:59:05</td>
+          <td>0 days 02:05:58</td>
+          <td>0 days 02:05:58</td>
+          <td>M30</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>3</td>
+          <td>3</td>
+          <td>ETH</td>
+          <td>M</td>
+          <td>1</td>
+          <td>8</td>
+          <td>Tadu</td>
+          <td>Abate</td>
+          <td>–</td>
+          <td>09:15:00</td>
+          <td>...</td>
+          <td>0 days 00:29:46</td>
+          <td>0 days 00:44:40</td>
+          <td>0 days 00:59:40</td>
+          <td>0 days 01:14:44</td>
+          <td>0 days 01:30:01</td>
+          <td>0 days 01:44:55</td>
+          <td>0 days 02:00:03</td>
+          <td>0 days 02:06:28</td>
+          <td>0 days 02:06:28</td>
+          <td>MH</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>4</td>
+          <td>4</td>
+          <td>ETH</td>
+          <td>M</td>
+          <td>2</td>
+          <td>26</td>
+          <td>Andamlak</td>
+          <td>Belihu</td>
+          <td>–</td>
+          <td>09:15:00</td>
+          <td>...</td>
+          <td>0 days 00:28:23</td>
+          <td>0 days 00:42:33</td>
+          <td>0 days 00:56:45</td>
+          <td>0 days 01:11:09</td>
+          <td>0 days 01:26:11</td>
+          <td>0 days 01:42:14</td>
+          <td>0 days 01:59:14</td>
+          <td>0 days 02:06:40</td>
+          <td>0 days 02:06:40</td>
+          <td>MH</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>5</td>
+          <td>5</td>
+          <td>KEN</td>
+          <td>M</td>
+          <td>3</td>
+          <td>25</td>
+          <td>Abel</td>
+          <td>Kipchumba</td>
+          <td>–</td>
+          <td>09:15:00</td>
+          <td>...</td>
+          <td>0 days 00:28:55</td>
+          <td>0 days 00:43:35</td>
+          <td>0 days 00:58:14</td>
+          <td>0 days 01:13:07</td>
+          <td>0 days 01:28:03</td>
+          <td>0 days 01:43:08</td>
+          <td>0 days 01:59:14</td>
+          <td>0 days 02:06:49</td>
+          <td>0 days 02:06:49</td>
+          <td>MH</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>35566</th>
+          <td>DNF</td>
+          <td>–</td>
+          <td>USA</td>
+          <td>M</td>
+          <td>–</td>
+          <td>65079</td>
+          <td>michael</td>
+          <td>perkowski</td>
+          <td>–</td>
+          <td>–</td>
+          <td>...</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>M65</td>
+        </tr>
+        <tr>
+          <th>35567</th>
+          <td>DNF</td>
+          <td>–</td>
+          <td>USA</td>
+          <td>M</td>
+          <td>–</td>
+          <td>62027</td>
+          <td>Karl</td>
+          <td>Mann</td>
+          <td>–</td>
+          <td>–</td>
+          <td>...</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>M55</td>
+        </tr>
+        <tr>
+          <th>35568</th>
+          <td>DNF</td>
+          <td>–</td>
+          <td>THA</td>
+          <td>F</td>
+          <td>–</td>
+          <td>27196</td>
+          <td>oraluck</td>
+          <td>pichaiwongse</td>
+          <td>STATE to BERLIN 2022</td>
+          <td>–</td>
+          <td>...</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>W55</td>
+        </tr>
+        <tr>
+          <th>35569</th>
+          <td>DNF</td>
+          <td>–</td>
+          <td>SUI</td>
+          <td>M</td>
+          <td>–</td>
+          <td>56544</td>
+          <td>Gerardo</td>
+          <td>GARCIA CALZADA</td>
+          <td>–</td>
+          <td>–</td>
+          <td>...</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>M50</td>
+        </tr>
+        <tr>
+          <th>35570</th>
+          <td>DNF</td>
+          <td>–</td>
+          <td>AUT</td>
+          <td>M</td>
+          <td>–</td>
+          <td>63348</td>
+          <td>Harald</td>
+          <td>Mori</td>
+          <td>Albatros</td>
+          <td>–</td>
+          <td>...</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>NaT</td>
+          <td>M60</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>35571 rows × 23 columns</p>
+    </div>
+
+
+Now you can get some insights about the Berlin Marathon 2022, by using
+its tailored methods for getting basic and quick insights. For example,
+the number of finishers, number of participants and the winner info.
+
+.. code:: ipython3
+
+    print('Total participants', race_result.total_participants)
+    print('Total finishers', race_result.total_finishers)
+    print('Total Non-Finishers', race_result.total_nonfinishers)
+
+
+.. parsed-literal::
+
+    Total participants 35571
+    Total finishers 34844
+    Total Non-Finishers 727
+
+
+.. code:: ipython3
+
+    race_result.winner
+
+
+
+
+.. parsed-literal::
+
+    position                         1
+    position_gender                  1
+    country                        KEN
+    sex                              M
+    division                         1
+    bib                              1
+    firstname                    Eliud
+    lastname                  Kipchoge
+    club                             –
+    starttime                 09:15:00
+    start_raw_time            09:15:00
+    half               0 days 00:59:51
+    5k                 0 days 00:14:14
+    10k                0 days 00:28:23
+    15k                0 days 00:42:33
+    20k                0 days 00:56:45
+    25k                0 days 01:11:08
+    30k                0 days 01:25:40
+    35k                0 days 01:40:10
+    40k                0 days 01:54:53
+    grosstime          0 days 02:01:09
+    nettime            0 days 02:01:09
+    category                       M35
+    Name: 0, dtype: object
+
+
+
+Eliud Kipchoge of Kenya won the 2022 Berlin Marathon in 2:01:09.
+Kipchoge’s victory was his fourth in Berlin and 17th overall in a career
+of 19 marathon starts. And who was the women’s race winner?
+
+.. code:: ipython3
+
+    race_result[(race_result['position_gender'] == 1) & (race_result['sex'] == 'F')].T
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>32</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>position</th>
+          <td>33</td>
+        </tr>
+        <tr>
+          <th>position_gender</th>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th>country</th>
+          <td>ETH</td>
+        </tr>
+        <tr>
+          <th>sex</th>
+          <td>F</td>
+        </tr>
+        <tr>
+          <th>division</th>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th>bib</th>
+          <td>F24</td>
+        </tr>
+        <tr>
+          <th>firstname</th>
+          <td>Tigist</td>
+        </tr>
+        <tr>
+          <th>lastname</th>
+          <td>Assefa</td>
+        </tr>
+        <tr>
+          <th>club</th>
+          <td>–</td>
+        </tr>
+        <tr>
+          <th>starttime</th>
+          <td>09:15:00</td>
+        </tr>
+        <tr>
+          <th>start_raw_time</th>
+          <td>09:15:00</td>
+        </tr>
+        <tr>
+          <th>half</th>
+          <td>0 days 01:08:13</td>
+        </tr>
+        <tr>
+          <th>5k</th>
+          <td>0 days 00:16:22</td>
+        </tr>
+        <tr>
+          <th>10k</th>
+          <td>0 days 00:32:36</td>
+        </tr>
+        <tr>
+          <th>15k</th>
+          <td>0 days 00:48:44</td>
+        </tr>
+        <tr>
+          <th>20k</th>
+          <td>0 days 01:04:43</td>
+        </tr>
+        <tr>
+          <th>25k</th>
+          <td>0 days 01:20:48</td>
+        </tr>
+        <tr>
+          <th>30k</th>
+          <td>0 days 01:36:41</td>
+        </tr>
+        <tr>
+          <th>35k</th>
+          <td>0 days 01:52:27</td>
+        </tr>
+        <tr>
+          <th>40k</th>
+          <td>0 days 02:08:42</td>
+        </tr>
+        <tr>
+          <th>grosstime</th>
+          <td>0 days 02:15:37</td>
+        </tr>
+        <tr>
+          <th>nettime</th>
+          <td>0 days 02:15:37</td>
+        </tr>
+        <tr>
+          <th>category</th>
+          <td>WH</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+Tigist Assefa of Ethiopia won the women’s race in a stunning time of
+2:15:37 to set a new course record in Berlin.
+
+Runpandas also provides a race’s summary method for showing the
+compilation of some general insights such as finishers, partipants (by
+gender and overall).
+
+.. code:: ipython3
+
+    race_result.summary()
+
+
+
+
+.. parsed-literal::
+
+    Event name                    berlin marathon
+    Event type                                42k
+    Event country                              DE
+    Event date                         25-09-2022
+    Number of participants                  35571
+    Number of finishers                     34844
+    Number of non-finishers                   727
+    Number of male finishers                23314
+    Number of female finishers              11523
+    Winner Nettime                0 days 02:01:09
+    dtype: objec
+
+
+
+Runpandas for some race results come with the splits for the partial
+distances of the race. We can fetch for any runner the splits using the
+method ``runpandas.acessors.splits.pick_athlete``. So, if we need to
+have direct access to all splits from a specific runner, we will use the
+``splits`` acesssor.
+
+.. code:: ipython3
+
+    race_result.splits.pick_athlete(identifier='1')
+
+
+
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>time</th>
+          <th>distance_meters</th>
+          <th>distance_miles</th>
+        </tr>
+        <tr>
+          <th>split</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0k</th>
+          <td>0 days 00:00:00</td>
+          <td>0</td>
+          <td>0.0000</td>
+        </tr>
+        <tr>
+          <th>5k</th>
+          <td>0 days 00:14:14</td>
+          <td>5000</td>
+          <td>3.1069</td>
+        </tr>
+        <tr>
+          <th>10k</th>
+          <td>0 days 00:28:23</td>
+          <td>10000</td>
+          <td>6.2137</td>
+        </tr>
+        <tr>
+          <th>15k</th>
+          <td>0 days 00:42:33</td>
+          <td>15000</td>
+          <td>9.3206</td>
+        </tr>
+        <tr>
+          <th>20k</th>
+          <td>0 days 00:56:45</td>
+          <td>20000</td>
+          <td>12.4274</td>
+        </tr>
+        <tr>
+          <th>half</th>
+          <td>0 days 00:59:51</td>
+          <td>21097</td>
+          <td>13.1091</td>
+        </tr>
+        <tr>
+          <th>25k</th>
+          <td>0 days 01:11:08</td>
+          <td>25000</td>
+          <td>15.5343</td>
+        </tr>
+        <tr>
+          <th>30k</th>
+          <td>0 days 01:25:40</td>
+          <td>30000</td>
+          <td>18.6411</td>
+        </tr>
+        <tr>
+          <th>35k</th>
+          <td>0 days 01:40:10</td>
+          <td>35000</td>
+          <td>21.7480</td>
+        </tr>
+        <tr>
+          <th>40k</th>
+          <td>0 days 01:54:53</td>
+          <td>40000</td>
+          <td>24.8548</td>
+        </tr>
+        <tr>
+          <th>nettime</th>
+          <td>0 days 02:01:09</td>
+          <td>42195</td>
+          <td>26.2187</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+With plotting libraries such as ``matplotlib`` you can analyze the splits data through a impressive visualization!
+
+
+.. code:: ipython3
+
+    eliud_kipchoge_splits = race_result.splits.pick_athlete(identifier='1')
+
+.. code:: ipython3
+
+    def timeTicks(x, pos):
+        seconds = x / 10**9
+        d = datetime.timedelta(seconds=seconds)
+        return str(d)
+    
+    fig, ax2 = plt.subplots()
+    #plot the splits time
+    #format the y-axis to show the labels as timedelta.
+    formatter = matplotlib.ticker.FuncFormatter(timeTicks)
+    #plot the paces per segment
+    line2, = ax2.plot(eliud_kipchoge_splits_filtered.index, eliud_kipchoge_splits_filtered['pace'],  linestyle='dashed', color='cyan',  lw=5, alpha=0.8)
+    #plot the overall mean pace
+    line3, = ax2.plot(eliud_kipchoge_splits_filtered.index, eliud_kipchoge_splits_filtered['mean_pace'], color='#1b9e77', linestyle='dashed',  lw=5, alpha=0.8)
+    
+    #annotate the pace line with time splits
+    yvalues = line2.get_ydata()
+    for index, y in zip(eliud_kipchoge_splits_filtered.index, yvalues):
+        formated_time = datetime.timedelta(seconds=eliud_kipchoge_splits_filtered.loc[index,'split_time'].total_seconds())
+        ax2.text(index, y, formated_time, weight="bold", size=12,   )
+    
+    ax2.yaxis.set_major_formatter(formatter)
+    
+    ax2.grid(False)
+    
+    ax2.legend(
+                (line2, line3),
+                ('Splits Time', 'Splits Pace', 'Mean Pace'),
+                loc='lower right',
+                frameon=False
+    )
+    
+    
+    ax2.set_title("Eliud Kipchoge splits time and pace in Berlin Marathon 2022")
+    ax2.set_xlabel("Splits in kms")
+    ax2.set_ylabel("Pace min/km")
+    
+    plt.show()
+
+
+
+.. image:: examples/overview_files/5-marathon_analysis_80_0.png
+
+
+
 Get in touch
 ------------
 - Report bugs, suggest features or view the source code [on GitHub](https://github.com/corriporai/runpandas).
