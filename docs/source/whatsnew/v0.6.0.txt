@@ -1,0 +1,22 @@
+.. _whatsnew_060:
+
+v0.6.0 (December 28, 2022)
+----------------------------
+
+This is a major release from 0.5.2 and includes new features.
+
+
+Highlights include:
+
+
+.. contents:: What's new in v0.6.0
+    :local:
+    :backlinks: none
+
+.. _whatsnew_060.enhancements:
+
+New features
+~~~~~~~~~~~~
+- Added support of reading race event results (:issue:`16`)
+- Added support of fetching race results from an open-data internal race results repository (:issue:`16`)
+- Added special statistics methods for race results such as participants, winner, demographics summary, etc. (:issue:`16`)
