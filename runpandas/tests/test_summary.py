@@ -6,6 +6,7 @@ import pytest
 import numpy as np
 from pandas import Timedelta, Series, concat, isna
 from runpandas import reader, read_dir
+from runpandas.io.result._parser import read as read_result
 from pandas.testing import assert_series_equal
 
 
@@ -197,3 +198,106 @@ def test_summary_session(multi_frame, simple_activity):
     )
     assert isna(summary_single_activity.loc["Average temperature"])
     assert isna(summary_session_activity.loc["mean_temperature"])
+
+
+def test_race_full_summary(dirpath):
+    race_result = os.path.join(dirpath, "results", "valid_result_br.csv")
+    race = read_result(race_result, to_df=False)
+
+    result = race.summary()
+
+    expected = Series(
+        [
+            "Porto Alegre Marathon",
+            "42k",
+            "BR",
+            "02-06-2019",
+            3167,
+            3167,
+            0,
+            2440,
+            727,
+            Timedelta("0 days 02:18:27"),
+        ],
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+    assert_series_equal(result, expected)
+
+    race_result = os.path.join(dirpath, "results", "result_with_nonfinishers.csv")
+    race = read_result(race_result, to_df=False)
+
+    result = race.summary()
+
+    expected = Series(
+        [
+            "lochness marathon",
+            "42k",
+            "UK",
+            "23-09-2018",
+            2825,
+            2810,
+            15,
+            "",
+            "",
+            Timedelta("0 days 02:22:56"),
+        ],
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+    assert_series_equal(result, expected)
+
+
+def test_race_missing_values_summary(dirpath):
+    race_result = os.path.join(dirpath, "results", "valid_result.csv")
+    race = read_result(race_result, to_df=False)
+
+    result = race.summary()
+
+    expected = Series(
+        [
+            "Lochness marathon",
+            "42k",
+            "UK",
+            "04-10-2003",
+            752,
+            752,
+            0,
+            "",
+            "",
+            Timedelta("0 days 02:20:59"),
+        ],
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+    assert_series_equal(result, expected)

@@ -40,6 +40,7 @@ RunPandas depends on the following packages:
 - ``haversine``
 - ``pydantic``
 - ``pyaml``
+- ``thefuzz``
 
 ^^^^^^^^^^^^^^^^^^^^^
 Detailed instructions

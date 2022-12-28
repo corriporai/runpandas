@@ -3,6 +3,18 @@ Custom exceptions for runpandas
 """
 
 
+class MissingHeaderError(Exception):
+    def __init__(self, msg):
+        message = "File %s header mal-formed. Missing column." % (msg)
+        super().__init__(message)
+
+
+class InvalidHeaderError(Exception):
+    def __init__(self, msg):
+        message = "File %s header mal-formed. Check the header specs." % (msg)
+        super().__init__(message)
+
+
 class InvalidFileError(Exception):
     def __init__(self, msg):
         message = "It doesn't like a valid  %s file!" % (msg)

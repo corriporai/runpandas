@@ -19,7 +19,7 @@ import datetime as dt
 # -- Project information -----------------------------------------------------
 
 project = "runpandas"
-copyright = "2020, Corri por ai Development Team"
+copyright = "2022, Corri por ai Development Team"
 author = "Marcel Caraciolo"
 
 # -- General configuration ---------------------------------------------------

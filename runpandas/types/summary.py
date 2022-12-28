@@ -257,3 +257,114 @@ def session_summary(session):
     session_summary = pd.concat(frames, axis=0, verify_integrity=True)
     session_summary.sort_index(inplace=True)
     return session_summary
+
+
+def race_summary(race):
+    """
+    Returns the pandas Dataframe with the race event statistics for the
+    given race result object.
+
+    Parameters
+    ----------
+    race:  runpandas.types.RaceResult. Runpandas RaceResult to be computed the statistics
+
+    Returns
+    -------
+        pandas.Dataframe:  A pandas DataFrame containing the summary statistics, which
+        includes race event information and demographics race statistics, and many others.
+
+    """
+    summary_statistics = _build_race_statistics(race)
+    return summary_statistics.T
+
+
+def _build_race_statistics(obj):
+    """
+    Generate race statistics from a given DataFrame.
+
+    Parameters
+    ----------
+    obj:  The DataFrame to generate basic commute statistics from.
+
+    Returns:
+    --------
+    A Series containing the following statistics:
+    - Race event name
+    - Race type
+    - Country which the event ocurred
+    - Date when the event ocurred
+    - Number of participants
+    - Number of male finishers
+    - Number of female finishers
+    - Number of finishers
+    - Winner NetTime
+    """
+    try:
+        event_name = obj.event.event_name
+    except AttributeError:
+        event_name = ""
+
+    try:
+        event_type = obj.event.event_type
+    except AttributeError:
+        event_type = ""
+
+    try:
+        event_country = obj.event.event_country
+    except AttributeError:
+        event_country = ""
+
+    try:
+        event_date = obj.event.event_date
+    except AttributeError:
+        event_date = ""
+
+    number_of_participants = len(obj)
+
+    number_of_non_finishers = (obj.position.values == "DNF").sum()
+
+    number_of_finishers = (obj.position.values != "DNF").sum()
+
+    try:
+        sex_finishers = obj[obj["position"].ne("DNF")].sex.value_counts()
+        male_finishers = sex_finishers["M"]
+        female_finishers = sex_finishers["F"]
+    except AttributeError:
+        female_finishers = ""
+        male_finishers = ""
+
+    winner_nettime = obj[obj["position"].ne("DNF")]
+    winner_nettime["pos"] = winner_nettime["position"].astype(int)
+    winner_nettime.sort_values("pos", inplace=True)
+    winner_time = winner_nettime["nettime"].iloc[0]
+
+    rows = {
+        "Event name": event_name,
+        "Event type": event_type,
+        "Event country": event_country,
+        "Event date": event_date.strftime("%d-%m-%Y"),
+        "Number of participants": number_of_participants,
+        "Number of finishers": number_of_finishers,
+        "Number of non-finishers": number_of_non_finishers,
+        "Number of male finishers": male_finishers,
+        "Number of female finishers": female_finishers,
+        "Winner Nettime": winner_time,
+    }
+
+    series = pd.Series(
+        rows,
+        index=[
+            "Event name",
+            "Event type",
+            "Event country",
+            "Event date",
+            "Number of participants",
+            "Number of finishers",
+            "Number of non-finishers",
+            "Number of male finishers",
+            "Number of female finishers",
+            "Winner Nettime",
+        ],
+    )
+
+    return series
